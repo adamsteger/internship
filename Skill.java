@@ -1,0 +1,5 @@
+public enum Skill {
+    JAVA, C, PYTHON, CPP, VBNET, CPOUND, PHP, JAVASCRIPT, SQL, OBJECTIVEC, RUBY, MATLAB,
+    SWIFT, GO, PERL, R, HTML
+    
+}
