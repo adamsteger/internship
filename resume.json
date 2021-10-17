@@ -1,0 +1,49 @@
+[{
+    "id" : 1,
+    "educations" : [
+        {"schoolTitle" : "University of South Carolina", "location" : "Columbia, SC", "major" : "Computer Science", "gradYear" : 2022, "resume" : true}
+    ],
+    "skills" : [
+        {"skill" : "Java", "bool" : true},
+        {"skill" : "Python", "bool" : false}
+        ],
+    "courses" : [
+        {"String" : "Software Engineering", "bool" : true},
+        {"String" : "University 101", "bool" : false}
+        ],
+    "work" : [
+        {"posTitle" : "Data Scientist Intern", "employer" : "Nelnet", "location" : "Columbia, SC", "startDate" : "Jan 2020", "endDate" : "Feb 2021", "description" : [
+             {"String" : "Learned data scientist things"},
+             {"String" : "Watched a data scientists do things"}
+             ],
+        "resume" : true}
+    ],
+    "extracurriculars" : [
+        {"title" : "Robotics Club", "position" : "President", "startDate" : "Jan 2021", "endDate" : "Jan 2022", "resume" : true}
+    ]
+},
+{
+    "id" : 2,
+    "educations" : [
+        {"schoolTitle" : "University of South Carolina", "location" : "Columbia, SC", "major" : "Computer Engineering", "gradYear" : 2024, "resume" : true}
+    ],
+    "skills" : [
+        {"skill" : "C", "bool" : true},
+        {"skill" : "C++", "bool" : true}
+        ],
+    "courses" : [
+        {"String" : "Algorithm Design", "bool" : true},
+        {"String" : "Computing in the Modern World", "bool" : true}
+        ],
+    "work" : [
+        {"posTitle" : "Computer Programming Intern", "employer" : "Dominion Energy", "location" : "Columbia, SC", "startDate" : "Jan 2020", "endDate" : "Feb 2021", "description" : [
+             {"String" : "Learned programming things"},
+             {"String" : "Wrote code in C++"}
+             ],
+        "resume" : true}
+    ],
+    "extracurriculars" : [
+        {"title" : "Dance Marathon", "position" : "Treasurer", "startDate" : "Jan 2021", "endDate" : "Jan 2022", "resume" : true}
+    ]
+}
+]
