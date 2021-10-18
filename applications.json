@@ -1,14 +1,14 @@
-"applications:" [
+[
   {
-    “studentID” : 1,
-    “employerID” : 3,
-    “postID” : 17,
-    “applicationDate” : 10/13/2021,
+    "studentID" : 1,
+    "employerID" : 3,
+    "postID" : 17,
+    "applicationDate" : "10/13/2021",
   },
   {
-    “studentID” : 0,
-    “employerID” : 4,
-    “postID” : 8,
-    “applicationDate” : 10/15/2021,
+    "studentID" : 0,
+    "employerID" : 4,
+    "postID" : 8,
+    "applicationDate" : "10/15/2021",
   }
 ]
