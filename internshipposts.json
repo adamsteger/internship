@@ -1,15 +1,15 @@
 "internshipposts:" [
   {
-    “id” : 15,
-    “employer” : “IBM”,
-    “posTitle” : “Software Engineering Intern”,
-    “description” : “You will be tasked with assisting leading IBM developers in
-    creating and pushing projects.”,
-    “location” : “Washington, DC”,
-    “skillReq” : [
-      {“Skill” : “C++”}
-      {“Skill” : “Java”}
-      {“Skill” : “Python”}
+    "id" : 15,
+    "employer" : "IBM",
+    "posTitle" : "Software Engineering Intern",
+    "description" : "You will be tasked with assisting leading IBM developers in
+    creating and pushing projects.",
+    "location" : "Washington, DC",
+    "skillReq" : [
+      {"Skill" : "C++"},
+      {"Skill" : "Java"},
+      {"Skill" : "Python"}
     ],
     “startDate” : “June 2021”,
     “endDate” : “August 2021”,
