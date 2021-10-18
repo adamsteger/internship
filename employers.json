@@ -1,39 +1,39 @@
-"employers":[
+[
   {
-    “id” : 0,
-    “username” : “IBM”,
-    “password” : “3sdaf$sd7$%df”,
-    “email” : “IBM@IBM.com”,
-    “rating” : 4.7,
-    “reviews” : [
-      {“writer” : “Adam Sanfacon”, “rating” : 5, “comment” : “Great experience!”}
-      {“writer” : “Vaugn Eugenio”, “rating” : 4, “comment” : “Good work experience,
-        although mostly cookie cutter type work and little applicable experience.”}
+    "id" : 0,
+    "username" : "IBM",
+    "password" : "3sdaf$sd7$%df",
+    "email" : "IBM@IBM.com",
+    "rating" : 4.7,
+    "reviews" : [
+      {"writer" : "Adam Sanfacon", "rating" : 5, "comment" : "Great experience!"}
+      {"writer" : "Vaugn Eugenio", "rating" : 4, "comment" : "Good work experience,
+        although mostly cookie cutter type work and little applicable experience."}
       ],
-    “location” : “Washington, DC”,
-    “mission” : “THINK”,
-    “logo” : “”,
-    “posts” : [
-      {“id” : 0, posTitle: “Software Engineer”}
-      {“id” : 1, posTitle: “Cyber Security Analyst”}
+    "location" : "Washington, DC",
+    "mission" : "THINK",
+    "logo" : "",
+    "posts" : [
+      {"id" : 0, posTitle: "Software Engineer"}
+      {"id" : 1, posTitle: "Cyber Security Analyst"}
   },
   {
-    “id” : 1,
-    “username” : “Google”,
-    “password” : “37ddgf$2rh7!#”,
-    “email” : “google@gmail.com,”,
-    “rating” : 4.5,
-    “reviews” : [
-      {“writer” : “Adam Steger”, “rating” : 5, “comment” : “Set me up with the
-        essential skills needed to work in a large company!”}
-      {“writer” : “Ana Boccanfuso”, “rating” : 4, “comment” : “Good work experience
-        and gained valuable insight into large companies.”}
+    "id" : 1,
+    "username" : "Google",
+    "password" : "37ddgf$2rh7!#",
+    "email" : "google@gmail.com,",
+    "rating" : 4.5,
+    "reviews" : [
+      {"writer" : "Adam Steger", "rating" : 5, "comment" : "Set me up with the
+        essential skills needed to work in a large company!"}
+      {"writer" : "Ana Boccanfuso", "rating" : 4, "comment" : "Good work experience
+        and gained valuable insight into large companies."}
       ],
-    “location” : “Mountain View, CA”,
-    “mission” : “Don't be evil”,
-    “logo” : “”,
-    “posts” : [
-      {“id” : 0, posTitle: “Software Engineer”}
-      {“id” : 1, posTitle: “Web Developer”}
+    "location" : "Mountain View, CA",
+    "mission" : "Don't be evil",
+    "logo" : "",
+    "posts" : [
+      {"id" : 0, posTitle: "Software Engineer"}
+      {"id" : 1, posTitle: "Web Developer"}
   }
 ]
