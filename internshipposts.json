@@ -1,47 +1,45 @@
-"internshipposts:" [
+[
   {
     "id" : 15,
     "employer" : "IBM",
     "posTitle" : "Software Engineering Intern",
-    "description" : "You will be tasked with assisting leading IBM developers in
-    creating and pushing projects.",
+    "description" : "You will be tasked with assisting leading IBM developers in creating and pushing projects.",
     "location" : "Washington, DC",
     "skillReq" : [
       {"Skill" : "C++"},
       {"Skill" : "Java"},
       {"Skill" : "Python"}
     ],
-    “startDate” : “June 2021”,
-    “endDate” : “August 2021”,
-    “isRemote” : true,
-    “isOpen” : true,
-    “lowPay” : 1500,
-    “highPay” : 2000,
-    “applicants” : [
-      {“id” : 0, “username” : “adamsanfacon”}
-      {“id” : 1, “username” : “vahneugenio”}
+    "startDate" : "June 2021",
+    "endDate" : "August 2021",
+    "isRemote" : true,
+    "isOpen" : true,
+    "lowPay" : 1500,
+    "highPay" : 2000,
+    "applicants" : [
+      {"id" : 0, "username" : "adamsanfacon"}
+      {"id" : 1, "username" : "vahneugenio"}
     ]
   },
   {
-    “id” : 7,
-    “employer” : “Google”,
-    “posTitle” : “Web Development Intern”,
-    “description” : “You will be tasked with assisting in the design and UI of
-    on the front end of projects.”,
-    “location” : “Mountain View, CA”,
-    “skillReq” : [
-      {“Skill” : “HTML”}
-      {“Skill” : “CSS”}
+    "id" : 1,
+    "employer" : "Google",
+    "posTitle" : "Web Development Intern",
+    "description" : "You will be tasked with assisting in the design and UI of on the front end of projects.",
+    "location" : "Mountain View, CA",
+    "skillReq" : [
+      {"Skill" : "HTML"}
+      {"Skill" : "CSS"}
     ],
-    “startDate” : “June 2021”,
-    “endDate” : “August 2021”,
-    “isRemote” : true,
-    “isOpen” : true,
-    “lowPay” : 2500,
-    “highPay” : 2750,
-    “applicants” : [
-      {“id” : 0, “username” : “adamsteger”}
-      {“id” : 1, “username” : “anaboccanfuso”}
+    "startDate" : "June 2021",
+    "endDate" : "August 2021",
+    "isRemote" : true,
+    "isOpen" : true,
+    "lowPay" : 2500,
+    "highPay" : 2750,
+    "applicants" : [
+      {"id" : 0, "username" : "adamsteger"}
+      {"id" : 1, "username" : "anaboccanfuso"}
     ]
   }
 ]
