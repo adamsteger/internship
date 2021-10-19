@@ -17,7 +17,7 @@
     "lowPay" : 1500,
     "highPay" : 2000,
     "applicants" : [
-      {"id" : 0, "username" : "adamsanfacon"}
+      {"id" : 0, "username" : "adamsanfacon"},
       {"id" : 1, "username" : "vahneugenio"}
     ]
   },
@@ -28,7 +28,7 @@
     "description" : "You will be tasked with assisting in the design and UI of on the front end of projects.",
     "location" : "Mountain View, CA",
     "skillReq" : [
-      {"Skill" : "HTML"}
+      {"Skill" : "HTML"},
       {"Skill" : "CSS"}
     ],
     "startDate" : "June 2021",
@@ -38,7 +38,7 @@
     "lowPay" : 2500,
     "highPay" : 2750,
     "applicants" : [
-      {"id" : 0, "username" : "adamsteger"}
+      {"id" : 0, "username" : "adamsteger"},
       {"id" : 1, "username" : "anaboccanfuso"}
     ]
   }

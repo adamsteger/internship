@@ -13,8 +13,9 @@
     "mission" : "THINK",
     "logo" : "",
     "posts" : [
-      {"id" : 0, posTitle: "Software Engineer"},
-      {"id" : 1, posTitle: "Cyber Security Analyst"}
+      {"id" : 0, "posTitle" : "Software Engineer"},
+      {"id" : 1, "posTitle" : "Cyber Security Analyst"}
+    ]
   },
   {
     "id" : 1,
@@ -32,5 +33,6 @@
     "posts" : [
       {"id" : 0, "posTitle" : "Software Engineer"},
       {"id" : 1, "posTitle" : "Web Developer"}
+    ]
   }
 ]
