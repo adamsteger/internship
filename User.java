@@ -6,7 +6,7 @@ public abstract class User {
     private String password;
     private UUID id;
 
-    public User(String username, String password) {
+    public User(String username, String password, UUID id) {
 
     }
 
