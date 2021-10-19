@@ -24,7 +24,7 @@ public class Student extends User {
     private UUID id;
 
     public Student(String username, String password) {
-        super(username, password, id);
+        super(username, password);
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
