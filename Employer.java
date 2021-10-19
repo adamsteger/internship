@@ -15,14 +15,15 @@ public class Employer extends User {
     }
 
     public void addPost(InternshipPost post) {
-
+        posts.add(post);
     }
 
     public void deletePost(InternshipPost post) {
-
+        posts.remove(post);
     }
 
-    public void addStudentReview(Student student, int rating, String comment) {
-
+    public void addStudentReview(User student, int rating, String comment) {
+        Review studentReview = new Review(student, rating, comment);
+        reviews.add(studentReview);
     }
 }
