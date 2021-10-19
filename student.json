@@ -1,0 +1,46 @@
+[{
+    "id" : 1,
+    "firstName" : "Joe",
+    "lastName" : "Mama",
+    "gradYear" : 2022,
+    "username" : "mamajoe123",
+    "password" : "12345678",
+    "email" : "joejoe123@gmail.com",
+    "phone" : 9876543210,
+    "address" : "123 Cherry Lane Columbia, SC 29201",
+    "gpa" : 4.0,
+    "showGPA" : true,
+    "rating" : 3.0,
+    "resumeid" : 1,
+    "reviews" : [
+        {"writer" : "Amazon", "rating" : 4, "comment" : "Very Solid Intern!"},
+        {"writer" : "Google", "rating" : 2, "comment" : "Could be better."}
+    ],
+    "favoritePosts" : [
+        {"id" : 1, "posTitle" : "Software Engineer", "employer" : "Amazon"},
+        {"id" : 2, "posTitle" : "Cyber Security Analyst", "employer" : "CIA"}
+    ]
+},
+{
+    "id" : 2,
+    "firstName" : "Chris",
+    "lastName" : "Bacon",
+    "gradYear" : 2021,
+    "username" : "chrispbacon",
+    "password" : "87654321",
+    "email" : "imchrispbacon@gmail.com",
+    "phone" : "0123456789",
+    "address" : "123 BLT Lane Columbia, SC 29201",
+    "gpa" : 3.5,
+    "showGPA" : false,
+    "rating" : 4.0,
+    "resumeid" : 2,
+    "reviews" : [
+        {"writer" : "Apple", "rating" : 5, "comment" : "Great Work Ethic"},
+        {"writer" : "Dominion", "rating" : 3, "comment" : "Very Smart"}
+    ],
+    "favoritePosts" : [
+        {"id" : 3, "posTitle" : "Software Engineer Intern", "employer" : "Google"},
+        {"id" : 4, "posTitle" : "Computer Programmer", "employer" : "Samsung"}
+    ]
+}]
