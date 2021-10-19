@@ -1,12 +1,12 @@
 [{
-    "id" : 1,
+    "id" : "73422490-1eb2-4aba-b7a0-e501364c19fe",
     "firstName" : "Joe",
     "lastName" : "Mama",
     "gradYear" : 2022,
     "username" : "mamajoe123",
     "password" : "12345678",
     "email" : "joejoe123@gmail.com",
-    "phone" : 9876543210,
+    "phone" : "9876543210",
     "address" : "123 Cherry Lane Columbia, SC 29201",
     "gpa" : 4.0,
     "showGPA" : true,
@@ -22,7 +22,7 @@
     ]
 },
 {
-    "id" : 2,
+    "id" : "ac29913b-2ef5-4ae9-bde7-10b47f139c5e",
     "firstName" : "Chris",
     "lastName" : "Bacon",
     "gradYear" : 2021,
