@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.UUID;
 
 public class Student extends User {
 
@@ -20,9 +21,10 @@ public class Student extends User {
     private ArrayList<Review> reviews;
     private ArrayList<InternshipPost> favoritePosts;
     private Resume resume;
+    private UUID id;
 
     public Student(String username, String password) {
-        super(username, password);
+        super(username, password, id);
     }
 
     public void addEducation(Education edu) {

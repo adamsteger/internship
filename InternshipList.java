@@ -1,19 +1,21 @@
 import java.util.ArrayList;
 
 public class InternshipList {
-    private InternshipList internshipList;
+    private static InternshipList internshipList;
     private ArrayList<InternshipPost> internships;
 
     private InternshipList() {
-
+        this.internships = DataLoader.getInternships();
     }
 
-    public InternshipList getInstance() {
-        return new InternshipList();
+    public static InternshipList getInstance() {
+        if(internshipList == null)
+            internshipList = new InternshipList();
+        return internshipList;
     }
 
     public ArrayList<InternshipPost> getInternships() {
-        return new ArrayList<InternshipPost>();
+        return internships;
     }
 
     public void save() {
