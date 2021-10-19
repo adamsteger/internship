@@ -51,4 +51,8 @@ public class DataLoader extends DataConstants {
 			System.out.println(student);
 		}
 	}
+
+	public static ArrayList<InternshipPost> getInternships() {
+		return null;
+	}
 }

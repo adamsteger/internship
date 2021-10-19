@@ -10,7 +10,10 @@ public abstract class User {
         this.username = "";
         this.password = "";
     }
+    public User(String username, String password, UUID id) {
 
+    }
+    
     public User(String username, String password) {
         this.username = username;
         this.password = password;

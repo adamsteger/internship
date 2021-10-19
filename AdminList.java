@@ -1,19 +1,21 @@
 import java.util.ArrayList;
 
 public class AdminList {
-    private AdminList adminList;
+    private static AdminList adminList;
     private ArrayList<Admin> admins;
     
     private AdminList() {
-
+        this.admins = admins;
     }
 
-    public AdminList getInstance() {
-        return new AdminList();
+    public static AdminList getInstance() {
+        if(adminList == null) 
+            adminList = new AdminList();
+        return adminList;
     }
 
     public ArrayList<Admin> getAdmins() {
-        return new ArrayList<Admin>();
+        return admins;
     }
 
     public void save() {

@@ -1,19 +1,21 @@
 import java.util.ArrayList;
 
 public class StudentList {
-    private StudentList studentList;
+    private static StudentList studentList;
     private ArrayList<Student> students;
     
     private StudentList() {
-
+        this.students = students;
     }
 
-    public StudentList getInstance() {
-        return new StudentList();
+    public static StudentList getInstance() {
+        if(studentList == null)
+            studentList = new StudentList();
+        return studentList;
     }
 
     public ArrayList<Student> getStudents() {
-        return new ArrayList<Student>();
+        return students;
     }
 
     public void save() {

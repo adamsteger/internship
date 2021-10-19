@@ -21,9 +21,10 @@ public class Student extends User {
     private ArrayList<Review> reviews;
     private ArrayList<InternshipPost> favoritePosts;
     private Resume resume;
+    private UUID id;
 
     public Student(String username, String password) {
-        super(username, password);
+        super(username, password, id);
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
