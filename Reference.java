@@ -6,6 +6,8 @@ public class Reference {
     private boolean resume;
 
     public String toString() {
+        if(resume)
+            return "Name: " + name + "\n" + "Relationship: " + relationship + "\n" + "Email: " + email + "\n" + "Phone: " + phone + "\n";
         return "";
     }
 }
