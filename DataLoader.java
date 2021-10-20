@@ -8,8 +8,8 @@ import org.json.simple.parser.JSONParser;
 
 
 public class DataLoader extends DataConstants {
-    public static ArrayList<User> getUsers() {
-        ArrayList<User> users = new ArrayList<User>();
+    public static ArrayList<Student> getStudents() {
+        ArrayList<Student> students = new ArrayList<Student>();
 
         try {
 			FileReader reader = new FileReader(USER_FILE_NAME);
@@ -20,15 +20,22 @@ public class DataLoader extends DataConstants {
 				JSONObject personJSON = (JSONObject)peopleJSON.get(i);
 				UUID id = UUID.fromString((String)personJSON.get(USER_ID));
 				String userName = (String)personJSON.get(USER_USER_NAME);
-                String password = (String)personJSON.get(USER_PASSWORD);
-				//String firstName = (String)personJSON.get(USER_FIRST_NAME);
-				//String lastName = (String)personJSON.get(USER_LAST_NAME);
-				//String phoneNumber = (String)personJSON.get(USER_PHONE_NUMBER);
+				String password = (String)personJSON.get(USER_PASSWORD);
+				String firstName = (String)personJSON.get(STUDENT_FIRST_NAME);
+				String lastName = (String)personJSON.get(STUDENT_LAST_NAME);
+				int gradYear = ((Long)personJSON.get(STUDENT_GRAD_YEAR)).intValue();
+				String email = (String)personJSON.get(USER_EMAIL);
+				String address = (String)personJSON.get(STUDENT_ADDRESS);
+				String phone = (String)personJSON.get(STUDENT_PHONE_NUMBER);
+				double gpa = (double)personJSON.get(STUDENT_GPA);
+				boolean showGPA = (boolean)personJSON.get(STUDENT_SHOW_GPA);
+				double rating = (double)personJSON.get(USER_RATING);
+
 				
-				users.add(new User(userName, password, id));
+				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating));
 			}
 			
-			return users;
+			return students;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,10 +45,10 @@ public class DataLoader extends DataConstants {
     }
 
 	public static void main(String[] args){
-		ArrayList<User> users = DataLoader.getUsers();
+		ArrayList<Student> students = DataLoader.getStudents();
 
-		for(User user : users){
-			System.out.println(user);
+		for(Student student : students){
+			System.out.println(student);
 		}
 	}
 

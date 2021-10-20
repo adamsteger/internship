@@ -2,12 +2,21 @@ import java.util.UUID;
 import java.util.ArrayList;
 
 public abstract class User {
-    private String username;
-    private String password;
+    protected String username;
+    protected String password;
     private UUID id;
 
+    public User() {
+        this.username = "";
+        this.password = "";
+    }
     public User(String username, String password, UUID id) {
 
+    }
+    
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     private boolean checkUsername(String username) {
@@ -30,7 +39,7 @@ public abstract class User {
         return new ArrayList<Employer>();
     }
 
-    private ArrayList<InternshipPost> filterByPay(int lowPay, int highPay, ArrayList<InternshipPost>) {
+    private ArrayList<InternshipPost> filterByPay(int lowPay, int highPay, ArrayList<InternshipPost> posts) {
         return new ArrayList<InternshipPost>();
     }
 
