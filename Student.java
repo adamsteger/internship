@@ -10,7 +10,7 @@ public class Student extends User {
     private String phone;
     private String address;
     private int gradYear;
-    private float gpa;
+    private double gpa;
     private boolean showGPA;
     private double rating;
     private ArrayList<Review> reviews;
