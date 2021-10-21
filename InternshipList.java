@@ -31,4 +31,8 @@ public class InternshipList {
     public void save() {
         
     }
+
+    public void remove(InternshipPost post) {
+
+    }
 }

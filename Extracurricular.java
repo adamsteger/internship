@@ -11,6 +11,27 @@ public class Extracurricular {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getPosition() {
+        return this.position;
+    }
+
+    public String getStartDate() {
+        return this.startDate;
+    }
+
+    public String endDate() {
+        return this.endDate;
+    }
+
+    public boolean getResume() {
+        return this.resume;
+    }
+    
     public String toString() {
         if(resume)
             return title + "\n" + startDate + "-" + endDate + "\n" + position + "\n"; 
