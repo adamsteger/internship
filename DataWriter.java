@@ -7,8 +7,16 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
 	
 	
-	public static void saveUsers() {
-	
+	public static void saveStudents() {
+		
+	}
+
+	public static void saveEmployers() {
+
+	}
+
+	public static void saveAdmins() {
+		
 	}
 	
 	public static JSONObject getUserJSON(User user) {

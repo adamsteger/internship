@@ -5,7 +5,7 @@ public class AdminList {
     private ArrayList<Admin> admins;
     
     private AdminList() {
-        this.admins = admins;
+        this.admins = DataLoader.getAdmins();
     }
 
     public static AdminList getInstance() {
@@ -17,7 +17,14 @@ public class AdminList {
     public ArrayList<Admin> getAdmins() {
         return admins;
     }
-
+    public ArrayList<Admin> addAdmin(Admin admin){
+        admins.add(admin);
+        return admins;
+    }
+    public ArrayList<Admin> removeAdmin(Admin admin){
+        admins.remove(admin);
+        return admins;
+    }
     public void save() {
         
     }

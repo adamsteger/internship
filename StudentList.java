@@ -5,7 +5,7 @@ public class StudentList {
     private ArrayList<Student> students;
     
     private StudentList() {
-        this.students = students;
+        this.students = DataLoader.getStudents();
     }
 
     public static StudentList getInstance() {
@@ -15,6 +15,15 @@ public class StudentList {
     }
 
     public ArrayList<Student> getStudents() {
+        return students;
+    }
+    public ArrayList<Student> addStudent(Student student) { 
+        students.add(student);
+        return students;
+    }
+
+    public ArrayList<Student> removeStuent(Student student) {
+        students.remove(student);
         return students;
     }
 

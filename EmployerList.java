@@ -28,6 +28,10 @@ public class EmployerList {
         }
         return ret;
     }
+    public ArrayList<Employer> removeEmployer(Employer employer){
+        employers.remove(employer);
+        return employers;
+    }
 
     public void save() {
         
