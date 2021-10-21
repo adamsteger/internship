@@ -18,6 +18,16 @@ public class InternshipList {
         return internships;
     }
 
+    public ArrayList<InternshipPost> addInternship(InternshipPost internship) {
+        internships.add(internship);
+        return internships;
+    }
+
+    public ArrayList<InternshipPost> removeInternship(InternshipPost internship) {
+        internships.remove(internship);
+        return internships;
+    }
+
     public void save() {
         
     }

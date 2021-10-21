@@ -17,6 +17,15 @@ public class StudentList {
     public ArrayList<Student> getStudents() {
         return students;
     }
+    public ArrayList<Student> addStudent(Student student) { 
+        students.add(student);
+        return students;
+    }
+
+    public ArrayList<Student> removeStuent(Student student) {
+        students.remove(student);
+        return students;
+    }
 
     public void save() {
         

@@ -22,6 +22,14 @@ public class AdminList {
         return adminList;
     }
 
+    public ArrayList<Admin> addAdmin(Admin admin){
+        admins.add(admin);
+        return admins;
+    }
+    public ArrayList<Admin> removeAdmin(Admin admin){
+        admins.remove(admin);
+        return admins;
+    }
     public void save() {
         
     }

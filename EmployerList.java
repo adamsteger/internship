@@ -20,12 +20,17 @@ public class EmployerList {
     }
 
     public Employer getEmployerByID(UUID id) {
+        Employer ret = new Employer();
         for (Employer employer : employers) {
-            if (employer.getID() == id) {
-                return employer;
+            if (employer.getUUID().equals(id)) {
+                ret = employer;
             }
         }
-        return null;
+        return ret;
+    }
+    public ArrayList<Employer> removeEmployer(Employer employer){
+        employers.remove(employer);
+        return employers;
     }
 
     public void save() {
