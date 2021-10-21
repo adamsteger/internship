@@ -6,7 +6,11 @@ public class EmployerList {
     private ArrayList<Employer> employers;
     
     private EmployerList() {
-        employers = DataLoader.getEmployers();
+        this.employers = DataLoader.getEmployers();
+    }
+
+    public ArrayList<Employer> getEmployers() {
+        return this.employers;
     }
 
     public static EmployerList getInstance() {
@@ -15,13 +19,9 @@ public class EmployerList {
         return employerList;
     }
 
-    public ArrayList<Employer> getEmployers() {
-        return employers;
-    }
-
     public Employer getEmployerByID(UUID id) {
         for (Employer employer : employers) {
-            if (employer.getUUID() == id) {
+            if (employer.getID() == id) {
                 return employer;
             }
         }
@@ -30,5 +30,9 @@ public class EmployerList {
 
     public void save() {
         
+    }
+
+    public void remove() {
+
     }
 }

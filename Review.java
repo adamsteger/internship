@@ -13,13 +13,13 @@ public class Review {
     }
 
     public Review(UUID writerID, int rating, String comment) {
-        employerList = employerList.getInstance();
+        employerList = EmployerList.getInstance();
         Employer writer = employerList.getEmployerByID(writerID);
         this.writer = writer;
         this.rating = rating;
         this.comment = comment;
     }
-
+    
     public String toString() {
         return "\nWriter: " + writer + "\nReview Rating: " + rating + "\nComment: " + comment;
     }

@@ -9,7 +9,6 @@ public class Employer extends User {
     private ArrayList<Review> reviews;
     private String location;
     private String mission;
-    private ImageIcon logo;
     private ArrayList<InternshipPost> posts;
     private static UUID id;
 
@@ -25,6 +24,34 @@ public class Employer extends User {
         this.rating = rating;
         this.location = location;
         this.mission = mission;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public double getRating() {
+        return this.rating;
+    }
+
+    public ArrayList<Review> getReviews() {
+        return this.reviews;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public String getMission() {
+        return this.mission;
+    }
+
+    public ArrayList<InternshipPost> getPosts() {
+        return this.posts;
+    }
+
+    public UUID getID() {
+        return this.id;
     }
 
     public String toString() {
