@@ -36,6 +36,12 @@ public class InternshipPost {
         return new ArrayList<Student>();
     }
 
+    public boolean contains(String keyword){
+
+    }
+    public UUID getID(){
+        return this.id;
+    }
     public String toString() {
         return "";
     }
