@@ -13,7 +13,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_GPA = "gpa";
     protected static final String STUDENT_SHOW_GPA = "showGPA";
     protected static final String STUDENT_REVIEWS = "reviews";
-    protected static final String REVIEW_WRITER = "writer";
+    protected static final String REVIEW_WRITER_ID = "writerID";
     protected static final String REVIEW_RATING = "rating";
     protected static final String REVIEW_COMMENT = "comment";
     protected static final String EMPLOYER_FILE_NAME = "employers.json";
