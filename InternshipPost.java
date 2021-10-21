@@ -51,6 +51,12 @@ public class InternshipPost {
         return new ArrayList<Student>();
     }
 
+    public boolean contains(String keyword){
+
+    }
+    public UUID getUUID(){
+        return this.id;
+    }
     public String toString() {
         String ret = "\nEmployer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
                         "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 

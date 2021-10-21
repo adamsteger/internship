@@ -16,12 +16,37 @@ public class Resume {
         this.work = work;
         this.extracurriculars = extracurriculars;
     }
-    public void addEducation(Education edu) {
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public Hashtable<Education, Boolean> getEducations() {
+        return this.educations;
+    }
+
+    public Hashtable<Skill, Boolean> getSkills() {
+        return this.skills;
+    }
+
+    public Hashtable<String, Boolean> getCourses() {
+        return this.courses;
+    }
+
+    public Hashtable<WorkExperience, Boolean> getWork() {
+        return this.work;
+    }
+
+    public Hashtable<Extracurricular, Boolean> getExtracurriculars() {
+        return this.extracurriculars;
+    }
+
+    public void addEducation(Education edu) {
+    
     }
 
     public void removeEducation(Education edu) {
-
+        
     }
 
     public void addSkill(Skill skill) {

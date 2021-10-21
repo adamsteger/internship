@@ -12,6 +12,26 @@ public class Honor {
         this.date = date;
     }
 
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getOrganization() {
+        return this.organization;
+    }
+
+    public String getdescription() {
+        return this.description;
+    }
+
+    public String getDate() {
+        return this.date;
+    }
+
+    public Boolean getResume() {
+        return this.resume;
+    }
+    
     public String toString() {
         if(resume) 
             return this.title + "\n" + this.date + "\n" + this.organization + "\n" + this.description + "\n";
