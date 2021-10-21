@@ -13,6 +13,6 @@ public class StudentReview {
     }
 
     public String toString() {
-        return "\nWriter: " + writer.getTitle() + "\nReview Rating: " + rating + "\nComment: " + comment;
+        return "\n\tWriter: " + writer.getTitle() + "\n\tReview Rating: " + rating + "\n\tComment: " + comment;
     }
 }
