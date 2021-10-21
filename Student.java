@@ -22,4 +22,25 @@ public class Student extends User {
         
     }
 
+    public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
+                    String email, String address, String phone, double gpa, boolean showGPA, double rating) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.gradYear = gradYear;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.gpa = gpa;
+        this.showGPA = showGPA;
+        this.rating = rating;
+    }
+    public String toString() {
+        return "Name: " + firstName + " " + lastName + "\nUsername: " + username + "\nPassword: " 
+                    + password + "\nGrad Year: " + gradYear + "\nEmail: " + email + "\nPhone: "
+                    + phone + "\nGPA: " + gpa + "\nRating: " + rating;
+    }
+
 }
