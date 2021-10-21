@@ -4,21 +4,33 @@ import java.util.UUID;
 import javax.swing.ImageIcon;
 
 public class Employer extends User {
+    private String title;
     private String email;
     private double rating;
-    private ArrayList<Review> reviews;
+    private ArrayList<StudentReview> reviews;
     private String location;
     private String mission;
     private ImageIcon logo;
     private ArrayList<InternshipPost> posts;
     private static UUID id;
 
+    public Employer() {
+        title = "";
+        email = "";
+        rating = 0.0;
+        location = "";
+        reviews = new ArrayList<StudentReview>();
+        mission = "";
+        posts = new ArrayList<InternshipPost>();
+    }
+
     public Employer(String username, String password) {
         super(username, password, id);
     }
 
-    public Employer(UUID id, String username, String password, String email, double rating, String location, String mission) {
+    public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission) {
         this.id = id;
+        this.title = title;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -28,7 +40,7 @@ public class Employer extends User {
     }
 
     public String toString() {
-        String ret = "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
+        String ret = "\nTitle: " + title + "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
                         rating + "\nLocation: " + location + "\nMission: " + mission;
 
         return ret;
@@ -42,12 +54,16 @@ public class Employer extends User {
         posts.remove(post);
     }
 
-    public void addStudentReview(User student, int rating, String comment) {
-        Review studentReview = new Review(student, rating, comment);
-        reviews.add(studentReview);
-    }
+    // public void addStudentReview(Student student, int rating, String comment) {
+    //     StudentReview studentReview = new StudentReview(student, rating, comment);
+    //     reviews.add(studentReview);
+    // }
 
     public UUID getUUID() {
         return id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

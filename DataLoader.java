@@ -31,16 +31,17 @@ public class DataLoader extends DataConstants {
 				double gpa = (double)personJSON.get(STUDENT_GPA);
 				boolean showGPA = (boolean)personJSON.get(STUDENT_SHOW_GPA);
 				double rating = (double)personJSON.get(USER_RATING);
-				
+
 				JSONArray reviewsJSON = (JSONArray)personJSON.get(STUDENT_REVIEWS);
-				ArrayList<Review> reviews = new ArrayList<Review>();
+				ArrayList<StudentReview> reviews = new ArrayList<StudentReview>();
 				for (int j = 0; j < reviewsJSON.size(); j++) {
 					JSONObject reviewJSON = (JSONObject)reviewsJSON.get(j);
 					UUID writerID = UUID.fromString((String)reviewJSON.get(REVIEW_WRITER_ID));
+					Employer employer = EmployerList.getInstance().getEmployerByID(writerID);
 					int reviewRating = ((Long)reviewJSON.get(REVIEW_RATING)).intValue();
 					String comment = (String)reviewJSON.get(REVIEW_COMMENT);
 
-					reviews.add(new Review(writerID, reviewRating, comment));
+					reviews.add(new StudentReview(employer, reviewRating, comment));
 				}
 
 				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating, reviews));
@@ -63,9 +64,10 @@ public class DataLoader extends DataConstants {
 			JSONParser parser = new JSONParser();	
 			JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
 			
-			for(int i=0; i < peopleJSON.size(); i++) {
+			for(int i = 0; i < peopleJSON.size(); i++) {
 				JSONObject personJSON = (JSONObject)peopleJSON.get(i);
 				UUID id = UUID.fromString((String)personJSON.get(USER_ID));
+				String title = (String)personJSON.get(EMPLOYER_TITLE);
 				String userName = (String)personJSON.get(USER_USER_NAME);
 				String password = (String)personJSON.get(USER_PASSWORD);
 				String email = (String)personJSON.get(USER_EMAIL);
@@ -74,7 +76,7 @@ public class DataLoader extends DataConstants {
 				String mission = (String)personJSON.get(EMPLOYER_MISSION);
 
 				
-				employers.add(new Employer(id, userName, password, email, rating, location, mission));
+				employers.add(new Employer(id, title, userName, password, email, rating, location, mission));
 			}
 			
 			return employers;
@@ -87,13 +89,14 @@ public class DataLoader extends DataConstants {
     }
 
 	public static void main(String[] args){
+		ArrayList<Employer> employers = DataLoader.getEmployers();
 		ArrayList<Student> students = DataLoader.getStudents();
 
 		for(Student student : students) {
 			System.out.println(student);
 		}
 		
-		// ArrayList<Employer> employers = DataLoader.getEmployers();
+		
 
 		// for(Employer employer : employers){
 		// 	System.out.println(employer);

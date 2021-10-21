@@ -13,7 +13,7 @@ public class Student extends User {
     private double gpa;
     private boolean showGPA;
     private double rating;
-    private ArrayList<Review> reviews;
+    private ArrayList<StudentReview> reviews;
     private ArrayList<InternshipPost> favoritePosts;
     private static UUID id;
     private EmployerList employerList;
@@ -24,7 +24,7 @@ public class Student extends User {
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
-                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<Review> reviews) {
+                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<StudentReview> reviews) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,7 +45,7 @@ public class Student extends User {
         String ret = "\nName: " + firstName + " " + lastName + "\nUsername: " + username + "\nPassword: " 
                     + password + "\nGrad Year: " + gradYear + "\nEmail: " + email + "\nPhone: "
                     + phone + "\nGPA: " + gpa + "\nRating: " + rating + "\nReviews: ";
-        for (Review review : reviews) {
+        for (StudentReview review : reviews) {
             ret += review + "\n";
         }
         return ret;
@@ -53,8 +53,12 @@ public class Student extends User {
 
     public void addReview(UUID writerID, int rating, String comment) {
         Employer writer = employerList.getEmployerByID(writerID);
-        Review review = new Review(writer, rating, comment);
+        StudentReview review = new StudentReview(writer, rating, comment);
         reviews.add(review);
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
 }
