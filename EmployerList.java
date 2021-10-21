@@ -27,6 +27,10 @@ public class EmployerList {
         }
         return null;
     }
+    public ArrayList<Employer> removeEmployer(Employer employer){
+        employers.remove(employer);
+        return employers;
+    }
 
     public void save() {
         
