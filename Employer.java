@@ -18,7 +18,20 @@ public class Employer extends User {
     }
 
     public Employer(UUID id, String username, String password, String email, double rating, String location, String mission) {
-        
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.rating = rating;
+        this.location = location;
+        this.mission = mission;
+    }
+
+    public String toString() {
+        String ret = "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
+                        rating + "\nLocation: " + location + "\nMission: " + mission;
+
+        return ret;
     }
 
     public void addPost(InternshipPost post) {
@@ -32,5 +45,9 @@ public class Employer extends User {
     public void addStudentReview(User student, int rating, String comment) {
         Review studentReview = new Review(student, rating, comment);
         reviews.add(studentReview);
+    }
+
+    public UUID getUUID() {
+        return id;
     }
 }
