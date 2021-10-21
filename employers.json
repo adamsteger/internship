@@ -1,7 +1,8 @@
 [
   {
     "id" : "d850d67d-1952-45df-a85b-52c50af0c22d",
-    "username" : "IBM",
+    "title" : "IBM",
+    "username" : "ImIBM",
     "password" : "3sdaf$sd7$%df",
     "email" : "IBM@IBM.com",
     "rating" : 4.7,
@@ -18,7 +19,8 @@
   },
   {
     "id" : "73c8f955-e5e0-4bec-9ff2-ff7107a5549d",
-    "username" : "Google",
+    "title" : "Google",
+    "username" : "GoogleyGoog",
     "password" : "37ddgf$2rh7!#",
     "email" : "google@gmail.com,",
     "rating" : 4.5,

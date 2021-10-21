@@ -17,6 +17,7 @@ public abstract class DataConstants {
     protected static final String REVIEW_RATING = "rating";
     protected static final String REVIEW_COMMENT = "comment";
     protected static final String EMPLOYER_FILE_NAME = "employers.json";
+    protected static final String EMPLOYER_TITLE = "title";
     protected static final String EMPLOYER_LOCATION = "location";
     protected static final String EMPLOYER_MISSION = "mission";
 }
