@@ -17,6 +17,10 @@ public class Employer extends User {
         super(username, password, id);
     }
 
+    public Employer(UUID id, String username, String password, String email, double rating, String location, String mission) {
+        
+    }
+
     public void addPost(InternshipPost post) {
         posts.add(post);
     }
