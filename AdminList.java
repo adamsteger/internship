@@ -5,7 +5,7 @@ public class AdminList {
     private ArrayList<Admin> admins;
     
     private AdminList() {
-        this.admins = admins;
+        this.admins = DataLoader.getAdmins();
     }
 
     public static AdminList getInstance() {

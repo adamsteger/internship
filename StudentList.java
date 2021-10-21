@@ -5,7 +5,7 @@ public class StudentList {
     private ArrayList<Student> students;
     
     private StudentList() {
-        this.students = students;
+        this.students = DataLoader.getStudents();
     }
 
     public static StudentList getInstance() {
