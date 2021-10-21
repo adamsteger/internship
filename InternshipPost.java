@@ -39,7 +39,7 @@ public class InternshipPost {
     public boolean contains(String keyword){
 
     }
-    public UUID getID(){
+    public UUID getUUID(){
         return this.id;
     }
     public String toString() {
