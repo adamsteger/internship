@@ -12,6 +12,26 @@ public class Education {
         this.gradYear = gradYear;
     }
 
+    public String getSchoolTitle() {
+        return this.schoolTitle;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public String getMajor() {
+        return this.major;
+    }
+
+    public int getGradYear() {
+        return this.gradYear;
+    }
+
+    public Boolean getResume() {
+        return this.resume;
+    }
+
     public String toString() {
         if(resume)
             return this.schoolTitle + "\n" + this.location + "\n" + this.major + "\n" + this.gradYear + "\n";

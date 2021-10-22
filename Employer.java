@@ -46,7 +46,7 @@ public class Employer extends User {
         return this.rating;
     }
 
-    public ArrayList<Review> getReviews() {
+    public ArrayList<StudentReview> getReviews() {
         return this.reviews;
     }
 

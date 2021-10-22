@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class InternshipPost {
-    private Employer employer;
+    private String employerTitle;
     private String posTitle;
     private String description;
     private String location;
@@ -16,8 +16,60 @@ public class InternshipPost {
     private ArrayList<Student> applicants;
     private UUID id;
 
-    public InternshipPost(String compName, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay) {
+    public InternshipPost(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay) {
+        this.posTitle = posTitle;
+    }
 
+    public String getEmployerTitle() {
+        return employerTitle;
+    }
+
+    public String getPosTitle() {
+        return posTitle;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public ArrayList<Skill> getSkillReq() {
+        return skillReq;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public boolean getRemote() {
+        return isRemote;
+    }
+
+    public boolean getOpen() {
+        return isOpen;
+    }
+
+    public int getLowPay() {
+        return lowPay;
+    }
+
+    public int getHighPay() {
+        return highPay;
+    }
+
+    public ArrayList<Student> getApplicants() {
+        return applicants;
+    }
+
+    public UUID getUUID() {
+        return id;
     }
 
     public ArrayList<Student> filterBySkill(Skill skill) {
