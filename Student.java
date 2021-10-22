@@ -23,7 +23,8 @@ public class Student extends User {
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
-                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<StudentReview> reviews) {
+                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<StudentReview> reviews,
+                    ArrayList<InternshipPost> favPosts) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -111,6 +112,10 @@ public class Student extends User {
                     + phone + "\nGPA: " + gpa + "\nRating: " + rating + "\nReviews: ";
         for (StudentReview review : reviews) {
             ret += review + "\n";
+        }
+        ret += "Favorite Posts: ";
+        for (InternshipPost post : favoritePosts) {
+            ret += "\n\tEmployer: " + post.getEmployerTitle() + "\n\tPosition Title: " + post.getPositionTitle();
         }
         return ret;
     }

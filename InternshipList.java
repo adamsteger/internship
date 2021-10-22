@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class InternshipList {
     private static InternshipList internshipList;
     private ArrayList<InternshipPost> internships;
 
     private InternshipList() {
-        this.internships = DataLoader.getInternships();
+        internships = DataLoader.getInternshipPosts();
     }
 
     public static InternshipList getInstance() {
@@ -21,6 +22,16 @@ public class InternshipList {
     public ArrayList<InternshipPost> addInternship(InternshipPost internship) {
         internships.add(internship);
         return internships;
+    }
+
+    public InternshipPost getPostByID(UUID id) {
+        InternshipPost ret = new InternshipPost();
+        for (InternshipPost post : internships) {
+            if (post.getID().equals(id)) {
+                ret = post;
+            }
+        }
+        return ret;
     }
 
     public ArrayList<InternshipPost> removeInternship(InternshipPost internship) {

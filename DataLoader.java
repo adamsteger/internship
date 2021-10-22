@@ -44,7 +44,17 @@ public class DataLoader extends DataConstants {
 					reviews.add(new StudentReview(employer, reviewRating, comment));
 				}
 
-				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating, reviews));
+				JSONArray favPostsJSON = (JSONArray)personJSON.get(STUDENT_FAV_POSTS);
+				ArrayList<InternshipPost> favPosts = new ArrayList<InternshipPost>();
+				for (int j = 0; j < favPostsJSON.size(); j++) {
+					JSONObject favPostJSON = (JSONObject)favPostsJSON.get(j);
+					UUID postID = UUID.fromString((String)favPostJSON.get(INTERNSHIP_ID));
+					InternshipPost post = InternshipList.getInstance().getPostByID(postID);
+
+					favPosts.add(post);
+				}
+
+				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating, reviews, favPosts));
 			}
 			
 			return students;
@@ -88,22 +98,56 @@ public class DataLoader extends DataConstants {
 		return null;
     }
 
+	public static ArrayList<InternshipPost> getInternshipPosts() {
+		ArrayList<InternshipPost> posts = new ArrayList<InternshipPost>();
+
+        try {
+			FileReader reader = new FileReader(INTERNSHIP_FILE_NAME);
+			JSONParser parser = new JSONParser();	
+			JSONArray postsJSON = (JSONArray)new JSONParser().parse(reader);
+			
+			for(int i = 0; i < postsJSON.size(); i++) {
+				JSONObject postJSON = (JSONObject)postsJSON.get(i);
+				UUID postID = UUID.fromString((String)postJSON.get(INTERNSHIP_ID));
+				String employerTitle = (String)postJSON.get(INTERNSHIP_EMPLOYER_TITLE);
+				String posTitle = (String)postJSON.get(INTERNSHIP_POSITION_TITLE);
+				String description = (String)postJSON.get(INTERNSHIP_DESCRIPTION);
+				String location = (String)postJSON.get(INTERNSHIP_LOCATION);
+				String startDate = (String)postJSON.get(INTERNSHIP_START_DATE);
+				String endDate = (String)postJSON.get(INTERNSHIP_END_DATE);
+				boolean isRemote = (boolean)postJSON.get(INTERNSHIP_IS_REMOTE);
+				boolean isOpen = (boolean)postJSON.get(INTERNSHIP_IS_OPEN);
+				int lowPay = ((Long)postJSON.get(INTERNSHIP_LOW_PAY)).intValue();
+				int highPay = ((Long)postJSON.get(INTERNSHIP_HIGH_PAY)).intValue();
+
+				
+				posts.add(new InternshipPost(postID, employerTitle, posTitle, description, location, startDate, endDate, isRemote, isOpen, lowPay, highPay));
+			}
+			
+			return posts;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 	public static void main(String[] args){
 		ArrayList<Employer> employers = DataLoader.getEmployers();
 		ArrayList<Student> students = DataLoader.getStudents();
+		ArrayList<InternshipPost> posts = DataLoader.getInternshipPosts();
 
 		for(Student student : students) {
 			System.out.println(student);
 		}
-		
-		
 
 		// for(Employer employer : employers){
 		// 	System.out.println(employer);
 		// }
-	}
 
-	public static ArrayList<InternshipPost> getInternships() {
-		return null;
+		// for(InternshipPost post : posts) {
+		// 	System.out.println(post);
+		// }
 	}
 }

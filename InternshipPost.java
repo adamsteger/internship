@@ -72,6 +72,25 @@ public class InternshipPost {
         return id;
     }
 
+    public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
+        this.id = id;
+        this.employerTitle = employerTitle;
+        this.posTitle = posTitle;
+        this.description = description;
+        this.location = location;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isRemote = isRemote;
+        this.isOpen = isOpen;
+        this.lowPay = lowPay;
+        this.highPay = highPay;
+    }
+
+    public InternshipPost() {
+        this.employerTitle = "";
+        skillReq = new ArrayList<Skill>();
+    }
+
     public ArrayList<Student> filterBySkill(Skill skill) {
         return new ArrayList<Student>();
     }
@@ -88,7 +107,15 @@ public class InternshipPost {
         return new ArrayList<Student>();
     }
 
-    public String toString() {
-        return "";
+    public boolean contains(String keyword){
+        return false;
     }
+    
+    public String toString() {
+        String ret = "\nEmployer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
+                        "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 
+                        isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay;
+        return ret;
+    }
+
 }

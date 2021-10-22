@@ -13,6 +13,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_GPA = "gpa";
     protected static final String STUDENT_SHOW_GPA = "showGPA";
     protected static final String STUDENT_REVIEWS = "reviews";
+    protected static final String STUDENT_FAV_POSTS = "favoritePosts";
     protected static final String REVIEW_WRITER_ID = "writerID";
     protected static final String REVIEW_RATING = "rating";
     protected static final String REVIEW_COMMENT = "comment";
@@ -20,4 +21,17 @@ public abstract class DataConstants {
     protected static final String EMPLOYER_TITLE = "title";
     protected static final String EMPLOYER_LOCATION = "location";
     protected static final String EMPLOYER_MISSION = "mission";
+    protected static final String INTERNSHIP_FILE_NAME = "internshipposts.json";
+    protected static final String INTERNSHIP_ID = "id";
+    protected static final String INTERNSHIP_EMPLOYER_TITLE = "employerTitle";
+    protected static final String INTERNSHIP_POSITION_TITLE = "posTitle";
+    protected static final String INTERNSHIP_DESCRIPTION = "description";
+    protected static final String INTERNSHIP_LOCATION = "location";
+    protected static final String INTERNSHIP_SKILLS = "skillReq";
+    protected static final String INTERNSHIP_START_DATE = "startDate";
+    protected static final String INTERNSHIP_END_DATE = "endDate";
+    protected static final String INTERNSHIP_IS_REMOTE = "isRemote";
+    protected static final String INTERNSHIP_IS_OPEN = "isOpen";
+    protected static final String INTERNSHIP_LOW_PAY = "lowPay";
+    protected static final String INTERNSHIP_HIGH_PAY = "highPay";
 }
