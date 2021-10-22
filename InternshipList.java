@@ -27,7 +27,7 @@ public class InternshipList {
     public InternshipPost getPostByID(UUID id) {
         InternshipPost ret = new InternshipPost();
         for (InternshipPost post : internships) {
-            if (post.getID().equals(id)) {
+            if (post.getUUID().equals(id)) {
                 ret = post;
             }
         }

@@ -115,7 +115,7 @@ public class Student extends User {
         }
         ret += "Favorite Posts: ";
         for (InternshipPost post : favoritePosts) {
-            ret += "\n\tEmployer: " + post.getEmployerTitle() + "\n\tPosition Title: " + post.getPositionTitle();
+            ret += "\n\tEmployer: " + post.getEmployerTitle() + "\n\tPosition Title: " + post.getPosTitle();
         }
         return ret;
     }
