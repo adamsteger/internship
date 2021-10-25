@@ -42,43 +42,43 @@ public class Resume {
     }
 
     public void addEducation(Education edu) {
-    
+        educations.put(edu, true);
     }
 
     public void removeEducation(Education edu) {
-        
+        educations.remove(edu);
     }
 
     public void addSkill(Skill skill) {
-
+        skills.put(skill, true);
     }
 
     public void removeSkill(Skill skill) {
-
+        skills.remove(skill);
     }
 
     public void addCourse(String course) {
-
+        courses.put(course, true);
     }
 
     public void removeCourse(String course) {
-
+        courses.remove(course);
     }
 
-    public void addWork(WorkExperience work) {
-
+    public void addWork(WorkExperience workExperience) {
+        work.put(workExperience, true);
     }
 
-    public void removeWork(WorkExperience work) {
-
+    public void removeWork(WorkExperience workExperience) {
+        work.remove(workExperience);
     }
 
     public void addExtracurricular(Extracurricular extracurricular) {
-
+        extracurriculars.put(extracurricular, true);
     }
 
     public void removeExtracurricular(Extracurricular extracurricular) {
-
+        extracurriculars.remove(extracurricular);
     }
 
     public void apply(InternshipPost post) {
@@ -90,7 +90,7 @@ public class Resume {
     }
 
     public void sortReverseChronEdu(Hashtable<Education, Boolean> education) {
-
+        
     }
 
     public void sortReverseChronWork(Hashtable<WorkExperience, Boolean> work) {
