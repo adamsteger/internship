@@ -5,11 +5,12 @@ public class Honor {
     private String date;
     private boolean resume;
 
-    public Honor(String title, String organization, String description, String date) {
+    public Honor(String title, String organization, String description, String date, boolean resume) {
         this.title = title;
         this.organization = organization;
         this.description = description;
         this.date = date;
+        this.resume = resume;
     }
 
     public String getTitle() {
@@ -31,9 +32,9 @@ public class Honor {
     public Boolean getResume() {
         return this.resume;
     }
-    
+
     public String toString() {
-        if(resume) 
+        if (resume)
             return this.title + "\n" + this.date + "\n" + this.organization + "\n" + this.description + "\n";
         return "";
     }

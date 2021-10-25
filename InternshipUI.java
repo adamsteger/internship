@@ -367,27 +367,61 @@ public class InternshipUI {
     }
 
     private void addWorkExp(Student student, int num) {
-        String title, position, startDate, endDate;
-        boolean resume;
+        for (int i = 0; i < num; i++) {
+            String title, position, startDate, endDate;
+            boolean resume;
 
-        System.out.println("~~ADD WORK EXPERIENCE~~\n");
+            System.out.println("~~ADD WORK EXPERIENCE~~\n");
 
-        System.out.println("Company Name: ");
-        title = scanner.nextLine();
+            System.out.println("Company Name: ");
+            title = scanner.nextLine();
 
-        System.out.println("Job Title: ");
-        position = scanner.nextLine();
+            System.out.println("Job Title: ");
+            position = scanner.nextLine();
 
-        System.out.println("Start Date(mm/dd/yyyy): ");
-        startDate = scanner.nextLine();
+            System.out.println("Start Date(mm/dd/yyyy): ");
+            startDate = scanner.nextLine();
 
-        System.out.println("End Date(mm/dd/yyyy): ");
-        endDate = scanner.nextLine();
+            System.out.println("End Date(mm/dd/yyyy): ");
+            endDate = scanner.nextLine();
 
-        System.out.print("Add this to Resume?");
-        resume = yesNo();
+            System.out.print("Add this to Resume?");
+            resume = yesNo();
 
-        WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
+            WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
+
+            // TODO add work to passed in student
+        }
+    }
+
+    private void addEducation(Student student, int num) {
+
+    }
+
+    private void addSkill(Student student, int num) {
+
+    }
+
+    private void addCourse(Student student, int num) {
+
+    }
+
+    private void addExtracurricular(Student student, int num) {
+
+    }
+
+    private void addHonor(Student student, int num) {
+
+        for (int i = 0; i < num; i++) {
+
+            String title, organization, description, date;
+            boolean resume;
+
+            Honor honor = new Honor(title, organization, description, date, resume);
+        }
+    }
+
+    private void addReference(Student student, int num) {
 
     }
 
