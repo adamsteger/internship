@@ -40,6 +40,7 @@ public class Student extends User {
         this.rating = rating;
         this.reviews = reviews;
         this.employerList = EmployerList.getInstance();
+        this.favoritePosts = favPosts;
     }
 
     public String getFirstName() {

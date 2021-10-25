@@ -1,3 +1,4 @@
+import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -16,8 +17,19 @@ public class InternshipPost {
     private ArrayList<Student> applicants;
     private UUID id;
 
-    public InternshipPost(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay) {
+    public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
+        this.id = id;
         this.posTitle = posTitle;
+        this.employerTitle = employerTitle;
+        this.description = description;
+        this.location = location;
+        this.skillReq = skillReq;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isRemote = isRemote;
+        this.isOpen = isOpen;
+        this.lowPay = lowPay;
+        this.highPay = highPay;
     }
 
     public String getEmployerTitle() {
