@@ -33,7 +33,7 @@ public class InternshipUI {
     private boolean yesNo() {
         boolean ret = true;
         while (ret) {
-            System.out.println("(Y/N): ");
+            System.out.println(" (Y/N): ");
             String ans = scanner.nextLine();
             if (!ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n")) {
                 System.out.println("Invalid Input.");
@@ -51,10 +51,6 @@ public class InternshipUI {
         for (int i = 0; i < startMenuOptions.length; i++) {
             System.out.println("    " + (i + 1) + ". " + startMenuOptions[i]);
         }
-
-        System.out.print("Add this to Resume?");
-        boolean test = yesNo();
-        System.out.println(test);
 
         int userOpt = getUserOpt(startMenuOptions.length);
         // System.out.println(userOpt);
@@ -310,12 +306,19 @@ public class InternshipUI {
         gpa = scanner.nextDouble();
         scanner.nextLine();
 
-        // showGPA = yesNo();
+        System.out.print("Add this to Resume?");
+        showGPA = yesNo();
 
         Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
                 showGPA, 0, null, null);// null for reviews and fav Posts ALSO whats the default rating
 
-        // if()
+        System.out.print("Would you like to add Work experience");
+        if (yesNo()) {
+            System.out.println("How many: ");
+            int num = scanner.nextInt();
+            scanner.nextLine();
+            addWorkExp(student, num);
+        }
 
         return null;
     }
@@ -363,12 +366,30 @@ public class InternshipUI {
 
     }
 
-    // private Student addWorkExp(Student student, int num){
+    private void addWorkExp(Student student, int num) {
+        String title, position, startDate, endDate;
+        boolean resume;
 
-    // System.out.println("Enter your expected graduation Year: ");
-    // //gradYear = scanner.nextInt();
-    // scanner.nextLine();
-    // }
+        System.out.println("~~ADD WORK EXPERIENCE~~\n");
+
+        System.out.println("Company Name: ");
+        title = scanner.nextLine();
+
+        System.out.println("Job Title: ");
+        position = scanner.nextLine();
+
+        System.out.println("Start Date(mm/dd/yyyy): ");
+        startDate = scanner.nextLine();
+
+        System.out.println("End Date(mm/dd/yyyy): ");
+        endDate = scanner.nextLine();
+
+        System.out.print("Add this to Resume?");
+        resume = yesNo();
+
+        WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
+
+    }
 
     public static void main(String[] args) {
         InternshipUI iUI = new InternshipUI();

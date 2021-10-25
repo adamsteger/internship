@@ -7,8 +7,7 @@
     "email" : "IBM@IBM.com",
     "rating" : 4.7,
     "reviews" : [
-      {"writer" : "Adam Sanfacon", "rating" : 5, "comment" : "Great experience!"},
-      {"writer" : "Vaugn Eugenio", "rating" : 4, "comment" : "Good work experience, although mostly cookie cutter type work and little applicable experience."}
+      {"writerID" : "73422490-1eb2-4aba-b7a0-e501364c19fe", "rating" : 5, "comment" : "Great experience!"}
       ],
     "location" : "Washington, DC",
     "mission" : "THINK",
@@ -25,8 +24,7 @@
     "email" : "google@gmail.com,",
     "rating" : 4.5,
     "reviews" : [
-      {"writer" : "Adam Steger", "rating" : 5, "comment" : "Set me up with the essential skills needed to work in a large company!"},
-      {"writer" : "Ana Boccanfuso", "rating" : 4, "comment" : "Good work experience and gained valuable insight into large companies."}
+      {"writerID" : "ac29913b-2ef5-4ae9-bde7-10b47f139c5e", "rating" : 5, "comment" : "Set me up with the essential skills needed to work in a large company!"}
       ],
     "location" : "Mountain View, CA",
     "mission" : "Don't be evil",

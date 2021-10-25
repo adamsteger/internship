@@ -10,6 +10,6 @@ public class EmployerReview {
     }
 
     public String studentToString() {
-        return "\nWriter: " + writer.getName() + "\nReview Rating: " + rating + "\nComment: " + comment;
+        return "\n\tWriter: " + writer.getName() + "\n\tReview Rating: " + rating + "\n\tComment: " + comment;
     }
 }

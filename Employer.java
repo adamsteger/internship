@@ -27,7 +27,7 @@ public class Employer extends User {
         super(username, password, id);
     }
 
-    public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission) {
+    public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission, ArrayList<EmployerReview> reviews) {
         this.id = id;
         this.title = title;
         this.username = username;
@@ -36,6 +36,7 @@ public class Employer extends User {
         this.rating = rating;
         this.location = location;
         this.mission = mission;
+        this.reviews = reviews;
     }
 
     public String getEmail() {
@@ -68,7 +69,10 @@ public class Employer extends User {
 
     public String toString() {
         String ret = "\nTitle: " + title + "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
-                        rating + "\nLocation: " + location + "\nMission: " + mission;
+                        rating + "\nLocation: " + location + "\nMission: " + mission + "\nReviews: ";
+        for (EmployerReview review : reviews) {
+            ret += review;
+        }
 
         return ret;
     }

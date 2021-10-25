@@ -13,6 +13,22 @@ public class WorkExperience {
         this.resume = resume;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
     public String toString() {
         if (resume)
             return title + "\n" + position + "\n" + startDate + "-" + endDate + "\n";

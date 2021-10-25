@@ -16,11 +16,21 @@ public class DataWriter extends DataConstants {
 	}
 
 	public static void saveAdmins() {
-		
+
 	}
 	
-	public static JSONObject getUserJSON(User user) {
+	public static JSONObject getStudentJSON(Student student) {
 		JSONObject personJSON = new JSONObject();
 		return personJSON;
 	}
+
+	public static JSONObject getEmployerJSON(Employer employer) {
+		JSONObject personJSON = new JSONObject();
+		return personJSON;
+	}
+
+	public static JSONObject getAdminJSON(Admin admin) {
+		JSONObject personJSON = new JSONObject();
+		return personJSON;
+	} 
 }
