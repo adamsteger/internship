@@ -7,7 +7,7 @@ public class Employer extends User {
     private String title;
     private String email;
     private double rating;
-    private ArrayList<StudentReview> reviews;
+    private ArrayList<EmployerReview> reviews;
     private String location;
     private String mission;
     private ArrayList<InternshipPost> posts;
@@ -18,7 +18,7 @@ public class Employer extends User {
         email = "";
         rating = 0.0;
         location = "";
-        reviews = new ArrayList<StudentReview>();
+        reviews = new ArrayList<EmployerReview>();
         mission = "";
         posts = new ArrayList<InternshipPost>();
     }
@@ -46,7 +46,7 @@ public class Employer extends User {
         return this.rating;
     }
 
-    public ArrayList<Review> getReviews() {
+    public ArrayList<EmployerReview> getReviews() {
         return this.reviews;
     }
 

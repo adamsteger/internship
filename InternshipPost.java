@@ -52,7 +52,7 @@ public class InternshipPost {
     }
 
     public boolean contains(String keyword){
-
+        return true;
     }
     public UUID getUUID(){
         return this.id;
