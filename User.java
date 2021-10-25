@@ -19,6 +19,18 @@ public abstract class User {
         this.password = password;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UUID getUUID() {
+        return id;
+    }
+
     private boolean checkUsername(String username) {
         return true;
     }

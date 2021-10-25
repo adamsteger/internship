@@ -12,6 +12,21 @@ public class StudentReview {
         this.comment = comment;
     }
 
+    public Employer getWriter() {
+        return writer;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public EmployerList getEmployerList() {
+        return employerList;
+    }
     public String toString() {
         return "\n\tWriter: " + writer.getTitle() + "\n\tReview Rating: " + rating + "\n\tComment: " + comment;
     }
