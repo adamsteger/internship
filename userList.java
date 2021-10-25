@@ -29,12 +29,12 @@ public class UserList {
         return ret;
     }
 
-    public ArrayList<User> addStudent(User user) { 
+    public ArrayList<User> addUser(User user) { 
         users.add(user);
         return users;
     }
 
-    public ArrayList<User> removeStuent(User user) {
+    public ArrayList<User> removeUser(User user) {
         users.remove(user);
         return users;
     }
