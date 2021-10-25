@@ -85,8 +85,20 @@ public class DataLoader extends DataConstants {
 				String location = (String)personJSON.get(EMPLOYER_LOCATION);
 				String mission = (String)personJSON.get(EMPLOYER_MISSION);
 
+				JSONArray reviewsJSON = (JSONArray)personJSON.get(EMPLOYER_REVIEWS);
+				ArrayList<EmployerReview> reviews = new ArrayList<EmployerReview>();
+				for (int j = 0; j < reviewsJSON.size(); j++) {
+					JSONObject reviewJSON = (JSONObject)reviewsJSON.get(j);
+					UUID writerID = UUID.fromString((String)reviewJSON.get(REVIEW_WRITER_ID));
+					// Student student = StudentList.getInstance().getStudentByID(writerID);
+					int reviewRating = ((Long)reviewJSON.get(REVIEW_RATING)).intValue();
+					String comment = (String)reviewJSON.get(REVIEW_COMMENT);
+
+				// 	reviews.add(new EmployerReview(student, reviewRating, comment));
+				}
+
 				
-				employers.add(new Employer(id, title, userName, password, email, rating, location, mission));
+				employers.add(new Employer(id, title, userName, password, email, rating, location, mission, reviews));
 			}
 			
 			return employers;
@@ -138,13 +150,13 @@ public class DataLoader extends DataConstants {
 		ArrayList<Student> students = DataLoader.getStudents();
 		ArrayList<InternshipPost> posts = DataLoader.getInternshipPosts();
 
-		for(Student student : students) {
-			System.out.println(student);
-		}
-
-		// for(Employer employer : employers){
-		// 	System.out.println(employer);
+		// for(Student student : students) {
+		// 	System.out.println(student);
 		// }
+
+		for(Employer employer : employers){
+			System.out.println(employer);
+		}
 
 		// for(InternshipPost post : posts) {
 		// 	System.out.println(post);

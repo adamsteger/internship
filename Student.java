@@ -22,6 +22,20 @@ public class Student extends User {
         super(username, password, id);
     }
 
+    public Student() {
+        firstName = "";
+        lastName = "";
+        email = "";
+        phone = "";
+        address = "";
+        gradYear = 0;
+        gpa = 0.0;
+        showGPA = true;
+        rating = 0.0;
+        reviews = new ArrayList<StudentReview>();
+        favoritePosts = new ArrayList<InternshipPost>();
+    }
+
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
                     String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<StudentReview> reviews,
                     ArrayList<InternshipPost> favPosts) {

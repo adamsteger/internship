@@ -21,6 +21,7 @@ public abstract class DataConstants {
     protected static final String EMPLOYER_TITLE = "title";
     protected static final String EMPLOYER_LOCATION = "location";
     protected static final String EMPLOYER_MISSION = "mission";
+    protected static final String EMPLOYER_REVIEWS = "reviews";
     protected static final String INTERNSHIP_FILE_NAME = "internshipposts.json";
     protected static final String INTERNSHIP_ID = "id";
     protected static final String INTERNSHIP_EMPLOYER_TITLE = "employerTitle";
