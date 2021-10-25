@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.UUID;
 
 public class InternshipUI {
     private static final String WELCOME_MESSAGE = "Welcome to our UrTern";
@@ -29,14 +30,34 @@ public class InternshipUI {
         return -1;
     }
 
+    private boolean yesNo() {
+        boolean ret = true;
+        while (ret) {
+            System.out.println("(Y/N): ");
+            String ans = scanner.nextLine();
+            if (!ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n")) {
+                System.out.println("Invalid Input.");
+            } else if (ans.equalsIgnoreCase("y")) {
+                break;
+            } else {
+                ret = false;
+            }
+        }
+        return ret;
+    }
+
     private void displayStartMenu() {
         System.out.println("~~ " + WELCOME_MESSAGE + " ~~" + "\n");
         for (int i = 0; i < startMenuOptions.length; i++) {
             System.out.println("    " + (i + 1) + ". " + startMenuOptions[i]);
         }
 
+        System.out.print("Add this to Resume?");
+        boolean test = yesNo();
+        System.out.println(test);
+
         int userOpt = getUserOpt(startMenuOptions.length);
-        System.out.println(userOpt);
+        // System.out.println(userOpt);
         // TODO exicute user opt
 
     }
@@ -255,14 +276,47 @@ public class InternshipUI {
     }
 
     private Student CreateStudent() {
-        String username, password, firstName, lastName, email, phone, adress;
+        UUID id = null;// get new and random id
+        String username, password, firstName, lastName, email, phone, address;
         double gpa, rating;
         int gradYear;
-        boolean showGpa;
+        boolean showGPA;
 
         System.out.println("~~CREATE STUDENT ACCOUNT~~\n");
         System.out.println("~~Credentials~~");
-        System.out.println("~~CREATE STUDENT ACCOUNT~~\n");
+        username = createUsername();
+        password = createPassword();
+
+        System.out.println("Enter your first name: ");
+        firstName = scanner.nextLine();
+
+        System.out.println("Enter your last name: ");
+        lastName = scanner.nextLine();
+
+        System.out.println("Enter your email: ");
+        email = scanner.nextLine();
+
+        System.out.println("Enter your phone number: ");
+        phone = scanner.nextLine();
+
+        System.out.println("Enter your permanent address: ");
+        address = scanner.nextLine();
+
+        System.out.println("Enter your expected graduation Year: ");
+        gradYear = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("What is your GPA: ");
+        gpa = scanner.nextDouble();
+        scanner.nextLine();
+
+        // showGPA = yesNo();
+
+        Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
+                showGPA, 0, null, null);// null for reviews and fav Posts ALSO whats the default rating
+
+        // if()
+
         return null;
     }
 
@@ -308,6 +362,13 @@ public class InternshipUI {
         return password;
 
     }
+
+    // private Student addWorkExp(Student student, int num){
+
+    // System.out.println("Enter your expected graduation Year: ");
+    // //gradYear = scanner.nextInt();
+    // scanner.nextLine();
+    // }
 
     public static void main(String[] args) {
         InternshipUI iUI = new InternshipUI();
