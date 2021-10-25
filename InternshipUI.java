@@ -312,7 +312,7 @@ public class InternshipUI {
         Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
                 showGPA, 0, null, null);// null for reviews and fav Posts ALSO whats the default rating
 
-        System.out.print("Would you like to add Work experience");
+        System.out.print("Would you like to add Work experience?");
         if (yesNo()) {
             System.out.println("How many: ");
             int num = scanner.nextInt();
@@ -320,7 +320,15 @@ public class InternshipUI {
             addWorkExp(student, num);
         }
 
-        return null;
+        System.out.print("Would you like to add Honors?");
+        if (yesNo()) {
+            System.out.println("How many: ");
+            int num = scanner.nextInt();
+            scanner.nextLine();
+            addHonor(student, num);
+        }
+
+        return student;
     }
 
     private Employer createEmployer() {
@@ -413,11 +421,30 @@ public class InternshipUI {
     private void addHonor(Student student, int num) {
 
         for (int i = 0; i < num; i++) {
-
             String title, organization, description, date;
             boolean resume;
 
+            System.out.println("~~ADD HONOR~~\n");
+
+            System.out.println("Organization Name: ");
+            organization = scanner.nextLine();
+
+            System.out.println("Honor Title: ");
+            title = scanner.nextLine();
+
+            System.out.println("Descrition: ");
+            description = scanner.nextLine();
+
+            System.out.println("Date Recieved(mm/dd/yyyy): ");
+            date = scanner.nextLine();
+
+            System.out.print("Add this to Resume?");
+            resume = yesNo();
+
             Honor honor = new Honor(title, organization, description, date, resume);
+
+            // TODO add honor to passed in Student
+
         }
     }
 
