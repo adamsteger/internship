@@ -28,7 +28,8 @@ public abstract class DataConstants {
     protected static final String INTERNSHIP_POSITION_TITLE = "posTitle";
     protected static final String INTERNSHIP_DESCRIPTION = "description";
     protected static final String INTERNSHIP_LOCATION = "location";
-    protected static final String INTERNSHIP_SKILLS = "skillReq";
+    protected static final String INTERNSHIP_SKILLS_REQ = "skillReq";
+    protected static final String INTERNSHIP_SKILL = "Skill";
     protected static final String INTERNSHIP_START_DATE = "startDate";
     protected static final String INTERNSHIP_END_DATE = "endDate";
     protected static final String INTERNSHIP_IS_REMOTE = "isRemote";
