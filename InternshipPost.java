@@ -84,7 +84,7 @@ public class InternshipPost {
         return id;
     }
 
-    public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
+    public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay, ArrayList<Skill> skills) {
         this.id = id;
         this.employerTitle = employerTitle;
         this.posTitle = posTitle;
@@ -96,6 +96,7 @@ public class InternshipPost {
         this.isOpen = isOpen;
         this.lowPay = lowPay;
         this.highPay = highPay;
+        this.skillReq = skills;
     }
 
     public InternshipPost() {
@@ -126,7 +127,10 @@ public class InternshipPost {
     public String toString() {
         String ret = "\nEmployer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
                         "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 
-                        isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay;
+                        isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay + "\nSkills Required: ";
+        for (Skill skill : skillReq) {
+            ret += "\t" + skill;
+        }
         return ret;
     }
 
