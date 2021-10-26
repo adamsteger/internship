@@ -10,6 +10,7 @@ public class InternshipUI {
             "See/Edit Resume", "Browse Internship Posts" };
     private String[] employerHomeOptions = { "Sign out", "See/Edit internship posts", "See Reviews",
             "Leave Review on a Student" };
+    private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review", "Deletion History" };
     private Scanner scanner;
     private int prevPage;// ??????
@@ -47,7 +48,7 @@ public class InternshipUI {
     }
 
     private void displayStartMenu() {
-        System.out.println("~~ " + WELCOME_MESSAGE + " ~~" + "\n");
+        System.out.println("~~ " + WELCOME_MESSAGE + " ~~\n");
         for (int i = 0; i < startMenuOptions.length; i++) {
             System.out.println("    " + (i + 1) + ". " + startMenuOptions[i]);
         }
@@ -66,7 +67,7 @@ public class InternshipUI {
         // }
         // skills += (student.getSkills().get(student.getSkills().size()));
 
-        // System.out.println("~~ " + student.getUsername() + " ~~" + "\n");
+        // System.out.println("~~ " + student.getUsername() + " ~~\n");
 
         // System.out.println("Email: " + student.getEmail());
         // System.out.println("Phone: " + student.getPhone());
@@ -92,7 +93,7 @@ public class InternshipUI {
     }
 
     private void displayEmployerHome(Employer employer) {
-        // System.out.println("~~ " + employer.getUsername() + " ~~" + "\n");
+        // System.out.println("~~ " + employer.getUsername() + " ~~\n");
         // // TODO Print Logo
 
         // System.out.println(employer.getMission() + "\n");
@@ -113,6 +114,11 @@ public class InternshipUI {
 
     }
 
+    private void displayEmployerInternships(Employer employer) {
+        System.out.println("~~ See/Edit My internship Post(s) ~~\n");
+
+    }
+
     private void displayAdminHome(Admin admin) {
         // System.out.println("~~ " + admin.getUsername() + " ~~" + "\n");
 
@@ -130,15 +136,15 @@ public class InternshipUI {
     private void exicuteStartOpt(Student student, int opt) {
         opt--;
         if (opt == 0) {// Sign in as Admin
-            displayAdminHome(adminSignIn());
+            adminSignIn();
         } else if (opt == 1) {// Sign in as Student
-            displayStudentHome(studentSignIn());
+            studentSignIn();
         } else if (opt == 2) {// Sign in as Employer
-            displayEmployerHome(employerSignIn());
+            employerSignIn();
         } else if (opt == 3) {// Create Student account
-
+            createStudent();
         } else {// Create Employer account
-
+            createEmployer();
         }
 
     }
@@ -193,10 +199,10 @@ public class InternshipUI {
 
         }
 
-    private Admin adminSignIn() {
+    private void adminSignIn() {
         boolean loop = true;
-        String userName;
-        String pass;
+        String userName = null;
+        String pass = null;
         while (loop) {
             System.out.println("~~ Admin Sign In ~~\n");
             System.out.println("Enter Username: ");
@@ -215,15 +221,15 @@ public class InternshipUI {
             // continue;
             // }
         }
-        // Somehow reurn the correct Admin
 
-        return null;
+        Admin admin = new Admin(userName, pass);
+        displayAdminHome(admin);
     }
 
-    private Student studentSignIn() {
+    private void studentSignIn() {
         boolean loop = true;
-        String userName;
-        String pass;
+        String userName = null;
+        String pass = null;
         while (loop) {
             System.out.println("~~ Student Sign In ~~\n");
             System.out.println("Enter Username: ");
@@ -242,15 +248,15 @@ public class InternshipUI {
             // continue;
             // }
         }
-        // Somehow reurn the correct Student
 
-        return null;
+        Student student = new Student(userName, pass);// Somehow get correct student
+        displayStudentHome(student);
     }
 
-    private Employer employerSignIn() {
+    private void employerSignIn() {
         boolean loop = true;
-        String userName;
-        String pass;
+        String userName = null;
+        String pass = null;
         while (loop) {
             System.out.println("~~ Employer Sign In ~~\n");
             System.out.println("Enter Username: ");
@@ -267,19 +273,18 @@ public class InternshipUI {
             // }
         }
         // Somehow reurn the correct Employer
-
-        return null;
+        Employer employer = new Employer(userName, pass);
+        displayEmployerHome(employer);
     }
 
-    private Student CreateStudent() {
+    private void createStudent() {
         UUID id = null;// get new and random id
         String username, password, firstName, lastName, email, phone, address;
-        double gpa, rating;
+        double gpa;
         int gradYear;
         boolean showGPA;
 
         System.out.println("~~CREATE STUDENT ACCOUNT~~\n");
-        System.out.println("~~Credentials~~");
         username = createUsername();
         password = createPassword();
 
@@ -310,7 +315,7 @@ public class InternshipUI {
         showGPA = yesNo();
 
         Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
-                showGPA, 0, null, null);// null for reviews and fav Posts ALSO whats the default rating
+                showGPA, -1, null, null);
 
         System.out.print("Would you like to add Work experience?");
         if (yesNo()) {
@@ -318,6 +323,14 @@ public class InternshipUI {
             int num = scanner.nextInt();
             scanner.nextLine();
             addWorkExp(student, num);
+        }
+
+        System.out.print("Would you like to add Extracurriculars?");
+        if (yesNo()) {
+            System.out.println("How many: ");
+            int num = scanner.nextInt();
+            scanner.nextLine();
+            addExtracurricular(student, num);
         }
 
         System.out.print("Would you like to add Honors?");
@@ -328,11 +341,34 @@ public class InternshipUI {
             addHonor(student, num);
         }
 
-        return student;
+        displayStudentHome(student);
+        ;
     }
 
-    private Employer createEmployer() {
-        return null;
+    private void createEmployer() {
+        UUID id = null;
+        String title, username, password, email, location, mission;
+
+        System.out.println("~~CREATE EMPLOYER ACCOUNT~~\n");
+
+        username = createUsername();
+        password = createPassword();
+
+        System.out.println("Enter your email: ");
+        email = scanner.nextLine();
+
+        System.out.println("Company Name: ");
+        title = scanner.nextLine();
+
+        System.out.println("Enter The Location of the Company HQ: ");
+        location = scanner.nextLine();
+
+        System.out.println("What is your Company's mission?: ");
+        mission = scanner.nextLine();
+
+        Employer employer = new Employer(id, title, username, password, email, -1, location, mission, null);
+
+        displayEmployerHome(employer);
     }
 
     private String createUsername() {
@@ -415,6 +451,31 @@ public class InternshipUI {
     }
 
     private void addExtracurricular(Student student, int num) {
+        for (int i = 0; i < num; i++) {
+            String title, position, startDate, endDate;
+            boolean resume;
+
+            System.out.println("~~ADD EXTRACURRICULAR~~\n");
+
+            System.out.println("Organization: ");
+            title = scanner.nextLine();
+
+            System.out.println("Position: ");
+            position = scanner.nextLine();
+
+            System.out.println("Start Date(mm/dd/yyyy): ");
+            startDate = scanner.nextLine();
+
+            System.out.println("End Date(mm/dd/yyyy): ");
+            endDate = scanner.nextLine();
+
+            System.out.print("Add this to Resume?");
+            resume = yesNo();
+
+            Extracurricular excurr = new Extracurricular(title, position, startDate, endDate, resume);
+
+            // TODO add excurr to passed in student
+        }
 
     }
 
