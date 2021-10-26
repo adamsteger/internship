@@ -11,13 +11,22 @@ public class InternshipApplication{
         return internshipList.getInternships();
     }
     public ArrayList<InternshipPost> findInternships(String keyword){
-        return new ArrayList<InternshipPost>();
+        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++){
+            InternshipPost currentPost = internshipList.getInternships().get(i);
+            if(currentPost.getEmployerTitle() == keyword){
+                retList.add(currentPost);
+            }
+        }
+        return retList;
     }
     public User createAccount(String username, String password, String accountType){
-        return user;
+        User returnUser = new User();
+        return returnUser;
     }
     public User login(String username, String password){
-        return user;
+        User returnUser = new User();
+        return returnUser;
     }
     public ArrayList<InternshipPost> getFavoriteInternships(){
         return new ArrayList<InternshipPost>();
