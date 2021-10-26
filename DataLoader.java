@@ -154,6 +154,11 @@ public class DataLoader extends DataConstants {
 		return null;
 	}
 
+	public static ArrayList<Admin> getAdmins() {
+		ArrayList<Admin> ret = new ArrayList<Admin>();
+		return ret;
+	}	
+
 	public static void main(String[] args){
 		ArrayList<Employer> employers = DataLoader.getEmployers();
 		ArrayList<Student> students = DataLoader.getStudents();
@@ -172,7 +177,6 @@ public class DataLoader extends DataConstants {
 		}
 	}
 
-    public static ArrayList<Admin> getAdmins() {
-        return null;
-    }
+   
 }
+
