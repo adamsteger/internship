@@ -132,8 +132,17 @@ public class DataLoader extends DataConstants {
 				int lowPay = ((Long)postJSON.get(INTERNSHIP_LOW_PAY)).intValue();
 				int highPay = ((Long)postJSON.get(INTERNSHIP_HIGH_PAY)).intValue();
 
+
+				JSONArray skillsJSON = (JSONArray)postJSON.get(INTERNSHIP_SKILLS_REQ);
+				ArrayList<Skill> skills = new ArrayList<Skill>();
+				for (int j = 0; j < skillsJSON.size(); j++) {
+					JSONObject skillJSON = (JSONObject)skillsJSON.get(j);
+					Skill skill = (Skill)skillJSON.get(INTERNSHIP_SKILL);
+
+					skills.add(skill);
+				}
 				
-				posts.add(new InternshipPost(postID, employerTitle, posTitle, description, location, startDate, endDate, isRemote, isOpen, lowPay, highPay));
+				posts.add(new InternshipPost(postID, employerTitle, posTitle, description, location, startDate, endDate, isRemote, isOpen, lowPay, highPay, skills));
 			}
 			
 			return posts;
@@ -154,12 +163,12 @@ public class DataLoader extends DataConstants {
 		// 	System.out.println(student);
 		// }
 
-		for(Employer employer : employers){
-			System.out.println(employer);
-		}
-
-		// for(InternshipPost post : posts) {
-		// 	System.out.println(post);
+		// for(Employer employer : employers){
+		// 	System.out.println(employer);
 		// }
+
+		for(InternshipPost post : posts) {
+			System.out.println(post);
+		}
 	}
 }
