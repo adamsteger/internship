@@ -4,6 +4,10 @@ import java.util.ArrayList;
 public abstract class User {
     protected String username;
     protected String password;
+    private StudentList studentList;
+    private EmployerList employerList;
+    private AdminList adminList;
+    private InternshipList internshipList;
     private UUID id;
 
 
@@ -34,38 +38,94 @@ public abstract class User {
     }
 
     private boolean checkUsername(String username) {
+        if(studentList.haveStudent(username)){
+            return false;
+        }
+        if(employerList.haveEmployer(username)){
+            return false;
+        }
+        if(adminList.haveAdmin(username)){
+            return false;
+        }
+        if(username.length() < 10 || username.length() > 20){
+            return false;
+        }
         return true;
     }
 
     private boolean checkPassword(String password) {
+        if(password.length() < 10 || password.length() > 20){
+            return false;
+        }
         return true;
     }
 
     private ArrayList<InternshipPost> getPosts() {
-        return new ArrayList<InternshipPost>();
+        return internshipList.getInternships();
     }
 
     private ArrayList<InternshipPost> getPosts(String keyword) {
-        return new ArrayList<InternshipPost>();
+        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++){
+            InternshipPost currentPost = internshipList.getInternships().get(i);
+            if(currentPost.getEmployerTitle() == keyword){
+                retList.add(currentPost);
+            }
+        }
+        return retList;
     }    
 
     private ArrayList<Employer> getEmployer(String keyword) {
-        return new ArrayList<Employer>();
+        ArrayList<Employer> retList = new ArrayList<Employer>();
+        if(employerList.haveEmployer(keyword)){
+            retList.add(employerList.getEmployerByUser(keyword));
+        }
+        return retList;
     }
 
-    private ArrayList<InternshipPost> filterByPay(int lowPay, int highPay, ArrayList<InternshipPost> posts) {
-        return new ArrayList<InternshipPost>();
+    private ArrayList<InternshipPost> filterByPay(int lowPay, int highPay) {
+        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++){
+            InternshipPost currentPost = internshipList.getInternships().get(i);
+            if(currentPost.getLowPay() > lowPay && currentPost.getHighPay() < highPay){
+                retList.add(currentPost);
+            }
+        }
+        return retList;
     }
 
-    private ArrayList<InternshipPost>  filterByLocation(String location) {
-        return new ArrayList<InternshipPost>();
+    private ArrayList<InternshipPost> filterByLocation(String location) {
+        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++){
+            InternshipPost currentPost = internshipList.getInternships().get(i);
+            if(currentPost.getLocation() == location){
+                retList.add(currentPost);
+            }
+        }
+        return retList;
     }
 
-    private ArrayList<InternshipPost> filterByLanguage(String language) {
-        return new ArrayList<InternshipPost>();
+    private ArrayList<InternshipPost> filterByLanguage(Skill language) {
+        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++){
+            InternshipPost currentPost = internshipList.getInternships().get(i);
+            for(int j = 0; j < currentPost.getSkillReq().size(); i++){
+                if(currentPost.getSkillReq().get(i) == language){
+                    retList.add(currentPost);
+                }
+            }
+        }
+        return retList;
     }
 
     private ArrayList<InternshipPost> filterByRemote(boolean isRemote) {
-        return new ArrayList<InternshipPost>();
+        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++){
+            InternshipPost currentPost = internshipList.getInternships().get(i);
+            if(currentPost.getRemote() == isRemote){
+                retList.add(currentPost);
+            }
+        }
+        return retList;
     }
 }
