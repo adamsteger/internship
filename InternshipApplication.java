@@ -34,7 +34,11 @@ public class InternshipApplication {
     public ArrayList<InternshipPost> getMyInternships(){
         return new ArrayList<InternshipPost>();
     }
+<<<<<<< HEAD
     public boolean addInternship(Employer employer, String recruiterEmail, String companyName, String posTitle, String description, String location, ArrayList<String> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay, ArrayList<Student> applicants){
+=======
+    public boolean addInternship(Employer employer, String companyName, String posTitle, String description, String location, ArrayList<String> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay, ArrayList<Student> applicants){
+>>>>>>> 52c6e1ee67cea6a9f8217740a49c6582e0dc8f58
         return true;
     }
     public void reviewUser(User user, String comment){

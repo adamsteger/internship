@@ -3,7 +3,6 @@ import java.util.Hashtable;
 import java.util.UUID;
 
 public class Student extends User {
-
     private String firstName;
     private String lastName;
     private String email;
@@ -39,7 +38,7 @@ public class Student extends User {
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
                     String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<StudentReview> reviews,
                     ArrayList<InternshipPost> favPosts) {
-        super();
+        super(username, password);
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
