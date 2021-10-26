@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class InternshipApplication{
+public class InternshipApplication {
     private InternshipList internshipList;
     private UserList userList;
     private User user;
@@ -21,11 +21,11 @@ public class InternshipApplication{
         return retList;
     }
     public User createAccount(String username, String password, String accountType){
-        User returnUser = new User();
+        User returnUser = new User(username, password);
         return returnUser;
     }
     public User login(String username, String password){
-        User returnUser = new User();
+        User returnUser = new User(username, password);
         return returnUser;
     }
     public ArrayList<InternshipPost> getFavoriteInternships(){
@@ -34,7 +34,7 @@ public class InternshipApplication{
     public ArrayList<InternshipPost> getMyInternships(){
         return new ArrayList<InternshipPost>();
     }
-    public boolean addInternship(Employer employer, ContactInfo recruiterContact, String companyName, String posTitle, String description, String location, ArrayList<String> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay, ArrayList<Student> applicants){
+    public boolean addInternship(Employer employer, String recruiterEmail, String companyName, String posTitle, String description, String location, ArrayList<String> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay, ArrayList<Student> applicants){
         return true;
     }
     public void reviewUser(User user, String comment){
