@@ -17,8 +17,8 @@ public class InternshipPost {
     private ArrayList<Student> applicants;
     private UUID id;
 
-    public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
-        this.id = id;
+    public InternshipPost(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
+        this.id = UUID.randomUUID();
         this.posTitle = posTitle;
         this.employerTitle = employerTitle;
         this.description = description;

@@ -80,5 +80,8 @@ public class DataWriter extends DataConstants {
 	public static JSONObject getAdminJSON(Admin admin) {
 		JSONObject personJSON = new JSONObject();
 		return personJSON;
+	}
+
+	public static void saveInternshipPosts() {
 	} 
 }

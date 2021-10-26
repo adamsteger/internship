@@ -162,4 +162,8 @@ public class DataLoader extends DataConstants {
 		// 	System.out.println(post);
 		// }
 	}
+
+    public static ArrayList<Admin> getAdmins() {
+        return null;
+    }
 }

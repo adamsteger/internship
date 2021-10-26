@@ -1,19 +1,12 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class AdminList {
     private static AdminList adminList;
     private ArrayList<Admin> admins;
     
     private AdminList() {
-        // admins = DataLoader.getAdmins();
-    }
-
-    public AdminList getAdminList() {
-        return adminList;
-    }
-
-    public ArrayList<Admin> getAdmins() {
-        return admins;
+        admins = DataLoader.getAdmins();
     }
 
     public static AdminList getInstance() {
@@ -22,16 +15,47 @@ public class AdminList {
         return adminList;
     }
 
-    public ArrayList<Admin> addAdmin(Admin admin){
-        admins.add(admin);
+    public boolean haveAdmin(String username) {
+        for(Admin admin : admins) {
+            if(admin.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Admin> getAdmins() {
         return admins;
     }
-    public ArrayList<Admin> removeAdmin(Admin admin){
-        admins.remove(admin);
-        return admins;
+
+    public Admin getAdminByUser(String username) {
+        for(Admin admin : admins) {
+            if(admin.getUsername().equals(username)) {
+                return admin;
+            }
+        }
+        return null;
     }
+
+    public Admin getAdminByID(UUID id) {
+        for(Admin admin : admins) {
+            if(admin.getUUID().equals(id)) {
+                return admin;
+            }
+        }
+        return null;
+    }
+
+    public boolean addAdmin(String username, String password){
+        if(haveAdmin(username))
+            return false;
+
+        admins.add(new Admin(username, password));
+        return true;
+    }
+    
     public void save() {
-        
+        DataWriter.saveAdmins();
     }
 }
 
