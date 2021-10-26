@@ -82,7 +82,7 @@ public class Resume {
     }
 
     public void apply(InternshipPost post) {
-
+        
     }
 
     public void addCompanyReview(Employer employer, int rating, String comment) {

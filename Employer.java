@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
-import javax.swing.ImageIcon;
-
 public class Employer extends User {
     private String title;
     private String email;
@@ -11,23 +9,23 @@ public class Employer extends User {
     private String location;
     private String mission;
     private ArrayList<InternshipPost> posts;
-    private static UUID id;
+    private UUID id;
 
-    public Employer() {
+
+    public Employer(String username, String password) {
+        super(username, password);
         title = "";
         email = "";
         rating = 0.0;
-        location = "";
         reviews = new ArrayList<EmployerReview>();
+        location = "";
         mission = "";
         posts = new ArrayList<InternshipPost>();
-    }
-
-    public Employer(String username, String password) {
-        super(username, password, id);
+        id = super.getUUID();
     }
 
     public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission, ArrayList<EmployerReview> reviews) {
+        super(username, password, id);
         this.id = id;
         this.title = title;
         this.username = username;
@@ -40,31 +38,35 @@ public class Employer extends User {
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public double getRating() {
-        return this.rating;
+        return rating;
     }
 
     public ArrayList<EmployerReview> getReviews() {
-        return this.reviews;
+        return reviews;
     }
 
     public String getLocation() {
-        return this.location;
+        return location;
     }
 
     public String getMission() {
-        return this.mission;
+        return mission;
     }
 
     public ArrayList<InternshipPost> getPosts() {
-        return this.posts;
+        return posts;
     }
 
-    public UUID getID() {
-        return this.id;
+    public UUID getUUID() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String toString() {
@@ -90,11 +92,4 @@ public class Employer extends User {
     //     reviews.add(studentReview);
     // }
 
-    public UUID getUUID() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 }
