@@ -6,17 +6,19 @@ public abstract class User {
     protected String password;
     private UUID id;
 
-    public User() {
-        this.username = "";
-        this.password = "";
-    }
-    public User(String username, String password, UUID id) {
 
+    //existing account loaded from json
+    public User(String username, String password, UUID id) {
+        this.username = username;
+        this.password = password;
+        this.id = id;
     }
     
+    //new account
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.id = UUID.randomUUID();
     }
 
     public String getUsername() {

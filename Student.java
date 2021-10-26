@@ -3,7 +3,6 @@ import java.util.Hashtable;
 import java.util.UUID;
 
 public class Student extends User {
-
     private String firstName;
     private String lastName;
     private String email;
@@ -15,14 +14,11 @@ public class Student extends User {
     private double rating;
     private ArrayList<StudentReview> reviews;
     private ArrayList<InternshipPost> favoritePosts;
-    private static UUID id;
+    private UUID id;
     private EmployerList employerList;
 
     public Student(String username, String password) {
-        super(username, password, id);
-    }
-
-    public Student() {
+        super(username, password);
         firstName = "";
         lastName = "";
         email = "";
@@ -34,12 +30,13 @@ public class Student extends User {
         rating = 0.0;
         reviews = new ArrayList<StudentReview>();
         favoritePosts = new ArrayList<InternshipPost>();
+        id = super.getUUID();
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
                     String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<StudentReview> reviews,
                     ArrayList<InternshipPost> favPosts) {
-        super();
+        super(username, password);
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -58,63 +55,63 @@ public class Student extends User {
     }
 
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
     public String getUserName() {
-        return this.username;
+        return username;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public int getGradYear() {
-        return this.gradYear;
+        return gradYear;
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public String getPhone() {
-        return this.phone;
+        return phone;
     }
 
     public String getAddress() {
-        return this.address;
+        return address;
     }
 
     public double getGPA() {
-        return this.gpa;
+        return gpa;
     }
 
     public boolean getShowGPA() {
-        return this.showGPA;
+        return showGPA;
     }
 
     public double getRating() {
-        return this.rating;
+        return rating;
     }
 
     public ArrayList<StudentReview> getReviews() {
-        return this.reviews;
+        return reviews;
     }
 
     public ArrayList<InternshipPost> getFavoritePosts() {
-        return this.favoritePosts;
+        return favoritePosts;
     }
 
     public UUID getUUID() {
-        return this.id;
+        return id;
     }
 
     public EmployerList getEmployerList() {
-        return this.employerList;
+        return employerList;
     }
 
     public String getName() {

@@ -15,31 +15,46 @@ public class StudentList {
         return studentList;
     }
 
+    public boolean haveStudent(String username) {
+        for(Student student : students) {
+            if(student.getUserName().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Student> getStudents() {
         return students;
     }
 
-    public Student getStudentByID(UUID id) {
-        Student ret = new Student();
-        for (Student student : students) {
-            if (student.getUUID().equals(id)) {
-                ret = student;
+    public Student getStudentByUser(String username) {
+        for(Student student : students) {
+            if(student.getUserName().equals(username)) {
+                return student;
             }
         }
-        return ret;
+        return null;
+    }
+    
+    public Student getStudentByID(UUID id) {
+        for (Student student : students) {
+            if (student.getUUID().equals(id)) {
+                return student;
+            }
+        }
+        return null;
     }
 
-    public ArrayList<Student> addStudent(Student student) { 
-        students.add(student);
-        return students;
-    }
-
-    public ArrayList<Student> removeStuent(Student student) {
-        students.remove(student);
-        return students;
+    public boolean addStudent(String username, String password) { 
+        if(haveStudent(username)) 
+            return false;
+        
+        students.add(new Student(username, password));
+        return true;
     }
 
     public void save() {
-        
+        DataWriter.saveStudents();
     }
 }
