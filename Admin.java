@@ -36,4 +36,8 @@ public class Admin extends User {
     public void addStudentReview(StudentReview review) {
 
     }
+
+    public void deleteEmployerReview(EmployerReview review) {
+
+    }
 }

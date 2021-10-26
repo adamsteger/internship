@@ -118,6 +118,16 @@ public class Student extends User {
         return firstName + " " + lastName;
     }
 
+    public void addReview(UUID writerID, int rating, String comment) {
+        Employer writer = employerList.getEmployerByID(writerID);
+        StudentReview review = new StudentReview(writer, rating, comment);
+        reviews.add(review);
+    }
+
+    public void addFavoritePost(InternshipPost post) {
+        
+    }
+
     public String toString() {
         String ret = "\nName: " + firstName + " " + lastName + "\nUsername: " + username + "\nPassword: " 
                     + password + "\nGrad Year: " + gradYear + "\nEmail: " + email + "\nPhone: "
@@ -130,12 +140,6 @@ public class Student extends User {
             ret += "\n\tEmployer: " + post.getEmployerTitle() + "\n\tPosition Title: " + post.getPosTitle();
         }
         return ret;
-    }
-
-    public void addReview(UUID writerID, int rating, String comment) {
-        Employer writer = employerList.getEmployerByID(writerID);
-        StudentReview review = new StudentReview(writer, rating, comment);
-        reviews.add(review);
     }
 
 }
