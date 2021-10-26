@@ -8,10 +8,10 @@ public class InternshipApplication{
 
     }
     public ArrayList<InternshipPost> findInternships(){
-
+        return internshipList.getInternships();
     }
     public ArrayList<InternshipPost> findInternships(String keyword){
-
+        
     }
     public User createAccount(String username, String password, String accountType){
 
