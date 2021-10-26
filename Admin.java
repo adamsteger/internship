@@ -6,11 +6,10 @@ public class Admin extends User {
     
     public Admin(String username, String password) {
         super(username, password, id);
-        this.id = id;
     }
 
     public UUID getID() {
-        return this.id;
+        return id;
     }
     
     public void deletePost(InternshipPost post) {
@@ -24,11 +23,11 @@ public class Admin extends User {
     }
 
     public void addPost(InternshipPost post) {
-
+        InternshipList.getInstance().addInternship(post);
     }
 
     public void deleteStudentReview(StudentReview review) {
-
+        
     }
 
     public void addStudentReview(StudentReview review) {
