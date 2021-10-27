@@ -33,15 +33,14 @@ public class DataLoader extends DataConstants {
 				double rating = (double)personJSON.get(USER_RATING);
 
 				JSONArray reviewsJSON = (JSONArray)personJSON.get(STUDENT_REVIEWS);
-				ArrayList<StudentReview> reviews = new ArrayList<StudentReview>();
+				ArrayList<Review> reviews = new ArrayList<Review>();
 				for (int j = 0; j < reviewsJSON.size(); j++) {
 					JSONObject reviewJSON = (JSONObject)reviewsJSON.get(j);
-					UUID writerID = UUID.fromString((String)reviewJSON.get(REVIEW_WRITER_ID));
-					Employer employer = EmployerList.getInstance().getEmployerByID(writerID);
+					String writer = (String)reviewJSON.get(REVIEW_WRITER);
 					int reviewRating = ((Long)reviewJSON.get(REVIEW_RATING)).intValue();
 					String comment = (String)reviewJSON.get(REVIEW_COMMENT);
 
-					reviews.add(new StudentReview(employer, reviewRating, comment));
+					reviews.add(new Review(writer, reviewRating, comment));
 				}
 
 				JSONArray favPostsJSON = (JSONArray)personJSON.get(STUDENT_FAV_POSTS);
@@ -54,7 +53,7 @@ public class DataLoader extends DataConstants {
 					favPosts.add(post);
 				}
 
-				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating, reviews, favPosts));
+				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating, favPosts));
 			}
 			
 			return students;
@@ -86,15 +85,14 @@ public class DataLoader extends DataConstants {
 				String mission = (String)personJSON.get(EMPLOYER_MISSION);
 
 				JSONArray reviewsJSON = (JSONArray)personJSON.get(EMPLOYER_REVIEWS);
-				ArrayList<EmployerReview> reviews = new ArrayList<EmployerReview>();
+				ArrayList<Review> reviews = new ArrayList<Review>();
 				for (int j = 0; j < reviewsJSON.size(); j++) {
 					JSONObject reviewJSON = (JSONObject)reviewsJSON.get(j);
-					UUID writerID = UUID.fromString((String)reviewJSON.get(REVIEW_WRITER_ID));
-					// Student student = StudentList.getInstance().getStudentByID(writerID);
+					String writer = (String)reviewJSON.get(REVIEW_WRITER);
 					int reviewRating = ((Long)reviewJSON.get(REVIEW_RATING)).intValue();
 					String comment = (String)reviewJSON.get(REVIEW_COMMENT);
 
-				// 	reviews.add(new EmployerReview(student, reviewRating, comment));
+				 	reviews.add(new Review(writer, reviewRating, comment));
 				}
 
 				
@@ -137,8 +135,8 @@ public class DataLoader extends DataConstants {
 				ArrayList<Skill> skills = new ArrayList<Skill>();
 				for (int j = 0; j < skillsJSON.size(); j++) {
 					JSONObject skillJSON = (JSONObject)skillsJSON.get(j);
-					Skill skill = (Skill)skillJSON.get(INTERNSHIP_SKILL);
-
+					String skillString = (String)skillJSON.get(INTERNSHIP_SKILL);
+					Skill skill = Skill.valueOf(skillString);
 					skills.add(skill);
 				}
 				
@@ -164,17 +162,17 @@ public class DataLoader extends DataConstants {
 		ArrayList<Student> students = DataLoader.getStudents();
 		ArrayList<InternshipPost> posts = DataLoader.getInternshipPosts();
 
-		// for(Student student : students) {
-		// 	System.out.println(student);
-		// }
+		for(Student student : students) {
+			System.out.println(student);
+		}
 
 		// for(Employer employer : employers){
 		// 	System.out.println(employer);
 		// }
 
-		for(InternshipPost post : posts) {
-			System.out.println(post);
-		}
+		// for(InternshipPost post : posts) {
+		// 	System.out.println(post);
+		// }
 	}
 
    

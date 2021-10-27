@@ -129,7 +129,7 @@ public class InternshipPost {
                         "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 
                         isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay + "\nSkills Required: ";
         for (Skill skill : skillReq) {
-            ret += "\t" + skill;
+            ret += skill + "\t";
         }
         return ret;
     }

@@ -7,14 +7,10 @@
     "email" : "IBM@IBM.com",
     "rating" : 4.7,
     "reviews" : [
-      {"writerID" : "73422490-1eb2-4aba-b7a0-e501364c19fe", "rating" : 5, "comment" : "Great experience!"}
+      {"writer" : "Adam Steger", "rating" : 5, "comment" : "Great experience!"}
       ],
     "location" : "Washington, DC",
-    "mission" : "THINK",
-    "posts" : [
-      {"id" : 0, "posTitle" : "Software Engineer"},
-      {"id" : 1, "posTitle" : "Cyber Security Analyst"}
-    ]
+    "mission" : "THINK"
   },
   {
     "id" : "73c8f955-e5e0-4bec-9ff2-ff7107a5549d",
@@ -24,13 +20,9 @@
     "email" : "google@gmail.com,",
     "rating" : 4.5,
     "reviews" : [
-      {"writerID" : "ac29913b-2ef5-4ae9-bde7-10b47f139c5e", "rating" : 5, "comment" : "Set me up with the essential skills needed to work in a large company!"}
+      {"writer" : "Ana Boccanfuso", "rating" : 5, "comment" : "Set me up with the essential skills needed to work in a large company!"}
       ],
     "location" : "Mountain View, CA",
-    "mission" : "Don't be evil",
-    "posts" : [
-      {"id" : 0, "posTitle" : "Software Engineer"},
-      {"id" : 1, "posTitle" : "Web Developer"}
-    ]
+    "mission" : "Don't be evil"
   }
 ]

@@ -1,27 +1,35 @@
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.UUID;
 
 public class Resume {
-    private Student student;
-    private Hashtable<Education, Boolean> educations;
+    private ArrayList<Education> educations;
     private Hashtable<Skill, Boolean> skills;
     private Hashtable<String, Boolean> courses;
-    private Hashtable<WorkExperience, Boolean> work;
-    private Hashtable<Extracurricular, Boolean> extracurriculars;
+    private ArrayList<WorkExperience> work;
+    private ArrayList<Extracurricular> extracurriculars;
+    private UUID id;
     
-    public Resume(Hashtable<Education, Boolean> educations, Hashtable<Skill, Boolean> skills, Hashtable <String, Boolean> courses, 
-      Hashtable<WorkExperience,Boolean> work, Hashtable<Extracurricular, Boolean> extracurriculars) {
+    public Resume(ArrayList<Education> educations, Hashtable<Skill, Boolean> skills, Hashtable<String, Boolean> courses, 
+      ArrayList<WorkExperience> work, ArrayList<Extracurricular> extracurriculars) {
         this.educations = educations;
         this.skills = skills;
         this.courses = courses;
         this.work = work;
         this.extracurriculars = extracurriculars;
+        id = UUID.randomUUID();
     }
 
-    public Student getStudent() {
-        return student;
+    public Resume() {
+        educations = new ArrayList<Education>();
+        skills = new Hashtable<Skill, Boolean>();
+        courses = new Hashtable<String, Boolean>();
+        work = new ArrayList<WorkExperience>();
+        extracurriculars = new ArrayList<Extracurricular>();
+        id = UUID.randomUUID();
     }
 
-    public Hashtable<Education, Boolean> getEducations() {
+    public ArrayList<Education> getEducations() {
         return this.educations;
     }
 
@@ -33,32 +41,32 @@ public class Resume {
         return this.courses;
     }
 
-    public Hashtable<WorkExperience, Boolean> getWork() {
+    public ArrayList<WorkExperience> getWork() {
         return this.work;
     }
 
-    public Hashtable<Extracurricular, Boolean> getExtracurriculars() {
+    public ArrayList<Extracurricular> getExtracurriculars() {
         return this.extracurriculars;
     }
 
     public void addEducation(Education edu) {
-        educations.put(edu, true);
+        educations.add(edu);
     }
 
     public void removeEducation(Education edu) {
         educations.remove(edu);
     }
 
-    public void addSkill(Skill skill) {
-        skills.put(skill, true);
+    public void addSkill(Skill skill, boolean bool) {
+        skills.put(skill, bool);
     }
 
     public void removeSkill(Skill skill) {
         skills.remove(skill);
     }
 
-    public void addCourse(String course) {
-        courses.put(course, true);
+    public void addCourse(String course, boolean bool) {
+        courses.put(course, bool);
     }
 
     public void removeCourse(String course) {
@@ -66,7 +74,7 @@ public class Resume {
     }
 
     public void addWork(WorkExperience workExperience) {
-        work.put(workExperience, true);
+        work.add(workExperience);
     }
 
     public void removeWork(WorkExperience workExperience) {
@@ -74,28 +82,21 @@ public class Resume {
     }
 
     public void addExtracurricular(Extracurricular extracurricular) {
-        extracurriculars.put(extracurricular, true);
+        extracurriculars.add(extracurricular);
     }
 
     public void removeExtracurricular(Extracurricular extracurricular) {
         extracurriculars.remove(extracurricular);
     }
 
-    public void apply(InternshipPost post) {
+    public void sortReverseChronEdu(ArrayList<Education> education) {
         
     }
 
-    public void addCompanyReview(Employer employer, int rating, String comment) {
+    public void sortReverseChronWork(ArrayList<Education> work) {
 
     }
-
-    public void sortReverseChronEdu(Hashtable<Education, Boolean> education) {
-        
-    }
-
-    public void sortReverseChronWork(Hashtable<WorkExperience, Boolean> work) {
-
-    }
+    
     public String toString() {
         return "";
     }

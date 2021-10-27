@@ -46,11 +46,11 @@ public class StudentList {
         return null;
     }
 
-    public boolean addStudent(String username, String password) { 
-        if(haveStudent(username)) 
+    public boolean addStudent(Student student) { 
+        if(haveStudent(student.getUserName())) 
             return false;
         
-        students.add(new Student(username, password));
+        students.add(student);
         return true;
     }
 

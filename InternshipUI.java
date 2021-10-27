@@ -227,6 +227,8 @@ public class InternshipUI {
             // }
         }
 
+        // TODO Call Admin admin = InternshipApplication.adminLogin(username);
+
         Admin admin = new Admin(userName, pass);
         displayAdminHome(admin);
     }
@@ -249,6 +251,10 @@ public class InternshipUI {
         }
         return student;
 
+        // Student student = new Student(userName, pass);// Somehow get correct student
+        // shouldn't create student for sign in
+        // Student student = InternshipApplication.studentLogin(userName);
+        // displayStudentHome(student);
     }
 
     private Employer employerSignIn() {
@@ -268,8 +274,11 @@ public class InternshipUI {
                 break;
             }
         }
+        // Somehow reurn the correct Employer
 
-        return employer;
+        // TODO Call Employer employer = InternshipApplication.employerLogin(username);
+        Employer employer = new Employer(userName, pass);
+        displayEmployerHome(employer);
     }
 
     private void createStudent() {
@@ -306,11 +315,13 @@ public class InternshipUI {
         gpa = scanner.nextDouble();
         scanner.nextLine();
 
-        System.out.print("Add this to Resume?");
+        System.out.print("Add this GPA to Resume?");
         showGPA = yesNo();
 
-        Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
-                showGPA, -1, null, null);
+        Student student = new Student(firstName, lastName, username, password, gradYear, email, address, phone, gpa,
+                showGPA);
+
+        // TODO Call InternshipApplication.createStudent(student)
 
         System.out.print("Would you like to add Work experience?");
         if (yesNo()) {
@@ -363,6 +374,8 @@ public class InternshipUI {
 
         Employer employer = new Employer(id, title, username, password, email, -1, location, mission, null);
 
+        // TODO Call InternshipApplication.createEmployer(employer);
+
         displayEmployerHome(employer);
     }
 
@@ -395,12 +408,12 @@ public class InternshipUI {
         boolean loop = true;
         String password = null;
         while (loop) {
-            System.out.println("Create a Pasword(8-20 Characters): ");
+            System.out.println("Create a Password(8-20 Characters): ");
             password = scanner.nextLine();
             if (password.length() >= 8 && password.length() <= 20) {
                 break;
             } else {
-                System.out.println("Passwoordd must be 8-20 Characters long");
+                System.out.println("Password must be 8-20 Characters long");
                 continue;
             }
         }
@@ -432,6 +445,7 @@ public class InternshipUI {
 
             WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
 
+            // TODO InternshipApplication.addWorkExperience(work);
             // TODO add work to passed in student
 
         }

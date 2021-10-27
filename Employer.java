@@ -5,7 +5,6 @@ public class Employer extends User {
     private String title;
     private String email;
     private double rating;
-    private ArrayList<EmployerReview> reviews;
     private String location;
     private String mission;
     private ArrayList<InternshipPost> posts;
@@ -17,15 +16,14 @@ public class Employer extends User {
         title = "";
         email = "";
         rating = 0.0;
-        reviews = new ArrayList<EmployerReview>();
         location = "";
         mission = "";
         posts = new ArrayList<InternshipPost>();
         id = super.getUUID();
     }
 
-    public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission, ArrayList<EmployerReview> reviews) {
-        super(username, password, id);
+    public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission, ArrayList<Review> reviews) {
+        super(username, password);
         this.id = id;
         this.title = title;
         this.username = username;
@@ -34,7 +32,6 @@ public class Employer extends User {
         this.rating = rating;
         this.location = location;
         this.mission = mission;
-        this.reviews = reviews;
     }
 
     public String getEmail() {
@@ -43,10 +40,6 @@ public class Employer extends User {
 
     public double getRating() {
         return rating;
-    }
-
-    public ArrayList<EmployerReview> getReviews() {
-        return reviews;
     }
 
     public String getLocation() {
@@ -72,10 +65,10 @@ public class Employer extends User {
     public String toString() {
         String ret = "\nTitle: " + title + "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
                         rating + "\nLocation: " + location + "\nMission: " + mission + "\nReviews: ";
-        for (EmployerReview review : reviews) {
+        ArrayList<Review> reviews = super.getReviews();
+        for (Review review : reviews) {
             ret += review;
         }
-
         return ret;
     }
 
@@ -86,10 +79,4 @@ public class Employer extends User {
     public void deletePost(InternshipPost post) {
         posts.remove(post);
     }
-
-    // public void addStudentReview(Student student, int rating, String comment) {
-    //     StudentReview studentReview = new StudentReview(student, rating, comment);
-    //     reviews.add(studentReview);
-    // }
-
 }

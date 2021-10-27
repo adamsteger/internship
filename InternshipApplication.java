@@ -15,42 +15,42 @@ public class InternshipApplication{
     }
 
     //creates a new student account
-    public boolean createStudentAccount(String username, String password) {
-        return studentList.addStudent(username, password);
+    public boolean createStudent(Student student) {
+        return studentList.addStudent(student);
     }
 
     //creates a new employer account
-    public boolean createEmployerAccount(String username, String password) {
-        return employerList.addEmployer(username, password);
+    public boolean createEmployer(Employer employer) {
+        return employerList.addEmployer(employer);
     }
 
     //creates a new admin account
-    public boolean createAdminAccount(String username, String password) {
-        return adminList.addAdmin(username, password);
+    public boolean createAdmin(Admin admin) {
+        return adminList.addAdmin(admin);
     }
 
-    public boolean studentLogin(String username) {
+    public Student studentLogin(String username) {
         if(!studentList.haveStudent(username))
-            return false;
+            return null;
         
         student = studentList.getStudentByUser(username);
-        return true;
+        return student;
     }
 
-    public boolean employerLogin(String username) {
+    public Employer employerLogin(String username) {
         if(!employerList.haveEmployer(username))
-            return false;
+            return null;
         
         employer = employerList.getEmployerByUser(username);
-        return true;
+        return employer;
     }
 
-    public boolean adminLogin(String username) {
+    public Admin adminLogin(String username) {
         if(!adminList.haveAdmin(username))
-            return false;
+            return null;
         
         admin = adminList.getAdminByUser(username);
-        return true;
+        return admin;
     }
 
     public boolean findInternship(String employerTitle, String posTitle){
@@ -80,7 +80,31 @@ public class InternshipApplication{
         return true;
     }
     
-    //public void studentReview(, String comment){
+    public void studentReview(String comment){
 
-    //}/
+    }
+
+    public void addWorkExperience(WorkExperience work) {
+        student.getResume().addWork(work);
+        DataWriter.saveStudents();
+    } 
+
+    public void addEducation(Education edu) {
+        student.getResume().addEducation(edu);
+        DataWriter.saveStudents();
+    }
+
+    public void addExtracurricular(Extracurricular extra) {
+        student.getResume().addExtracurricular(extra);
+        DataWriter.saveStudents();
+    }
+
+    public void addSkill(Skill skill, boolean bool) {
+        student.getResume().addSkill(skill, bool);
+        DataWriter.saveStudents();
+    }
+
+    public void addCourse(String course, boolean bool) {
+        student.getResume().addCourse(course, bool);
+    }
 }
