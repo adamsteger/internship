@@ -192,17 +192,17 @@ public class InternshipUI {
     }
 
     private void exicuteAdminHomeOpt(Student student, int opt) {
-        if(opt==0){//Sign Out
+        if (opt == 0) {// Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
-        } else if(opt==1){//Delete Post
+        } else if (opt == 1) {// Delete Post
 
-        } else if(opt==2){//Delete Review
+        } else if (opt == 2) {// Delete Review
 
-        } else {//Deletion History
+        } else {// Deletion History
 
         }
-        }
+    }
 
     private void adminSignIn() {
         boolean loop = true;
@@ -227,69 +227,61 @@ public class InternshipUI {
             // }
         }
 
-        //TODO Call Admin admin = InternshipApplication.adminLogin(username);
+        // TODO Call Admin admin = InternshipApplication.adminLogin(username);
 
         Admin admin = new Admin(userName, pass);
         displayAdminHome(admin);
     }
 
-    private void studentSignIn() {
-        boolean loop = true;
+    private Student studentSignIn() {
         String userName = null;
         String pass = null;
-        while (loop) {
+        Student student;
+        while (true) {
             System.out.println("~~ Student Sign In ~~\n");
             System.out.println("Enter Username: ");
             userName = scanner.nextLine();
-            // check if username is valid
-            // if(!validUser){
-            // continue;
-            // }
-            // for (int i = 0; i < PASS_ATTEMPTS; i++) {
-            // if limitetd password attempts
-            // }
+
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
-            // check if password is valid
-            // if(!correctPass(userName, pass)){
-            // continue;
-            // }
-        }
 
-        //Student student = new Student(userName, pass);// Somehow get correct student
-        // shouldn't create student for sign in 
-        //Student student = InternshipApplication.studentLogin(userName);
-        //displayStudentHome(student);
+            student = InternshipApplication.studentLogin(userName, pass);
+            if (student == null) {
+                break;
+            }
+        }
+        return student;
+
+        // Student student = new Student(userName, pass);// Somehow get correct student
+        // shouldn't create student for sign in
+        // Student student = InternshipApplication.studentLogin(userName);
+        // displayStudentHome(student);
     }
 
-    private void employerSignIn() {
-        boolean loop = true;
+    private Employer employerSignIn() {
         String userName = null;
         String pass = null;
-        while (loop) {
+        Employer employer;
+        while (true) {
             System.out.println("~~ Employer Sign In ~~\n");
             System.out.println("Enter Username: ");
             userName = scanner.nextLine();
-            // check if username is valid
-            // if(!validUser){
-            // continue;
-            // }
+
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
-            // check if password is valid
-            // if(!correctPass(username, pass)){
-            // continue;
-            // }
+
+            employer = InternshipApplication.login(userName, pass);
+            if (employer == null) {
+                break;
+            }
         }
         // Somehow reurn the correct Employer
 
-        //TODO Call Employer employer = InternshipApplication.employerLogin(username);
-        Employer employer = new Employer(userName, pass);
-        displayEmployerHome(employer);
+        // TODO Call Employer employer = InternshipApplication.employerLogin(username);
+        return employer;
     }
 
     private void createStudent() {
-        UUID id = null;// get new and random id
         String username, password, firstName, lastName, email, phone, address;
         double gpa;
         int gradYear;
@@ -328,7 +320,8 @@ public class InternshipUI {
         Student student = new Student(firstName, lastName, username, password, gradYear, email, address, phone, gpa,
                 showGPA);
 
-        // TODO Call InternshipApplication.createStudent(student)
+        InternshipApplication.createStudent(student);
+        InternshipApplication.studentLogin(username, password);
 
         System.out.print("Would you like to add Work experience?");
         if (yesNo()) {
@@ -355,7 +348,7 @@ public class InternshipUI {
         }
 
         displayStudentHome(student);
-        ;
+
     }
 
     private void createEmployer() {
@@ -381,7 +374,7 @@ public class InternshipUI {
 
         Employer employer = new Employer(id, title, username, password, email, -1, location, mission, null);
 
-        //TODO Call InternshipApplication.createEmployer(employer);
+        // TODO Call InternshipApplication.createEmployer(employer);
 
         displayEmployerHome(employer);
     }
@@ -451,6 +444,7 @@ public class InternshipUI {
             resume = yesNo();
 
             WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
+            InternshipApplication.addWorkExperience(work);
 
             // TODO InternshipApplication.addWorkExperience(work);
             // TODO add work to passed in student
