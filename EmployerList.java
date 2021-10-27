@@ -15,9 +15,9 @@ public class EmployerList {
         return employerList;
     }
 
-    public boolean haveEmployer(String username) {
+    public boolean haveEmployer(String title) {
         for(Employer employer : employers) {
-            if(employer.getUsername().equals(username)) {
+            if(employer.getTitle().equals(title)) {
                 return true;
             }
         }
@@ -28,9 +28,18 @@ public class EmployerList {
         return employers;
     }
 
+    public Employer getEmployerByTitle(String title) {
+        for(Employer employer : employers) {
+            if(employer.getTitle().contains(title)) {
+                return employer;
+            }
+        }
+        return null;
+    }
+
     public Employer getEmployerByUser(String username) {
         for(Employer employer : employers) {
-            if(employer.getUsername().equals(username)) {
+            if(employer.getUsername().contains(username)) {
                 return employer;
             }
         }
@@ -46,11 +55,11 @@ public class EmployerList {
         return null;
     }
 
-    public boolean addEmployer(String username, String password) {
-        if(haveEmployer(username))
+    public boolean addEmployer(Employer employer) {
+        if(haveEmployer(employer.getUsername()))
             return false;
         
-        employers.add(new Employer(username, password));
+        employers.add(employer);
         return true;
     }
 

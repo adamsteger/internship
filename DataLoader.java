@@ -53,7 +53,7 @@ public class DataLoader extends DataConstants {
 					favPosts.add(post);
 				}
 
-				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating, reviews, favPosts));
+				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone, gpa, showGPA, rating, favPosts));
 			}
 			
 			return students;

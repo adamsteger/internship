@@ -21,6 +21,9 @@ public class Resume {
         id = UUID.randomUUID();
     }
 
+    public Resume() {
+    }
+
     public ArrayList<Education> getEducations() {
         return this.educations;
     }

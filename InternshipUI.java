@@ -254,8 +254,10 @@ public class InternshipUI {
             // }
         }
 
-        Student student = new Student(userName, pass);// Somehow get correct student
-        displayStudentHome(student);
+        //Student student = new Student(userName, pass);// Somehow get correct student
+        // shouldn't create student for sign in 
+        //Student student = InternshipApplication.studentLogin(userName);
+        //displayStudentHome(student);
     }
 
     private void employerSignIn() {
@@ -319,8 +321,8 @@ public class InternshipUI {
         System.out.print("Add this GPA to Resume?");
         showGPA = yesNo();
 
-        Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
-                showGPA, -1, null, null);
+        Student student = new Student(firstName, lastName, username, password, gradYear, email, address, phone, gpa,
+                showGPA);
 
         // TODO Call InternshipApplication.createStudent(student)
 

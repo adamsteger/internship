@@ -46,11 +46,11 @@ public class AdminList {
         return null;
     }
 
-    public boolean addAdmin(String username, String password){
-        if(haveAdmin(username))
+    public boolean addAdmin(Admin admin){
+        if(haveAdmin(admin.getUsername()))
             return false;
 
-        admins.add(new Admin(username, password));
+        admins.add(admin);
         return true;
     }
     
