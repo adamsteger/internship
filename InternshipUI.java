@@ -192,17 +192,17 @@ public class InternshipUI {
     }
 
     private void exicuteAdminHomeOpt(Student student, int opt) {
-        if(opt==0){//Sign Out
+        if (opt == 0) {// Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
-        } else if(opt==1){//Delete Post
+        } else if (opt == 1) {// Delete Post
 
-        } else if(opt==2){//Delete Review
+        } else if (opt == 2) {// Delete Review
 
-        } else {//Deletion History
+        } else {// Deletion History
 
         }
-        }
+    }
 
     private void adminSignIn() {
         boolean loop = true;
@@ -231,55 +231,45 @@ public class InternshipUI {
         displayAdminHome(admin);
     }
 
-    private void studentSignIn() {
-        boolean loop = true;
+    private Student studentSignIn() {
         String userName = null;
         String pass = null;
-        while (loop) {
+        Student student;
+        while (true) {
             System.out.println("~~ Student Sign In ~~\n");
             System.out.println("Enter Username: ");
             userName = scanner.nextLine();
-            // check if username is valid
-            // if(!validUser){
-            // continue;
-            // }
-            // for (int i = 0; i < PASS_ATTEMPTS; i++) {
-            // if limitetd password attempts
-            // }
+
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
-            // check if password is valid
-            // if(!correctPass(userName, pass)){
-            // continue;
-            // }
+            student = InternshipApplication.login(userName, pass);
+            if (student == null) {
+                break;
+            }
         }
+        return student;
 
-        Student student = new Student(userName, pass);// Somehow get correct student
-        displayStudentHome(student);
     }
 
-    private void employerSignIn() {
-        boolean loop = true;
+    private Employer employerSignIn() {
         String userName = null;
         String pass = null;
-        while (loop) {
+        Employer employer;
+        while (true) {
             System.out.println("~~ Employer Sign In ~~\n");
             System.out.println("Enter Username: ");
             userName = scanner.nextLine();
-            // check if username is valid
-            // if(!validUser){
-            // continue;
-            // }
+
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
-            // check if password is valid
-            // if(!correctPass(username, pass)){
-            // continue;
-            // }
+
+            employer = InternshipApplication.login(userName, pass);
+            if (employer == null) {
+                break;
+            }
         }
-        // Somehow reurn the correct Employer
-        Employer employer = new Employer(userName, pass);
-        displayEmployerHome(employer);
+
+        return employer;
     }
 
     private void createStudent() {
@@ -347,7 +337,7 @@ public class InternshipUI {
         }
 
         displayStudentHome(student);
-        ;
+
     }
 
     private void createEmployer() {
