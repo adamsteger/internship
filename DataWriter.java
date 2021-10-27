@@ -20,7 +20,13 @@ public class DataWriter extends DataConstants {
 	}
 
 	public static void saveEmployers() {
+		EmployerList employers = EmployerList.getInstance();
+		ArrayList<Employer> employerList = employers.getEmployers();
+		JSONArray JSONEmployers = new JSONArray();
 
+		for (int i = 0; i < employerList.size(); i++) {
+			JSONEmployers.add(getEmployerJSON(employerList.get(i)));
+		}
 	}
 
 	public static void saveAdmins() {
@@ -73,8 +79,33 @@ public class DataWriter extends DataConstants {
 	}
 
 	public static JSONObject getEmployerJSON(Employer employer) {
-		JSONObject personJSON = new JSONObject();
-		return personJSON;
+		HashMap<String, Object> employerDetails = new HashMap<String, Object>();
+		employerDetails.put(USER_ID, employer.getUUID().toString());
+		employerDetails.put(EMPLOYER_TITLE, employer.getTitle());
+		employerDetails.put(USER_USER_NAME, employer.getUsername());
+		employerDetails.put(USER_PASSWORD, employer.getPassword());
+		employerDetails.put(USER_EMAIL, employer.getEmail());
+		employerDetails.put(USER_RATING, employer.getRating());
+		employerDetails.put(EMPLOYER_LOCATION, employer.getLocation());
+		employerDetails.put(EMPLOYER_MISSION, employer.getMission());
+		
+		JSONArray JSONReviews = new JSONArray();
+		for (int i = 0; i < employer.getReviews().size(); i++) {
+			HashMap<String, Object> reviewDetails = new HashMap<String, Object>();
+			Review review = employer.getReviews().get(i);
+			reviewDetails.put(REVIEW_RATING, review.getRating());
+			reviewDetails.put(REVIEW_WRITER, review.getWriter());
+			reviewDetails.put(REVIEW_COMMENT, review.getComment());
+			JSONObject reviewDetailsJSON = new JSONObject(reviewDetails);
+
+			JSONReviews.add(reviewDetailsJSON);
+		}
+
+		employerDetails.put(STUDENT_REVIEWS, JSONReviews);
+
+		JSONObject employerDetailsJSON = new JSONObject(employerDetails);
+
+		return employerDetailsJSON;
 	}
 
 	public static JSONObject getAdminJSON(Admin admin) {
