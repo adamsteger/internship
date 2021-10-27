@@ -3,15 +3,14 @@ import java.util.Hashtable;
 import java.util.UUID;
 
 public class Resume {
-    private Student student;
     private ArrayList<Education> educations;
-    private ArrayList<Skill> skills;
+    private Hashtable<Skill, Boolean> skills;
     private Hashtable<String, Boolean> courses;
     private ArrayList<WorkExperience> work;
     private ArrayList<Extracurricular> extracurriculars;
     private UUID id;
     
-    public Resume(ArrayList<Education> educations, ArrayList<Skill> skills, Hashtable<String, Boolean> courses, 
+    public Resume(ArrayList<Education> educations, Hashtable<Skill, Boolean> skills, Hashtable<String, Boolean> courses, 
       ArrayList<WorkExperience> work, ArrayList<Extracurricular> extracurriculars) {
         this.educations = educations;
         this.skills = skills;
@@ -22,13 +21,19 @@ public class Resume {
     }
 
     public Resume() {
+        educations = new ArrayList<Education>();
+        skills = new Hashtable<Skill, Boolean>();
+        courses = new Hashtable<String, Boolean>();
+        work = new ArrayList<WorkExperience>();
+        extracurriculars = new ArrayList<Extracurricular>();
+        id = UUID.randomUUID();
     }
 
     public ArrayList<Education> getEducations() {
         return this.educations;
     }
 
-    public ArrayList<Skill> getSkills() {
+    public Hashtable<Skill, Boolean> getSkills() {
         return this.skills;
     }
 
@@ -52,16 +57,16 @@ public class Resume {
         educations.remove(edu);
     }
 
-    public void addSkill(Skill skill) {
-        skills.add(skill);
+    public void addSkill(Skill skill, boolean bool) {
+        skills.put(skill, bool);
     }
 
     public void removeSkill(Skill skill) {
         skills.remove(skill);
     }
 
-    public void addCourse(String course) {
-        courses.put(course, true);
+    public void addCourse(String course, boolean bool) {
+        courses.put(course, bool);
     }
 
     public void removeCourse(String course) {
@@ -82,14 +87,6 @@ public class Resume {
 
     public void removeExtracurricular(Extracurricular extracurricular) {
         extracurriculars.remove(extracurricular);
-    }
-
-    public void apply(InternshipPost post) {
-        
-    }
-
-    public void addCompanyReview(Employer employer, int rating, String comment) {
-
     }
 
     public void sortReverseChronEdu(ArrayList<Education> education) {
