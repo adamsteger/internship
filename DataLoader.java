@@ -33,15 +33,14 @@ public class DataLoader extends DataConstants {
 				double rating = (double)personJSON.get(USER_RATING);
 
 				JSONArray reviewsJSON = (JSONArray)personJSON.get(STUDENT_REVIEWS);
-				ArrayList<StudentReview> reviews = new ArrayList<StudentReview>();
+				ArrayList<Review> reviews = new ArrayList<Review>();
 				for (int j = 0; j < reviewsJSON.size(); j++) {
 					JSONObject reviewJSON = (JSONObject)reviewsJSON.get(j);
-					UUID writerID = UUID.fromString((String)reviewJSON.get(REVIEW_WRITER_ID));
-					Employer employer = EmployerList.getInstance().getEmployerByID(writerID);
+					String writer = (String)reviewJSON.get(REVIEW_WRITER);
 					int reviewRating = ((Long)reviewJSON.get(REVIEW_RATING)).intValue();
 					String comment = (String)reviewJSON.get(REVIEW_COMMENT);
 
-					reviews.add(new StudentReview(employer, reviewRating, comment));
+					reviews.add(new Review(writer, reviewRating, comment));
 				}
 
 				JSONArray favPostsJSON = (JSONArray)personJSON.get(STUDENT_FAV_POSTS);
@@ -86,15 +85,14 @@ public class DataLoader extends DataConstants {
 				String mission = (String)personJSON.get(EMPLOYER_MISSION);
 
 				JSONArray reviewsJSON = (JSONArray)personJSON.get(EMPLOYER_REVIEWS);
-				ArrayList<EmployerReview> reviews = new ArrayList<EmployerReview>();
+				ArrayList<Review> reviews = new ArrayList<Review>();
 				for (int j = 0; j < reviewsJSON.size(); j++) {
 					JSONObject reviewJSON = (JSONObject)reviewsJSON.get(j);
-					UUID writerID = UUID.fromString((String)reviewJSON.get(REVIEW_WRITER_ID));
-					// Student student = StudentList.getInstance().getStudentByID(writerID);
+					String writer = (String)reviewJSON.get(REVIEW_WRITER);
 					int reviewRating = ((Long)reviewJSON.get(REVIEW_RATING)).intValue();
 					String comment = (String)reviewJSON.get(REVIEW_COMMENT);
 
-				// 	reviews.add(new EmployerReview(student, reviewRating, comment));
+				 	reviews.add(new Review(writer, reviewRating, comment));
 				}
 
 				

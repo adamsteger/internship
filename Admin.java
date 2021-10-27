@@ -29,15 +29,11 @@ public class Admin extends User {
        internshipList.save();
     }
 
-    public void deleteStudentReview(StudentReview review) {
+    public void deleteReview(Review review) {
         
     }
 
-    public void addStudentReview(StudentReview review) {
-
-    }
-
-    public void deleteEmployerReview(EmployerReview review) {
+    public void addReview(Review review) {
 
     }
 }
