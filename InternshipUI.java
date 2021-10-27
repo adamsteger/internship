@@ -195,12 +195,13 @@ public class InternshipUI {
         if(opt==0){//Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
-        }else if(opt==1){//Delete Post
+        } else if(opt==1){//Delete Post
 
-        }else if(opt==2){//Delete Review
+        } else if(opt==2){//Delete Review
 
-        }else{//Deletion History
+        } else {//Deletion History
 
+        }
         }
 
     private void adminSignIn() {
@@ -377,7 +378,7 @@ public class InternshipUI {
 
     private String createUsername() {
         boolean loop = true;
-        String userName;
+        String userName = "";
         while (loop) {
             System.out.println("Create a Username(6-15 Characters): ");
             userName = scanner.nextLine();
@@ -394,7 +395,10 @@ public class InternshipUI {
             }
         }
         return userName;
+    }
 
+    private boolean validUser(String userName) {
+        return false;
     }
 
     private String createPassword() {

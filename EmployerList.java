@@ -6,11 +6,7 @@ public class EmployerList {
     private ArrayList<Employer> employers;
     
     private EmployerList() {
-        this.employers = DataLoader.getEmployers();
-    }
-
-    public ArrayList<Employer> getEmployers() {
-        return this.employers;
+        employers = DataLoader.getEmployers();
     }
 
     public static EmployerList getInstance() {
@@ -19,25 +15,46 @@ public class EmployerList {
         return employerList;
     }
 
-    public Employer getEmployerByID(UUID id) {
-        Employer ret = new Employer();
-        for (Employer employer : employers) {
-            if (employer.getUUID().equals(id)) {
-                ret = employer;
+    public boolean haveEmployer(String username) {
+        for(Employer employer : employers) {
+            if(employer.getUsername().equals(username)) {
+                return true;
             }
         }
-        return ret;
+        return false;
     }
-    public ArrayList<Employer> removeEmployer(Employer employer){
-        employers.remove(employer);
+
+    public ArrayList<Employer> getEmployers() {
         return employers;
     }
 
-    public void save() {
-        
+    public Employer getEmployerByUser(String username) {
+        for(Employer employer : employers) {
+            if(employer.getUsername().equals(username)) {
+                return employer;
+            }
+        }
+        return null;
     }
 
-    public void remove() {
+    public Employer getEmployerByID(UUID id) {
+        for (Employer employer : employers) {
+            if (employer.getUUID().equals(id)) {
+                return employer;
+            }
+        }
+        return null;
+    }
 
+    public boolean addEmployer(String username, String password) {
+        if(haveEmployer(username))
+            return false;
+        
+        employers.add(new Employer(username, password));
+        return true;
+    }
+
+    public void save() {
+        DataWriter.saveEmployers();
     }
 }
