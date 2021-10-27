@@ -29,8 +29,9 @@ public class Admin extends User {
        internshipList.save();
     }
 
-    public void deleteStudentReview(StudentReview review) {
-        
+    public void deleteStudentReview(Student student, StudentReview review) {
+        student.getReviews().remove(review);
+        //save this somehow in datawriter
     }
 
     public void addStudentReview(StudentReview review) {
