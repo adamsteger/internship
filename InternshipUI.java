@@ -244,7 +244,8 @@ public class InternshipUI {
 
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
-            student = InternshipApplication.login(userName, pass);
+
+            student = InternshipApplication.studentLogin(userName, pass);
             if (student == null) {
                 break;
             }
@@ -277,12 +278,10 @@ public class InternshipUI {
         // Somehow reurn the correct Employer
 
         // TODO Call Employer employer = InternshipApplication.employerLogin(username);
-        Employer employer = new Employer(userName, pass);
-        displayEmployerHome(employer);
+        return employer;
     }
 
     private void createStudent() {
-        UUID id = null;// get new and random id
         String username, password, firstName, lastName, email, phone, address;
         double gpa;
         int gradYear;
@@ -321,7 +320,8 @@ public class InternshipUI {
         Student student = new Student(firstName, lastName, username, password, gradYear, email, address, phone, gpa,
                 showGPA);
 
-        // TODO Call InternshipApplication.createStudent(student)
+        InternshipApplication.createStudent(student);
+        InternshipApplication.studentLogin(username, password);
 
         System.out.print("Would you like to add Work experience?");
         if (yesNo()) {
@@ -444,6 +444,7 @@ public class InternshipUI {
             resume = yesNo();
 
             WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
+            InternshipApplication.addWorkExperience(work);
 
             // TODO InternshipApplication.addWorkExperience(work);
             // TODO add work to passed in student
