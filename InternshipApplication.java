@@ -37,20 +37,20 @@ public class InternshipApplication{
         return student;
     }
 
-    public boolean employerLogin(String username) {
+    public Employer employerLogin(String username) {
         if(!employerList.haveEmployer(username))
-            return false;
+            return null;
         
         employer = employerList.getEmployerByUser(username);
-        return true;
+        return employer;
     }
 
-    public boolean adminLogin(String username) {
+    public Admin adminLogin(String username) {
         if(!adminList.haveAdmin(username))
-            return false;
+            return null;
         
         admin = adminList.getAdminByUser(username);
-        return true;
+        return admin;
     }
 
     public boolean findInternship(String employerTitle, String posTitle){
@@ -82,5 +82,29 @@ public class InternshipApplication{
     
     public void studentReview(String comment){
 
+    }
+
+    public void addWorkExperience(WorkExperience work) {
+        student.getResume().addWork(work);
+        DataWriter.saveStudents();
+    } 
+
+    public void addEducation(Education edu) {
+        student.getResume().addEducation(edu);
+        DataWriter.saveStudents();
+    }
+
+    public void addExtracurricular(Extracurricular extra) {
+        student.getResume().addExtracurricular(extra);
+        DataWriter.saveStudents();
+    }
+
+    public void addSkill(Skill skill, boolean bool) {
+        student.getResume().addSkill(skill, bool);
+        DataWriter.saveStudents();
+    }
+
+    public void addCourse(String course, boolean bool) {
+        student.getResume().addCourse(course, bool);
     }
 }
