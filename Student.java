@@ -11,7 +11,6 @@ public class Student extends User {
     private double gpa;
     private boolean showGPA;
     private double rating;
-    private ArrayList<Review> reviews;
     private ArrayList<InternshipPost> favoritePosts;
     private UUID id;
     private Resume resume;
@@ -28,9 +27,9 @@ public class Student extends User {
         gpa = 0.0;
         showGPA = true;
         rating = 0.0;
-        reviews = new ArrayList<Review>();
         favoritePosts = new ArrayList<InternshipPost>();
         id = super.getUUID();
+        resume = new Resume();
     }
 
     public Student(String firstName, String lastName, String username, String password, int gradYear, String email, 
@@ -39,7 +38,7 @@ public class Student extends User {
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
-                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<Review> reviews,
+                    String email, String address, String phone, double gpa, boolean showGPA, double rating,
                     ArrayList<InternshipPost> favPosts) {
         super(username, password);
         this.id = id;
@@ -54,7 +53,6 @@ public class Student extends User {
         this.gpa = gpa;
         this.showGPA = showGPA;
         this.rating = rating;
-        this.reviews = reviews;
         this.employerList = EmployerList.getInstance();
         this.favoritePosts = favPosts;
         // resume = new Resume();
@@ -104,10 +102,6 @@ public class Student extends User {
         return rating;
     }
 
-    public ArrayList<Review> getReviews() {
-        return reviews;
-    }
-
     public ArrayList<InternshipPost> getFavoritePosts() {
         return favoritePosts;
     }
@@ -124,11 +118,6 @@ public class Student extends User {
         return firstName + " " + lastName;
     }
 
-    public void addReview(String writer, int rating, String comment) {
-        Review review = new Review(writer, rating, comment);
-        reviews.add(review);
-    }
-
     public void addFavoritePost(InternshipPost post) {
         favoritePosts.add(post);
     }
@@ -137,6 +126,7 @@ public class Student extends User {
         String ret = "\nName: " + firstName + " " + lastName + "\nUsername: " + username + "\nPassword: " 
                     + password + "\nGrad Year: " + gradYear + "\nEmail: " + email + "\nPhone: "
                     + phone + "\nGPA: " + gpa + "\nRating: " + rating + "\nReviews: ";
+        ArrayList<Review> reviews = super.getReviews();
         for (Review review : reviews) {
             ret += review + "\n";
         }

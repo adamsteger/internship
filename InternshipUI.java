@@ -320,7 +320,7 @@ public class InternshipUI {
         showGPA = yesNo();
 
         Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
-                showGPA, -1, null, null);
+                showGPA, -1, null);
 
         System.out.print("Would you like to add Work experience?");
         if (yesNo()) {

@@ -9,13 +9,15 @@ public abstract class User {
     private AdminList adminList;
     private InternshipList internshipList;
     private UUID id;
+    private ArrayList<Review> reviews;
 
 
     //existing account loaded from json
-    public User(String username, String password, UUID id) {
+    public User(String username, String password, UUID id, ArrayList<Review> reviews) {
         this.username = username;
         this.password = password;
         this.id = id;
+        this.reviews = reviews;
     }
     
     //new account
@@ -23,6 +25,7 @@ public abstract class User {
         this.username = username;
         this.password = password;
         this.id = UUID.randomUUID();
+        this.reviews = new ArrayList<Review>();
     }
 
     public String getUsername() {
@@ -35,6 +38,10 @@ public abstract class User {
 
     public UUID getUUID() {
         return id;
+    }
+
+    public ArrayList<Review> getReviews() {
+        return reviews;
     }
 
     private boolean checkUsername(String username) {
@@ -116,5 +123,10 @@ public abstract class User {
                 retList.add(currentPost);
         }
         return retList;
+    }
+
+    public void addReview(String writer, int rating, String comment) {
+        Review review = new Review(writer, rating, comment);
+        reviews.add(review);
     }
 }
