@@ -135,8 +135,8 @@ public class DataLoader extends DataConstants {
 				ArrayList<Skill> skills = new ArrayList<Skill>();
 				for (int j = 0; j < skillsJSON.size(); j++) {
 					JSONObject skillJSON = (JSONObject)skillsJSON.get(j);
-					Skill skill = (Skill)skillJSON.get(INTERNSHIP_SKILL);
-
+					String skillString = (String)skillJSON.get(INTERNSHIP_SKILL);
+					Skill skill = Skill.valueOf(skillString);
 					skills.add(skill);
 				}
 				
