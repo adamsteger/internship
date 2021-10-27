@@ -162,17 +162,17 @@ public class DataLoader extends DataConstants {
 		ArrayList<Student> students = DataLoader.getStudents();
 		ArrayList<InternshipPost> posts = DataLoader.getInternshipPosts();
 
-		// for(Student student : students) {
-		// 	System.out.println(student);
-		// }
+		for(Student student : students) {
+			System.out.println(student);
+		}
 
 		// for(Employer employer : employers){
 		// 	System.out.println(employer);
 		// }
 
-		for(InternshipPost post : posts) {
-			System.out.println(post);
-		}
+		// for(InternshipPost post : posts) {
+		// 	System.out.println(post);
+		// }
 	}
 
    
