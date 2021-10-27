@@ -125,7 +125,7 @@ public class Student extends User {
     }
 
     public void addReview(UUID writerID, int rating, String comment) {
-        Employer writer = employerList.getEmployerByID(writerID);
+        String writer = employerList.getEmployerByID(writerID).getTitle();
         StudentReview review = new StudentReview(writer, rating, comment);
         reviews.add(review);
     }
