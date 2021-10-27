@@ -89,13 +89,14 @@ public class Resume {
 
     }
 
-    public void sortReverseChronEdu(Hashtable<Education, Boolean> education) {
+    public void sortReverseChronEdu(ArrayList<Education> education) {
         
     }
 
-    public void sortReverseChronWork(Hashtable<WorkExperience, Boolean> work) {
+    public void sortReverseChronWork(ArrayList<Education> work) {
 
     }
+    
     public String toString() {
         return "";
     }
