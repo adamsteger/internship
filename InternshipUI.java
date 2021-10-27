@@ -227,6 +227,8 @@ public class InternshipUI {
             // }
         }
 
+        //TODO Call Admin admin = InternshipApplication.adminLogin(username);
+
         Admin admin = new Admin(userName, pass);
         displayAdminHome(admin);
     }
@@ -280,6 +282,8 @@ public class InternshipUI {
             // }
         }
         // Somehow reurn the correct Employer
+
+        //TODO Call Employer employer = InternshipApplication.employerLogin(username);
         Employer employer = new Employer(userName, pass);
         displayEmployerHome(employer);
     }
