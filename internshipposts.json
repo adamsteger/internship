@@ -6,20 +6,16 @@
     "description" : "You will be tasked with assisting leading IBM developers in creating and pushing projects.",
     "location" : "Washington, DC",
     "skillReq" : [
-      {"Skill" : "C++"},
-      {"Skill" : "Java"},
-      {"Skill" : "Python"}
+      {"Skill" : "CPP"},
+      {"Skill" : "JAVA"},
+      {"Skill" : "PYTHON"}
     ],
     "startDate" : "June 2021",
     "endDate" : "August 2021",
     "isRemote" : true,
     "isOpen" : true,
     "lowPay" : 1500,
-    "highPay" : 2000,
-    "applicants" : [
-      {"id" : 0, "username" : "adamsanfacon"},
-      {"id" : 1, "username" : "vahneugenio"}
-    ]
+    "highPay" : 2000
   },
   {
     "id" : "1760ffc1-3d8c-447b-a31c-2b13da728cf2",
@@ -29,17 +25,13 @@
     "location" : "Mountain View, CA",
     "skillReq" : [
       {"Skill" : "HTML"},
-      {"Skill" : "CSS"}
+      {"Skill" : "C"}
     ],
     "startDate" : "June 2021",
     "endDate" : "August 2021",
     "isRemote" : true,
     "isOpen" : true,
     "lowPay" : 2500,
-    "highPay" : 2750,
-    "applicants" : [
-      {"id" : 0, "username" : "adamsteger"},
-      {"id" : 1, "username" : "anaboccanfuso"}
-    ]
+    "highPay" : 2750
   }
 ]
