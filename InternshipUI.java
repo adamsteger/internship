@@ -316,11 +316,13 @@ public class InternshipUI {
         gpa = scanner.nextDouble();
         scanner.nextLine();
 
-        System.out.print("Add this to Resume?");
+        System.out.print("Add this GPA to Resume?");
         showGPA = yesNo();
 
         Student student = new Student(id, firstName, lastName, username, password, gradYear, email, address, phone, gpa,
                 showGPA, -1, null, null);
+
+        // TODO Call InternshipApplication.createStudent(student)
 
         System.out.print("Would you like to add Work experience?");
         if (yesNo()) {
@@ -372,6 +374,8 @@ public class InternshipUI {
         mission = scanner.nextLine();
 
         Employer employer = new Employer(id, title, username, password, email, -1, location, mission, null);
+
+        //TODO Call InternshipApplication.createEmployer(employer);
 
         displayEmployerHome(employer);
     }
@@ -442,6 +446,7 @@ public class InternshipUI {
 
             WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
 
+            // TODO InternshipApplication.addWorkExperience(work);
             // TODO add work to passed in student
 
         }
