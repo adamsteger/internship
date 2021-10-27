@@ -45,9 +45,9 @@ public class DataWriter extends DataConstants {
 		JSONArray JSONReviews = new JSONArray();
 		for (int i = 0; i < student.getReviews().size(); i++) {
 			HashMap<String, Object> reviewDetails = new HashMap<String, Object>();
-			StudentReview review = student.getReviews().get(i);
+			Review review = student.getReviews().get(i);
 			reviewDetails.put(REVIEW_RATING, review.getRating());
-			reviewDetails.put(REVIEW_WRITER_ID, review.getWriter().getUUID().toString());
+			reviewDetails.put(REVIEW_WRITER, review.getWriter());
 			reviewDetails.put(REVIEW_COMMENT, review.getComment());
 			JSONObject reviewDetailsJSON = new JSONObject(reviewDetails);
 

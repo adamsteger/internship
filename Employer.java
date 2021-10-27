@@ -5,7 +5,7 @@ public class Employer extends User {
     private String title;
     private String email;
     private double rating;
-    private ArrayList<EmployerReview> reviews;
+    private ArrayList<Review> reviews;
     private String location;
     private String mission;
     private ArrayList<InternshipPost> posts;
@@ -17,14 +17,14 @@ public class Employer extends User {
         title = "";
         email = "";
         rating = 0.0;
-        reviews = new ArrayList<EmployerReview>();
+        reviews = new ArrayList<Review>();
         location = "";
         mission = "";
         posts = new ArrayList<InternshipPost>();
         id = super.getUUID();
     }
 
-    public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission, ArrayList<EmployerReview> reviews) {
+    public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission, ArrayList<Review> reviews) {
         super(username, password, id);
         this.id = id;
         this.title = title;
@@ -45,7 +45,7 @@ public class Employer extends User {
         return rating;
     }
 
-    public ArrayList<EmployerReview> getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
@@ -72,7 +72,7 @@ public class Employer extends User {
     public String toString() {
         String ret = "\nTitle: " + title + "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
                         rating + "\nLocation: " + location + "\nMission: " + mission + "\nReviews: ";
-        for (EmployerReview review : reviews) {
+        for (Review review : reviews) {
             ret += review;
         }
 

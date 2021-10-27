@@ -13,7 +13,7 @@
     "rating" : 3.0,
     "resumeid" : 1,
     "reviews" : [
-        {"writerID" : "d850d67d-1952-45df-a85b-52c50af0c22d", "rating" : 4, "comment" : "Very Solid Intern!"}
+        {"writer" : "Google", "rating" : 4, "comment" : "Very Solid Intern!"}
     ],
     "favoritePosts" : [
         {"id" : "a36abc8b-4f91-4cc4-b761-fe0ff3462326", "posTitle" : "Software Engineer", "employerTitle" : "Amazon"}
@@ -34,7 +34,7 @@
     "rating" : 4.0,
     "resumeid" : 2,
     "reviews" : [
-        {"writerID" : "73c8f955-e5e0-4bec-9ff2-ff7107a5549d", "rating" : 5, "comment" : "Great Work Ethic"}
+        {"writer" : "Amazon", "rating" : 5, "comment" : "Great Work Ethic"}
     ],
     "favoritePosts" : [
         {"id" : "1760ffc1-3d8c-447b-a31c-2b13da728cf2", "posTitle" : "Software Engineer Intern", "employer" : "Google"}

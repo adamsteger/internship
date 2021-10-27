@@ -1,10 +1,11 @@
-public class StudentReview {
+import java.util.UUID;
+
+public class Review {
     private String writer;
     private int rating;
     private String comment;
-    private EmployerList employerList;
 
-    public StudentReview(String writer, int rating, String comment) {
+    public Review(String writer, int rating, String comment) {
         this.writer = writer;
         this.rating = rating;
         this.comment = comment;
@@ -22,9 +23,6 @@ public class StudentReview {
         return comment;
     }
 
-    public EmployerList getEmployerList() {
-        return employerList;
-    }
     public String toString() {
         return "\n\tWriter: " + writer + "\n\tReview Rating: " + rating + "\n\tComment: " + comment;
     }

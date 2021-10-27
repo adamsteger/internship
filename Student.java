@@ -11,7 +11,7 @@ public class Student extends User {
     private double gpa;
     private boolean showGPA;
     private double rating;
-    private ArrayList<StudentReview> reviews;
+    private ArrayList<Review> reviews;
     private ArrayList<InternshipPost> favoritePosts;
     private UUID id;
     private Resume resume;
@@ -28,7 +28,7 @@ public class Student extends User {
         gpa = 0.0;
         showGPA = true;
         rating = 0.0;
-        reviews = new ArrayList<StudentReview>();
+        reviews = new ArrayList<Review>();
         favoritePosts = new ArrayList<InternshipPost>();
         id = super.getUUID();
     }
@@ -39,7 +39,7 @@ public class Student extends User {
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
-                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<StudentReview> reviews,
+                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<Review> reviews,
                     ArrayList<InternshipPost> favPosts) {
         super(username, password);
         this.id = id;
@@ -104,7 +104,7 @@ public class Student extends User {
         return rating;
     }
 
-    public ArrayList<StudentReview> getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
@@ -124,9 +124,8 @@ public class Student extends User {
         return firstName + " " + lastName;
     }
 
-    public void addReview(UUID writerID, int rating, String comment) {
-        String writer = employerList.getEmployerByID(writerID).getTitle();
-        StudentReview review = new StudentReview(writer, rating, comment);
+    public void addReview(String writer, int rating, String comment) {
+        Review review = new Review(writer, rating, comment);
         reviews.add(review);
     }
 
@@ -138,7 +137,7 @@ public class Student extends User {
         String ret = "\nName: " + firstName + " " + lastName + "\nUsername: " + username + "\nPassword: " 
                     + password + "\nGrad Year: " + gradYear + "\nEmail: " + email + "\nPhone: "
                     + phone + "\nGPA: " + gpa + "\nRating: " + rating + "\nReviews: ";
-        for (StudentReview review : reviews) {
+        for (Review review : reviews) {
             ret += review + "\n";
         }
         ret += "Favorite Posts: ";
