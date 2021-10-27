@@ -30,11 +30,10 @@ public class Admin extends User {
     }
 
     public void deleteReview(User user, Review review) {
-        
-    }
-
-    public void addReview(User user, Review review) {
-
+        ArrayList<Review> reviews = user.getReviews();
+        reviews.remove(review);
+        DataWriter.saveEmployers();
+        DataWriter.saveStudents();
     }
 
 }

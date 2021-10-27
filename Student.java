@@ -14,27 +14,24 @@ public class Student extends User {
     private ArrayList<InternshipPost> favoritePosts;
     private UUID id;
     private Resume resume;
-    private EmployerList employerList;
-
-    public Student(String username, String password) {
-        super(username, password);
-        firstName = "";
-        lastName = "";
-        email = "";
-        phone = "";
-        address = "";
-        gradYear = 0;
-        gpa = 0.0;
-        showGPA = true;
-        rating = 0.0;
-        favoritePosts = new ArrayList<InternshipPost>();
-        id = super.getUUID();
-        resume = new Resume();
-    }
 
     public Student(String firstName, String lastName, String username, String password, int gradYear, String email, 
-                    String address, String phone, double gpa, boolean showGPA, double rating) {
+                    String address, String phone, double gpa, boolean showGPA) {
         super(username, password);
+        this.id = UUID.randomUUID();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.gradYear = gradYear;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.gpa = gpa;
+        this.showGPA = showGPA;
+        rating = -1;
+        favoritePosts = new ArrayList<InternshipPost>();
+        resume = new Resume();
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
@@ -53,9 +50,8 @@ public class Student extends User {
         this.gpa = gpa;
         this.showGPA = showGPA;
         this.rating = rating;
-        this.employerList = EmployerList.getInstance();
-        this.favoritePosts = favPosts;
-        // resume = new Resume();
+        favoritePosts = favPosts;
+        resume = new Resume();
     }
 
     public String getFirstName() {
@@ -102,16 +98,16 @@ public class Student extends User {
         return rating;
     }
 
+    public Resume getResume() {
+        return resume;
+    }
+
     public ArrayList<InternshipPost> getFavoritePosts() {
         return favoritePosts;
     }
 
     public UUID getUUID() {
         return id;
-    }
-
-    public EmployerList getEmployerList() {
-        return employerList;
     }
 
     public String getName() {

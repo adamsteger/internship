@@ -15,26 +15,26 @@ public class InternshipApplication{
     }
 
     //creates a new student account
-    public boolean createStudentAccount(String username, String password) {
-        return studentList.addStudent(username, password);
+    public boolean createStudent(Student student) {
+        return studentList.addStudent(student);
     }
 
     //creates a new employer account
-    public boolean createEmployerAccount(String username, String password) {
-        return employerList.addEmployer(username, password);
+    public boolean createEmployer(Employer employer) {
+        return employerList.addEmployer(employer);
     }
 
     //creates a new admin account
-    public boolean createAdminAccount(String username, String password) {
-        return adminList.addAdmin(username, password);
+    public boolean createAdmin(Admin admin) {
+        return adminList.addAdmin(admin);
     }
 
-    public boolean studentLogin(String username) {
+    public Student studentLogin(String username) {
         if(!studentList.haveStudent(username))
-            return false;
+            return null;
         
         student = studentList.getStudentByUser(username);
-        return true;
+        return student;
     }
 
     public boolean employerLogin(String username) {
