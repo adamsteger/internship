@@ -40,4 +40,8 @@ public class Admin extends User {
     public void deleteEmployerReview(EmployerReview review) {
 
     }
+
+    public void addEmployerReview(EmployerReview review) {
+        
+    }
 }

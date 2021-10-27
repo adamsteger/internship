@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 
 public class Database {
-    public static ArrayList<User> getUsers() {
-        return new ArrayList<User>();
-    }
 
     public static ArrayList<Student> getStudents() {
         return new ArrayList<Student>();
@@ -15,5 +12,9 @@ public class Database {
 
     public static ArrayList<Admin> getAdmins() {
         return new ArrayList<Admin>();
+    }
+
+    public static ArrayList<InternshipPost> getInternshipPosts() {
+        return new ArrayList<InternshipPost>();
     }
 }
