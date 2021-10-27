@@ -135,53 +135,57 @@ public class InternshipUI {
 
     private void exicuteStartOpt(Student student, int opt) {
         opt--;
-        if (opt == 0) {// Sign in as Admin
+        switch (opt) {
+        case (0):// Sign in as Admin
             adminSignIn();
-        } else if (opt == 1) {// Sign in as Student
+        case (1):// Sign in as Student
             studentSignIn();
-        } else if (opt == 2) {// Sign in as Employer
+        case (2):// Sign in as Employer
             employerSignIn();
-        } else if (opt == 3) {// Create Student account
+        case (3):// Create Student account
             createStudent();
-        } else {// Create Employer account
+        case (4):// Create Employer account
             createEmployer();
         }
 
     }
 
     private void exicuteStudentHomeOpt(Student student, int opt) {
-        if (opt == 0) {// Sign Out
+        switch (opt) {
+        case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
-        } else if (opt == 1) {// See/Edit Educations
+        case (1):// See/Edit Educations
 
-        } else if (opt == 2) {// See/Edit Extra Curriculars
+        case (2):// See/Edit Extra Curriculars
 
-        } else if (opt == 3) {// See/Edit Work Experiences
+        case (3):// See/Edit Work Experiences
 
-        } else if (opt == 4) {// See/Edit Honors
+        case (4):// See/Edit Honors
 
-        } else if (opt == 5) {// See/Edit References
+        case (5):// See/Edit References
 
-        } else if (opt == 6) {// See/Edit Contact Information
+        case (6):// See/Edit Contact Information
 
-        } else if (opt == 7) {// See/Edit Resume
+        case (7):// See/Edit Resume
 
-        } else {// Browse Internship Posts
+        case (8):// Browse Internship Posts
 
         }
 
     }
 
     private void exicuteEmployerHomeOpt(Student student, int opt) {
-        if (opt == 0) {// Sign Out
+
+        switch (opt) {
+        case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
-        } else if (opt == 1) {// See/Edit internship posts
+        case (1):// See/Edit internship posts
 
-        } else if (opt == 2) {// See Reviews
+        case (2):// See Reviews
 
-        } else {// Leave Review on a Student
+        case (3):// Leave Review on a Student
 
         }
 
@@ -439,6 +443,7 @@ public class InternshipUI {
             WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
 
             // TODO add work to passed in student
+
         }
     }
 
@@ -446,9 +451,14 @@ public class InternshipUI {
 
     }
 
-    private void addSkill(Student student, int num) {
+    private void addIntershipPost(Employer employer) {
+        System.out.println("~~NEW INTERNSHIP POST~~\n");
 
     }
+
+    // private void addSkill(Student student, int num) {
+
+    // }
 
     private void addCourse(Student student, int num) {
 

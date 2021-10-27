@@ -61,7 +61,7 @@ public class InternshipApplication{
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for(int i = 0; i < internshipList.getInternships().size(); i++){
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getEmployerTitle() == keyword){
+            if(currentPost.getEmployerTitle().contains(keyword)){
                 retList.add(currentPost);
             }
         }

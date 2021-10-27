@@ -1,16 +1,18 @@
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.UUID;
 
 public class Resume {
-    private Hashtable<Education, Boolean> educations;
-    private Hashtable<Skill, Boolean> skills;
+    private Student student;
+    private ArrayList<Education> educations;
+    private ArrayList<Skill> skills;
     private Hashtable<String, Boolean> courses;
-    private Hashtable<WorkExperience, Boolean> work;
-    private Hashtable<Extracurricular, Boolean> extracurriculars;
+    private ArrayList<WorkExperience> work;
+    private ArrayList<Extracurricular> extracurriculars;
     private UUID id;
-
-    public Resume(Hashtable<Education, Boolean> educations, Hashtable<Skill, Boolean> skills, Hashtable <String, Boolean> courses, 
-      Hashtable<WorkExperience,Boolean> work, Hashtable<Extracurricular, Boolean> extracurriculars) {
+    
+    public Resume(ArrayList<Education> educations, ArrayList<Skill> skills, Hashtable<String, Boolean> courses, 
+      ArrayList<WorkExperience> work, ArrayList<Extracurricular> extracurriculars) {
         this.educations = educations;
         this.skills = skills;
         this.courses = courses;
@@ -19,11 +21,11 @@ public class Resume {
         id = UUID.randomUUID();
     }
 
-    public Hashtable<Education, Boolean> getEducations() {
+    public ArrayList<Education> getEducations() {
         return this.educations;
     }
 
-    public Hashtable<Skill, Boolean> getSkills() {
+    public ArrayList<Skill> getSkills() {
         return this.skills;
     }
 
@@ -31,16 +33,16 @@ public class Resume {
         return this.courses;
     }
 
-    public Hashtable<WorkExperience, Boolean> getWork() {
+    public ArrayList<WorkExperience> getWork() {
         return this.work;
     }
 
-    public Hashtable<Extracurricular, Boolean> getExtracurriculars() {
+    public ArrayList<Extracurricular> getExtracurriculars() {
         return this.extracurriculars;
     }
 
     public void addEducation(Education edu) {
-        educations.put(edu, true);
+        educations.add(edu);
     }
 
     public void removeEducation(Education edu) {
@@ -48,7 +50,7 @@ public class Resume {
     }
 
     public void addSkill(Skill skill) {
-        skills.put(skill, true);
+        skills.add(skill);
     }
 
     public void removeSkill(Skill skill) {
@@ -64,7 +66,7 @@ public class Resume {
     }
 
     public void addWork(WorkExperience workExperience) {
-        work.put(workExperience, true);
+        work.add(workExperience);
     }
 
     public void removeWork(WorkExperience workExperience) {
@@ -72,7 +74,7 @@ public class Resume {
     }
 
     public void addExtracurricular(Extracurricular extracurricular) {
-        extracurriculars.put(extracurricular, true);
+        extracurriculars.add(extracurricular);
     }
 
     public void removeExtracurricular(Extracurricular extracurricular) {
