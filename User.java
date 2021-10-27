@@ -38,25 +38,20 @@ public abstract class User {
     }
 
     private boolean checkUsername(String username) {
-        if(studentList.haveStudent(username)){
+        if(studentList.haveStudent(username))
             return false;
-        }
-        if(employerList.haveEmployer(username)){
+        if(employerList.haveEmployer(username))
             return false;
-        }
-        if(adminList.haveAdmin(username)){
+        if(adminList.haveAdmin(username))
             return false;
-        }
-        if(username.length() < 10 || username.length() > 20){
+        if(username.length() < 10 || username.length() > 20)
             return false;
-        }
         return true;
     }
 
     private boolean checkPassword(String password) {
-        if(password.length() < 10 || password.length() > 20){
+        if(password.length() < 10 || password.length() > 20)
             return false;
-        }
         return true;
     }
 
@@ -68,18 +63,16 @@ public abstract class User {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for(int i = 0; i < internshipList.getInternships().size(); i++){
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getEmployerTitle() == keyword){
+            if(currentPost.getEmployerTitle() == keyword)
                 retList.add(currentPost);
-            }
         }
         return retList;
     }    
 
     private ArrayList<Employer> getEmployer(String keyword) {
         ArrayList<Employer> retList = new ArrayList<Employer>();
-        if(employerList.haveEmployer(keyword)){
+        if(employerList.haveEmployer(keyword))
             retList.add(employerList.getEmployerByUser(keyword));
-        }
         return retList;
     }
 
@@ -87,9 +80,8 @@ public abstract class User {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for(int i = 0; i < internshipList.getInternships().size(); i++){
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getLowPay() > lowPay && currentPost.getHighPay() < highPay){
+            if(currentPost.getLowPay() > lowPay && currentPost.getHighPay() < highPay)
                 retList.add(currentPost);
-            }
         }
         return retList;
     }
@@ -98,9 +90,8 @@ public abstract class User {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for(int i = 0; i < internshipList.getInternships().size(); i++){
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getLocation() == location){
+            if(currentPost.getLocation() == location)
                 retList.add(currentPost);
-            }
         }
         return retList;
     }
@@ -110,9 +101,8 @@ public abstract class User {
         for(int i = 0; i < internshipList.getInternships().size(); i++){
             InternshipPost currentPost = internshipList.getInternships().get(i);
             for(int j = 0; j < currentPost.getSkillReq().size(); i++){
-                if(currentPost.getSkillReq().get(i) == language){
+                if(currentPost.getSkillReq().get(i) == language)
                     retList.add(currentPost);
-                }
             }
         }
         return retList;
@@ -122,9 +112,8 @@ public abstract class User {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for(int i = 0; i < internshipList.getInternships().size(); i++){
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getRemote() == isRemote){
+            if(currentPost.getRemote() == isRemote)
                 retList.add(currentPost);
-            }
         }
         return retList;
     }
