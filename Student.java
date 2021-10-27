@@ -125,7 +125,7 @@ public class Student extends User {
     }
 
     public void addFavoritePost(InternshipPost post) {
-        
+        favoritePosts.add(post);
     }
 
     public String toString() {
