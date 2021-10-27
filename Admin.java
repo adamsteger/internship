@@ -37,7 +37,4 @@ public class Admin extends User {
 
     }
 
-    public void addEmployerReview(EmployerReview review) {
-        
-    }
 }
