@@ -405,12 +405,12 @@ public class InternshipUI {
         boolean loop = true;
         String password = null;
         while (loop) {
-            System.out.println("Create a Pasword(8-20 Characters): ");
+            System.out.println("Create a Password(8-20 Characters): ");
             password = scanner.nextLine();
             if (password.length() >= 8 && password.length() <= 20) {
                 break;
             } else {
-                System.out.println("Passwoordd must be 8-20 Characters long");
+                System.out.println("Password must be 8-20 Characters long");
                 continue;
             }
         }

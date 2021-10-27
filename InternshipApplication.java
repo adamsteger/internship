@@ -80,7 +80,7 @@ public class InternshipApplication{
         return true;
     }
     
-    //public void studentReview(, String comment){
+    public void studentReview(String comment){
 
-    //}/
+    }
 }
