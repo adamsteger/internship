@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.UUID;
 
 public class Student extends User {
@@ -15,6 +14,7 @@ public class Student extends User {
     private ArrayList<StudentReview> reviews;
     private ArrayList<InternshipPost> favoritePosts;
     private UUID id;
+    private Resume resume;
     private EmployerList employerList;
 
     public Student(String username, String password) {
@@ -31,6 +31,11 @@ public class Student extends User {
         reviews = new ArrayList<StudentReview>();
         favoritePosts = new ArrayList<InternshipPost>();
         id = super.getUUID();
+    }
+
+    public Student(String firstName, String lastName, String username, String password, int gradYear, String email, 
+                    String address, String phone, double gpa, boolean showGPA, double rating) {
+        super(username, password);
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
@@ -52,6 +57,7 @@ public class Student extends User {
         this.reviews = reviews;
         this.employerList = EmployerList.getInstance();
         this.favoritePosts = favPosts;
+        // resume = new Resume();
     }
 
     public String getFirstName() {

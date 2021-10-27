@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.UUID;
 
 public class Resume {
     private Student student;
@@ -8,6 +9,7 @@ public class Resume {
     private Hashtable<String, Boolean> courses;
     private ArrayList<WorkExperience> work;
     private ArrayList<Extracurricular> extracurriculars;
+    private UUID id;
     
     public Resume(ArrayList<Education> educations, ArrayList<Skill> skills, Hashtable<String, Boolean> courses, 
       ArrayList<WorkExperience> work, ArrayList<Extracurricular> extracurriculars) {
@@ -16,10 +18,7 @@ public class Resume {
         this.courses = courses;
         this.work = work;
         this.extracurriculars = extracurriculars;
-    }
-
-    public Student getStudent() {
-        return student;
+        id = UUID.randomUUID();
     }
 
     public ArrayList<Education> getEducations() {
@@ -90,13 +89,14 @@ public class Resume {
 
     }
 
-    public void sortReverseChronEdu(Hashtable<Education, Boolean> education) {
+    public void sortReverseChronEdu(ArrayList<Education> education) {
         
     }
 
-    public void sortReverseChronWork(Hashtable<WorkExperience, Boolean> work) {
+    public void sortReverseChronWork(ArrayList<Education> work) {
 
     }
+    
     public String toString() {
         return "";
     }
