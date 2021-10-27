@@ -1,13 +1,14 @@
 import java.util.Hashtable;
+import java.util.UUID;
 
 public class Resume {
-    private Student student;
     private Hashtable<Education, Boolean> educations;
     private Hashtable<Skill, Boolean> skills;
     private Hashtable<String, Boolean> courses;
     private Hashtable<WorkExperience, Boolean> work;
     private Hashtable<Extracurricular, Boolean> extracurriculars;
-    
+    private UUID id;
+
     public Resume(Hashtable<Education, Boolean> educations, Hashtable<Skill, Boolean> skills, Hashtable <String, Boolean> courses, 
       Hashtable<WorkExperience,Boolean> work, Hashtable<Extracurricular, Boolean> extracurriculars) {
         this.educations = educations;
@@ -15,10 +16,7 @@ public class Resume {
         this.courses = courses;
         this.work = work;
         this.extracurriculars = extracurriculars;
-    }
-
-    public Student getStudent() {
-        return student;
+        id = UUID.randomUUID();
     }
 
     public Hashtable<Education, Boolean> getEducations() {
