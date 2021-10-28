@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class InternshipApplication{
     private InternshipList internshipList;
@@ -133,12 +134,14 @@ public class InternshipApplication{
         return retList;
     }
     
-    public ArrayList<InternshipPost> getFavoriteInternships(){
-        return new ArrayList<InternshipPost>();
+    public ArrayList<InternshipPost> getFavoriteInternships(UUID id){
+        Student currentStudent = studentList.getStudentByID(id);
+        return currentStudent.getFavoritePosts();
     }
 
-    public ArrayList<InternshipPost> getMyInternships(){
-        return new ArrayList<InternshipPost>();
+    public ArrayList<InternshipPost> getMyInternships(UUID id){
+        Student currentStudent = studentList.getStudentByID(id);
+        return currentStudent.getFavoritePosts();
     }
 
     public boolean addInternship(Employer employer, String companyName, String posTitle, String description, String location, ArrayList<String> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay, ArrayList<Student> applicants){
