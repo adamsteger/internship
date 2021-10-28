@@ -2,12 +2,8 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class InternshipUI {
-<<<<<<< HEAD
     private InternshipApplication internApp = new InternshipApplication();
     private static final String WELCOME_MESSAGE = "Welcome to our UrTern";
-=======
-    private static final String WELCOME_MESSAGE = "Welcome to UrTern";
->>>>>>> 826d5596554b61a9433b872976f75301b7fdd509
     private String[] startMenuOptions = { "Sign in as Admin", "Sign in as Student", "Sign in as Employer",
             "Create Student account", "Create Employer account" };
     private String[] studentHomeOptions = { "Sign out", "See/Edit Educations", "See/Edit Extra Curriculars",
@@ -65,7 +61,7 @@ public class InternshipUI {
 
         int userOpt = getUserOpt(startMenuOptions.length);
 
-        exicuteStartOpt(userOpt);
+        executeStartOpt(userOpt);
 
     }
 
@@ -91,7 +87,7 @@ public class InternshipUI {
         System.out.println("    " + ("0") + ". " + studentHomeOptions[0]);
 
         int userOpt = getUserOpt(studentHomeOptions.length);
-        exicuteStudentHomeOpt(student, userOpt);
+        executeStudentHomeOpt(student, userOpt);
     }
 
     private void displayEmployerHome(Employer employer) {
@@ -111,7 +107,7 @@ public class InternshipUI {
         System.out.println("    " + ("0") + ". " + studentHomeOptions[0]);
 
         int userOpt = getUserOpt(employerHomeOptions.length);
-        exicuteEmployerHomeOpt(employer, userOpt);
+        executeEmployerHomeOpt(employer, userOpt);
 
     }
 
@@ -130,15 +126,11 @@ public class InternshipUI {
         System.out.println("    " + ("0") + ". " + studentHomeOptions[0]);
 
         int userOpt = getUserOpt(adminHomeOptions.length);
-        exicuteAdminHomeOpt(admin, userOpt);
+        executeAdminHomeOpt(admin, userOpt);
 
     }
 
-<<<<<<< HEAD
-    private void exicuteStartOpt(int opt) {
-=======
-    private void executeStartOpt(Student student, int opt) {
->>>>>>> 826d5596554b61a9433b872976f75301b7fdd509
+    private void executeStartOpt(int opt) {
         opt--;
         switch (opt) {
         case (0):// Sign in as Admin
@@ -178,11 +170,7 @@ public class InternshipUI {
 
     }
 
-<<<<<<< HEAD
-    private void exicuteEmployerHomeOpt(Employer employer, int opt) {
-=======
-    private void executeEmployerHomeOpt(Student student, int opt) {
->>>>>>> 826d5596554b61a9433b872976f75301b7fdd509
+    private void executeEmployerHomeOpt(Employer employer, int opt) {
 
         switch (opt) {
         case (0):// Sign Out
@@ -198,15 +186,10 @@ public class InternshipUI {
 
     }
 
-<<<<<<< HEAD
-    private void exicuteAdminHomeOpt(Admin admin, int opt) {
+    private void executeAdminHomeOpt(Admin admin, int opt) {
 
         switch (opt) {
         case (0):// Sign Out
-=======
-    private void executeAdminHomeOpt(Student student, int opt) {
-        if (opt == 0) {// Sign Out
->>>>>>> 826d5596554b61a9433b872976f75301b7fdd509
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
         case (1):// Delete Post
@@ -271,11 +254,7 @@ public class InternshipUI {
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
 
-<<<<<<< HEAD
-            employer = internApp.login(userName, pass);
-=======
-            employer = InternshipApplication.employerLogin(userName, pass);
->>>>>>> 826d5596554b61a9433b872976f75301b7fdd509
+            employer = internApp.employerLogin(userName, pass);
             if (employer == null) {
                 break;
             }
@@ -396,7 +375,7 @@ public class InternshipUI {
         System.out.println("What is your Company's mission?: ");
         mission = scanner.nextLine();
 
-        Employer employer = new Employer(title, username, password, email, -1, location, mission, null);
+        Employer employer = new Employer(title, username, password, email, location, mission);
 
         internApp.createEmployer(employer);
 
