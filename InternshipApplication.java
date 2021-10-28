@@ -163,4 +163,8 @@ public class InternshipApplication{
     public void addCourse(String course, boolean resume) {
         student.getResume().addCourse(course, resume);
     }
+
+    public void addHonor(Honor honor) {
+        student.getResume().addHonor(honor);
+    }
 }
