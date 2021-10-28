@@ -115,4 +115,9 @@ public class DataWriter extends DataConstants {
 
 	public static void saveInternshipPosts() {
 	} 
+
+	public static void main (String[] args) {
+		Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
+		student.getReviews().add(new Review("Ana Boccanfuso", 5, "Love him."));
+	}
 }
