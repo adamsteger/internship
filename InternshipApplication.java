@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class InternshipApplication{
     private InternshipList internshipList;
@@ -31,6 +32,7 @@ public class InternshipApplication{
         return adminList.addAdmin(admin);
     }
 
+    //student login
     public Student studentLogin(String username, String password) {
         if(!studentList.haveStudent(username))
             return null;
@@ -42,6 +44,7 @@ public class InternshipApplication{
         return null;
     }
 
+    //employer login
     public Employer employerLogin(String username, String password) {
         if(!employerList.haveEmployer(username))
             return null;
@@ -53,6 +56,7 @@ public class InternshipApplication{
         return null;
     }
 
+    //admin login
     public Admin adminLogin(String username, String password) {
         if(!adminList.haveAdmin(username))
             return null;
@@ -133,21 +137,26 @@ public class InternshipApplication{
         return retList;
     }
     
-    public ArrayList<InternshipPost> getFavoriteInternships(){
-        return new ArrayList<InternshipPost>();
+    public ArrayList<InternshipPost> getFavoriteInternships(UUID id){
+        Student currentStudent = studentList.getStudentByID(id);
+        return currentStudent.getFavoritePosts();
     }
 
-    public ArrayList<InternshipPost> getMyInternships(){
-        return new ArrayList<InternshipPost>();
+    public ArrayList<InternshipPost> getMyInternships(UUID id){
+        Student currentStudent = studentList.getStudentByID(id);
+        return currentStudent.getFavoritePosts();
     }
 
-    public boolean addInternship(Employer employer, String companyName, String posTitle, String description, String location, ArrayList<String> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay, ArrayList<Student> applicants){
+    public boolean addInternship(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay){
+        if(internshipList.haveInternshipPost(employerTitle, posTitle)) {
+            return false; 
+        }
+        internshipList.addInternship(employerTitle, posTitle, description, location, skillReq, startDate, endDate, isRemote, isOpen, lowPay, highPay);
+        internshipList.save();
         return true;
     }
-    
-    public void studentReview(String comment){
 
-    }
+    //TODO Add Removes for Resume fields
 
     public void addWorkExperience(WorkExperience work) {
         student.getResume().addWork(work);
@@ -175,5 +184,13 @@ public class InternshipApplication{
 
     public void addHonor(Honor honor) {
         student.getResume().addHonor(honor);
+    }
+
+    public void addStudentReview(Student student, String writer, int rating, String comment) {
+        student.getReviews().add(new Review(writer, rating, comment));
+    }
+
+    public void addEmployerReview(Employer employer, String writer, int rating, String comment) {
+        employer.getReviews().add(new Review(writer, rating, comment));
     }
 }

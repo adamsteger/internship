@@ -11,7 +11,7 @@
     "gpa" : 4.0,
     "showGPA" : true,
     "rating" : 3.0,
-    "resumeid" : 1,
+    "resumeID" : "f0181b70-7d43-4ff8-b055-03ff3144cbb5",
     "reviews" : [
         {"writer" : "Google", "rating" : 4, "comment" : "Very Solid Intern!"}
     ],
@@ -32,7 +32,7 @@
     "gpa" : 3.5,
     "showGPA" : false,
     "rating" : 4.0,
-    "resumeid" : 2,
+    "resumeID" : "9e57129b-864e-4407-8266-2115f15a784a",
     "reviews" : [
         {"writer" : "Amazon", "rating" : 5, "comment" : "Great Work Ethic"}
     ],

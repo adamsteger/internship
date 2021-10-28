@@ -9,6 +9,11 @@ public class Admin extends User {
         id = super.getUUID();
     }
 
+    public Admin(UUID id, String username, String password) {
+        super(username, password);
+        this.id = id;
+    }
+
     public UUID getID() {
         return id;
     }
@@ -29,11 +34,17 @@ public class Admin extends User {
        internshipList.save();
     }
 
-    public void deleteReview(User user, Review review) {
-        ArrayList<Review> reviews = user.getReviews();
-        reviews.remove(review);
-        DataWriter.saveEmployers();
+    public void deleteStudentReview(Student student, Review review) {
+        student.getReviews().remove(review);
         DataWriter.saveStudents();
+    }
+
+    public void deleteEmployerReview(Employer employer, Review review) {
+        employer.getReviews().remove(review);
+    }
+
+    public String toString() {
+        return "\nUsername: " + username + "\nPassword: " + password;
     }
 
 }

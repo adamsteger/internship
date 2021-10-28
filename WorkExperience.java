@@ -1,24 +1,29 @@
+import java.util.ArrayList;
+
 public class WorkExperience {
-    private String title;
-    private String position;
+    private String posTitle;
+    private String employerTitle;
     private String startDate;
     private String endDate;
     private boolean resume;
+    private ArrayList<String> description;
+    private String location;
 
-    public WorkExperience(String title, String position, String startDate, String endDate, boolean resume) {
-        this.title = title;
-        this.position = position;
+    public WorkExperience(String posTitle, String employerTitle, String location, String startDate, String endDate, boolean resume, ArrayList<String> description) {
+        this.posTitle = posTitle;
+        this.employerTitle = employerTitle;
         this.startDate = startDate;
         this.endDate = endDate;
         this.resume = resume;
+        this.description = description;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPosTitle() {
+        return posTitle;
     }
 
-    public String getPosition() {
-        return position;
+    public String getEmployerTitle() {
+        return employerTitle;
     }
 
     public String getStartDate() {
@@ -30,8 +35,12 @@ public class WorkExperience {
     }
 
     public String toString() {
+        String ret = "";
         if (resume)
-            return title + "\n" + position + "\n" + startDate + "-" + endDate + "\n";
-        return "";
+            ret += employerTitle + "\n" + posTitle + "\n" + startDate + "-" + endDate + "\n";
+        for (String string : description) {
+            ret += "\n\t" + string;
+        }
+        return ret;
     }
 }

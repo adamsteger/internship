@@ -10,15 +10,6 @@ public abstract class User {
     private InternshipList internshipList;
     private UUID id;
     private ArrayList<Review> reviews;
-
-
-    //existing account loaded from json
-    public User(String username, String password, UUID id, ArrayList<Review> reviews) {
-        this.username = username;
-        this.password = password;
-        this.id = id;
-        this.reviews = reviews;
-    }
     
     //new account
     public User(String username, String password) {
@@ -44,24 +35,24 @@ public abstract class User {
         return reviews;
     }
 
-    private boolean checkUsername(String username) {
-        if(studentList.haveStudent(username))
-            return false;
-        else if(employerList.haveEmployer(username))
-            return false;
-        else if(adminList.haveAdmin(username))
-            return false;
+    // private boolean checkUsername(String username) {
+    //     if(studentList.haveStudent(username))
+    //         return false;
+    //     else if(employerList.haveEmployer(username))
+    //         return false;
+    //     else if(adminList.haveAdmin(username))
+    //         return false;
 
-        if(username.length() <= 6 || username.length() >= 15)
-            return false;
-        return true;
-    }
+    //     if(username.length() <= 6 || username.length() >= 15)
+    //         return false;
+    //     return true;
+    // }
 
-    private boolean checkPassword(String password) {
-        if(password.length() <= 8 || password.length() >= 20)
-            return false;
-        return true;
-    }
+    // private boolean checkPassword(String password) {
+    //     if(password.length() <= 8 || password.length() >= 20)
+    //         return false;
+    //     return true;
+    // }
 
     private ArrayList<InternshipPost> getPosts() {
         return internshipList.getInternships();
@@ -82,9 +73,5 @@ public abstract class User {
         if(employerList.haveEmployer(keyword))
             retList.add(employerList.getEmployerByTitle(keyword));
         return retList;
-    }
-
-    public void addReview(User user, String writer, int rating, String comment) {
-        user.getReviews().add(new Review(writer, rating, comment));
     }
 }

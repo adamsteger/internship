@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.UUID;
 
@@ -22,6 +23,17 @@ public class Resume {
         id = UUID.randomUUID();
     }
 
+    public Resume(UUID id, ArrayList<Education> educations, Hashtable<Skill, Boolean> skills, Hashtable<String, Boolean> courses, 
+      ArrayList<WorkExperience> work, ArrayList<Extracurricular> extracurriculars, ArrayList<Honor> honors) {
+        this.educations = educations;
+        this.skills = skills;
+        this.courses = courses;
+        this.work = work;
+        this.extracurriculars = extracurriculars;
+        this.honors = honors;
+        this.id = id;
+    }
+
     public Resume() {
         educations = new ArrayList<Education>();
         skills = new Hashtable<Skill, Boolean>();
@@ -34,6 +46,10 @@ public class Resume {
 
     public ArrayList<Education> getEducations() {
         return this.educations;
+    }
+
+    public UUID getID() {
+        return id;
     }
 
     public ArrayList<Honor> getHonors() {
@@ -113,6 +129,34 @@ public class Resume {
     }
     
     public String toString() {
-        return "";
+        //TODO Read in resume bool for skills and courses
+        String ret = "\nEducations: ";
+        for (Education edu : educations) {
+            ret += edu + "\n";
+        }
+        ret += "\nSkills: ";
+        Enumeration<Skill> skillsValues = skills.keys();
+        while (skillsValues.hasMoreElements()) {
+            ret += skillsValues.nextElement() + "\t";
+        }
+        ret += "\n\nCourses: ";
+        Enumeration<String> coursesValues = courses.keys();
+        while (coursesValues.hasMoreElements()) {
+            ret += coursesValues.nextElement() + "\t";
+        }
+        ret += "\n\nWork Experiences: ";
+        for (WorkExperience workExperience : work) {
+            ret += workExperience + "\t";
+        }
+        ret += "\nExtracurriculars: ";
+        for (Extracurricular extra : extracurriculars) {
+            ret += extra + "\t";
+        }
+        ret += "\nHonors: ";
+        for (Honor honor : honors) {
+            ret += honor + "\t";
+        }
+
+        return ret;
     }
 }
