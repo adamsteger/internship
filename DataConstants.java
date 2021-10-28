@@ -14,6 +14,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_SHOW_GPA = "showGPA";
     protected static final String STUDENT_REVIEWS = "reviews";
     protected static final String STUDENT_FAV_POSTS = "favoritePosts";
+    protected static final String STUDENT_RESUME_ID = "resumeID";
     protected static final String REVIEW_WRITER = "writer";
     protected static final String REVIEW_RATING = "rating";
     protected static final String REVIEW_COMMENT = "comment";
@@ -76,4 +77,5 @@ public abstract class DataConstants {
     protected static final String HONORS_ORGAN = "organization";
     protected static final String HONORS_DESCRIPTION = "description";
     protected static final String HONORS_YEAR = "year";
+    protected static final String ADMIN_FILE_NAME = "admin.json";
 }
