@@ -12,6 +12,7 @@ public class Student extends User {
     private boolean showGPA;
     private double rating;
     private ArrayList<InternshipPost> favoritePosts;
+    private ArrayList<Review> reviews;
     private UUID id;
     private Resume resume;
 
@@ -35,8 +36,8 @@ public class Student extends User {
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
-                    String email, String address, String phone, double gpa, boolean showGPA, double rating,
-                    ArrayList<InternshipPost> favPosts) {
+                    String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<Review> reviews,
+                    ArrayList<InternshipPost> favPosts, Resume resume) {
         super(username, password);
         this.id = id;
         this.firstName = firstName;
@@ -51,7 +52,8 @@ public class Student extends User {
         this.showGPA = showGPA;
         this.rating = rating;
         favoritePosts = favPosts;
-        resume = new Resume();
+        this.reviews = reviews;
+        this.resume = resume;
     }
 
     public String getFirstName() {
@@ -106,6 +108,10 @@ public class Student extends User {
         return favoritePosts;
     }
 
+    public ArrayList<Review> getReviews() {
+        return reviews;
+    }
+
     public UUID getUUID() {
         return id;
     }
@@ -122,7 +128,6 @@ public class Student extends User {
         String ret = "\nName: " + firstName + " " + lastName + "\nUsername: " + username + "\nPassword: " 
                     + password + "\nGrad Year: " + gradYear + "\nEmail: " + email + "\nPhone: "
                     + phone + "\nGPA: " + gpa + "\nRating: " + rating + "\nReviews: ";
-        ArrayList<Review> reviews = super.getReviews();
         for (Review review : reviews) {
             ret += review + "\n";
         }
@@ -130,6 +135,7 @@ public class Student extends User {
         for (InternshipPost post : favoritePosts) {
             ret += "\n\tEmployer: " + post.getEmployerTitle() + "\n\tPosition Title: " + post.getPosTitle();
         }
+        ret += "\nResume: " + resume;
         return ret;
     }
 

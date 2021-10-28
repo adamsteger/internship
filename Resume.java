@@ -48,6 +48,10 @@ public class Resume {
         return this.educations;
     }
 
+    public UUID getID() {
+        return id;
+    }
+
     public ArrayList<Honor> getHonors() {
         return honors;
     }

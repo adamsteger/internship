@@ -186,7 +186,11 @@ public class InternshipApplication{
         student.getResume().addHonor(honor);
     }
 
-    public void addReview(User user, String writer, int rating, String comment) {
-        user.getReviews().add(new Review(writer, rating, comment));
+    public void addStudentReview(Student student, String writer, int rating, String comment) {
+        student.getReviews().add(new Review(writer, rating, comment));
+    }
+
+    public void addEmployerReview(Employer employer, String writer, int rating, String comment) {
+        employer.getReviews().add(new Review(writer, rating, comment));
     }
 }
