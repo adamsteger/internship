@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class InternshipUI {
-    private static final String WELCOME_MESSAGE = "Welcome to our UrTern";
+    private static final String WELCOME_MESSAGE = "Welcome to UrTern";
     private String[] startMenuOptions = { "Sign in as Admin", "Sign in as Student", "Sign in as Employer",
             "Create Student account", "Create Employer account" };
     private String[] studentHomeOptions = { "Sign out", "See/Edit Educations", "See/Edit Extra Curriculars",
@@ -133,7 +133,7 @@ public class InternshipUI {
 
     }
 
-    private void exicuteStartOpt(Student student, int opt) {
+    private void executeStartOpt(Student student, int opt) {
         opt--;
         switch (opt) {
         case (0):// Sign in as Admin
@@ -150,7 +150,7 @@ public class InternshipUI {
 
     }
 
-    private void exicuteStudentHomeOpt(Student student, int opt) {
+    private void executeStudentHomeOpt(Student student, int opt) {
         switch (opt) {
         case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
@@ -175,7 +175,7 @@ public class InternshipUI {
 
     }
 
-    private void exicuteEmployerHomeOpt(Student student, int opt) {
+    private void executeEmployerHomeOpt(Student student, int opt) {
 
         switch (opt) {
         case (0):// Sign Out
@@ -191,7 +191,7 @@ public class InternshipUI {
 
     }
 
-    private void exicuteAdminHomeOpt(Student student, int opt) {
+    private void executeAdminHomeOpt(Student student, int opt) {
         if (opt == 0) {// Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
@@ -270,7 +270,7 @@ public class InternshipUI {
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
 
-            employer = InternshipApplication.login(userName, pass);
+            employer = InternshipApplication.employerLogin(userName, pass);
             if (employer == null) {
                 break;
             }

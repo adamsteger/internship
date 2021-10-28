@@ -31,12 +31,15 @@ public class InternshipApplication{
         return adminList.addAdmin(admin);
     }
 
-    public Student studentLogin(String username) {
+    public Student studentLogin(String username, String password) {
         if(!studentList.haveStudent(username))
             return null;
         
         student = studentList.getStudentByUser(username);
-        return student;
+        if(student.getPassword().equals(password)) {
+            return student;
+        }
+        return null;
     }
 
     public Employer employerLogin(String username) {
