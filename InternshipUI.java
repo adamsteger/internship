@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
+import javax.tools.DocumentationTool.Location;
+
 public class InternshipUI {
     private InternshipApplication internApp = new InternshipApplication();
     private static final String WELCOME_MESSAGE = "Welcome to our UrTern";
@@ -427,8 +429,9 @@ public class InternshipUI {
 
     private void addWorkExp(Student student, int num) {
         for (int i = 0; i < num; i++) {
-            String title, position, startDate, endDate;
+            String title, position, location, startDate, endDate;
             boolean resume;
+            ArrayList<String> description = new ArrayList<String>();
 
             System.out.println("~~ADD WORK EXPERIENCE~~\n");
 
@@ -438,16 +441,29 @@ public class InternshipUI {
             System.out.println("Job Title: ");
             position = scanner.nextLine();
 
+            System.out.println("Location: ");
+            location = scanner.nextLine();
+
             System.out.println("Start Date(mm/dd/yyyy): ");
             startDate = scanner.nextLine();
 
             System.out.println("End Date(mm/dd/yyyy): ");
             endDate = scanner.nextLine();
 
+            System.out.println("Would you like to add descriptions? ");
+            if(yesNo()) {
+                System.out.println("How many would you like to add?");
+                int works = scanner.nextInt();
+                for(int j = 0; j < works; j++) {
+                    System.out.println("Enter description " + (j+1) + ":" );
+                    description.add(scanner.nextLine());
+                }
+            }
+
             System.out.print("Add this to Resume?");
             resume = yesNo();
 
-            WorkExperience work = new WorkExperience(title, position, startDate, endDate, resume);
+            WorkExperience work = new WorkExperience(position, title, location, startDate, endDate, resume, description);
             internApp.addWorkExperience(work);
         }
     }
@@ -490,7 +506,7 @@ public class InternshipUI {
         System.out.println("Enter a description: ");
         String description = scanner.nextLine();
         System.out.println("Would you like to enter skill requirements from the following?\nType \'yes\' or \'no\'\n" + skills);
-        if(scanner.nextLine().equalsIgnoreCase("yes")) {
+        if(yesNo()) {
             System.out.println("How many skills would you like to add?");
             int number = scanner.nextInt();
             if(number >= 1 && number <= 17) {
@@ -512,13 +528,12 @@ public class InternshipUI {
         System.out.println("Is this internship remote? Type \'yes\' or \'no\': ");
         String remote = scanner.nextLine();
         boolean isRemote = false;
-        if(remote.equalsIgnoreCase("yes")) {
+        if(yesNo()) {
             isRemote = true;
         }
         System.out.println("Is this internship currently open? Type \'yes\' or \'no\': ");
-        String open = scanner.nextLine();
         boolean isOpen = false;
-        if(open.equalsIgnoreCase("yes")) {
+        if(yesNo()) {
             isOpen = true;
         }
         System.out.println("Enter a low pay for the internship: ");
@@ -593,7 +608,9 @@ public class InternshipUI {
 
     private void addHonor(Student student, int num) {
         for (int i = 0; i < num; i++) {
-            String title, organization, description, date;
+            String title, organization, description;
+            int date;
+
             boolean resume;
 
             System.out.println("~~ADD HONOR~~\n");
@@ -607,8 +624,8 @@ public class InternshipUI {
             System.out.println("Descrition: ");
             description = scanner.nextLine();
 
-            System.out.println("Date Recieved(mm/dd/yyyy): ");
-            date = scanner.nextLine();
+            System.out.println("Year Recieved: ");
+            date = scanner.nextInt();
 
             System.out.print("Add this to Resume?");
             resume = yesNo();
