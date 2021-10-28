@@ -42,20 +42,26 @@ public class InternshipApplication{
         return null;
     }
 
-    public Employer employerLogin(String username) {
+    public Employer employerLogin(String username, String password) {
         if(!employerList.haveEmployer(username))
             return null;
         
         employer = employerList.getEmployerByUser(username);
-        return employer;
+        if(employer.getPassword().equals(password)) {
+            return employer;
+        }
+        return null;
     }
 
-    public Admin adminLogin(String username) {
+    public Admin adminLogin(String username, String password) {
         if(!adminList.haveAdmin(username))
             return null;
         
         admin = adminList.getAdminByUser(username);
-        return admin;
+        if(admin.getPassword().equals(password)) {
+            return admin;
+        }
+        return null;
     }
 
     public boolean findInternship(String employerTitle, String posTitle){
