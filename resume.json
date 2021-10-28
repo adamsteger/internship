@@ -4,15 +4,16 @@
         {"schoolTitle" : "University of South Carolina", "location" : "Columbia, SC", "major" : "Computer Science", "gradYear" : 2022, "resume" : true}
     ],
     "skills" : [
-        {"skill" : "Java", "resume" : true},
-        {"skill" : "Python", "resume" : false}
+        {"skill" : "JAVA", "resume" : true},
+        {"skill" : "PYTHON", "resume" : false}
         ],
     "courses" : [
         {"course" : "Software Engineering", "resume" : true},
         {"course" : "University 101", "resume" : false}
         ],
     "work" : [
-        {"posTitle" : "Data Scientist Intern", "employer" : "Nelnet", "location" : "Columbia, SC", "startDate" : "Jan 2020", "endDate" : "Feb 2021", "description" : [
+        {"posTitle" : "Data Scientist Intern", "employer" : "Nelnet", "location" : "Columbia, SC", "startDate" : "Jan 2020", "endDate" : "Feb 2021", 
+            "description" : [
              {"String" : "Learned data scientist things"},
              {"String" : "Watched a data scientists do things"}
              ],
@@ -22,7 +23,7 @@
         {"title" : "Robotics Club", "position" : "President", "startDate" : "Jan 2021", "endDate" : "Jan 2022", "resume" : true}
     ],
     "honors" : [
-        {"title" : "Summa Cum Laude", "organization" : "University of South Carolina", "description" : "GPA of over 3.7", "year" : "2020", "resume" : true}
+        {"title" : "Summa Cum Laude", "organization" : "University of South Carolina", "description" : "GPA of over 3.7", "year" : 2020, "resume" : true}
     ]
 },
 {
@@ -32,11 +33,11 @@
     ],
     "skills" : [
         {"skill" : "C", "resume" : true},
-        {"skill" : "C++", "resume" : true}
+        {"skill" : "CPP", "resume" : true}
         ],
     "courses" : [
-        {"course" : "Algorithm Design", "bool" : true},
-        {"course" : "Computing in the Modern World", "bool" : true}
+        {"course" : "Algorithm Design", "resume" : true},
+        {"course" : "Computing in the Modern World", "resume" : true}
         ],
     "work" : [
         {"posTitle" : "Computer Programming Intern", "employer" : "Dominion Energy", "location" : "Columbia, SC", "startDate" : "Jan 2020", "endDate" : "Feb 2021", "description" : [
@@ -49,7 +50,7 @@
         {"title" : "Dance Marathon", "position" : "Treasurer", "startDate" : "Jan 2021", "endDate" : "Jan 2022", "resume" : true}
     ],
     "honors" : [
-        {"title" : "Magna Cum Laude", "organization" : "University of South Carolina", "description" : "GPA of over 3.4", "year" : "2022", "resume" : true}
+        {"title" : "Magna Cum Laude", "organization" : "University of South Carolina", "description" : "GPA of over 3.4", "year" : 2022, "resume" : true}
     ]
 }
 ]

@@ -35,7 +35,7 @@ public class Education {
 
     public String toString() {
         if(resume)
-            return this.schoolTitle + "\n" + this.location + "\n" + this.major + "\n" + this.gradYear + "\n";
+            return this.schoolTitle + "\n" + this.location + "\n" + this.major + "\n" + this.gradYear;
         return "";
     }
 }

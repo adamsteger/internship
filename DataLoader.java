@@ -152,90 +152,112 @@ public class DataLoader extends DataConstants {
 		return null;
 	}
 
-	// public static ArrayList<Resume> getResumes() {
-	// 	ArrayList<Resume> resumes = new ArrayList<Resume>();
+	public static ArrayList<Resume> getResumes() {
+		ArrayList<Resume> resumes = new ArrayList<Resume>();
 
-	// 	try {
-	// 		FileReader reader = new FileReader(RESUME_FILE_NAME);
-	// 		JSONParser parser = new JSONParser();	
-	// 		JSONArray resumesJSON = (JSONArray)new JSONParser().parse(reader);
+		try {
+			FileReader reader = new FileReader(RESUME_FILE_NAME);
+			JSONParser parser = new JSONParser();	
+			JSONArray resumesJSON = (JSONArray)new JSONParser().parse(reader);
 			
-	// 		for(int i = 0; i < resumesJSON.size(); i++) {
-	// 			JSONObject resumeJSON = (JSONObject)resumesJSON.get(i);
-	// 			UUID id = UUID.fromString((String)resumeJSON.get(RESUME_ID));
+			for(int i = 0; i < resumesJSON.size(); i++) {
+				JSONObject resumeJSON = (JSONObject)resumesJSON.get(i);
+				UUID id = UUID.fromString((String)resumeJSON.get(RESUME_ID));
 
-	// 			JSONArray educationsJSON = (JSONArray)resumeJSON.get(EMPLOYER_REVIEWS);
-	// 			ArrayList<Education> educations = new ArrayList<Education>();
-	// 			for (int j = 0; j < educationsJSON.size(); j++) {
-	// 				JSONObject educationJSON = (JSONObject)educationsJSON.get(j);
-	// 				String schoolTitle = (String)educationJSON.get(EDUCATION_SCHOOL);
-	// 				String location = (String)educationJSON.get(EDUCATION_LOCATION);
-	// 				String major = (String)educationJSON.get(EDUCATION_MAJOR);
-	// 				int gradYear = ((Long)educationJSON.get(EDUCATION_GRAD_YEAR)).intValue();
-	// 				Boolean resume = (Boolean)educationJSON.get(RESUME);
+				JSONArray educationsJSON = (JSONArray)resumeJSON.get(RESUME_EDUCATIONS);
+				ArrayList<Education> educations = new ArrayList<Education>();
+				for (int j = 0; j < educationsJSON.size(); j++) {
+					JSONObject educationJSON = (JSONObject)educationsJSON.get(j);
+					String schoolTitle = (String)educationJSON.get(EDUCATION_SCHOOL);
+					String location = (String)educationJSON.get(EDUCATION_LOCATION);
+					String major = (String)educationJSON.get(EDUCATION_MAJOR);
+					int gradYear = ((Long)educationJSON.get(EDUCATION_GRAD_YEAR)).intValue();
+					Boolean resume = (Boolean)educationJSON.get(RESUME);
 
-	// 			 	educations.add(new Education(schoolTitle, location, major, gradYear, resume));
-	// 			}
+				 	educations.add(new Education(schoolTitle, location, major, gradYear, resume));
+				}
 
-	// 			JSONArray skillsJSON = (JSONArray)resumeJSON.get(SKILLS);
-	// 			Hashtable<Skill,Boolean> skills = new Hashtable<Skill,Boolean>();
-	// 			for (int j = 0; j < skillsJSON.size(); j++) {
-	// 				JSONObject skillJSON = (JSONObject)skillsJSON.get(j);
-	// 				String skillString = (String)skillJSON.get(SKILLS_SKILL);
-	// 				Boolean resume = (Boolean)skillJSON.get(RESUME);
-	// 				Skill skill = Skill.valueOf(skillString);
+				JSONArray skillsJSON = (JSONArray)resumeJSON.get(SKILLS);
+				Hashtable<Skill,Boolean> skills = new Hashtable<Skill,Boolean>();
+				for (int j = 0; j < skillsJSON.size(); j++) {
+					JSONObject skillJSON = (JSONObject)skillsJSON.get(j);
+					String skillString = (String)skillJSON.get(SKILLS_SKILL);
+					Boolean resume = (Boolean)skillJSON.get(RESUME);
+					Skill skill = Skill.valueOf(skillString);
 
-	// 			 	skills.put(skill, resume);
-	// 			}
+				 	skills.put(skill, resume);
+				}
 
-	// 			JSONArray coursesJSON = (JSONArray)resumeJSON.get(RESUME_COURSES);
-	// 			Hashtable<String,Boolean> courses = new Hashtable<String,Boolean>();
-	// 			for (int j = 0; j < coursesJSON.size(); j++) {
-	// 				JSONObject courseJSON = (JSONObject)coursesJSON.get(j);
-	// 				String course = (String)courseJSON.get(COURSES_COURSE);
-	// 				Boolean resume = (Boolean)courseJSON.get(RESUME);
+				JSONArray coursesJSON = (JSONArray)resumeJSON.get(RESUME_COURSES);
+				Hashtable<String,Boolean> courses = new Hashtable<String,Boolean>();
+				for (int j = 0; j < coursesJSON.size(); j++) {
+					JSONObject courseJSON = (JSONObject)coursesJSON.get(j);
+					String course = (String)courseJSON.get(COURSES_COURSE);
+					Boolean resume = (Boolean)courseJSON.get(RESUME);
 
-	// 			 	courses.put(course, resume);
-	// 			}
+				 	courses.put(course, resume);
+				}
 
-	// 			JSONArray worksJSON = (JSONArray)resumeJSON.get(RESUME_WORK);
-	// 			ArrayList<WorkExperience> works = new ArrayList<WorkExperience>();
-	// 			for (int j = 0; j < worksJSON.size(); j++) {
-	// 				JSONObject workJSON = (JSONObject)educationsJSON.get(j);
-	// 				String posTitle = (String)workJSON.get(WORK_POSITION_TITLE);
-	// 				String employer = (String)workJSON.get(WORK_EMPLOYER);
-	// 				String location = (String)workJSON.get(WORK_LOCATION);
-	// 				String startDate = (String)workJSON.get(WORK_START_DATE);
-	// 				String endDate = (String)workJSON.get(WORK_END_DATE);
+				JSONArray worksJSON = (JSONArray)resumeJSON.get(RESUME_WORK);
+				ArrayList<WorkExperience> works = new ArrayList<WorkExperience>();
+				for (int j = 0; j < worksJSON.size(); j++) {
+					JSONObject workJSON = (JSONObject)worksJSON.get(j);
+					String posTitle = (String)workJSON.get(WORK_POSITION_TITLE);
+					String employer = (String)workJSON.get(WORK_EMPLOYER);
+					String location = (String)workJSON.get(WORK_LOCATION);
+					String startDate = (String)workJSON.get(WORK_START_DATE);
+					String endDate = (String)workJSON.get(WORK_END_DATE);
 
+					JSONArray descriptionsJSON = (JSONArray)workJSON.get(WORK_DESCRIPTION);
+					ArrayList<String> description = new ArrayList<String>();
+					for (int k = 0; k < descriptionsJSON.size(); k++) {
+						JSONObject descriptionJSON = (JSONObject)descriptionsJSON.get(k);
+						String string = (String)descriptionJSON.get(DESCRIPTION_STRING);
+						description.add(string);
+					}
 
-	// 				JSONArray descriptionsJSON = (JSONArray)workJSON.get(WORK_DESCRIPTION);
-	// 				ArrayList<String> description = new ArrayList<String>();
-	// 				for (int k = 0; k < descriptionsJSON.size(); k++) {
+					Boolean resume = (Boolean)workJSON.get(RESUME);
+					works.add(new WorkExperience(posTitle, employer, location, startDate, endDate, resume, description));
+				}
 
-	// 				}
+				JSONArray extrasJSON = (JSONArray)resumeJSON.get(RESUME_EXTRACURRICULARS);
+				ArrayList<Extracurricular> extracurriculars = new ArrayList<Extracurricular>();
+				for (int j = 0; j < extrasJSON.size(); j++) {
+					JSONObject extraJSON = (JSONObject)extrasJSON.get(j);
+					String title = (String)extraJSON.get(EXTRA_TITLE);
+					String position = (String)extraJSON.get(EXTRA_POSITION);
+					String startDate = (String)extraJSON.get(EXTRA_START_DATE);
+					String endDate = (String)extraJSON.get(EXTRA_END_DATE);
+					Boolean resume = (Boolean)extraJSON.get(RESUME);
 
+				 	extracurriculars.add(new Extracurricular(title, position, startDate, endDate, resume));
+				}
 
-	// 				int gradYear = ((Long)educationJSON.get(EDUCATION_GRAD_YEAR)).intValue();
-	// 				Boolean resume = (Boolean)educationJSON.get(RESUME);
+				JSONArray honorsJSON = (JSONArray)resumeJSON.get(RESUME_HONORS);
+				ArrayList<Honor> honors = new ArrayList<Honor>();
+				for (int j = 0; j < honorsJSON.size(); j++) {
+					JSONObject honorJSON = (JSONObject)honorsJSON.get(j);
+					String title = (String)honorJSON.get(HONORS_TITLE);
+					String organ = (String)honorJSON.get(HONORS_ORGAN);
+					String description = (String)honorJSON.get(HONORS_DESCRIPTION);
+					int year = ((Long)honorJSON.get(HONORS_YEAR)).intValue();
+					Boolean resume = (Boolean)honorJSON.get(RESUME);
 
-	// 			 	educations.add(new Education(schoolTitle, location, major, gradYear, resume));
-	// 			}
-
-
+				 	honors.add(new Honor(title, organ, description, year, resume));
+				}
 				
-	// 			employers.add(new Employer(id, title, userName, password, email, rating, location, mission, reviews));
-	// 		}
+				resumes.add(new Resume(id, educations, skills, courses, works, extracurriculars, honors));
+			}
 			
-	// 		return employers;
+			return resumes;
 			
-	// 	} catch (Exception e) {
-	// 		e.printStackTrace();
-	// 	}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-	// 	return null;
+		return null;
 		
-	// }
+	}
 
 	public static ArrayList<Admin> getAdmins() {
 		ArrayList<Admin> ret = new ArrayList<Admin>();
@@ -243,7 +265,6 @@ public class DataLoader extends DataConstants {
 	}
 
 	public static void getApplicants() {
-		// ArrayList<Student> applicants = new ArrayList<Student>();
 		try {
 			FileReader reader = new FileReader(APPLICATIONS_FILE_NAME);
 			JSONParser parser = new JSONParser();	
@@ -263,31 +284,33 @@ public class DataLoader extends DataConstants {
 				employer.getPosts().add(post);
 			}
 
-			// return applicants;
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// return null;
 	}
 
 	public static void main(String[] args){
-		ArrayList<Employer> employers = DataLoader.getEmployers();
-		ArrayList<Student> students = DataLoader.getStudents();
-		ArrayList<InternshipPost> posts = DataLoader.getInternshipPosts();
-		// DataLoader.getApplicants();
+		ArrayList<InternshipPost> posts = InternshipList.getInstance().getInternships();
+		ArrayList<Employer> employers = EmployerList.getInstance().getEmployers();
+		ArrayList<Student> students = StudentList.getInstance().getStudents();
+		DataLoader.getApplicants();
+		ArrayList<Resume> resumes = DataLoader.getResumes();
 
 		// for(Student student : students) {
 		// System.out.println(student);
 		// }
 
-		for (Employer employer : employers) {
-			System.out.println(employer);
-		}
+		// for (Employer employer : employers) {
+		// 	System.out.println(employer);
+		// }
 
 		// for(InternshipPost post : posts) {
 		// System.out.println(post);
 		// }
+
+		for (Resume resume : resumes) {
+			System.out.println(resume);
+		}
 	}
 
 }

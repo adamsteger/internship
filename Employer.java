@@ -8,6 +8,7 @@ public class Employer extends User {
     private String location;
     private String mission;
     private ArrayList<InternshipPost> posts;
+    private ArrayList<Review> reviews;
     private UUID id;
 
 
@@ -19,6 +20,7 @@ public class Employer extends User {
         location = "";
         mission = "";
         posts = new ArrayList<InternshipPost>();
+        reviews = new ArrayList<Review>();
         id = super.getUUID();
     }
 
@@ -33,6 +35,7 @@ public class Employer extends User {
         this.location = location;
         this.mission = mission;
         posts = new ArrayList<InternshipPost>();
+        this.reviews = reviews;
     }
 
     public Employer(String title, String username, String password, String email, String location, String mission) {
@@ -44,6 +47,7 @@ public class Employer extends User {
         rating = 5;
         this.location = location;
         this.mission = mission;
+        reviews = new ArrayList<Review>();
     }
 
     public String getEmail() {
@@ -66,6 +70,10 @@ public class Employer extends User {
         return posts;
     }
 
+    public ArrayList<Review> getReviews() {
+        return reviews;
+    }
+
     public UUID getUUID() {
         return id;
     }
@@ -77,11 +85,10 @@ public class Employer extends User {
     public String toString() {
         String ret = "\nTitle: " + title + "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
                         rating + "\nLocation: " + location + "\nMission: " + mission + "\nReviews: ";
-        ArrayList<Review> reviews = super.getReviews();
         for (Review review : reviews) {
             ret += review;
         }
-        
+        ret += "\nInternship Posts: ";
         for (InternshipPost post : posts) {
             ret += "\n\tPosition Title: " + post.getPosTitle() + "\tLocation: " + post.getLocation();
         }
