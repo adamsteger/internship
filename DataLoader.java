@@ -162,6 +162,7 @@ public class DataLoader extends DataConstants {
 		ArrayList<InternshipPost> posts = DataLoader.getInternshipPosts();
 
 		// for(Student student : students) {
+<<<<<<< HEAD
 		// System.out.println(student);
 		// }
 
@@ -172,6 +173,18 @@ public class DataLoader extends DataConstants {
 		// for(InternshipPost post : posts) {
 		// System.out.println(post);
 		// }
+=======
+		// 	System.out.println(student);
+		// }
+
+		// for(Employer employer : employers){
+		// 	System.out.println(employer);
+		// }
+
+		for(InternshipPost post : posts) {
+			System.out.println(post);
+		}
+>>>>>>> 826d5596554b61a9433b872976f75301b7fdd509
 	}
 
 }

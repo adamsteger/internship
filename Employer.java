@@ -34,6 +34,17 @@ public class Employer extends User {
         this.mission = mission;
     }
 
+    public Employer(String title, String username, String password, String email, String location, String mission) {
+        super(username, password);
+        this.title = title;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        rating = 5;
+        this.location = location;
+        this.mission = mission;
+    }
+
     public String getEmail() {
         return email;
     }

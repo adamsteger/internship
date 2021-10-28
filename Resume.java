@@ -8,15 +8,17 @@ public class Resume {
     private Hashtable<String, Boolean> courses;
     private ArrayList<WorkExperience> work;
     private ArrayList<Extracurricular> extracurriculars;
+    private ArrayList<Honor> honors;
     private UUID id;
     
     public Resume(ArrayList<Education> educations, Hashtable<Skill, Boolean> skills, Hashtable<String, Boolean> courses, 
-      ArrayList<WorkExperience> work, ArrayList<Extracurricular> extracurriculars) {
+      ArrayList<WorkExperience> work, ArrayList<Extracurricular> extracurriculars, ArrayList<Honor> honors) {
         this.educations = educations;
         this.skills = skills;
         this.courses = courses;
         this.work = work;
         this.extracurriculars = extracurriculars;
+        this.honors = honors;
         id = UUID.randomUUID();
     }
 
@@ -26,11 +28,16 @@ public class Resume {
         courses = new Hashtable<String, Boolean>();
         work = new ArrayList<WorkExperience>();
         extracurriculars = new ArrayList<Extracurricular>();
+        honors = new ArrayList<Honor>();
         id = UUID.randomUUID();
     }
 
     public ArrayList<Education> getEducations() {
         return this.educations;
+    }
+
+    public ArrayList<Honor> getHonors() {
+        return honors;
     }
 
     public Hashtable<Skill, Boolean> getSkills() {
@@ -51,6 +58,14 @@ public class Resume {
 
     public void addEducation(Education edu) {
         educations.add(edu);
+    }
+
+    public void addHonor(Honor honor) {
+        honors.add(honor);
+    }
+
+    public void removeHonor(Honor honor) {
+        honors.remove(honor);
     }
 
     public void removeEducation(Education edu) {

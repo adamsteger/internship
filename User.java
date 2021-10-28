@@ -84,48 +84,6 @@ public abstract class User {
         return retList;
     }
 
-    private ArrayList<InternshipPost> filterByPay(int lowPay, int highPay) {
-        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
-            InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getLowPay() >= lowPay && currentPost.getHighPay() <= highPay)
-                retList.add(currentPost);
-        }
-        return retList;
-    }
-
-    private ArrayList<InternshipPost> filterByLocation(String location) {
-        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
-            InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getLocation().contains(location))
-                retList.add(currentPost);
-        }
-        return retList;
-    }
-
-    private ArrayList<InternshipPost> filterByLanguage(Skill language) {
-        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
-            InternshipPost currentPost = internshipList.getInternships().get(i);
-            for(int j = 0; j < currentPost.getSkillReq().size(); i++){
-                if(currentPost.getSkillReq().get(i).equals(language))
-                    retList.add(currentPost);
-            }
-        }
-        return retList;
-    }
-
-    private ArrayList<InternshipPost> filterByRemote(boolean isRemote) {
-        ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
-            InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getRemote() == isRemote)
-                retList.add(currentPost);
-        }
-        return retList;
-    }
-
     public void addReview(User user, String writer, int rating, String comment) {
         user.getReviews().add(new Review(writer, rating, comment));
     }
