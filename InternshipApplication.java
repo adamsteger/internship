@@ -31,6 +31,7 @@ public class InternshipApplication{
         return adminList.addAdmin(admin);
     }
 
+    //student login
     public Student studentLogin(String username, String password) {
         if(!studentList.haveStudent(username))
             return null;
@@ -42,6 +43,7 @@ public class InternshipApplication{
         return null;
     }
 
+    //employer login
     public Employer employerLogin(String username, String password) {
         if(!employerList.haveEmployer(username))
             return null;
@@ -53,6 +55,7 @@ public class InternshipApplication{
         return null;
     }
 
+    //admin login
     public Admin adminLogin(String username, String password) {
         if(!adminList.haveAdmin(username))
             return null;
@@ -141,12 +144,13 @@ public class InternshipApplication{
         return new ArrayList<InternshipPost>();
     }
 
-    public boolean addInternship(Employer employer, String companyName, String posTitle, String description, String location, ArrayList<String> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, String language, int lowPay, int highPay, ArrayList<Student> applicants){
+    public boolean addInternship(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay){
+        if(internshipList.haveInternshipPost(employerTitle, posTitle)) {
+            return false; 
+        }
+        internshipList.addInternship(employerTitle, posTitle, description, location, skillReq, startDate, endDate, isRemote, isOpen, lowPay, highPay);
+        internshipList.save();
         return true;
-    }
-    
-    public void studentReview(String comment){
-
     }
 
     public void addWorkExperience(WorkExperience work) {
@@ -175,5 +179,9 @@ public class InternshipApplication{
 
     public void addHonor(Honor honor) {
         student.getResume().addHonor(honor);
+    }
+
+    public void addReview(User user, String writer, int rating, String comment) {
+        user.getReviews().add(new Review(writer, rating, comment));
     }
 }

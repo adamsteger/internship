@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -15,10 +16,10 @@ public class InternshipUI {
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review", "Deletion History" };
     private Scanner scanner;
     private int prevPage;// ??????
+    private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL", "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
 
     InternshipUI() {
         scanner = new Scanner(System.in);
-
     }
 
     private void run() {
@@ -72,7 +73,7 @@ public class InternshipUI {
         System.out.println("Phone: " + student.getPhone());
         System.out.println("Rating: " + student.getRating() + "/5 stars");
         // System.out.println("Skill(s): " + skills.size());
-        System.out.println("Educations(s): " + internApp.getEducations().size();
+        System.out.println("Educations(s): " + student.getResume().getEducations().size());
 
         // System.out.println("ExtraCurricular(s): " +
         // student.getExtraCurriculars().size();
@@ -254,7 +255,7 @@ public class InternshipUI {
             System.out.println("Enter Password: ");
             pass = scanner.nextLine();
 
-            employer = internApp.login(userName, pass);
+            employer = internApp.employerLogin(userName, pass);
             if (employer == null) {
                 break;
             }
@@ -482,15 +483,55 @@ public class InternshipUI {
     }
 
     private void addIntershipPost(Employer employer) {
+        ArrayList<Skill> skillReq = new ArrayList<Skill>();
         System.out.println("~~NEW INTERNSHIP POST~~\n");
+        System.out.println("Enter position title: ");
+        String posTitle = scanner.nextLine();
+        System.out.println("Enter a description: ");
+        String description = scanner.nextLine();
+        System.out.println("Would you like to enter skill requirements from the following?\nType \'yes\' or \'no\'\n" + skills);
+        if(scanner.nextLine().equalsIgnoreCase("yes")) {
+            System.out.println("How many skills would you like to add?");
+            int number = scanner.nextInt();
+            if(number >= 1 && number <= 17) {
+                for(int i = 0; i < number; i++) {
+                    System.out.println("Skill requirement "+ (i+1) + ": ");
+                    Skill reqSkill = Skill.valueOf(scanner.nextLine());
+                    skillReq.add(reqSkill);
+                }
+            }
+            else {
+                System.out.println("Invalid input");
+                System.exit(0); //maybe change this to a loop later
+            }
+        }
+        System.out.println("Enter start date with the format MM/DD/YY: ");
+        String startDate = scanner.nextLine();
+        System.out.println("Enter end date with the format MM/DD/YY: ");
+        String endDate = scanner.nextLine();
+        System.out.println("Is this internship remote? Type \'yes\' or \'no\': ");
+        String remote = scanner.nextLine();
+        boolean isRemote = false;
+        if(remote.equalsIgnoreCase("yes")) {
+            isRemote = true;
+        }
+        System.out.println("Is this internship currently open? Type \'yes\' or \'no\': ");
+        String open = scanner.nextLine();
+        boolean isOpen = false;
+        if(open.equalsIgnoreCase("yes")) {
+            isOpen = true;
+        }
+        System.out.println("Enter a low pay for the internship: ");
+        int lowPay = scanner.nextInt();
+        System.out.println("Enter a high pay for the internship: ");
+        int highPay = scanner.nextInt();
+        internApp.addInternship(employer.getTitle(), posTitle, description, employer.getLocation(), skillReq, startDate, endDate, isRemote, isOpen, lowPay, highPay);
 
     }
 
     private void addSkill(Student student, int num) {
         for (int i = 0; i < num; i++) {
             boolean resume;
-            String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL",
-                    "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
             System.out.println("Enter one of the following: ");
             for (String skill : skills) {
                 System.out.println(skill);

@@ -44,24 +44,24 @@ public abstract class User {
         return reviews;
     }
 
-    private boolean checkUsername(String username) {
-        if(studentList.haveStudent(username))
-            return false;
-        else if(employerList.haveEmployer(username))
-            return false;
-        else if(adminList.haveAdmin(username))
-            return false;
+    // private boolean checkUsername(String username) {
+    //     if(studentList.haveStudent(username))
+    //         return false;
+    //     else if(employerList.haveEmployer(username))
+    //         return false;
+    //     else if(adminList.haveAdmin(username))
+    //         return false;
 
-        if(username.length() <= 6 || username.length() >= 15)
-            return false;
-        return true;
-    }
+    //     if(username.length() <= 6 || username.length() >= 15)
+    //         return false;
+    //     return true;
+    // }
 
-    private boolean checkPassword(String password) {
-        if(password.length() <= 8 || password.length() >= 20)
-            return false;
-        return true;
-    }
+    // private boolean checkPassword(String password) {
+    //     if(password.length() <= 8 || password.length() >= 20)
+    //         return false;
+    //     return true;
+    // }
 
     private ArrayList<InternshipPost> getPosts() {
         return internshipList.getInternships();
