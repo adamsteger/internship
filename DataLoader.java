@@ -1,6 +1,7 @@
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.Hashtable;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -152,15 +153,130 @@ public class DataLoader extends DataConstants {
 		return null;
 	}
 
+	// public static ArrayList<Resume> getResumes() {
+	// 	ArrayList<Resume> resumes = new ArrayList<Resume>();
+
+	// 	try {
+	// 		FileReader reader = new FileReader(RESUME_FILE_NAME);
+	// 		JSONParser parser = new JSONParser();	
+	// 		JSONArray resumesJSON = (JSONArray)new JSONParser().parse(reader);
+			
+	// 		for(int i = 0; i < resumesJSON.size(); i++) {
+	// 			JSONObject resumeJSON = (JSONObject)resumesJSON.get(i);
+	// 			UUID id = UUID.fromString((String)resumeJSON.get(RESUME_ID));
+
+	// 			JSONArray educationsJSON = (JSONArray)resumeJSON.get(EMPLOYER_REVIEWS);
+	// 			ArrayList<Education> educations = new ArrayList<Education>();
+	// 			for (int j = 0; j < educationsJSON.size(); j++) {
+	// 				JSONObject educationJSON = (JSONObject)educationsJSON.get(j);
+	// 				String schoolTitle = (String)educationJSON.get(EDUCATION_SCHOOL);
+	// 				String location = (String)educationJSON.get(EDUCATION_LOCATION);
+	// 				String major = (String)educationJSON.get(EDUCATION_MAJOR);
+	// 				int gradYear = ((Long)educationJSON.get(EDUCATION_GRAD_YEAR)).intValue();
+	// 				Boolean resume = (Boolean)educationJSON.get(RESUME);
+
+	// 			 	educations.add(new Education(schoolTitle, location, major, gradYear, resume));
+	// 			}
+
+	// 			JSONArray skillsJSON = (JSONArray)resumeJSON.get(SKILLS);
+	// 			Hashtable<Skill,Boolean> skills = new Hashtable<Skill,Boolean>();
+	// 			for (int j = 0; j < skillsJSON.size(); j++) {
+	// 				JSONObject skillJSON = (JSONObject)skillsJSON.get(j);
+	// 				String skillString = (String)skillJSON.get(SKILLS_SKILL);
+	// 				Boolean resume = (Boolean)skillJSON.get(RESUME);
+	// 				Skill skill = Skill.valueOf(skillString);
+
+	// 			 	skills.put(skill, resume);
+	// 			}
+
+	// 			JSONArray coursesJSON = (JSONArray)resumeJSON.get(RESUME_COURSES);
+	// 			Hashtable<String,Boolean> courses = new Hashtable<String,Boolean>();
+	// 			for (int j = 0; j < coursesJSON.size(); j++) {
+	// 				JSONObject courseJSON = (JSONObject)coursesJSON.get(j);
+	// 				String course = (String)courseJSON.get(COURSES_COURSE);
+	// 				Boolean resume = (Boolean)courseJSON.get(RESUME);
+
+	// 			 	courses.put(course, resume);
+	// 			}
+
+	// 			JSONArray worksJSON = (JSONArray)resumeJSON.get(RESUME_WORK);
+	// 			ArrayList<WorkExperience> works = new ArrayList<WorkExperience>();
+	// 			for (int j = 0; j < worksJSON.size(); j++) {
+	// 				JSONObject workJSON = (JSONObject)educationsJSON.get(j);
+	// 				String posTitle = (String)workJSON.get(WORK_POSITION_TITLE);
+	// 				String employer = (String)workJSON.get(WORK_EMPLOYER);
+	// 				String location = (String)workJSON.get(WORK_LOCATION);
+	// 				String startDate = (String)workJSON.get(WORK_START_DATE);
+	// 				String endDate = (String)workJSON.get(WORK_END_DATE);
+
+
+	// 				JSONArray descriptionsJSON = (JSONArray)workJSON.get(WORK_DESCRIPTION);
+	// 				ArrayList<String> description = new ArrayList<String>();
+	// 				for (int k = 0; k < descriptionsJSON.size(); k++) {
+
+	// 				}
+
+
+	// 				int gradYear = ((Long)educationJSON.get(EDUCATION_GRAD_YEAR)).intValue();
+	// 				Boolean resume = (Boolean)educationJSON.get(RESUME);
+
+	// 			 	educations.add(new Education(schoolTitle, location, major, gradYear, resume));
+	// 			}
+
+
+				
+	// 			employers.add(new Employer(id, title, userName, password, email, rating, location, mission, reviews));
+	// 		}
+			
+	// 		return employers;
+			
+	// 	} catch (Exception e) {
+	// 		e.printStackTrace();
+	// 	}
+		
+	// 	return null;
+		
+	// }
+
 	public static ArrayList<Admin> getAdmins() {
 		ArrayList<Admin> ret = new ArrayList<Admin>();
 		return ret;
 	}	
 
+	public static void getApplicants() {
+		// ArrayList<Student> applicants = new ArrayList<Student>();
+		try {
+			FileReader reader = new FileReader(APPLICATIONS_FILE_NAME);
+			JSONParser parser = new JSONParser();	
+			JSONArray applicantsJSON = (JSONArray)new JSONParser().parse(reader);
+			
+			for(int i = 0; i < applicantsJSON.size(); i++) {
+				JSONObject applicantJSON = (JSONObject)applicantsJSON.get(i);
+				UUID studentID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_STUDENT_ID));
+				UUID postID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_POST_ID));
+				UUID employerID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_EMPLOYER_ID));
+
+				Employer employer = EmployerList.getInstance().getEmployerByID(employerID);
+				InternshipPost post = InternshipList.getInstance().getPostByID(postID);
+				Student student = StudentList.getInstance().getStudentByID(studentID);
+				
+				post.getApplicants().add(student);
+				employer.getPosts().add(post);
+			}
+
+			// return applicants;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// return null;
+	}
+
 	public static void main(String[] args){
 		ArrayList<Employer> employers = DataLoader.getEmployers();
 		ArrayList<Student> students = DataLoader.getStudents();
 		ArrayList<InternshipPost> posts = DataLoader.getInternshipPosts();
+		// DataLoader.getApplicants();
 
 		// for(Student student : students) {
 		// 	System.out.println(student);
