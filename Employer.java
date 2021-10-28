@@ -32,6 +32,7 @@ public class Employer extends User {
         this.rating = rating;
         this.location = location;
         this.mission = mission;
+        posts = new ArrayList<InternshipPost>();
     }
 
     public Employer(String title, String username, String password, String email, String location, String mission) {
@@ -79,6 +80,10 @@ public class Employer extends User {
         ArrayList<Review> reviews = super.getReviews();
         for (Review review : reviews) {
             ret += review;
+        }
+        
+        for (InternshipPost post : posts) {
+            ret += "\n\tPosition Title: " + post.getPosTitle() + "\tLocation: " + post.getLocation();
         }
         return ret;
     }
