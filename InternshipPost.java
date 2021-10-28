@@ -97,6 +97,7 @@ public class InternshipPost {
         this.lowPay = lowPay;
         this.highPay = highPay;
         this.skillReq = skills;
+        applicants = new ArrayList<Student>();
     }
 
     public InternshipPost() {
@@ -130,6 +131,10 @@ public class InternshipPost {
                         isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay + "\nSkills Required: ";
         for (Skill skill : skillReq) {
             ret += skill + "\t";
+        }
+        ret += "\nApplicants: ";
+        for (Student student : applicants) {
+            ret += "\n\tName: " + student.getName() + "\tGraduation Year: " + student.getGradYear();
         }
         return ret;
     }
