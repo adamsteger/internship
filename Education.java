@@ -5,11 +5,12 @@ public class Education {
     private int gradYear;
     private boolean resume;
 
-    public Education(String schoolTitle, String location, String major, int gradYear) {
+    public Education(String schoolTitle, String location, String major, int gradYear, boolean resume) {
         this.schoolTitle = schoolTitle;
         this.location = location;
         this.major = major;
         this.gradYear = gradYear;
+        this.resume = resume;
     }
 
     public String getSchoolTitle() {
