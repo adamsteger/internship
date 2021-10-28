@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.UUID;
 
 public class InternshipUI {
     private InternshipApplication internApp = new InternshipApplication();
@@ -7,14 +6,12 @@ public class InternshipUI {
     private String[] startMenuOptions = { "Sign in as Admin", "Sign in as Student", "Sign in as Employer",
             "Create Student account", "Create Employer account" };
     private String[] studentHomeOptions = { "Sign out", "See/Edit Educations", "See/Edit Extra Curriculars",
-            "See/Edit Work Experiences", "See/Edit Honors", "See/Edit Contact Information", "See/Edit Resume",
-            "Browse Internship Posts" };
+            "See/Edit Work Experiences", "See/Edit Honors", "See Resume", "Browse Internship Posts" };
     private String[] employerHomeOptions = { "Sign out", "See/Edit internship posts", "See Reviews",
             "Leave Review on a Student" };
     private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
-    private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review", "Deletion History" };
+    private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner;
-    private int prevPage;// ??????
 
     InternshipUI() {
         scanner = new Scanner(System.in);
@@ -26,15 +23,19 @@ public class InternshipUI {
     }
 
     private int getUserOpt(int numOfOpts) {
-        System.out.print("\nWhat would you like to do?: ");
+        while (true) {
+            System.out.print("\nWhat would you like to do?: ");
 
-        String input = scanner.nextLine();
-        int command = Integer.parseInt(input);
+            String input = scanner.nextLine();
+            int command = Integer.parseInt(input);
 
-        if (command >= 0 && command <= numOfOpts - 1)
-            return command;
+            if (command >= 0 && command <= numOfOpts - 1) {
+                return command;
+            } else {
+                System.out.print("Invalid input. Please Try again");
+            }
+        }
 
-        return -1;
     }
 
     private boolean yesNo() {
@@ -66,13 +67,13 @@ public class InternshipUI {
     }
 
     private void displayStudentHome(Student student) {
-        System.out.println("~~ " + student.getFirstName() + student.getLastName() + " ~~\n");
+        System.out.println("~~ " + student.getName() + " ~~\n");
 
         System.out.println("Email: " + student.getEmail());
         System.out.println("Phone: " + student.getPhone());
         System.out.println("Rating: " + student.getRating() + "/5 stars");
-        // System.out.println("Skill(s): " + skills.size());
-        System.out.println("Educations(s): " + internApp.getEducations().size();
+        // System.out.println("Skill(s): " + internApp.getSkills.size());
+        System.out.println("Educations(s): " + student.getResume.getEducations().size();
 
         // System.out.println("ExtraCurricular(s): " +
         // student.getExtraCurriculars().size();
@@ -131,7 +132,8 @@ public class InternshipUI {
     }
 
     private void executeStartOpt(int opt) {
-        opt--;
+        // opt--;
+        // System.out.println(opt);
         switch (opt) {
         case (0):// Sign in as Admin
             displayAdminHome(adminSignIn());
@@ -148,23 +150,39 @@ public class InternshipUI {
     }
 
     private void executeStudentHomeOpt(Student student, int opt) {
+        Resume res = student.getResume();
         switch (opt) {
         case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
         case (1):// See/Edit Educations
+            for (int i = 0; i < res.getEducations().size(); i++) {
+                System.out.println(i + 1 + ". ");
+                System.out.println(res.getEducations().get(i).toString());
+            }
 
         case (2):// See/Edit Extra Curriculars
+            for (int i = 0; i < res.getExtracurriculars().size(); i++) {
+                System.out.println(i + 1 + ". ");
+                System.out.println(res.getExtracurriculars().get(i).toString());
+            }
 
         case (3):// See/Edit Work Experiences
+            for (int i = 0; i < res.getWork().size(); i++) {
+                System.out.println(i + 1 + ". ");
+                System.out.println(res.getWork().get(i).toString());
+            }
 
         case (4):// See/Edit Honors
+            for (int i = 0; i < res.getHonors().size(); i++) {
+                System.out.println(i + 1 + ". ");
+                System.out.println(res.getHonors().get(i).toString());
+            }
 
-        case (5):// See/Edit Contact Information
+        case (5):// See Resume
+            res.toString();
 
-        case (6):// See/Edit Resume
-
-        case (7):// Browse Internship Posts
+        case (6):// Browse Internship Posts
 
         }
 
@@ -195,8 +213,6 @@ public class InternshipUI {
         case (1):// Delete Post
 
         case (2):// Delete Review
-
-        case (3):// Deletion History
 
         }
 
@@ -308,7 +324,7 @@ public class InternshipUI {
             System.out.println("How many: ");
             int num = scanner.nextInt();
             scanner.nextLine();
-            addWorkExp(student, num);
+            addWorkExp(num);
         }
 
         System.out.print("Would you like to add Education(s)?");
@@ -316,7 +332,7 @@ public class InternshipUI {
             System.out.println("How many: ");
             int num = scanner.nextInt();
             scanner.nextLine();
-            addEducation(student, num);
+            addEducation(num);
         }
 
         System.out.print("Would you like to add Course(s)?");
@@ -324,7 +340,7 @@ public class InternshipUI {
             System.out.println("How many: ");
             int num = scanner.nextInt();
             scanner.nextLine();
-            addCourse(student, num);
+            addCourse(num);
         }
 
         System.out.print("Would you like to add Extracurricular(s)?");
@@ -332,7 +348,7 @@ public class InternshipUI {
             System.out.println("How many: ");
             int num = scanner.nextInt();
             scanner.nextLine();
-            addExtracurricular(student, num);
+            addExtracurricular(num);
         }
 
         System.out.print("Would you like to add Honor(s)?");
@@ -340,7 +356,7 @@ public class InternshipUI {
             System.out.println("How many: ");
             int num = scanner.nextInt();
             scanner.nextLine();
-            addHonor(student, num);
+            addHonor(num);
         }
 
         System.out.print("Would you like to add Skill(s)?");
@@ -348,7 +364,7 @@ public class InternshipUI {
             System.out.println("How many: ");
             int num = scanner.nextInt();
             scanner.nextLine();
-            addSkill(student, num);
+            addSkill(num);
         }
 
         return student;
@@ -424,7 +440,7 @@ public class InternshipUI {
 
     }
 
-    private void addWorkExp(Student student, int num) {
+    private void addWorkExp(int num) {
         for (int i = 0; i < num; i++) {
             String title, position, startDate, endDate;
             boolean resume;
@@ -451,7 +467,7 @@ public class InternshipUI {
         }
     }
 
-    private void addEducation(Student student, int num) {
+    private void addEducation(int num) {
         for (int i = 0; i < num; i++) {
             String title, location, major;
             int gradYear;
@@ -486,7 +502,7 @@ public class InternshipUI {
 
     }
 
-    private void addSkill(Student student, int num) {
+    private void addSkill(int num) {
         for (int i = 0; i < num; i++) {
             boolean resume;
             String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL",
@@ -506,7 +522,7 @@ public class InternshipUI {
         }
     }
 
-    private void addCourse(Student student, int num) {
+    private void addCourse(int num) {
         for (int i = 0; i < num; i++) {
             String course;
             boolean resume;
@@ -521,7 +537,7 @@ public class InternshipUI {
         }
     }
 
-    private void addExtracurricular(Student student, int num) {
+    private void addExtracurricular(int num) {
         for (int i = 0; i < num; i++) {
             String title, position, startDate, endDate;
             boolean resume;
@@ -550,7 +566,8 @@ public class InternshipUI {
 
     }
 
-    private void addHonor(Student student, int num) {
+    private void addHonor(int num) {
+
         for (int i = 0; i < num; i++) {
             String title, organization, description, date;
             boolean resume;
@@ -578,10 +595,36 @@ public class InternshipUI {
         }
     }
 
+    private void editWorkExp(Student student) {
+
+        System.out.println("    1. Remove a Work Experience");
+        System.out.println("    2. Add a Work Experience");
+        System.out.println("    0. Go Home");
+
+        switch (getUserOpt(3)) {
+        case (0):
+            displayStudentHome(student);
+        case (1):
+
+            System.out.println("Which Work Experience would you like to remove?");
+            int temp = scanner.nextInt() - 1;
+            scanner.nextLine();
+            internApp.removeWork(student.getResume().getWork().get(temp));
+
+        case (2):
+            System.out.println("How many: ");
+            int num = scanner.nextInt();
+            scanner.nextLine();
+            addWorkExp(num);
+        }
+
+    }
+
+    }
+
     public static void main(String[] args) {
         InternshipUI iUI = new InternshipUI();
 
         iUI.displayStartMenu();
     }
-
 }
