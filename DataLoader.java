@@ -53,8 +53,11 @@ public class DataLoader extends DataConstants {
 					favPosts.add(post);
 				}
 
+				UUID resumeID = UUID.fromString((String)personJSON.get(STUDENT_RESUME_ID));
+				Resume resume = ResumeList.getInstance().getResumeByID(resumeID);
+
 				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone,
-						gpa, showGPA, rating, favPosts));
+						gpa, showGPA, rating, reviews, favPosts, resume));
 			}
 
 			return students;
@@ -260,8 +263,30 @@ public class DataLoader extends DataConstants {
 	}
 
 	public static ArrayList<Admin> getAdmins() {
-		ArrayList<Admin> ret = new ArrayList<Admin>();
-		return ret;
+		ArrayList<Admin> admins = new ArrayList<Admin>();
+
+		try {
+			FileReader reader = new FileReader(ADMIN_FILE_NAME);
+			JSONParser parser = new JSONParser();
+			JSONArray adminsJSON = (JSONArray) new JSONParser().parse(reader);
+
+			for (int i = 0; i < adminsJSON.size(); i++) {
+				JSONObject adminJSON = (JSONObject) adminsJSON.get(i);
+				UUID id = UUID.fromString((String) adminJSON.get(USER_ID));
+				String username = (String) adminJSON.get(USER_USER_NAME);
+				String password = (String) adminJSON.get(USER_PASSWORD);
+				
+
+				admins.add(new Admin(id, username, password));
+			}
+
+			return admins;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 	public static void getApplicants() {
@@ -294,11 +319,11 @@ public class DataLoader extends DataConstants {
 		ArrayList<Employer> employers = EmployerList.getInstance().getEmployers();
 		ArrayList<Student> students = StudentList.getInstance().getStudents();
 		DataLoader.getApplicants();
-		ArrayList<Resume> resumes = DataLoader.getResumes();
+		ArrayList<Admin> admins = DataLoader.getAdmins();
 
-		// for(Student student : students) {
-		// System.out.println(student);
-		// }
+		for(Student student : students) {
+			System.out.println(student);
+		}
 
 		// for (Employer employer : employers) {
 		// 	System.out.println(employer);
@@ -307,10 +332,10 @@ public class DataLoader extends DataConstants {
 		// for(InternshipPost post : posts) {
 		// System.out.println(post);
 		// }
-
-		for (Resume resume : resumes) {
-			System.out.println(resume);
-		}
+		
+		// for (Admin admin : admins) {
+		// 	System.out.println(admin);
+		// }
 	}
 
 }
