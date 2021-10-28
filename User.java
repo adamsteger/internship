@@ -9,12 +9,14 @@ public abstract class User {
     private AdminList adminList;
     private InternshipList internshipList;
     private UUID id;
+    private ArrayList<Review> reviews;
     
     //new account
     public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.id = UUID.randomUUID();
+        this.reviews = new ArrayList<Review>();
     }
 
     public String getUsername() {
@@ -27,6 +29,10 @@ public abstract class User {
 
     public UUID getUUID() {
         return id;
+    }
+
+    public ArrayList<Review> getReviews() {
+        return reviews;
     }
 
     // private boolean checkUsername(String username) {
