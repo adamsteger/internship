@@ -15,11 +15,9 @@ public class InternshipUI {
     private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner;
-<<<<<<< HEAD
-=======
     private int prevPage;// ??????
-    private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL", "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
->>>>>>> 4abce6b1686c60b762fab7e735a6f5dfe7136351
+    private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL",
+            "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
 
     InternshipUI() {
         scanner = new Scanner(System.in);
@@ -79,13 +77,8 @@ public class InternshipUI {
         System.out.println("Email: " + student.getEmail());
         System.out.println("Phone: " + student.getPhone());
         System.out.println("Rating: " + student.getRating() + "/5 stars");
-<<<<<<< HEAD
-        // System.out.println("Skill(s): " + internApp.getSkills.size());
-        System.out.println("Educations(s): " + student.getResume.getEducations().size();
-=======
         // System.out.println("Skill(s): " + skills.size());
         System.out.println("Educations(s): " + student.getResume().getEducations().size());
->>>>>>> 4abce6b1686c60b762fab7e735a6f5dfe7136351
 
         // System.out.println("ExtraCurricular(s): " +
         // student.getExtraCurriculars().size();
@@ -476,11 +469,11 @@ public class InternshipUI {
             endDate = scanner.nextLine();
 
             System.out.println("Would you like to add descriptions? ");
-            if(yesNo()) {
+            if (yesNo()) {
                 System.out.println("How many would you like to add?");
                 int works = scanner.nextInt();
-                for(int j = 0; j < works; j++) {
-                    System.out.println("Enter description " + (j+1) + ":" );
+                for (int j = 0; j < works; j++) {
+                    System.out.println("Enter description " + (j + 1) + ":");
                     description.add(scanner.nextLine());
                 }
             }
@@ -488,7 +481,8 @@ public class InternshipUI {
             System.out.print("Add this to Resume?");
             resume = yesNo();
 
-            WorkExperience work = new WorkExperience(position, title, location, startDate, endDate, resume, description);
+            WorkExperience work = new WorkExperience(position, title, location, startDate, endDate, resume,
+                    description);
             internApp.addWorkExperience(work);
         }
     }
@@ -530,20 +524,20 @@ public class InternshipUI {
         String posTitle = scanner.nextLine();
         System.out.println("Enter a description: ");
         String description = scanner.nextLine();
-        System.out.println("Would you like to enter skill requirements from the following?\nType \'yes\' or \'no\'\n" + skills);
-        if(yesNo()) {
+        System.out.println(
+                "Would you like to enter skill requirements from the following?\nType \'yes\' or \'no\'\n" + skills);
+        if (yesNo()) {
             System.out.println("How many skills would you like to add?");
             int number = scanner.nextInt();
-            if(number >= 1 && number <= 17) {
-                for(int i = 0; i < number; i++) {
-                    System.out.println("Skill requirement "+ (i+1) + ": ");
+            if (number >= 1 && number <= 17) {
+                for (int i = 0; i < number; i++) {
+                    System.out.println("Skill requirement " + (i + 1) + ": ");
                     Skill reqSkill = Skill.valueOf(scanner.nextLine());
                     skillReq.add(reqSkill);
                 }
-            }
-            else {
+            } else {
                 System.out.println("Invalid input");
-                System.exit(0); //maybe change this to a loop later
+                System.exit(0); // maybe change this to a loop later
             }
         }
         System.out.println("Enter start date with the format MM/DD/YY: ");
@@ -553,19 +547,20 @@ public class InternshipUI {
         System.out.println("Is this internship remote? Type \'yes\' or \'no\': ");
         String remote = scanner.nextLine();
         boolean isRemote = false;
-        if(yesNo()) {
+        if (yesNo()) {
             isRemote = true;
         }
         System.out.println("Is this internship currently open? Type \'yes\' or \'no\': ");
         boolean isOpen = false;
-        if(yesNo()) {
+        if (yesNo()) {
             isOpen = true;
         }
         System.out.println("Enter a low pay for the internship: ");
         int lowPay = scanner.nextInt();
         System.out.println("Enter a high pay for the internship: ");
         int highPay = scanner.nextInt();
-        internApp.addInternship(employer.getTitle(), posTitle, description, employer.getLocation(), skillReq, startDate, endDate, isRemote, isOpen, lowPay, highPay);
+        internApp.addInternship(employer.getTitle(), posTitle, description, employer.getLocation(), skillReq, startDate,
+                endDate, isRemote, isOpen, lowPay, highPay);
 
     }
 
@@ -684,8 +679,6 @@ public class InternshipUI {
             scanner.nextLine();
             addWorkExp(num);
         }
-
-    }
 
     }
 
