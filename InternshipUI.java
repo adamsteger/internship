@@ -79,13 +79,8 @@ public class InternshipUI {
         System.out.println("Email: " + student.getEmail());
         System.out.println("Phone: " + student.getPhone());
         System.out.println("Rating: " + student.getRating() + "/5 stars");
-<<<<<<< HEAD
-        // System.out.println("Skill(s): " + internApp.getSkills.size());
-        System.out.println("Educations(s): " + student.getResume.getEducations().size();
-=======
         // System.out.println("Skill(s): " + skills.size());
         System.out.println("Educations(s): " + student.getResume().getEducations().size());
->>>>>>> 4abce6b1686c60b762fab7e735a6f5dfe7136351
 
         // System.out.println("ExtraCurricular(s): " +
         // student.getExtraCurriculars().size();
