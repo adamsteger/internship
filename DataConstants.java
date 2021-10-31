@@ -5,6 +5,7 @@ public abstract class DataConstants {
     protected static final String USER_EMAIL = "email";
     protected static final String USER_RATING = "rating";
     protected static final String STUDENT_FILE_NAME = "student.json";
+    protected static final String STUDENT_FILE_NAME_TEST = "studenttest.json";
     protected static final String STUDENT_FIRST_NAME = "firstName";
     protected static final String STUDENT_LAST_NAME = "lastName";
     protected static final String STUDENT_PHONE_NUMBER = "phone";
@@ -19,11 +20,13 @@ public abstract class DataConstants {
     protected static final String REVIEW_RATING = "rating";
     protected static final String REVIEW_COMMENT = "comment";
     protected static final String EMPLOYER_FILE_NAME = "employers.json";
+    protected static final String EMPLOYER_FILE_NAME_TEST = "employertest.json";
     protected static final String EMPLOYER_TITLE = "title";
     protected static final String EMPLOYER_LOCATION = "location";
     protected static final String EMPLOYER_MISSION = "mission";
     protected static final String EMPLOYER_REVIEWS = "reviews";
     protected static final String INTERNSHIP_FILE_NAME = "internshipposts.json";
+    protected static final String INTERNSHIP_FILE_NAME_TEST = "internshippoststest.json";
     protected static final String INTERNSHIP_ID = "id";
     protected static final String INTERNSHIP_EMPLOYER_TITLE = "employerTitle";
     protected static final String INTERNSHIP_POSITION_TITLE = "posTitle";
@@ -38,6 +41,7 @@ public abstract class DataConstants {
     protected static final String INTERNSHIP_LOW_PAY = "lowPay";
     protected static final String INTERNSHIP_HIGH_PAY = "highPay";
     protected static final String APPLICATIONS_FILE_NAME = "applications.json";
+    protected static final String APPLICATIONS_FILE_NAME_TEST = "applicationstest.json";
     protected static final String APPLICATIONS_STUDENT_ID = "studentID";
     protected static final String APPLICATIONS_EMPLOYER_ID = "employerID";
     protected static final String APPLICATIONS_POST_ID = "postID";
@@ -78,4 +82,5 @@ public abstract class DataConstants {
     protected static final String HONORS_DESCRIPTION = "description";
     protected static final String HONORS_YEAR = "year";
     protected static final String ADMIN_FILE_NAME = "admin.json";
+    protected static final String ADMIN_FILE_NAME_TEST = "admintest.json";
 }

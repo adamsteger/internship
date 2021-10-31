@@ -37,6 +37,14 @@ public class InternshipList {
         return null;
     }
 
+    public boolean addInternship(InternshipPost post) { 
+        if(haveInternshipPost(post.getEmployerTitle(), post.getPosTitle())) 
+            return false;
+        
+        internships.add(post);
+        return true;
+    }
+
     public boolean addInternship(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
         if(haveInternshipPost(employerTitle, posTitle)) 
             return false;
