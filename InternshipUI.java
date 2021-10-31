@@ -15,11 +15,8 @@ public class InternshipUI {
     private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner;
-<<<<<<< HEAD
-=======
     private int prevPage;// ??????
     private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL", "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
->>>>>>> 4abce6b1686c60b762fab7e735a6f5dfe7136351
 
     InternshipUI() {
         scanner = new Scanner(System.in);
@@ -121,6 +118,10 @@ public class InternshipUI {
 
     private void displayEmployerInternships(Employer employer) {
         System.out.println("~~ See/Edit My internship Post(s) ~~\n");
+        ArrayList<InternshipPost> posts = employer.getPosts();
+        for (InternshipPost post : posts) {
+            System.out.println(post + "\n");
+        }
 
     }
 
@@ -671,7 +672,7 @@ public class InternshipUI {
             System.out.println("Which Work Experience would you like to remove?");
             int temp = scanner.nextInt() - 1;
             scanner.nextLine();
-            internApp.removeWork(student.getResume().getWork().get(temp));
+            //internApp.removeWork(student.getResume().getWork().get(temp));
 
         case (2):
             System.out.println("How many: ");
@@ -682,7 +683,6 @@ public class InternshipUI {
 
     }
 
-    }
 
     public static void main(String[] args) {
         InternshipUI iUI = new InternshipUI();
