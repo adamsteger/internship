@@ -48,6 +48,7 @@ public class Employer extends User {
         this.location = location;
         this.mission = mission;
         reviews = new ArrayList<Review>();
+        id = UUID.randomUUID();
     }
 
     public String getEmail() {

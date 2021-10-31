@@ -33,6 +33,7 @@ public class Student extends User {
         rating = -1;
         favoritePosts = new ArrayList<InternshipPost>();
         resume = new Resume();
+        reviews = new ArrayList<Review>();
     }
 
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
