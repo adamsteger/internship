@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 
 /**
  * Formats and writes out information to the JSON files 
+ * @author Byte Me
  */
 public class DataWriter extends DataConstants {
 	

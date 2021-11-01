@@ -9,6 +9,7 @@ import org.json.simple.parser.JSONParser;
 
 /**
  * Reads in the JSON Files and converts them into objects
+ * @author Byte Me
  */
 public class DataLoader extends DataConstants {
 
