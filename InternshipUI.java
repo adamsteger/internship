@@ -21,6 +21,7 @@ public class InternshipUI {
     private Scanner scanner;
     private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL",
             "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
+    private String userType;
 
     InternshipUI() {
         scanner = new Scanner(System.in);
@@ -30,7 +31,12 @@ public class InternshipUI {
 
     private void run() {
 
-        displayStartMenu();
+        while (true) {
+            displayStartMenu();
+            int userOpt = getUserOpt(startMenuOptions.length);
+            executeStartOpt(userOpt);
+
+        }
 
     }
 
@@ -161,9 +167,11 @@ public class InternshipUI {
         switch (opt) {
         case (0):// Sign in as Admin
             displayAdminHome(adminSignIn());
+            userType = "A";
             break;
         case (1):// Sign in as Student
             displayStudentHome(studentSignIn());
+            userType = "A";
             break;
         case (2):// Sign in as Employer
             displayEmployerHome(employerSignIn());
@@ -545,7 +553,7 @@ public class InternshipUI {
             userName = scanner.nextLine();
 
             if (userName.length() >= 6 && userName.length() <= 15) {
-                if (!validUser(userName)) {
+                if (internApp.validNewUsername(userName)) {
                     break;// can this just be a return statement?
                 } else {
                     System.out.println("This username already exists");
@@ -555,15 +563,6 @@ public class InternshipUI {
             }
         }
         return userName;
-    }
-
-    private boolean validUser(String userName) {
-        if (internApp.studentList.haveStudent(userName) || internApp.employerList.haveEmployer(userName)) {
-            return true;
-
-        }
-
-        return false;
     }
 
     private String createPassword() {

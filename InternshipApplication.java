@@ -47,6 +47,13 @@ public class InternshipApplication {
         return null;
     }
 
+    public boolean validNewUsername(String username) {
+        if (!studentList.haveStudent(username) || !employerList.haveEmployer(username)) {
+            return true;
+        }
+        return false;
+    }
+
     // employer login
     public Employer employerLogin(String username, String password) {
         if (!employerList.haveEmployer(username))
