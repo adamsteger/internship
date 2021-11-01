@@ -144,11 +144,6 @@ public class InternshipApplication {
         return currentStudent.getFavoritePosts();
     }
 
-    public ArrayList<InternshipPost> getMyInternships(UUID id) {
-        Student currentStudent = studentList.getStudentByID(id);
-        return currentStudent.getFavoritePosts();
-    }
-
     public boolean addInternship(String employerTitle, String posTitle, String description, String location,
             ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay,
             int highPay) {
@@ -165,37 +160,71 @@ public class InternshipApplication {
 
     public void addWorkExperience(WorkExperience work) {
         student.getResume().addWork(work);
-        DataWriter.saveStudents();
+        DataWriter.saveResumes();
+    }
+
+    public void removeWorkExperience(WorkExperience work) {
+        student.getResume().removeWork(work);
+        DataWriter.saveResumes();
     }
 
     public void addEducation(Education edu) {
         student.getResume().addEducation(edu);
-        DataWriter.saveStudents();
+        DataWriter.saveResumes();
+    }
+
+    public void removeEducation(Education edu) {
+        student.getResume().removeEducation(edu);
+        DataWriter.saveResumes();
     }
 
     public void addExtracurricular(Extracurricular extra) {
         student.getResume().addExtracurricular(extra);
-        DataWriter.saveStudents();
+        DataWriter.saveResumes();
+    }
+
+    public void removeExtracurricular(Extracurricular extra) {
+        student.getResume().removeExtracurricular(extra);
+        DataWriter.saveResumes();
     }
 
     public void addSkill(Skill skill, boolean resume) {
         student.getResume().addSkill(skill, resume);
-        DataWriter.saveStudents();
+        DataWriter.saveResumes();
+    }
+
+    public void removeSkill(Skill skill) {
+        student.getResume().removeSkill(skill);
+        DataWriter.saveResumes();
     }
 
     public void addCourse(String course, boolean resume) {
         student.getResume().addCourse(course, resume);
+        DataWriter.saveResumes();
+    }
+
+    public void removeCourse(String course) {
+        student.getResume().removeCourse(course);
+        DataWriter.saveResumes();
     }
 
     public void addHonor(Honor honor) {
         student.getResume().addHonor(honor);
+        DataWriter.saveResumes();
+    }
+
+    public void removeHonor(Honor honor) {
+        student.getResume().removeHonor(honor);
+        DataWriter.saveResumes();
     }
 
     public void addStudentReview(Student student, String writer, int rating, String comment) {
         student.getReviews().add(new Review(writer, rating, comment));
+        DataWriter.saveStudents();
     }
 
     public void addEmployerReview(Employer employer, String writer, int rating, String comment) {
         employer.getReviews().add(new Review(writer, rating, comment));
+        DataWriter.saveEmployers();
     }
 }

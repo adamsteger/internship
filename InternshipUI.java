@@ -735,7 +735,8 @@ public class InternshipUI {
             System.out.println("Which Work Experience would you like to remove?");
             int temp = scanner.nextInt() - 1;
             scanner.nextLine();
-            internApp.removeWork(student.getResume().getWork().get(temp));
+            WorkExperience work = student.getResume().getWork().get(temp);
+            internApp.removeWorkExperience(work);
 
         case (2):
             System.out.println("How many: ");
@@ -807,9 +808,9 @@ public class InternshipUI {
             displayStudentHome(student);
         case (1):
 
-            System.out.println("Which Course would you like to remove?(case senseitive)");
+            System.out.println("Which Course would you like to remove?(case sensitive)");
             String temp = scanner.nextLine();
-            internApp.removeCourse(student.getResume().getCourses().get(temp));
+            internApp.removeCourse(temp);
 
         case (2):
             System.out.println("How many: ");
@@ -858,7 +859,8 @@ public class InternshipUI {
 
             System.out.println("Which Skill would you like to remove?(case senseitive)");
             String temp = scanner.nextLine();
-            internApp.removeCourse(student.getResume().getCourses().get(temp));
+            Skill skill = Skill.valueOf(temp);
+            internApp.removeSkill(skill);
 
         case (2):
             System.out.println("How many: ");
