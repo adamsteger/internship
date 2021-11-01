@@ -98,6 +98,10 @@ public class InternshipApplication {
         return ret;
     }
 
+    public ArrayList<Student> getApplicants(InternshipPost post) {
+        return post.getApplicants();
+    }
+
     public boolean findInternship(String employerTitle, String posTitle) {
         return internshipList.haveInternshipPost(employerTitle, posTitle);
     }
