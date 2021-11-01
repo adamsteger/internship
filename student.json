@@ -1,42 +1,59 @@
-[{
-    "id" : "73422490-1eb2-4aba-b7a0-e501364c19fe",
-    "firstName" : "Joe",
-    "lastName" : "Mama",
-    "gradYear" : 2022,
-    "username" : "mamajoe123",
-    "password" : "12345678",
-    "email" : "joejoe123@gmail.com",
-    "phone" : "9876543210",
-    "address" : "123 Cherry Lane Columbia, SC 29201",
-    "gpa" : 4.0,
-    "showGPA" : true,
-    "rating" : 3.0,
+[
+  {
+    "lastName": "Mama",
+    "address": "123 Cherry Lane Columbia, SC 29201",
+    "rating": 3.0,
+    "showGPA": true,
+    "firstName": "Joe",
+    "password": "12345678",
+    "reviews": [
+      { "rating": 4, "comment": "Very Solid Intern!", "writer": "Google" }
+    ],
+    "favoritePosts": [{ "id": "a36abc8b-4f91-4cc4-b761-fe0ff3462326" }],
+    "phone": "9876543210",
+    "gpa": 4.0,
+    "id": "73422490-1eb2-4aba-b7a0-e501364c19fe",
     "resumeID" : "f0181b70-7d43-4ff8-b055-03ff3144cbb5",
-    "reviews" : [
-        {"writer" : "Google", "rating" : 4, "comment" : "Very Solid Intern!"}
+    "gradYear": 2022,
+    "email": "joejoe123@gmail.com",
+    "username": "mamajoe123"
+  },
+  {
+    "lastName": "Bacon",
+    "address": "123 BLT Lane Columbia, SC 29201",
+    "rating": 4.0,
+    "showGPA": false,
+    "firstName": "Chris",
+    "password": "87654321",
+    "reviews": [
+      { "rating": 5, "comment": "Great Work Ethic", "writer": "Amazon" }
     ],
-    "favoritePosts" : [
-        {"id" : "a36abc8b-4f91-4cc4-b761-fe0ff3462326", "posTitle" : "Software Engineer", "employerTitle" : "Amazon"}
-    ]
-},
-{
-    "id" : "ac29913b-2ef5-4ae9-bde7-10b47f139c5e",
-    "firstName" : "Chris",
-    "lastName" : "Bacon",
-    "gradYear" : 2021,
-    "username" : "chrispbacon",
-    "password" : "87654321",
-    "email" : "imchrispbacon@gmail.com",
-    "phone" : "0123456789",
-    "address" : "123 BLT Lane Columbia, SC 29201",
-    "gpa" : 3.5,
-    "showGPA" : false,
-    "rating" : 4.0,
-    "resumeID" : "9e57129b-864e-4407-8266-2115f15a784a",
-    "reviews" : [
-        {"writer" : "Amazon", "rating" : 5, "comment" : "Great Work Ethic"}
+    "favoritePosts": [{ "id": "1760ffc1-3d8c-447b-a31c-2b13da728cf2" }],
+    "phone": "0123456789",
+    "gpa": 3.5,
+    "id": "ac29913b-2ef5-4ae9-bde7-10b47f139c5e",
+    "gradYear": 2021,
+    "email": "imchrispbacon@gmail.com",
+    "username": "chrispbacon",
+    "resumeID" : "9e57129b-864e-4407-8266-2115f15a784a"
+  },
+  {
+    "lastName": "Steger",
+    "address": "1238 Axtell Dr Irmo, SC 29063",
+    "rating": -1.0,
+    "showGPA": true,
+    "firstName": "Adam",
+    "password": "12345678",
+    "reviews": [
+      { "rating": 5, "comment": "Love him.", "writer": "Ana Boccanfuso" }
     ],
-    "favoritePosts" : [
-        {"id" : "1760ffc1-3d8c-447b-a31c-2b13da728cf2", "posTitle" : "Software Engineer Intern", "employer" : "Google"}
-    ]
-}]
+    "favoritePosts": [],
+    "phone": "(803)730-3278",
+    "gpa": 4.0,
+    "id": "63b0b338-af84-4979-a6ff-663fc4c7c9b0",
+    "gradYear": 2024,
+    "email": "asteger@email.sc.edu",
+    "username": "asteger",
+    "resumeID" : "9e57129b-864e-4407-8266-2115f15a784a"
+  }
+]

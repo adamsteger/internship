@@ -129,6 +129,7 @@ public class DataWriter extends DataConstants {
 		studentDetails.put(STUDENT_GPA, student.getGPA());
 		studentDetails.put(STUDENT_SHOW_GPA, student.getShowGPA());
 		studentDetails.put(USER_RATING, student.getRating());
+		studentDetails.put(STUDENT_RESUME_ID, student.getResume().getID());
 		
 		JSONArray JSONReviews = new JSONArray();
 		for (int i = 0; i < student.getReviews().size(); i++) {
@@ -374,10 +375,7 @@ public class DataWriter extends DataConstants {
 	
 
 	public static void main (String[] args) {
-		// Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
-		// student.getReviews().add(new Review("Ana Boccanfuso", 5, "Love him."));
-		// StudentList.getInstance().addStudent(student);
-		// StudentList.getInstance().save();
+		
 
 		// Employer employer = new Employer("Microsoft", "microandsoft", "oiapweru90", "microsoft@outlook.com", "Redmond, Washington", "Be better than Apple");
 		// employer.getReviews().add(new Review("Adam Steger", 4, "I mean its alright I guess"));
@@ -396,5 +394,9 @@ public class DataWriter extends DataConstants {
 		// InternshipList.getInstance().save();
 
 		ResumeList.getInstance().save();
+	// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
+	// 	student.getReviews().add(new Review("Ana Boccanfuso", 5, "Love him."));
+	// 	StudentList.getInstance().addStudent(student);
+		StudentList.getInstance().save();
 	}
 }
