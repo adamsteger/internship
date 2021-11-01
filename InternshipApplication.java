@@ -15,6 +15,7 @@ public class InternshipApplication {
         studentList = StudentList.getInstance();
         employerList = EmployerList.getInstance();
         adminList = AdminList.getInstance();
+        DataLoader.getApplicants();
     }
 
     // creates a new student account
