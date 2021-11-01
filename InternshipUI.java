@@ -563,11 +563,9 @@ public class InternshipUI {
     }
 
     private boolean validUser(String userName) {
-        if (internApp.studentList.haveStudent(userName) || internApp.employerList.haveEmployer(userName)) {
+        if (StudentList.getInstance().haveStudent(userName) || EmployerList.getInstance().haveEmployer(userName)) {
             return true;
-
         }
-
         return false;
     }
 
@@ -615,9 +613,11 @@ public class InternshipUI {
             if (yesNo()) {
                 System.out.println("How many would you like to add?");
                 int works = scanner.nextInt();
+                scanner.nextLine();
                 for (int j = 0; j < works; j++) {
                     System.out.println("Enter description " + (j + 1) + ":");
-                    description.add(scanner.nextLine());
+                    String desc = scanner.nextLine();
+                    description.add(desc);
                 }
             }
 
