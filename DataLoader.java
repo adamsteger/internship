@@ -293,19 +293,28 @@ public class DataLoader extends DataConstants {
 		try {
 			FileReader reader = new FileReader(APPLICATIONS_FILE_NAME);
 			JSONParser parser = new JSONParser();	
-			JSONArray applicantsJSON = (JSONArray)new JSONParser().parse(reader);
+			JSONArray applicationsJSON = (JSONArray)new JSONParser().parse(reader);
 			
-			for(int i = 0; i < applicantsJSON.size(); i++) {
-				JSONObject applicantJSON = (JSONObject)applicantsJSON.get(i);
-				UUID studentID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_STUDENT_ID));
-				UUID postID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_POST_ID));
-				UUID employerID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_EMPLOYER_ID));
+			for(int i = 0; i < applicationsJSON.size(); i++) {
+				JSONObject applicationJSON = (JSONObject)applicationsJSON.get(i);
+
+				JSONArray applicantsJSON = (JSONArray)applicationJSON.get(APPLICATIONS_APPLICANTS);
+				ArrayList<Student> applicants = new ArrayList<Student>();
+				for (int j = 0; j < applicantsJSON.size(); j++) {
+					JSONObject applicantJSON = (JSONObject)applicantsJSON.get(j);
+					UUID studentID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_STUDENT_ID));
+					Student student = StudentList.getInstance().getStudentByID(studentID);
+
+					applicants.add(student);
+				}
+
+				UUID postID = UUID.fromString((String)applicationJSON.get(APPLICATIONS_POST_ID));
+				UUID employerID = UUID.fromString((String)applicationJSON.get(APPLICATIONS_EMPLOYER_ID));
 
 				Employer employer = EmployerList.getInstance().getEmployerByID(employerID);
 				InternshipPost post = InternshipList.getInstance().getPostByID(postID);
-				Student student = StudentList.getInstance().getStudentByID(studentID);
 				
-				post.getApplicants().add(student);
+				post.setApplicants(applicants);
 				employer.getPosts().add(post);
 			}
 
@@ -315,27 +324,28 @@ public class DataLoader extends DataConstants {
 	}
 
 	public static void main(String[] args){
-		ArrayList<InternshipPost> posts = InternshipList.getInstance().getInternships();
 		ArrayList<Employer> employers = EmployerList.getInstance().getEmployers();
+		ArrayList<InternshipPost> posts = InternshipList.getInstance().getInternships();
 		ArrayList<Student> students = StudentList.getInstance().getStudents();
 		DataLoader.getApplicants();
+		InternshipList.getInstance().save();
 		ArrayList<Admin> admins = DataLoader.getAdmins();
 
 		for(Student student : students) {
 			System.out.println(student);
 		}
 
-		// for (Employer employer : employers) {
-		// 	System.out.println(employer);
-		// }
+		for (Employer employer : employers) {
+			System.out.println(employer);
+		}
 
-		// for(InternshipPost post : posts) {
-		// System.out.println(post);
-		// }
+		for(InternshipPost post : posts) {
+		System.out.println(post);
+		}
 		
-		// for (Admin admin : admins) {
-		// 	System.out.println(admin);
-		// }
+		for (Admin admin : admins) {
+			System.out.println(admin);
+		}
 	}
 
 }

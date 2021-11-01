@@ -97,6 +97,10 @@ public class InternshipPost {
         return applicants;
     }
 
+    public void setApplicants(ArrayList<Student> applicants) {
+        this.applicants = applicants;
+    }
+
     public UUID getUUID() {
         return id;
     }

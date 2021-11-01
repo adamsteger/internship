@@ -15,6 +15,7 @@ public class InternshipApplication {
         studentList = StudentList.getInstance();
         employerList = EmployerList.getInstance();
         adminList = AdminList.getInstance();
+        DataLoader.getApplicants();
     }
 
     // creates a new student account
@@ -76,6 +77,25 @@ public class InternshipApplication {
             return admin;
         }
         return null;
+    }
+
+    public ArrayList<InternshipPost> getInternships(Employer employer) {
+        ArrayList<InternshipPost> ret = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++) {
+            InternshipPost currentPost = internshipList.getInternships().get(i);
+            if(currentPost.getEmployerTitle().equals(employer.username)) {
+                ret.add(currentPost);
+            }
+        }
+        return ret;
+    }
+
+    public ArrayList<InternshipPost> getInternships() {
+        ArrayList<InternshipPost> ret = new ArrayList<InternshipPost>();
+        for(int i = 0; i < internshipList.getInternships().size(); i++) {
+            ret.add(internshipList.getInternships().get(i));
+        }
+        return ret;
     }
 
     public boolean findInternship(String employerTitle, String posTitle) {
@@ -162,8 +182,6 @@ public class InternshipApplication {
         internshipList.save();
         return true;
     }
-
-    // TODO Add Removes for Resume fields
 
     public void addWorkExperience(WorkExperience work) {
         student.getResume().addWork(work);
