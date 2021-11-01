@@ -13,6 +13,8 @@ public class InternshipApplication{
     public InternshipApplication(){
         internshipList = InternshipList.getInstance();
         studentList = StudentList.getInstance();
+        employerList = EmployerList.getInstance();
+        adminList = AdminList.getInstance();
     }
 
     //creates a new student account
@@ -29,6 +31,7 @@ public class InternshipApplication{
 
     //creates a new admin account
     public boolean createAdmin(Admin admin) {
+        this.admin = admin;
         return adminList.addAdmin(admin);
     }
 

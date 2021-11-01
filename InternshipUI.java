@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
 
 import javax.tools.DocumentationTool.Location;
 
@@ -8,14 +9,13 @@ public class InternshipUI {
     private static final String WELCOME_MESSAGE = "Welcome to our UrTern";
     private String[] startMenuOptions = { "Sign in as Admin", "Sign in as Student", "Sign in as Employer",
             "Create Student account", "Create Employer account" };
-    private String[] studentHomeOptions = { "Sign out", "See/Edit Educations", "See/Edit Extra Curriculars",
+    private String[] studentHomeOptions = { "Sign out", "See/Edit Skills", "See/Edit Educations", "See/Edit Extra Curriculars",
             "See/Edit Work Experiences", "See/Edit Honors", "See Resume", "Browse Internship Posts" };
     private String[] employerHomeOptions = { "Sign out", "See/Edit internship posts", "See Reviews",
             "Leave Review on a Student" };
     private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner;
-    private int prevPage;// ??????
     private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL", "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
 
     InternshipUI() {
@@ -96,7 +96,7 @@ public class InternshipUI {
     }
 
     private void displayEmployerHome(Employer employer) {
-        System.out.println("~~ " + employer.getUsername() + " ~~\n");
+        System.out.println("~~ " + employer.getTitle() + " ~~\n");
 
         System.out.println(employer.getMission() + "\n");
 
@@ -142,17 +142,22 @@ public class InternshipUI {
     private void executeStartOpt(int opt) {
         // opt--;
         // System.out.println(opt);
-        switch (opt) {
+        switch (opt-1) {
         case (0):// Sign in as Admin
             displayAdminHome(adminSignIn());
+            break;
         case (1):// Sign in as Student
             displayStudentHome(studentSignIn());
+            break;
         case (2):// Sign in as Employer
             displayEmployerHome(employerSignIn());
+            break;
         case (3):// Create Student account
             displayStudentHome(createStudent());
+            break;
         case (4):// Create Employer account
             displayEmployerHome(createEmployer());
+            break;
         }
 
     }
@@ -163,35 +168,47 @@ public class InternshipUI {
         case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
-        case (1):// See/Edit Educations
+            break;
+        case (1)://See/Edit Skills
+            System.out.println("Skills: ");
+            Set<Skill> setofSkills = res.getSkills().keySet();
+            int j = 1;
+            for (Skill skill : setofSkills) {
+                System.out.println("\t" + j + ". " + skill.toString());
+                j++;
+            }
+            break;
+        case (2):// See/Edit Educations
+            System.out.println("Educations: ");
             for (int i = 0; i < res.getEducations().size(); i++) {
-                System.out.println(i + 1 + ". ");
-                System.out.println(res.getEducations().get(i).toString());
+                System.out.println("\t" + (i + 1) + ". " + res.getEducations().get(i));
             }
-
-        case (2):// See/Edit Extra Curriculars
+            break;
+        case (3):// See/Edit Extra Curriculars
+            System.out.println("Extracurriculars: ");
             for (int i = 0; i < res.getExtracurriculars().size(); i++) {
-                System.out.println(i + 1 + ". ");
-                System.out.println(res.getExtracurriculars().get(i).toString());
+                System.out.println("\t" + (i + 1) + ". " + res.getExtracurriculars().get(i).toString());
             }
-
-        case (3):// See/Edit Work Experiences
+            break;
+        case (4):// See/Edit Work Experiences
+            System.out.println("Work Experience: ");
             for (int i = 0; i < res.getWork().size(); i++) {
-                System.out.println(i + 1 + ". ");
+                System.out.println("\t" + (i + 1) + ". ");
                 System.out.println(res.getWork().get(i).toString());
             }
-
-        case (4):// See/Edit Honors
+            break;
+        case (5):// See/Edit Honors
+            System.out.println("Honors: ");
             for (int i = 0; i < res.getHonors().size(); i++) {
-                System.out.println(i + 1 + ". ");
+                System.out.println("\t" + (i + 1) + ". ");
                 System.out.println(res.getHonors().get(i).toString());
             }
-
-        case (5):// See Resume
+            break;
+        case (6):// See Resume
             res.toString();
-
-        case (6):// Browse Internship Posts
-
+            break;
+        case (7):// Browse Internship Posts
+            break;
         }
 
     }
