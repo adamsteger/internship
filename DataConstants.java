@@ -45,6 +45,7 @@ public abstract class DataConstants {
     protected static final String APPLICATIONS_STUDENT_ID = "studentID";
     protected static final String APPLICATIONS_EMPLOYER_ID = "employerID";
     protected static final String APPLICATIONS_POST_ID = "postID";
+    protected static final String APPLICATIONS_APPLICANTS = "applicants";
     protected static final String RESUME_ID = "id";
     protected static final String RESUME_EDUCATIONS = "educations";
     protected static final String RESUME_SKILLS = "skills";
