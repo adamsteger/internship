@@ -11,9 +11,9 @@ public class InternshipApplication {
     private Admin admin;
 
     public InternshipApplication() {
+        employerList = EmployerList.getInstance();
         internshipList = InternshipList.getInstance();
         studentList = StudentList.getInstance();
-        employerList = EmployerList.getInstance();
         adminList = AdminList.getInstance();
         DataLoader.getApplicants();
     }
