@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ *  Represents a List of InternshipPosts
+ *  @author Byte Me 
+ */
 public class InternshipList {
     private static InternshipList internshipList;
     private ArrayList<InternshipPost> internships;
