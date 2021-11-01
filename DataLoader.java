@@ -335,13 +335,13 @@ public class DataLoader extends DataConstants {
 		// 	System.out.println(student);
 		// }
 
-		for (Employer employer : employers) {
-			System.out.println(employer);
-		}
-
-		// for(InternshipPost post : posts) {
-		// System.out.println(post);
+		// for (Employer employer : employers) {
+		// 	System.out.println(employer);
 		// }
+
+		for(InternshipPost post : posts) {
+		System.out.println(post);
+		}
 		
 		// for (Admin admin : admins) {
 		// 	System.out.println(admin);

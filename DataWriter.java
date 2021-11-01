@@ -97,23 +97,23 @@ public class DataWriter extends DataConstants {
 		}	
 	} 
 
-	// public static void saveApplicants() {
-	// 	InternshipList internships = InternshipList.getInstance();
-	// 	ArrayList<InternshipPost> internshipList = internships.getInternships();
-	// 	JSONArray JSONApplicants = new JSONArray();
+	public static void saveApplications() {
+		InternshipList internships = InternshipList.getInstance();
+		ArrayList<InternshipPost> internshipList = internships.getInternships();
+		JSONArray JSONApplicants = new JSONArray();
 
-	// 	for (int i = 0; i < internshipList.size(); i++) {
-	// 		JSONApplicants.add(getApplicantJSON(internshipList.get(i)));
-	// 	}
+		for (int i = 0; i < internshipList.size(); i++) {
+			JSONApplicants.add(getApplicationJSON(internshipList.get(i)));
+		}
 
 		
-	// 	try (FileWriter file = new FileWriter(APPLICATIONS_FILE_NAME_TEST)) {
-	// 		file.write(JSONApplicants.toJSONString());
-	// 		file.flush();
-	// 	} catch (IOException e) {
-	// 		e.printStackTrace();
-	// 	}	
-	// }
+		try (FileWriter file = new FileWriter(APPLICATIONS_FILE_NAME)) {
+			file.write(JSONApplicants.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
 	
 	public static JSONObject getStudentJSON(Student student) {
 		HashMap<String, Object> studentDetails = new HashMap<String, Object>();
@@ -349,28 +349,28 @@ public class DataWriter extends DataConstants {
 		return resumeDetailsJSON;
 	}
 
-	// public static JSONObject getApplicantJSON(InternshipPost post) {
-	// 	HashMap<String, Object> applicantDetails = new HashMap<String, Object>();
+	public static JSONObject getApplicationJSON(InternshipPost post) {
+		HashMap<String, Object> applicationDetails = new HashMap<String, Object>();
 
-	// 	applicantDetails.put(APPLICATIONS_STUDENT_ID, post.getApplicants().getUUID());
-	// 	applicantDetails.put(APPLICATIONS_POST_ID, )
+		applicationDetails.put(APPLICATIONS_POST_ID, post.getUUID().toString());
 		
-		
-	// 	JSONArray JSONSkills = new JSONArray();
-	// 	for (int i = 0; i < post.getSkillReq().size(); i++) {
-	// 		HashMap<String, Object> skillDetails = new HashMap<String, Object>();
-	// 		Skill skill = post.getSkillReq().get(i);
-	// 		skillDetails.put(SKILLS_SKILL, skill.toString());
-	// 		JSONObject skillDetailsJSON = new JSONObject(skillDetails);
+		JSONArray JSONApplicants = new JSONArray();
+		for (int i = 0; i < post.getApplicants().size(); i++) {
+			HashMap<String, Object> applicantDetails = new HashMap<String, Object>();
+			String studentID = post.getApplicants().get(i).getUUID().toString();
+			applicantDetails.put(APPLICATIONS_STUDENT_ID, studentID);
+			JSONObject applicantDetailsJSON = new JSONObject(applicantDetails);
 
-	// 		JSONSkills.add(skillDetailsJSON);
-	// 	}
+			JSONApplicants.add(applicantDetailsJSON);
+		}
 
-	// 	postDetails.put(INTERNSHIP_SKILLS_REQ, JSONSkills);
+		applicationDetails.put(APPLICATIONS_APPLICANTS, JSONApplicants);
+		String employerID = EmployerList.getInstance().getEmployerByTitle(post.getEmployerTitle()).getUUID().toString();
+		applicationDetails.put(APPLICATIONS_EMPLOYER_ID, employerID);
 
-	// 	JSONObject postDetailsJSON = new JSONObject(postDetails);
-	// 	return postDetailsJSON;
-	// }
+		JSONObject applicationDetailsJSON = new JSONObject(applicationDetails);
+		return applicationDetailsJSON;
+	}
 
 	
 
@@ -380,22 +380,26 @@ public class DataWriter extends DataConstants {
 		// Employer employer = new Employer("Microsoft", "microandsoft", "oiapweru90", "microsoft@outlook.com", "Redmond, Washington", "Be better than Apple");
 		// employer.getReviews().add(new Review("Adam Steger", 4, "I mean its alright I guess"));
 		// EmployerList.getInstance().addEmployer(employer);
-		EmployerList.getInstance().save();
+		// EmployerList.getInstance().save();
 		// Admin admin = new Admin("imanadmin", "randompassword");
 		// AdminList.getInstance().addAdmin(admin);
-		AdminList.getInstance().save();
+		// AdminList.getInstance().save();
 
 		// ArrayList<Skill> skillReq = new ArrayList<Skill>();
 		// skillReq.add(Skill.CPP);
 		// skillReq.add(Skill.C);
 		// InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
 		// InternshipList.getInstance().addInternship(post);
-		InternshipList.getInstance().save();
+		// InternshipList.getInstance().save();
 
-		ResumeList.getInstance().save();
+		// ResumeList.getInstance().save();
 	// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
 	// 	student.getReviews().add(new Review("Ana Boccanfuso", 5, "Love him."));
 	// 	StudentList.getInstance().addStudent(student);
-		StudentList.getInstance().save();
+		// StudentList.getInstance().save();
+
+		DataLoader.getApplicants();
+
+		DataWriter.saveApplications();
 	}
 }
