@@ -75,7 +75,7 @@ public class InternshipApplication {
         return internshipList.haveInternshipPost(employerTitle, posTitle);
     }
 
-    private ArrayList<InternshipPost> filterByPay(int pay) {
+    public ArrayList<InternshipPost> filterByPay(int pay) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
@@ -85,7 +85,7 @@ public class InternshipApplication {
         return retList;
     }
 
-    private ArrayList<InternshipPost> filterByLocation(String location) {
+    public ArrayList<InternshipPost> filterByLocation(String location) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
@@ -95,7 +95,7 @@ public class InternshipApplication {
         return retList;
     }
 
-    private ArrayList<InternshipPost> filterByLanguage(Skill language) {
+    public ArrayList<InternshipPost> filterByLanguage(Skill language) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
@@ -107,7 +107,7 @@ public class InternshipApplication {
         return retList;
     }
 
-    private ArrayList<InternshipPost> filterByRemote(boolean isRemote) {
+    public ArrayList<InternshipPost> filterByRemote(boolean isRemote) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
