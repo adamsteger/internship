@@ -223,6 +223,7 @@ public class InternshipUI {
             enuSkill = res.getSkills().keys();
             i = 1;
             while (enuSkill.hasMoreElements()) {
+                System.out.println("Skills: \n\t");
                 System.out.println(i + ". " + enuSkill.nextElement());
                 i++;
             }
