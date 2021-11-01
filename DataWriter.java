@@ -129,7 +129,7 @@ public class DataWriter extends DataConstants {
 		studentDetails.put(STUDENT_GPA, student.getGPA());
 		studentDetails.put(STUDENT_SHOW_GPA, student.getShowGPA());
 		studentDetails.put(USER_RATING, student.getRating());
-		studentDetails.put(STUDENT_RESUME_ID, student.getResume().getID());
+		studentDetails.put(STUDENT_RESUME_ID, student.getResume().getID().toString());
 		
 		JSONArray JSONReviews = new JSONArray();
 		for (int i = 0; i < student.getReviews().size(); i++) {
@@ -380,18 +380,17 @@ public class DataWriter extends DataConstants {
 		// Employer employer = new Employer("Microsoft", "microandsoft", "oiapweru90", "microsoft@outlook.com", "Redmond, Washington", "Be better than Apple");
 		// employer.getReviews().add(new Review("Adam Steger", 4, "I mean its alright I guess"));
 		// EmployerList.getInstance().addEmployer(employer);
-		// DataWriter.saveEmployers();
-
+		EmployerList.getInstance().save();
 		// Admin admin = new Admin("imanadmin", "randompassword");
 		// AdminList.getInstance().addAdmin(admin);
-		// AdminList.getInstance().save();
+		AdminList.getInstance().save();
 
 		// ArrayList<Skill> skillReq = new ArrayList<Skill>();
 		// skillReq.add(Skill.CPP);
 		// skillReq.add(Skill.C);
 		// InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
 		// InternshipList.getInstance().addInternship(post);
-		// InternshipList.getInstance().save();
+		InternshipList.getInstance().save();
 
 		ResumeList.getInstance().save();
 	// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
