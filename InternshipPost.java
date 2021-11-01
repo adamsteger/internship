@@ -30,6 +30,23 @@ public class InternshipPost {
         this.isOpen = isOpen;
         this.lowPay = lowPay;
         this.highPay = highPay;
+        applicants = new ArrayList<Student>();
+    }
+
+    public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay, ArrayList<Skill> skills) {
+        this.id = id;
+        this.employerTitle = employerTitle;
+        this.posTitle = posTitle;
+        this.description = description;
+        this.location = location;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isRemote = isRemote;
+        this.isOpen = isOpen;
+        this.lowPay = lowPay;
+        this.highPay = highPay;
+        this.skillReq = skills;
+        applicants = new ArrayList<Student>();
     }
 
     public String getEmployerTitle() {
@@ -82,22 +99,6 @@ public class InternshipPost {
 
     public UUID getUUID() {
         return id;
-    }
-
-    public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay, ArrayList<Skill> skills) {
-        this.id = id;
-        this.employerTitle = employerTitle;
-        this.posTitle = posTitle;
-        this.description = description;
-        this.location = location;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.isRemote = isRemote;
-        this.isOpen = isOpen;
-        this.lowPay = lowPay;
-        this.highPay = highPay;
-        this.skillReq = skills;
-        applicants = new ArrayList<Student>();
     }
 
     public InternshipPost() {

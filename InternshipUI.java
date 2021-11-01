@@ -19,8 +19,13 @@ public class InternshipUI {
     private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner;
+<<<<<<< HEAD
     private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL",
             "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
+=======
+    private int prevPage;// ??????
+    private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL", "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
+>>>>>>> ec848d7a05b2e0a4ff58d173ecf0493e00597f93
 
     InternshipUI() {
         scanner = new Scanner(System.in);
@@ -79,7 +84,7 @@ public class InternshipUI {
         System.out.println("Email: " + student.getEmail());
         System.out.println("Phone: " + student.getPhone());
         System.out.println("Rating: " + student.getRating() + "/5 stars");
-        System.out.println("Skill(s): " + student.getResume().getSkills().size());
+        // System.out.println("Skill(s): " + skills.size());
         System.out.println("Educations(s): " + student.getResume().getEducations().size());
 
         System.out.println("ExtraCurricular(s): " + student.getResume().getExtracurriculars().size());
@@ -119,6 +124,10 @@ public class InternshipUI {
 
     private void displayEmployerInternships(Employer employer) {
         System.out.println("~~ See/Edit My internship Post(s) ~~\n");
+        ArrayList<InternshipPost> posts = employer.getPosts();
+        for (InternshipPost post : posts) {
+            System.out.println(post + "\n");
+        }
 
     }
 
