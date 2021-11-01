@@ -1,7 +1,10 @@
 import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ *  Represents a Internship Post in the system
+ *  @author Byte Me 
+ */
 public class InternshipPost {
     private String employerTitle;
     private String posTitle;
@@ -17,8 +20,18 @@ public class InternshipPost {
     private ArrayList<Student> applicants;
     private UUID id;
     /**
-     * Constructor for a new InternshipPost
-     * @param everything but UUID to construct new InternshipPost
+     * Constructor for new InternshipPost
+     * @param employerTitle
+     * @param posTitle
+     * @param description
+     * @param location
+     * @param skillReq
+     * @param startDate
+     * @param endDate
+     * @param isRemote
+     * @param isOpen
+     * @param lowPay
+     * @param highPay
      */
     public InternshipPost(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
         this.id = UUID.randomUUID();
@@ -36,8 +49,19 @@ public class InternshipPost {
         applicants = new ArrayList<Student>();
     }
     /**
-     * Constructor for an already defined InternshipPost by UUID
-     * @param all constructor values including an already defined UUID
+     * Constructor for InternshipPost that passes in existing UUID
+     * @param id
+     * @param employerTitle
+     * @param posTitle
+     * @param description
+     * @param location
+     * @param startDate
+     * @param endDate
+     * @param isRemote
+     * @param isOpen
+     * @param lowPay
+     * @param highPay
+     * @param skills
      */
     public InternshipPost(UUID id, String employerTitle, String posTitle, String description, String location, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay, ArrayList<Skill> skills) {
         this.id = id;

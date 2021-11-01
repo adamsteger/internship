@@ -24,7 +24,8 @@ public class InternshipList {
     }
     /**
      * Searches the ArrayList of InternshipPosts for a specific post based on keywords
-     * @param keywords
+     * @param employerTitle
+     * @param posTitle
      * @return boolean if successful
      */
     public boolean haveInternshipPost(String employerTitle, String posTitle) {
@@ -67,8 +68,18 @@ public class InternshipList {
         return true;
     }
     /**
-     * Adds an newly constructed internship to the ArrayList
-     * @param InternshipPost parameters
+     * creates and adds a new internship to List
+     * @param employerTitle
+     * @param posTitle
+     * @param description
+     * @param location
+     * @param skillReq
+     * @param startDate
+     * @param endDate
+     * @param isRemote
+     * @param isOpen
+     * @param lowPay
+     * @param highPay
      * @return boolean if successful
      */
     public boolean addInternship(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
@@ -81,7 +92,7 @@ public class InternshipList {
 
     /**
      * Removes an internship from the ArrayList
-     * @param takes in an InternshipPost
+     * @param InternshipPost
      * @return a boolean if successful
      */
     public boolean removeInternship(InternshipPost internship) {
