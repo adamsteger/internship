@@ -15,9 +15,9 @@ public class EmployerList {
         return employerList;
     }
 
-    public boolean haveEmployer(String title) {
+    public boolean haveEmployer(String username) {
         for(Employer employer : employers) {
-            if(employer.getTitle().equals(title)) {
+            if(employer.getUsername().equals(username)) {
                 return true;
             }
         }
