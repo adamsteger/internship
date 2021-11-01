@@ -1,12 +1,1 @@
-[
-  {
-      "id" : "b48e11a8-f847-4fe2-badc-66a05bd8b0c1",
-      "username" : "portiaportia",
-      "password" : "kdusa6y8s"
-  },
-  {
-      "id" : "1607d2f9-5f79-49fd-910c-90f73ecaa4a4",
-      "username" : "insertusername",
-      "password" : "password"
-  }
-]
+[{"password":"kdusa6y8s","id":"1607d2f9-5f79-49fd-910c-90f73ecaa4a4","username":"portiaportia"},{"password":"password","id":"1607d2f9-5f79-49fd-910c-90f73ecaa4a4","username":"insertusername"}]
