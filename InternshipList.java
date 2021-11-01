@@ -65,7 +65,7 @@ public class InternshipList {
     }
 
     public void save() {
-        DataWriter.saveApplications();
         DataWriter.saveInternshipPosts();
+        // DataWriter.saveApplications();
     }
 }

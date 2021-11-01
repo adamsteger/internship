@@ -375,15 +375,21 @@ public class DataWriter extends DataConstants {
 	
 
 	public static void main (String[] args) {
-		
+		ResumeList.getInstance().save();
+		AdminList.getInstance().save();
+		StudentList.getInstance().save();
+		DataLoader.getApplicants();
+		InternshipList.getInstance().save();
+		DataWriter.saveApplications();
 
 		// Employer employer = new Employer("Microsoft", "microandsoft", "oiapweru90", "microsoft@outlook.com", "Redmond, Washington", "Be better than Apple");
 		// employer.getReviews().add(new Review("Adam Steger", 4, "I mean its alright I guess"));
 		// EmployerList.getInstance().addEmployer(employer);
 		// EmployerList.getInstance().save();
 		// Admin admin = new Admin("imanadmin", "randompassword");
+		
 		// AdminList.getInstance().addAdmin(admin);
-		// AdminList.getInstance().save();
+		
 
 		// ArrayList<Skill> skillReq = new ArrayList<Skill>();
 		// skillReq.add(Skill.CPP);
@@ -393,13 +399,9 @@ public class DataWriter extends DataConstants {
 		// InternshipList.getInstance().save();
 
 		// ResumeList.getInstance().save();
-	// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
-	// 	student.getReviews().add(new Review("Ana Boccanfuso", 5, "Love him."));
-	// 	StudentList.getInstance().addStudent(student);
-		// StudentList.getInstance().save();
-
-		DataLoader.getApplicants();
-
-		DataWriter.saveApplications();
+		// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
+		// 	student.getReviews().add(new Review("Ana Boccanfuso", 5, "Love him."));
+		// 	StudentList.getInstance().addStudent(student);
+		
 	}
 }
