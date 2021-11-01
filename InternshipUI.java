@@ -15,7 +15,7 @@ public class InternshipUI {
     private String[] employerHomeOptions = { "Sign out", "See/Edit internship posts", "See Reviews",
             "Leave Review on a Student" };
     private String[] studentInternshipOptions = { "Go Home", "Sort by Pay", "Filter by Loction",
-            "Filter By position Title", "filter By Company Name" };
+            "Filter By position Title", "Filter By Company Name", "Filter By skill", "Apply to a listing" };
     private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner;
@@ -126,8 +126,11 @@ public class InternshipUI {
 
     }
 
-    private void displayStudentInternships(Student student) {
-        // Display generic list of internships
+    private void displayStudentInternships(Student student, ArrayList<InternshipPost> posts) {
+
+        for (int i = 0; i < posts.size(); i++) {
+            System.out.println((i + 1) + ". " + posts.get(i).toString());
+        }
 
         System.out.println("\nWhat would you like to do?");
         for (int i = 1; i < studentInternshipOptions.length; i++) {
@@ -223,7 +226,6 @@ public class InternshipUI {
             enuSkill = res.getSkills().keys();
             i = 1;
             while (enuSkill.hasMoreElements()) {
-                System.out.println("Skills: \n\t");
                 System.out.println(i + ". " + enuSkill.nextElement());
                 i++;
             }
@@ -233,6 +235,8 @@ public class InternshipUI {
             res.toString();
 
         case (8):// Browse Internship Posts
+            ArrayList<InternshipPost> posts = internApp.getInternshipPosts();
+            displayStudentInternships(student, posts);
 
         }
 
@@ -243,19 +247,51 @@ public class InternshipUI {
     private void executeStudentInternshipOpt(Student student, int opt) {
         // "Go Home", "Sort by Pay", "Filter by Loction", "Filter By position Title",
         // "filter By Company Name"};
+        ArrayList<InternshipPost> posts;
         switch (opt) {
         case (0):// Go Home
-            displayAdminHome(adminSignIn());
+            displayStudentHome(student);
         case (1):// Sort by Pay
-            displayStudentHome(studentSignIn());
+            System.out.println("Enter desired Wage: ");
+            int pay = scanner.nextInt();
+            scanner.nextLine();
+            posts = internApp.filterByPay(pay);
+            displayStudentInternships(student, posts);
         case (2):// Filter by Loction INClude Remote
-            displayEmployerHome(employerSignIn());
+            System.out.println("Enter Location (enter \"remote\" for remote jobs): ");
+            if (scanner.nextLine().equalsIgnoreCase("remote")) {
+                posts = internApp.filterByRemote(true);
+                displayStudentInternships(student, posts);
+            } else {
+                posts = internApp.filterByLocation(scanner.nextLine());
+                displayStudentInternships(student, posts);
+            }
         case (3):// Filter By position Title
-            displayStudentHome(createStudent());
+            System.out.println("Enter Position title: ");
+            posts = internApp.filterByPosTitle(scanner.nextLine());
+            displayStudentInternships(student, posts);
         case (4):// filter By Company Name
-            displayEmployerHome(createEmployer());
-        }
+            System.out.println("Enter Company Name: ");
+            posts = internApp.filterByEmployerTitle(scanner.nextLine());
+            displayStudentInternships(student, posts);
 
+        case (5):// Filter By skill
+            System.out.println("Enter one of the following to filter for ");
+            for (String skill : skills) {
+                System.out.println(skill);
+            }
+            System.out.println("\nSkill: ");
+            Skill skill = Skill.valueOf(scanner.nextLine());
+            posts = internApp.filterByLanguage(skill);
+            displayStudentInternships(student, posts);
+
+        case (6):// view listing
+            System.out.println("Which listing would you like to apply to?");
+            int temp = scanner.nextInt() - 1;
+            scanner.nextLine();
+            // Apply to posts.get(temp);
+            posts.get(temp).toString();// for testing purposes
+        }
     }
 
     private void executeEmployerHomeOpt(Employer employer, int opt) {
@@ -736,8 +772,7 @@ public class InternshipUI {
             System.out.println("Which Work Experience would you like to remove?");
             int temp = scanner.nextInt() - 1;
             scanner.nextLine();
-            WorkExperience work = student.getResume().getWork().get(temp);
-            internApp.removeWorkExperience(work);
+            internApp.removeWork(student.getResume().getWork().get(temp));
 
         case (2):
             System.out.println("How many: ");
@@ -809,9 +844,9 @@ public class InternshipUI {
             displayStudentHome(student);
         case (1):
 
-            System.out.println("Which Course would you like to remove?(case sensitive)");
+            System.out.println("Which Course would you like to remove?(case senseitive)");
             String temp = scanner.nextLine();
-            internApp.removeCourse(temp);
+            internApp.removeCourse(student.getResume().getCourses().get(temp));
 
         case (2):
             System.out.println("How many: ");
@@ -860,8 +895,7 @@ public class InternshipUI {
 
             System.out.println("Which Skill would you like to remove?(case senseitive)");
             String temp = scanner.nextLine();
-            Skill skill = Skill.valueOf(temp);
-            internApp.removeSkill(skill);
+            internApp.removeCourse(student.getResume().getCourses().get(temp));
 
         case (2):
             System.out.println("How many: ");

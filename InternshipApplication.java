@@ -75,11 +75,11 @@ public class InternshipApplication {
         return internshipList.haveInternshipPost(employerTitle, posTitle);
     }
 
-    private ArrayList<InternshipPost> filterByPay(int lowPay, int highPay) {
+    private ArrayList<InternshipPost> filterByPay(int pay) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if (currentPost.getLowPay() >= lowPay && currentPost.getHighPay() <= highPay)
+            if (currentPost.getLowPay() >= pay && currentPost.getHighPay() <= pay)
                 retList.add(currentPost);
         }
         return retList;
