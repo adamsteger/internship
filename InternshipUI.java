@@ -35,7 +35,6 @@ public class InternshipUI {
             displayStartMenu();
             int userOpt = getUserOpt(startMenuOptions.length);
             run = executeStartOpt(userOpt);
-
         }
 
         System.out.println("Shutting Down");
