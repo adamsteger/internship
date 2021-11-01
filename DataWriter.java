@@ -5,9 +5,14 @@ import java.util.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * Formats and writes out information to the JSON files 
+ */
 public class DataWriter extends DataConstants {
 	
-	
+	/**
+	 * Retrieves the student list and writes it out to the JSON file
+	 */
 	public static void saveStudents() {
 		StudentList students = StudentList.getInstance();
 		ArrayList<Student> studentList = students.getStudents();
@@ -25,6 +30,9 @@ public class DataWriter extends DataConstants {
 		}
 	}
 
+	/**
+	 * Retrieves the employer list and writes it out to the JSON file
+	 */
 	public static void saveEmployers() {
 		EmployerList employers = EmployerList.getInstance();
 		ArrayList<Employer> employerList = employers.getEmployers();
@@ -43,6 +51,9 @@ public class DataWriter extends DataConstants {
 		}
 	}
 
+	/**
+	 * Retrieves the admin list and writes it out to the JSON file
+	 */
 	public static void saveAdmins() {
 		AdminList admins = AdminList.getInstance();
 		ArrayList<Admin> adminList = admins.getAdmins();
@@ -61,6 +72,9 @@ public class DataWriter extends DataConstants {
 		}
 	}
 
+	/**
+	 * Retrieves the list of internship posts and writes it out to the JSON file
+	 */
 	public static void saveInternshipPosts() {
 		InternshipList internships = InternshipList.getInstance();
 		ArrayList<InternshipPost> internshipList = internships.getInternships();
@@ -79,6 +93,9 @@ public class DataWriter extends DataConstants {
 		}	
 	} 
 
+	/**
+	 * Retrieves the list of resumes and writes it out to the JSON file
+	 */
 	public static void saveResumes() {
 		ResumeList resumes = ResumeList.getInstance();
 		ArrayList<Resume> resumeList = resumes.getResumes();
@@ -97,6 +114,9 @@ public class DataWriter extends DataConstants {
 		}	
 	} 
 
+	/**
+	 * Retrieves the list of applications and writes it out to the JSON file
+	 */
 	public static void saveApplications() {
 		InternshipList internships = InternshipList.getInstance();
 		ArrayList<InternshipPost> internshipList = internships.getInternships();
@@ -115,6 +135,11 @@ public class DataWriter extends DataConstants {
 		}	
 	}
 	
+	/**
+	 * Converts a student to a JSON Object
+	 * @param student the student that is being converted
+	 * @return Returns a JSON Object representation of the student
+	 */
 	public static JSONObject getStudentJSON(Student student) {
 		HashMap<String, Object> studentDetails = new HashMap<String, Object>();
 		studentDetails.put(USER_ID, student.getUUID().toString());
@@ -161,6 +186,11 @@ public class DataWriter extends DataConstants {
 		return studentDetailsJSON;
 	}
 
+	/**
+	 * Converts an employer to a JSON Object
+	 * @param employer The employer that is being converted
+	 * @return Returns a JSON Object representation of the employer
+	 */
 	public static JSONObject getEmployerJSON(Employer employer) {
 		HashMap<String, Object> employerDetails = new HashMap<String, Object>();
 		employerDetails.put(USER_ID, employer.getUUID().toString());
@@ -191,6 +221,11 @@ public class DataWriter extends DataConstants {
 		return employerDetailsJSON;
 	}
 
+	/**
+	 * Converts an admin to a JSON Object
+	 * @param admin The admin that is being converted
+	 * @return Returns a JSON Object representation of the admin
+	 */
 	public static JSONObject getAdminJSON(Admin admin) {
 		HashMap<String, Object> adminDetails = new HashMap<String, Object>();
 		adminDetails.put(USER_ID, admin.getID().toString());
@@ -202,6 +237,11 @@ public class DataWriter extends DataConstants {
 		return adminDetailsJSON;
 	}
 
+	/**
+	 * Converts an internship post to a JSON Object
+	 * @param post The internship post that is being converted
+	 * @return Returns a JSON Object representation of the post
+	 */
 	public static JSONObject getPostJSON(InternshipPost post) {
 		HashMap<String, Object> postDetails = new HashMap<String, Object>();
 		postDetails.put(USER_ID, post.getUUID().toString());
@@ -232,6 +272,11 @@ public class DataWriter extends DataConstants {
 		return postDetailsJSON;
 	}
 
+	/**
+	 * Converts the resume to a JSON Object
+	 * @param resume The resume that is being converted
+	 * @return Returns a JSON Object representation of the resume
+	 */
 	public static JSONObject getResumeJSON(Resume resume) {
 		HashMap<String, Object> resumeDetails = new HashMap<String, Object>();
 		resumeDetails.put(USER_ID, resume.getID().toString());
@@ -349,6 +394,11 @@ public class DataWriter extends DataConstants {
 		return resumeDetailsJSON;
 	}
 
+	/**
+	 * Converts the arraylist of applicants in a post to a JSON Object
+	 * @param post The post with the arraylist of applicants
+	 * @return Returns a JSON Object representation of the post and its applicants
+	 */
 	public static JSONObject getApplicationJSON(InternshipPost post) {
 		HashMap<String, Object> applicationDetails = new HashMap<String, Object>();
 

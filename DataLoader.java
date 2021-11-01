@@ -7,8 +7,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * Reads in the JSON Files and converts them into objects
+ */
 public class DataLoader extends DataConstants {
 
+	/**
+	 * Reads the student JSON file and populates the list of students
+	 * @return Returns an arraylist of type student of all the students in the system
+	 */
 	public static ArrayList<Student> getStudents() {
 		ArrayList<Student> students = new ArrayList<Student>();
 
@@ -69,6 +76,10 @@ public class DataLoader extends DataConstants {
 		return null;
 	}
 
+	/**
+	 * Reads in the employer JSON file and populates the list of employers
+	 * @return Returns an arraylist of type employer of all the employers in the system
+	 */
 	public static ArrayList<Employer> getEmployers() {
 		ArrayList<Employer> employers = new ArrayList<Employer>();
 
@@ -111,6 +122,10 @@ public class DataLoader extends DataConstants {
 		return null;
 	}
 
+	/**
+	 * Reads in the internship post JSON file and populates the list of internship posts
+	 * @return Returns an arraylist of type internship posts of all the posts in the system
+	 */
 	public static ArrayList<InternshipPost> getInternshipPosts() {
 		ArrayList<InternshipPost> posts = new ArrayList<InternshipPost>();
 
@@ -155,6 +170,10 @@ public class DataLoader extends DataConstants {
 		return null;
 	}
 
+	/**
+	 * Reads in the resume JSON file and populates the list of resumes
+	 * @return Returns an arraylist of type resume of all the resumes in the system
+	 */
 	public static ArrayList<Resume> getResumes() {
 		ArrayList<Resume> resumes = new ArrayList<Resume>();
 
@@ -262,6 +281,10 @@ public class DataLoader extends DataConstants {
 		
 	}
 
+	/**
+	 * Reads in the admin JSON file and populates the list of admins 
+	 * @return Returns an arraylist of type admin of all the admins in the system
+	 */
 	public static ArrayList<Admin> getAdmins() {
 		ArrayList<Admin> admins = new ArrayList<Admin>();
 
@@ -289,6 +312,9 @@ public class DataLoader extends DataConstants {
 		return null;
 	}
 
+	/**
+	 * Reads in the application JSON file and populates the list of applicants for each post and list of posts for each employer
+	 */
 	public static void getApplicants() {
 		try {
 			FileReader reader = new FileReader(APPLICATIONS_FILE_NAME);
