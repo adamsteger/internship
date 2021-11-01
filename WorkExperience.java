@@ -16,6 +16,15 @@ public class WorkExperience {
         this.endDate = endDate;
         this.resume = resume;
         this.description = description;
+        this.location = location;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public ArrayList<String> getDescription() {
+        return description;
     }
 
     public String getPosTitle() {
@@ -32,6 +41,10 @@ public class WorkExperience {
 
     public String getEndDate() {
         return endDate;
+    }
+
+    public boolean getResume() {
+        return resume;
     }
 
     public String toString() {
