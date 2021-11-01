@@ -442,7 +442,7 @@ public class InternshipUI {
             System.out.println("Which Post: ");
             post = scanner.nextInt();
             scanner.nextLine();
-            internApp.removePost(internApp.getInternships(employer).get(post + 1));
+            internApp.removeInternship(internApp.getInternships(employer).get(post + 1));
             break;
         }
 
