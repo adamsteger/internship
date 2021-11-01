@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class InternshipApplication{
+public class InternshipApplication {
     private InternshipList internshipList;
     private StudentList studentList;
     private Student student;
@@ -10,74 +10,73 @@ public class InternshipApplication{
     private AdminList adminList;
     private Admin admin;
 
-    public InternshipApplication(){
+    public InternshipApplication() {
         internshipList = InternshipList.getInstance();
         studentList = StudentList.getInstance();
     }
 
-    //creates a new student account
+    // creates a new student account
     public boolean createStudent(Student student) {
         this.student = student;
         return studentList.addStudent(student);
     }
 
-    //creates a new employer account
+    // creates a new employer account
     public boolean createEmployer(Employer employer) {
         this.employer = employer;
         return employerList.addEmployer(employer);
     }
 
-    //creates a new admin account
+    // creates a new admin account
     public boolean createAdmin(Admin admin) {
         return adminList.addAdmin(admin);
     }
 
-    //student login
+    // student login
     public Student studentLogin(String username, String password) {
-        if(!studentList.haveStudent(username))
+        if (!studentList.haveStudent(username))
             return null;
-        
+
         student = studentList.getStudentByUser(username);
-        if(student.getPassword().equals(password)) {
+        if (student.getPassword().equals(password)) {
             return student;
         }
         return null;
     }
 
-    //employer login
+    // employer login
     public Employer employerLogin(String username, String password) {
-        if(!employerList.haveEmployer(username))
+        if (!employerList.haveEmployer(username))
             return null;
-        
+
         employer = employerList.getEmployerByUser(username);
-        if(employer.getPassword().equals(password)) {
+        if (employer.getPassword().equals(password)) {
             return employer;
         }
         return null;
     }
 
-    //admin login
+    // admin login
     public Admin adminLogin(String username, String password) {
-        if(!adminList.haveAdmin(username))
+        if (!adminList.haveAdmin(username))
             return null;
-        
+
         admin = adminList.getAdminByUser(username);
-        if(admin.getPassword().equals(password)) {
+        if (admin.getPassword().equals(password)) {
             return admin;
         }
         return null;
     }
 
-    public boolean findInternship(String employerTitle, String posTitle){
+    public boolean findInternship(String employerTitle, String posTitle) {
         return internshipList.haveInternshipPost(employerTitle, posTitle);
     }
 
-    
     private ArrayList<InternshipPost> filterByPay(int lowPay, int highPay) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
+        for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getLowPay() >= lowPay && currentPost.getHighPay() <= highPay)
+            if (currentPost.getLowPay() >= lowPay && currentPost.getHighPay() <= highPay)
                 retList.add(currentPost);
         }
         return retList;
@@ -85,9 +84,9 @@ public class InternshipApplication{
 
     private ArrayList<InternshipPost> filterByLocation(String location) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
+        for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getLocation().contains(location))
+            if (currentPost.getLocation().contains(location))
                 retList.add(currentPost);
         }
         return retList;
@@ -95,10 +94,10 @@ public class InternshipApplication{
 
     private ArrayList<InternshipPost> filterByLanguage(Skill language) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
+        for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            for(int j = 0; j < currentPost.getSkillReq().size(); i++){
-                if(currentPost.getSkillReq().get(i).equals(language))
+            for (int j = 0; j < currentPost.getSkillReq().size(); i++) {
+                if (currentPost.getSkillReq().get(i).equals(language))
                     retList.add(currentPost);
             }
         }
@@ -107,61 +106,64 @@ public class InternshipApplication{
 
     private ArrayList<InternshipPost> filterByRemote(boolean isRemote) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
+        for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getRemote() == isRemote)
+            if (currentPost.getRemote() == isRemote)
                 retList.add(currentPost);
         }
         return retList;
     }
 
-    public ArrayList<InternshipPost> filterByPosTitle(String keyword){
+    public ArrayList<InternshipPost> filterByPosTitle(String keyword) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
+        for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getPosTitle().contains(keyword)){
+            if (currentPost.getPosTitle().contains(keyword)) {
                 retList.add(currentPost);
             }
         }
         return retList;
     }
 
-    public ArrayList<InternshipPost> filterByEmployerTitle(String keyword){
+    public ArrayList<InternshipPost> filterByEmployerTitle(String keyword) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
-        for(int i = 0; i < internshipList.getInternships().size(); i++){
+        for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getEmployerTitle().contains(keyword)){
+            if (currentPost.getEmployerTitle().contains(keyword)) {
                 retList.add(currentPost);
             }
         }
         return retList;
     }
-    
-    public ArrayList<InternshipPost> getFavoriteInternships(UUID id){
+
+    public ArrayList<InternshipPost> getFavoriteInternships(UUID id) {
         Student currentStudent = studentList.getStudentByID(id);
         return currentStudent.getFavoritePosts();
     }
 
-    public ArrayList<InternshipPost> getMyInternships(UUID id){
+    public ArrayList<InternshipPost> getMyInternships(UUID id) {
         Student currentStudent = studentList.getStudentByID(id);
         return currentStudent.getFavoritePosts();
     }
 
-    public boolean addInternship(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay){
-        if(internshipList.haveInternshipPost(employerTitle, posTitle)) {
-            return false; 
+    public boolean addInternship(String employerTitle, String posTitle, String description, String location,
+            ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay,
+            int highPay) {
+        if (internshipList.haveInternshipPost(employerTitle, posTitle)) {
+            return false;
         }
-        internshipList.addInternship(employerTitle, posTitle, description, location, skillReq, startDate, endDate, isRemote, isOpen, lowPay, highPay);
+        internshipList.addInternship(employerTitle, posTitle, description, location, skillReq, startDate, endDate,
+                isRemote, isOpen, lowPay, highPay);
         internshipList.save();
         return true;
     }
 
-    //TODO Add Removes for Resume fields
+    // TODO Add Removes for Resume fields
 
     public void addWorkExperience(WorkExperience work) {
         student.getResume().addWork(work);
         DataWriter.saveStudents();
-    } 
+    }
 
     public void addEducation(Education edu) {
         student.getResume().addEducation(edu);
