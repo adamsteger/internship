@@ -235,7 +235,7 @@ public class InternshipUI {
             res.toString();
 
         case (8):// Browse Internship Posts
-            ArrayList<InternshipPost> posts = internApp.getInternshipPosts();
+            ArrayList<InternshipPost> posts = internApp.getInternships();
             displayStudentInternships(student, posts);
 
         }
@@ -247,7 +247,7 @@ public class InternshipUI {
     private void executeStudentInternshipOpt(Student student, int opt) {
         // "Go Home", "Sort by Pay", "Filter by Loction", "Filter By position Title",
         // "filter By Company Name"};
-        ArrayList<InternshipPost> posts;
+        ArrayList<InternshipPost> posts = new ArrayList<InternshipPost>();
         switch (opt) {
         case (0):// Go Home
             displayStudentHome(student);
@@ -301,7 +301,11 @@ public class InternshipUI {
             System.out.println("Logging out..\nGood Bye");
             displayStartMenu();
         case (1):// See/Edit internship posts
-
+            System.out.println("Internship Posts: ");
+            ArrayList<InternshipPost> posts = internApp.getInternships(employer);
+            for (InternshipPost post : posts) {
+                System.out.println(post);
+            }
         case (2):// See Reviews
 
         case (3):// Leave Review on a Student
@@ -772,7 +776,7 @@ public class InternshipUI {
             System.out.println("Which Work Experience would you like to remove?");
             int temp = scanner.nextInt() - 1;
             scanner.nextLine();
-            internApp.removeWork(student.getResume().getWork().get(temp));
+            internApp.removeWorkExperience(student.getResume().getWork().get(temp));
 
         case (2):
             System.out.println("How many: ");
@@ -846,7 +850,7 @@ public class InternshipUI {
 
             System.out.println("Which Course would you like to remove?(case senseitive)");
             String temp = scanner.nextLine();
-            internApp.removeCourse(student.getResume().getCourses().get(temp));
+            internApp.removeCourse(temp);
 
         case (2):
             System.out.println("How many: ");
@@ -884,8 +888,8 @@ public class InternshipUI {
 
     private void editSkill(Student student) {
 
-        System.out.println("    1. Remove a Course");
-        System.out.println("    2. Add a Course");
+        System.out.println("    1. Remove a Skill");
+        System.out.println("    2. Add a Skill");
         System.out.println("    0. Go Home");
 
         switch (getUserOpt(3)) {
@@ -895,7 +899,8 @@ public class InternshipUI {
 
             System.out.println("Which Skill would you like to remove?(case senseitive)");
             String temp = scanner.nextLine();
-            internApp.removeCourse(student.getResume().getCourses().get(temp));
+            Skill skill = Skill.valueOf(temp);
+            internApp.removeSkill(skill);
 
         case (2):
             System.out.println("How many: ");
