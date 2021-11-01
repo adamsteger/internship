@@ -78,6 +78,7 @@ public class AdminList {
 
     /**
      * Adds an admin to the admin list
+     * @param admin the admin that is being added
      * @return Returns true if the admin is successfully added and false if not
      */
     public boolean addAdmin(Admin admin){

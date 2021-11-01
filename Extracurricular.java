@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 public class Extracurricular {
     private String title;
     private String position;
