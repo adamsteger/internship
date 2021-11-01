@@ -102,6 +102,11 @@ public class InternshipApplication {
         return internshipList.haveInternshipPost(employerTitle, posTitle);
     }
 
+    public void removeInternship(InternshipPost post) {
+        InternshipList.getInstance().removeInternship(post);
+        DataWriter.saveInternshipPosts();
+    }
+
     public ArrayList<InternshipPost> filterByPay(int pay) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
