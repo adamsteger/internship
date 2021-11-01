@@ -162,7 +162,7 @@ public class DataWriter extends DataConstants {
 
 	public static JSONObject getEmployerJSON(Employer employer) {
 		HashMap<String, Object> employerDetails = new HashMap<String, Object>();
-		// employerDetails.put(USER_ID, employer.getUUID().toString());
+		employerDetails.put(USER_ID, employer.getUUID().toString());
 		employerDetails.put(EMPLOYER_TITLE, employer.getTitle());
 		employerDetails.put(USER_USER_NAME, employer.getUsername());
 		employerDetails.put(USER_PASSWORD, employer.getPassword());
@@ -233,53 +233,116 @@ public class DataWriter extends DataConstants {
 
 	public static JSONObject getResumeJSON(Resume resume) {
 		HashMap<String, Object> resumeDetails = new HashMap<String, Object>();
-		// resumeDetails.put(USER_ID, resume.getID().toString());
+		resumeDetails.put(USER_ID, resume.getID().toString());
 		
 		
-		// JSONArray JSONEducations = new JSONArray();
-		// for (int i = 0; i < resume.getEducations().size(); i++) {
-		// 	HashMap<String, Object> eduDetails = new HashMap<String, Object>();
-		// 	Education edu = resume.getEducations().get(i);
-		// 	eduDetails.put(EDUCATION_SCHOOL, edu.getSchoolTitle());
-		// 	eduDetails.put(EDUCATION_LOCATION, edu.getLocation());
-		// 	eduDetails.put(EDUCATION_MAJOR, edu.getMajor());
-		// 	eduDetails.put(EDUCATION_GRAD_YEAR, edu.getGradYear());
-		// 	eduDetails.put(RESUME, edu.getResume());
-		// 	JSONObject eduDetailsJSON = new JSONObject(eduDetails);
+		JSONArray JSONEducations = new JSONArray();
+		for (int i = 0; i < resume.getEducations().size(); i++) {
+			HashMap<String, Object> eduDetails = new HashMap<String, Object>();
+			Education edu = resume.getEducations().get(i);
+			eduDetails.put(EDUCATION_SCHOOL, edu.getSchoolTitle());
+			eduDetails.put(EDUCATION_LOCATION, edu.getLocation());
+			eduDetails.put(EDUCATION_MAJOR, edu.getMajor());
+			eduDetails.put(EDUCATION_GRAD_YEAR, edu.getGradYear());
+			eduDetails.put(RESUME, edu.getResume());
+			JSONObject eduDetailsJSON = new JSONObject(eduDetails);
 
-		// 	JSONEducations.add(eduDetailsJSON);
-		// }
+			JSONEducations.add(eduDetailsJSON);
+		}
 
-		// resumeDetails.put(RESUME_EDUCATIONS, JSONEducations);
+		resumeDetails.put(RESUME_EDUCATIONS, JSONEducations);
 
-		// JSONArray JSONSkills = new JSONArray();
-		// for (int i = 0; i < resume.getSkills().size(); i++) {
-		// 	HashMap<String, Object> skillDetails = new HashMap<String, Object>();
-		// 	List keys = new ArrayList(resume.getSkills().keySet());
-		// 	Object skillObj = keys.get(i);
-		// 	skillDetails.put(SKILLS_SKILL, skillObj.toString());
-		// 	skillDetails.put(RESUME, resume.getSkills().get(i));
-		// 	JSONObject skillDetailsJSON = new JSONObject(skillDetails);
+		JSONArray JSONSkills = new JSONArray();
+		for (int i = 0; i < resume.getSkills().size(); i++) {
+			HashMap<String, Object> skillDetails = new HashMap<String, Object>();
+			List keys = new ArrayList(resume.getSkills().keySet());
+			Object skillObj = keys.get(i);
+			// Collection<Boolean> elements = resume.getSkills().values();
+			Boolean resumeBoolean = resume.getSkills().get(skillObj);
+			skillDetails.put(SKILLS_SKILL, skillObj.toString());
+			skillDetails.put(RESUME, resumeBoolean);
+			JSONObject skillDetailsJSON = new JSONObject(skillDetails);
 
-		// 	JSONSkills.add(skillDetailsJSON);
-		// }
+			JSONSkills.add(skillDetailsJSON);
+		}
 
-		// resumeDetails.put(RESUME_SKILLS, JSONSkills);
+		resumeDetails.put(RESUME_SKILLS, JSONSkills);
 
-		// JSONArray JSONCourses = new JSONArray();
-		// for (int i = 0; i < resume.getCourses().size(); i++) {
-		// 	HashMap<String, Object> courseDetails = new HashMap<String, Object>();
-		// 	List keys = new ArrayList(resume.getCourses().keySet());
-		// 	Object courseObj = keys.get(i);
-		// 	String course = courseObj.toString();
-		// 	courseDetails.put(COURSES_COURSE, course);
-		// 	courseDetails.put(RESUME, resume.getCourses().get(i));
-		// 	JSONObject courseDetailsJSON = new JSONObject(courseDetails);
+		JSONArray JSONCourses = new JSONArray();
+		for (int i = 0; i < resume.getCourses().size(); i++) {
+			HashMap<String, Object> courseDetails = new HashMap<String, Object>();
+			List keys = new ArrayList(resume.getCourses().keySet());
+			Object courseObj = keys.get(i);
+			courseDetails.put(COURSES_COURSE, courseObj.toString());
+			courseDetails.put(RESUME, resume.getCourses().get(courseObj));
+			JSONObject courseDetailsJSON = new JSONObject(courseDetails);
 
-		// 	JSONSkills.add(courseDetailsJSON);
-		// }
+			JSONCourses.add(courseDetailsJSON);
+		}
 
-		// resumeDetails.put(RESUME_COURSES, JSONCourses);
+		resumeDetails.put(RESUME_COURSES, JSONCourses);
+
+		JSONArray JSONWorks = new JSONArray();
+		for (int i = 0; i < resume.getWork().size(); i++) {
+			HashMap<String, Object> workDetails = new HashMap<String, Object>();
+			WorkExperience work = resume.getWork().get(i);
+			workDetails.put(WORK_POSITION_TITLE, work.getPosTitle());
+			workDetails.put(WORK_EMPLOYER, work.getEmployerTitle());
+			workDetails.put(WORK_LOCATION, work.getLocation());
+			workDetails.put(WORK_START_DATE, work.getStartDate());
+			workDetails.put(WORK_END_DATE, work.getEndDate());
+
+			JSONArray JSONDescription = new JSONArray();
+			for (int j = 0; i < work.getDescription().size(); i++) {
+				HashMap<String, Object> descriptionDetails = new HashMap<String, Object>();
+				String string = work.getDescription().get(j);
+				descriptionDetails.put(DESCRIPTION_STRING, string);
+				JSONObject descriptionDetailsJSON = new JSONObject(descriptionDetails);
+
+				JSONDescription.add(descriptionDetailsJSON);
+			}
+
+
+			workDetails.put(WORK_DESCRIPTION, JSONDescription);
+			workDetails.put(RESUME, work.getResume());
+			JSONObject workDetailsJSON = new JSONObject(workDetails);
+
+			JSONWorks.add(workDetailsJSON);
+		}
+
+		resumeDetails.put(RESUME_WORK, JSONWorks);
+
+		JSONArray JSONExtras = new JSONArray();
+		for (int i = 0; i < resume.getExtracurriculars().size(); i++) {
+			HashMap<String, Object> extraDetails = new HashMap<String, Object>();
+			Extracurricular extra = resume.getExtracurriculars().get(i);
+			extraDetails.put(EXTRA_TITLE, extra.getTitle());
+			extraDetails.put(EXTRA_POSITION, extra.getPosition());
+			extraDetails.put(EXTRA_START_DATE, extra.getStartDate());
+			extraDetails.put(EXTRA_END_DATE, extra.getEndDate());
+			extraDetails.put(RESUME, extra.getResume());
+			JSONObject extraDetailsJSON = new JSONObject(extraDetails);
+
+			JSONExtras.add(extraDetailsJSON);
+		}
+
+		resumeDetails.put(RESUME_EXTRACURRICULARS, JSONExtras);
+
+		JSONArray JSONHonors = new JSONArray();
+		for (int i = 0; i < resume.getHonors().size(); i++) {
+			HashMap<String, Object> honorDetails = new HashMap<String, Object>();
+			Honor honor = resume.getHonors().get(i);
+			honorDetails.put(HONORS_TITLE, honor.getTitle());
+			honorDetails.put(HONORS_ORGAN, honor.getOrganization());
+			honorDetails.put(HONORS_DESCRIPTION, honor.getdescription());
+			honorDetails.put(HONORS_YEAR, honor.getYear());
+			honorDetails.put(RESUME, honor.getResume());
+			JSONObject honorDetailsJSON = new JSONObject(honorDetails);
+
+			JSONHonors.add(honorDetailsJSON);
+		}
+
+		resumeDetails.put(RESUME_HONORS, JSONHonors);
 
 		JSONObject resumeDetailsJSON = new JSONObject(resumeDetails);
 		return resumeDetailsJSON;
@@ -325,11 +388,13 @@ public class DataWriter extends DataConstants {
 		// AdminList.getInstance().addAdmin(admin);
 		// AdminList.getInstance().save();
 
-		ArrayList<Skill> skillReq = new ArrayList<Skill>();
-		skillReq.add(Skill.CPP);
-		skillReq.add(Skill.C);
-		InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
-		InternshipList.getInstance().addInternship(post);
-		InternshipList.getInstance().save();
+		// ArrayList<Skill> skillReq = new ArrayList<Skill>();
+		// skillReq.add(Skill.CPP);
+		// skillReq.add(Skill.C);
+		// InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
+		// InternshipList.getInstance().addInternship(post);
+		// InternshipList.getInstance().save();
+
+		ResumeList.getInstance().save();
 	}
 }

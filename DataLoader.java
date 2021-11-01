@@ -321,9 +321,9 @@ public class DataLoader extends DataConstants {
 		DataLoader.getApplicants();
 		ArrayList<Admin> admins = DataLoader.getAdmins();
 
-		// for(Student student : students) {
-		// 	System.out.println(student);
-		// }
+		for(Student student : students) {
+			System.out.println(student);
+		}
 
 		// for (Employer employer : employers) {
 		// 	System.out.println(employer);

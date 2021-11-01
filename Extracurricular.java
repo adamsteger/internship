@@ -25,7 +25,7 @@ public class Extracurricular {
         return this.startDate;
     }
 
-    public String endDate() {
+    public String getEndDate() {
         return this.endDate;
     }
 

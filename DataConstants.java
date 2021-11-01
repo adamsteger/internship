@@ -53,6 +53,7 @@ public abstract class DataConstants {
     protected static final String RESUME_HONORS = "honors";
     protected static final String RESUME_EXTRACURRICULARS = "extracurriculars";
     protected static final String RESUME_FILE_NAME = "resume.json";
+    protected static final String RESUME_FILE_NAME_TEST = "resumetest.json";
     protected static final String EDUCATIONS = "educations";
     protected static final String EDUCATION_SCHOOL = "schoolTitle";
     protected static final String EDUCATION_LOCATION = "location";
