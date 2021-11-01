@@ -29,6 +29,6 @@ public class ResumeList {
     }
 
     public void save() {
-        // DataWriter.saveResumes();
+        DataWriter.saveResumes();
     }
 }
