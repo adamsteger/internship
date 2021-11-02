@@ -25,7 +25,7 @@ public class Student extends User {
     private UUID id;
     private Resume resume;
     /**
-     * Creates a student with a new UUID
+     * Creates a student with a new UUID for UI
      * @param firstName A string of the first name of the student
      * @param lastName A string of the last name of the student
      * @param username A string of the username of the student
@@ -33,9 +33,9 @@ public class Student extends User {
      * @param gradYear An integer of the graduation year of the student
      * @param email A string of the email of the student
      * @param address A string of the address of the student 
-     * @param phone
-     * @param gpa
-     * @param showGPA
+     * @param phone A string of the phone number of the student
+     * @param gpa A double of the gpa of the student
+     * @param showGPA A boolean that is true if the student wants their GPA on their current gpa
      */
     public Student(String firstName, String lastName, String username, String password, int gradYear, String email, 
                     String address, String phone, double gpa, boolean showGPA) {
@@ -57,22 +57,22 @@ public class Student extends User {
         reviews = new ArrayList<Review>();
     }
     /**
-     * Creates a student with an existing UUID
-     * @param id
-     * @param firstName
-     * @param lastName
-     * @param username
-     * @param password
-     * @param gradYear
-     * @param email
-     * @param address
-     * @param phone
-     * @param gpa
-     * @param showGPA
-     * @param rating
-     * @param reviews
-     * @param favPosts
-     * @param resume
+     * Creates a student with an existing UUID for DataLoader
+     * @param id The unique UUID of the student
+     * @param firstName A string of the first name of the student
+     * @param lastName A string of the last name of the student
+     * @param username A string of the username of the student
+     * @param password A string of the password of the student
+     * @param gradYear An integer of the graduation year of the student
+     * @param email A string of the email of the student
+     * @param address A string of the address of the student 
+     * @param phone A string of the phone number of the student
+     * @param gpa A double of the gpa of the student
+     * @param showGPA A boolean that is true if the student wants their GPA on their current gpa
+     * @param rating A double of the average rating of the student based on their reviews
+     * @param reviews An arraylist of reviews on the student
+     * @param favPosts An arraylist of internship posts that are favorited by the student 
+     * @param resume The resume of the student
      */
     public Student(UUID id, String firstName, String lastName, String username, String password, int gradYear,
                     String email, String address, String phone, double gpa, boolean showGPA, double rating, ArrayList<Review> reviews,
