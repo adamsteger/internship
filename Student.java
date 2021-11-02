@@ -217,6 +217,7 @@ public class Student extends User {
     public void apply(InternshipPost post) {
         post.getApplicants().add(this);
         InternshipList.getInstance().save();
+        DataWriter.saveApplications();
     }
 
     /**
