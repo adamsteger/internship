@@ -221,4 +221,14 @@ public class InternshipPost {
         return ret;
     }
 
+    public String toStringNoApplicants() {
+        String ret = "\nEmployer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
+                        "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 
+                        isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay + "\nSkills Required: ";
+        for (Skill skill : skillReq) {
+            ret += skill + "\t";
+        }
+        return ret;
+    }
+
 }
