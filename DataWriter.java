@@ -444,12 +444,13 @@ public class DataWriter extends DataConstants {
 		// AdminList.getInstance().addAdmin(admin);
 		
 
-		// ArrayList<Skill> skillReq = new ArrayList<Skill>();
-		// skillReq.add(Skill.CPP);
-		// skillReq.add(Skill.C);
-		// InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
-		// InternshipList.getInstance().addInternship(post);
-		// InternshipList.getInstance().save();
+		ArrayList<Skill> skillReq = new ArrayList<Skill>();
+		skillReq.add(Skill.CPP);
+		skillReq.add(Skill.C);
+		skillReq.add(Skill.JAVASCRIPT);
+		InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
+		InternshipList.getInstance().addInternship(post);
+		InternshipList.getInstance().save();
 
 		// ResumeList.getInstance().save();
 		// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
