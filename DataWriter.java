@@ -381,7 +381,7 @@ public class DataWriter extends DataConstants {
 			Honor honor = resume.getHonors().get(i);
 			honorDetails.put(HONORS_TITLE, honor.getTitle());
 			honorDetails.put(HONORS_ORGAN, honor.getOrganization());
-			honorDetails.put(HONORS_DESCRIPTION, honor.getdescription());
+			honorDetails.put(HONORS_DESCRIPTION, honor.getDescription());
 			honorDetails.put(HONORS_YEAR, honor.getYear());
 			honorDetails.put(RESUME, honor.getResume());
 			JSONObject honorDetailsJSON = new JSONObject(honorDetails);
