@@ -390,6 +390,7 @@ public class InternshipApplication {
         student.getResume().removeHonor(honor);
         DataWriter.saveResumes();
     }
+
     /**
      * Adds an employer review to a student
      * @param student The student that the review is about
@@ -401,6 +402,7 @@ public class InternshipApplication {
         student.getReviews().add(new Review(writer, rating, comment));
         DataWriter.saveStudents();
     }
+
     /**
      * Adds a student review to an employer
      * @param employer The employer that the review is about
