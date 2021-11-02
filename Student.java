@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
+import java.io.*;
+
 /**
  * Class for a user of type Student
  * @author Byte Me
@@ -225,5 +227,18 @@ public class Student extends User {
         ret += "\nResume: " + resume;
         return ret;
     }
+
+    // public void printResumeToFile() {
+    //     try {
+    //         FileWriter writer = new FileWriter("resumetest.txt");
+    //         String contactInfo = "\t\t\t" + this.getName() + "\n";
+    //         contactInfo += "\tAddress: " + this.getAddress() + "\n";
+    //         contactInfo += "\tPhone: " + this.getPhone() + "\n";
+    //         contactInfo += "\tEmail: " + this.getEmail() + "\n";
+    //         writer.write()
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 
 }
