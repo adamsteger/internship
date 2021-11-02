@@ -213,6 +213,12 @@ public class Student extends User {
     public void addFavoritePost(InternshipPost post) {
         favoritePosts.add(post);
     }
+
+    public void apply(InternshipPost post) {
+        post.getApplicants().add(this);
+        InternshipList.getInstance().save();
+    }
+
     /**
      * creates a string for all aspects of student class
      * @return String including all arguments passed and corresponding names
