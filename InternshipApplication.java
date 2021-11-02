@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
 /**
- * A class for an internship application from a student
+ * A class for an internship application that is used by the UI
  * @author Byte Me
  */
 public class InternshipApplication {
@@ -13,7 +13,7 @@ public class InternshipApplication {
     private AdminList adminList;
     private Admin admin;
     /**
-     * creates a default internship application
+     * Default constructor that loads the lists from the JSON files
      */
     public InternshipApplication() {
         employerList = EmployerList.getInstance();
@@ -24,9 +24,9 @@ public class InternshipApplication {
     }
 
     /**
-     * calls a student to be added to the StudentList
-     * @param student
-     * @return boolean if successful
+     * Adds a student to the student list
+     * @param student The student that is being added
+     * @return Returns a boolean that is true if the student is successfully added
      */
     public boolean createStudent(Student student) {
         this.student = student;
@@ -34,9 +34,9 @@ public class InternshipApplication {
     }
 
     /**
-     * calls a employer to be added to the EmployerList
-     * @param employer
-     * @return boolean if successful
+     * Adds an employer to the EmployerList
+     * @param employer The employer that is being added
+     * @return Returns a boolean that is true if the employer is successfully added
      */
     public boolean createEmployer(Employer employer) {
         this.employer = employer;
@@ -44,9 +44,9 @@ public class InternshipApplication {
     }
 
     /**
-     * calls an admin to be added to AdminList
-     * @param admin
-     * @return boolean if successful
+     * Adds an admin to the admin list
+     * @param admin The admin that is being added
+     * @return Returns a boolean that is true if the admin is successfully added
      */
     public boolean createAdmin(Admin admin) {
         this.admin = admin;
@@ -54,68 +54,73 @@ public class InternshipApplication {
     }
 
     /**
-     * login function for students
-     * @param username
-     * @param password
-     * @return corresponding student 
+     * Checks to make sure a student with the given username exists then signs the student in
+     * @param username A string of the username of the student
+     * @param password A string of the password of the student
+     * @return Returns the student with the given username and password
      */
     public Student studentLogin(String username, String password) {
         if (!studentList.haveStudent(username))
             return null;
 
-        student = studentList.getStudentByUser(username);
-        if (student.getPassword().equals(password)) {
+        Student studentCheck = studentList.getStudentByUser(username);
+        if (studentCheck.getPassword().equals(password)) {
+            student = studentCheck;
             return student;
         }
         return null;
     }
+
     /**
-     * checks lists to see if name is taken
-     * @param username
-     * @return boolean if taken or not
+     * Checks the users to see if a given username already exists
+     * @param username A string of the username being checked
+     * @return Returns a boolean that is true if the username does not already exist
      */
     public boolean validNewUsername(String username) {
-        if (!studentList.haveStudent(username) || !employerList.haveEmployer(username)) {
+        if (!studentList.haveStudent(username) || !employerList.haveEmployer(username) || !adminList.haveAdmin(username)) {
             return true;
         }
         return false;
     }
 
     /**
-     * login function for employers
-     * @param username
-     * @param password
-     * @return corresponding Employer if username and password match
+     * Checks to make sure an employer with the given username exists then signs the employer in if the password is correct
+     * @param username A string of the username of the employer
+     * @param password A string of the password of the employer
+     * @return Returns the student with the given username and password if found and null if not
      */
     public Employer employerLogin(String username, String password) {
         if (!employerList.haveEmployer(username))
             return null;
 
-        employer = employerList.getEmployerByUser(username);
-        if (employer.getPassword().equals(password)) {
+        Employer employerCheck = employerList.getEmployerByUser(username);
+        if (employerCheck.getPassword().equals(password)) {
+            employer = employerCheck;
             return employer;
         }
         return null;
     }
 
     /**
-     * login function for Admin
-     * @param username
-     * @param password
-     * @return corresponding Admin account if username and password match
+     * Checks to make sure an admin with the given username exists then signs the admin in if the password is correct
+     * @param username A string of the username of the admin
+     * @param password A string of the password of the admin
+     * @return Returns the admin with the given username and password if found and null if not
      */
     public Admin adminLogin(String username, String password) {
         if (!adminList.haveAdmin(username))
             return null;
 
-        admin = adminList.getAdminByUser(username);
-        if (admin.getPassword().equals(password)) {
+        Admin adminCheck = adminList.getAdminByUser(username);
+        if (adminCheck.getPassword().equals(password)) {
+            admin = adminCheck;
             return admin;
         }
         return null;
     }
+
     /**
-     * Returns the internship posts from an employer in a search
+     * Returns the internship posts of an employer in a search
      * @param employer The employer that is being searched for
      * @return ArrayList of InternshipPosts by the employer
      */
@@ -129,8 +134,10 @@ public class InternshipApplication {
         }
         return ret;
     }
+
     /**
-     * @return native ArrayList of all internships
+     * Accesses the list of internships
+     * @return Returns the ArrayList of all internship posts
      */
     public ArrayList<InternshipPost> getInternships() {
         ArrayList<InternshipPost> ret = new ArrayList<InternshipPost>();
@@ -139,31 +146,35 @@ public class InternshipApplication {
         }
         return ret;
     }
+
     /**
-     * gets applicants to an InternshipPost
-     * @param post
-     * @return ArrayList of Students
+     * Accesses the applicants of an InternshipPost
+     * @param post The internship post with the list of applicants
+     * @return Returns the ArrayList of Students that are the applicants
      */
     public ArrayList<Student> getApplicants(InternshipPost post) {
         return post.getApplicants();
     }
+
     /**
-     * finds internship based on employer and position
-     * @param employerTitle
-     * @param posTitle
-     * @return boolean if position is found
+     * Searches the list of internships for a given employer and position
+     * @param employerTitle A string of the employer title being searched for
+     * @param posTitle A string of the position title being searched for
+     * @return Returns a boolean that is true if an internship post exists with the given employer title and position title
      */
     public boolean findInternship(String employerTitle, String posTitle) {
         return internshipList.haveInternshipPost(employerTitle, posTitle);
     }
+
     /**
-     * removes internship from the InternshipList
-     * @param post
+     * Removes an internship from the InternshipList
+     * @param post The internship post being removed
      */
     public void removeInternship(InternshipPost post) {
         InternshipList.getInstance().removeInternship(post);
         DataWriter.saveInternshipPosts();
     }
+
     /**
      * Filters internships by pay
      * @param pay
@@ -178,6 +189,7 @@ public class InternshipApplication {
         }
         return retList;
     }
+
     /**
      * Filters internships by location
      * @param location
@@ -192,26 +204,28 @@ public class InternshipApplication {
         }
         return retList;
     }
+
     /**
-     * Filters internships by coding language
-     * @param language
-     * @return corresponding ArrayList of InternshipPosts
+     * Filters internships by skill requirement
+     * @param skill The skill that is being searched for 
+     * @return Returns an ArrayList of InternshipPosts that have the given skill as a requirement
      */
-    public ArrayList<InternshipPost> filterByLanguage(Skill language) {
+    public ArrayList<InternshipPost> filterBySkill(Skill skill) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
             for (int j = 0; j < currentPost.getSkillReq().size(); j++) {
-                if (currentPost.getSkillReq().get(j).equals(language))
+                if (currentPost.getSkillReq().get(j).equals(skill))
                     retList.add(currentPost);
             }
         }
         return retList;
     }
+
     /**
      * filters by whether or not an internship is remote
-     * @param isRemote
-     * @return corresponding ArrayList of InternshipPosts
+     * @param isRemote The boolean that is being searched for; true if the post is virtual
+     * @return Returns a corresponding ArrayList of InternshipPosts that are remote 
      */
     public ArrayList<InternshipPost> filterByRemote(boolean isRemote) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
@@ -224,8 +238,8 @@ public class InternshipApplication {
     }
     /**
      * filters by position at internship
-     * @param keyword
-     * @return ArrayList of corresponding InternshipPosts
+     * @param keyword A string of the position title keyword that is being searched for
+     * @return Returns an ArrayList of corresponding InternshipPosts that have the given keyword
      */
     public ArrayList<InternshipPost> filterByPosTitle(String keyword) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
@@ -238,9 +252,9 @@ public class InternshipApplication {
         return retList;
     }
     /**
-     * filters by employer titles
-     * @param keyword
-     * @return ArrayList of corresponding InternshipPosts
+     * filters internship posts by employer title
+     * @param keyword A string of the employer keyword that is being searched for
+     * @return Returns an ArrayList of corresponding InternshipPosts that match the keyword in their employer title
      */
     public ArrayList<InternshipPost> filterByEmployerTitle(String keyword) {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
@@ -252,29 +266,21 @@ public class InternshipApplication {
         }
         return retList;
     }
+    
     /**
-     * gets favorite internships for a certain UUID
-     * @param id
-     * @return an ArrayList of that student's favorite posts
-     */
-    public ArrayList<InternshipPost> getFavoriteInternships(UUID id) {
-        Student currentStudent = studentList.getStudentByID(id);
-        return currentStudent.getFavoritePosts();
-    }
-    /**
-     * adds an internship to the InternshipList
-     * @param employerTitle
-     * @param posTitle
-     * @param description
-     * @param location
-     * @param skillReq
-     * @param startDate
-     * @param endDate
-     * @param isRemote
-     * @param isOpen
-     * @param lowPay
-     * @param highPay
-     * @return whether or not operation was successful
+     * Adds an internship to the InternshipList using parameters
+     * @param employerTitle A string of the employer title that made the post
+     * @param posTitle A string of the position title of the post
+     * @param description A string of a description of the position
+     * @param location A string of the location where the position is
+     * @param startDate A string of when the position begins
+     * @param endDate A string of when the position ends
+     * @param isRemote A boolean that is true if the position is virtual
+     * @param isOpen A boolean that is true if the employer is still taking applications
+     * @param lowPay An integer of the lowest a student could be paid for the position
+     * @param highPay An integer of the highest a student could be paid for the position
+     * @param skills An arraylist of type skill of all the skills required for the position
+     * @return Returns a boolena that is true if the post was successfully added
      */
     public boolean addInternship(String employerTitle, String posTitle, String description, String location,
             ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay,
@@ -288,16 +294,16 @@ public class InternshipApplication {
         return true;
     }
     /**
-     * add work experience to resume
-     * @param work
+     * Adds a work experience to resume
+     * @param work The work experience being added
      */
     public void addWorkExperience(WorkExperience work) {
         student.getResume().addWork(work);
         DataWriter.saveResumes();
     }
     /**
-     * remove work experience from resume
-     * @param work
+     * Removes a work experience from resume
+     * @param work The work experience being removed
      */
     public void removeWorkExperience(WorkExperience work) {
         student.getResume().removeWork(work);
@@ -305,7 +311,7 @@ public class InternshipApplication {
     }
     /**
      * add education to resume
-     * @param edu
+     * @param edu The education being added
      */
     public void addEducation(Education edu) {
         student.getResume().addEducation(edu);
@@ -313,7 +319,7 @@ public class InternshipApplication {
     }
     /**
      * remove education from resume
-     * @param edu
+     * @param edu The education being removed
      */
     public void removeEducation(Education edu) {
         student.getResume().removeEducation(edu);
@@ -321,7 +327,7 @@ public class InternshipApplication {
     }
     /**
      * add extracirricular to resume
-     * @param extra
+     * @param extra The extracurricular being added
      */
     public void addExtracurricular(Extracurricular extra) {
         student.getResume().addExtracurricular(extra);
@@ -329,78 +335,80 @@ public class InternshipApplication {
     }
     /**
      * remove extracirricular from resume
-     * @param extra
+     * @param extra The extracurricular being removed
      */
     public void removeExtracurricular(Extracurricular extra) {
         student.getResume().removeExtracurricular(extra);
         DataWriter.saveResumes();
     }
     /**
-     * add skill to resume
-     * @param skill
-     * @param resume
+     * add a skill to resume
+     * @param skill The skill being added
+     * @param resume A boolean that is true if the student wants the skill on their current resume
      */
     public void addSkill(Skill skill, boolean resume) {
         student.getResume().addSkill(skill, resume);
         DataWriter.saveResumes();
     }
     /**
-     * remove skill from resume
+     * Removes a skill from resume
      */
     public void removeSkill(Skill skill) {
         student.getResume().removeSkill(skill);
         DataWriter.saveResumes();
     }
     /**
-     * add course to resume
-     * @param course
-     * @param resume
+     * Adds a course to resume
+     * @param course A string of the course being added
+     * @param resume A boolean that is true if the student wants the course on their current resume
      */
     public void addCourse(String course, boolean resume) {
         student.getResume().addCourse(course, resume);
         DataWriter.saveResumes();
     }
     /**
-     * remove course from resume
-     * @param course
+     * Removes a course from resume
+     * @param course A string of the course being removed
      */
     public void removeCourse(String course) {
         student.getResume().removeCourse(course);
         DataWriter.saveResumes();
     }
     /**
-     * add honor to resume
-     * @param honor
+     * Adds a honor to resume
+     * @param honor The honor that is being added
      */
     public void addHonor(Honor honor) {
         student.getResume().addHonor(honor);
         DataWriter.saveResumes();
     }
     /**
-     * remove honor from resume
-     * @param honor
+     * Removes a honor from resume
+     * @param honor The honor that is being removed
      */
     public void removeHonor(Honor honor) {
         student.getResume().removeHonor(honor);
         DataWriter.saveResumes();
     }
+
     /**
-     * add employer review to a student
-     * @param student
-     * @param writer
-     * @param rating
-     * @param comment
+     * Adds an employer review to a student
+     * @param student The student that the review is about
+     * @param writer A string of the employer writer of the review
+     * @param rating An integer of the rating by the employer
+     * @param comment A string of the comment by the employer
      */
     public void addStudentReview(Student student, String writer, int rating, String comment) {
         student.getReviews().add(new Review(writer, rating, comment));
         DataWriter.saveStudents();
     }
+
     /**
-     * add student review to an employer
-     * @param employer
-     * @param writer
-     * @param rating
-     * @param comment
+     * Adds a student review to an employer
+     * @param employer The employer that the review is about
+     * @param writer A string of the student writer of the review
+     * @param rating An integer of the rating by the student
+     * @param comment A string of the comment by the student
      */
     public void addEmployerReview(Employer employer, String writer, int rating, String comment) {
         employer.getReviews().add(new Review(writer, rating, comment));

@@ -86,6 +86,7 @@ public class StudentList {
             return false;
         
         students.add(student);
+        this.save();
         return true;
     }
 
