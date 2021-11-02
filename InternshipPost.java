@@ -208,11 +208,11 @@ public class InternshipPost {
      * Returns the string with values of InternshipPost
      */
     public String toString() {
-        String ret = "\nEmployer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
+        String ret = "Employer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
                         "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 
                         isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay + "\nSkills Required: ";
         for (Skill skill : skillReq) {
-            ret += skill + "\t";
+            ret += skill + "    ";
         }
         ret += "\nApplicants: ";
         for (Student student : applicants) {
