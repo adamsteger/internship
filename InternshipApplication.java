@@ -115,15 +115,15 @@ public class InternshipApplication {
         return null;
     }
     /**
-     * gets a list of internships from employer
-     * @param employer
-     * @return ArrayList of InternshipPosts
+     * Returns the internship posts from an employer in a search
+     * @param employer The employer that is being searched for
+     * @return ArrayList of InternshipPosts by the employer
      */
     public ArrayList<InternshipPost> getInternships(Employer employer) {
         ArrayList<InternshipPost> ret = new ArrayList<InternshipPost>();
         for(int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            if(currentPost.getEmployerTitle().equals(employer.username)) {
+            if(currentPost.getEmployerTitle().equals(employer.getTitle())) {
                 ret.add(currentPost);
             }
         }

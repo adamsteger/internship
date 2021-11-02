@@ -304,7 +304,6 @@ public class DataWriter extends DataConstants {
 			HashMap<String, Object> skillDetails = new HashMap<String, Object>();
 			List keys = new ArrayList(resume.getSkills().keySet());
 			Object skillObj = keys.get(i);
-			// Collection<Boolean> elements = resume.getSkills().values();
 			Boolean resumeBoolean = resume.getSkills().get(skillObj);
 			skillDetails.put(SKILLS_SKILL, skillObj.toString());
 			skillDetails.put(RESUME, resumeBoolean);
