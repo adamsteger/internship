@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -24,6 +23,7 @@ public class Student extends User {
     private ArrayList<Review> reviews;
     private UUID id;
     private Resume resume;
+
     /**
      * Creates a student with a new UUID for UI
      * @param firstName A string of the first name of the student
@@ -239,6 +239,10 @@ public class Student extends User {
         return ret;
     }
 
+    /**
+     * Converts the resume to a string and formats it
+     * @return Returns a string representation of the resume
+     */
     public String resumeToString() {
         String resume = "";
         String contactInfo = "\t\t\t" + this.getName() + "\n";
@@ -297,6 +301,9 @@ public class Student extends User {
         return resume;
     }
 
+    /**
+     * Writes the resume to a text file using the resumeToString method
+     */
     public void printResumeToFile() {
         try {
             FileWriter writer = new FileWriter(this.getFirstName() + this.getLastName() + "Resume.txt");

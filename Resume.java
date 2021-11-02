@@ -235,14 +235,6 @@ public class Resume {
     public void removeExtracurricular(Extracurricular extracurricular) {
         extracurriculars.remove(extracurricular);
     }
-
-    public void sortReverseChronEdu(ArrayList<Education> education) {
-        
-    }
-
-    public void sortReverseChronWork(ArrayList<Education> work) {
-
-    }
     
     /**
      * Converts the resume to a string
