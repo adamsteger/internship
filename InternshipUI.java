@@ -7,8 +7,8 @@ import javax.tools.DocumentationTool.Location;
 public class InternshipUI {
     private InternshipApplication internApp = new InternshipApplication();
     private static final String WELCOME_MESSAGE = "Welcome to our UrTern";
-    private String[] startMenuOptions = { "Sign in as Admin", "Sign in as Student", "Sign in as Employer",
-            "Create Student account", "Create Employer account", "Exit Program" };
+    private String[] startMenuOptions = { "Exit Program", "Sign in as Admin", "Sign in as Student",
+            "Sign in as Employer", "Create Student account", "Create Employer account" };
     private String[] studentHomeOptions = { "Sign out", "See/Edit Educations", "See/Edit Extra Curriculars",
             "See/Edit Work Experiences", "See/Edit Honors", "See/Edit Courses", "See/Edit Skills", "See Resume",
             "Browse Internship Posts" };
@@ -37,7 +37,7 @@ public class InternshipUI {
         boolean run = true;
         while (run) {
             displayStartMenu();
-            int userOpt = getUserOpt(startMenuOptions.length) - 1;
+            int userOpt = getUserOpt(startMenuOptions.length);
             run = executeStartOpt(userOpt);
         }
 
@@ -51,7 +51,7 @@ public class InternshipUI {
 
             String input = scanner.nextLine();
             int command = Integer.parseInt(input);
-
+            System.out.println(command);
             if (command >= 0 && command <= numOfOpts - 1) {
                 return command;
             } else {
@@ -79,9 +79,10 @@ public class InternshipUI {
 
     private void displayStartMenu() {
         System.out.println("~~ " + WELCOME_MESSAGE + " ~~\n");
-        for (int i = 0; i < startMenuOptions.length; i++) {
-            System.out.println("    " + (i + 1) + ". " + startMenuOptions[i]);
+        for (int i = 1; i < startMenuOptions.length; i++) {
+            System.out.println("    " + (i) + ". " + startMenuOptions[i]);
         }
+        System.out.println("    0. " + startMenuOptions[0]);
     }
 
     private void displayStudentHome(Student student) {
@@ -189,8 +190,11 @@ public class InternshipUI {
         Student student;
         Employer employer;
         Admin admin;
-        switch (opt - 1) {
-        case (0):// Sign in as Admin
+        switch (opt) {
+        case (0):// exit
+            return false;
+
+        case (1):// Sign in as Admin
             userType = "A";
             admin = adminSignIn();
             while (run) {
@@ -201,7 +205,7 @@ public class InternshipUI {
 
             break;
 
-        case (1):// Sign in as Student
+        case (2):// Sign in as Student
             userType = "S";
             student = studentSignIn();
             while (run) {
@@ -211,12 +215,12 @@ public class InternshipUI {
             }
 
             break;
-        case (2):// Sign in as Employer
+        case (3):// Sign in as Employer
             userType = "E";
             displayEmployerHome(employerSignIn());
 
             break;
-        case (3):// Create Student account
+        case (4):// Create Student account
             userType = "S";
             student = createStudent();
             while (run) {
@@ -228,14 +232,11 @@ public class InternshipUI {
             }
 
             break;
-        case (4):// Create Employer account
+        case (5):// Create Employer account
             displayEmployerHome(createEmployer());
             userType = "E";
 
             break;
-
-        case (5):// exit
-            return false;
         }
 
         return true;
