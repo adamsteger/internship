@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
+
 /**
  * A class for an employer user
  * @author Byte Me

@@ -172,6 +172,16 @@ public class InternshipPost {
     }
 
     /**
+     * Adds a new student to the applicants if they have not already applied
+     * @param applicant The student that is applying to the post
+     */
+    public void addApplicant(Student applicant) {
+        if (!applicants.contains(applicant)) {
+            applicants.add(applicant);
+        }
+    }
+
+    /**
      * @return UUID
      */
     public UUID getUUID() {
