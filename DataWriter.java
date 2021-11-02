@@ -339,7 +339,7 @@ public class DataWriter extends DataConstants {
 			workDetails.put(WORK_END_DATE, work.getEndDate());
 
 			JSONArray JSONDescription = new JSONArray();
-			for (int j = 0; i < work.getDescription().size(); i++) {
+			for (int j = 0; j < work.getDescription().size(); j++) {
 				HashMap<String, Object> descriptionDetails = new HashMap<String, Object>();
 				String string = work.getDescription().get(j);
 				descriptionDetails.put(DESCRIPTION_STRING, string);

@@ -26,13 +26,13 @@ public class Student extends User {
     private Resume resume;
     /**
      * Creates a student with a new UUID
-     * @param firstName
-     * @param lastName
-     * @param username
-     * @param password
-     * @param gradYear
-     * @param email
-     * @param address
+     * @param firstName A string of the first name of the student
+     * @param lastName A string of the last name of the student
+     * @param username A string of the username of the student
+     * @param password A string of the password of the student
+     * @param gradYear An integer of the graduation year of the student
+     * @param email A string of the email of the student
+     * @param address A string of the address of the student 
      * @param phone
      * @param gpa
      * @param showGPA

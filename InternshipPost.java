@@ -180,41 +180,6 @@ public class InternshipPost {
     }
     
     /**
-     * @param skill
-     * @return ArrayList of Students with skill
-     */
-    public ArrayList<Student> filterBySkill(Skill skill) {
-        return new ArrayList<Student>();
-    }
-    /**
-     * @param lowGPA
-     * @return ArrayList of Students with GPA
-     */
-    public ArrayList<Student> filterByGPA(float lowGPA) {
-        return new ArrayList<Student>();
-    }
-    /**
-     * @param gradYear
-     * @return ArrayList of Students with specified gradYear
-     */
-    public ArrayList<Student> filterByGradYear(int gradYear) {
-        return new ArrayList<Student>();
-    }
-    /**
-     * @param major
-     * @return ArrayList of Students with specified major
-     */
-    public ArrayList<Student> filterByMajor(String major) {
-        return new ArrayList<Student>();
-    }
-    /**
-     * @param keyword
-     * @return boolean if contains keyword
-     */
-    public boolean contains(String keyword){
-        return false;
-    }
-    /**
      * Converts the post to a string
      * @return Returns a string with values of the post
      */
