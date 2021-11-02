@@ -201,7 +201,7 @@ public class InternshipApplication {
         ArrayList<InternshipPost> retList = new ArrayList<InternshipPost>();
         for (int i = 0; i < internshipList.getInternships().size(); i++) {
             InternshipPost currentPost = internshipList.getInternships().get(i);
-            for (int j = 0; j < currentPost.getSkillReq().size(); i++) {
+            for (int j = 0; j < currentPost.getSkillReq().size(); j++) {
                 if (currentPost.getSkillReq().get(i).equals(language))
                     retList.add(currentPost);
             }
