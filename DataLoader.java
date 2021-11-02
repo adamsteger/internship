@@ -360,30 +360,4 @@ public class DataLoader extends DataConstants {
 			e.printStackTrace();
 		}
 	}
-
-	public static void main(String[] args) {
-		ArrayList<Employer> employers = EmployerList.getInstance().getEmployers();
-		ArrayList<InternshipPost> posts = InternshipList.getInstance().getInternships();
-		ArrayList<Student> students = StudentList.getInstance().getStudents();
-		DataLoader.getApplicants();
-		InternshipList.getInstance().save();
-		ArrayList<Admin> admins = DataLoader.getAdmins();
-
-		for (Student student : students) {
-			System.out.println(student);
-		}
-
-		for (Employer employer : employers) {
-			System.out.println(employer);
-		}
-
-		for (InternshipPost post : posts) {
-			System.out.println(post);
-		}
-
-		for (Admin admin : admins) {
-			System.out.println(admin);
-		}
-	}
-
 }

@@ -12,8 +12,8 @@ public class InternshipUI {
             "Browse Internship Posts", "Print Resume to a File", "Leave a Review" };
     private String[] employerHomeOptions = { "Sign out", "See/Edit internship posts", "See Reviews",
             "Leave Review on a Student" };
-    private String[] studentInternshipOptions = { "Go Home", "Sort by Pay", "Filter by Loction",
-            "Filter By position Title", "Filter By Company Name", "Filter By skill", "Apply to a listing" };
+    private String[] studentInternshipOptions = { "Go Home", "Sort by Pay", "Filter By Location",
+            "Filter By Position Title", "Filter By Company Name", "Filter By Skill", "Apply to a Listing" };
     private String[] employerInternshipOptions = { "Go Home", "View applicants", "Add Post", "Remove Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner = new Scanner(System.in);

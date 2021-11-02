@@ -261,7 +261,7 @@ public class Student extends User {
 
         String experience = "\nWORK EXPERIENCE\n";
         for (WorkExperience work : this.getResume().getWork()) {
-            experience += work;
+            experience += work + "\n";
         }
         resume += experience;
 

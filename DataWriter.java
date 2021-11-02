@@ -421,41 +421,4 @@ public class DataWriter extends DataConstants {
 		JSONObject applicationDetailsJSON = new JSONObject(applicationDetails);
 		return applicationDetailsJSON;
 	}
-
-	
-
-	public static void main (String[] args) {
-		ResumeList.getInstance().save();
-		AdminList.getInstance().save();
-		StudentList.getInstance().save();
-		DataLoader.getApplicants();
-		InternshipList.getInstance().save();
-		DataWriter.saveApplications();
-
-		Student chris = StudentList.getInstance().getStudentByUser("chrispbacon");
-		chris.printResumeToFile();
-
-		// Employer employer = new Employer("Microsoft", "microandsoft", "oiapweru90", "microsoft@outlook.com", "Redmond, Washington", "Be better than Apple");
-		// employer.getReviews().add(new Review("Adam Steger", 4, "I mean its alright I guess"));
-		// EmployerList.getInstance().addEmployer(employer);
-		// EmployerList.getInstance().save();
-		// Admin admin = new Admin("imanadmin", "randompassword");
-		
-		// AdminList.getInstance().addAdmin(admin);
-		
-
-		ArrayList<Skill> skillReq = new ArrayList<Skill>();
-		skillReq.add(Skill.CPP);
-		skillReq.add(Skill.C);
-		skillReq.add(Skill.JAVASCRIPT);
-		InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
-		InternshipList.getInstance().addInternship(post);
-		InternshipList.getInstance().save();
-
-		// ResumeList.getInstance().save();
-		// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);
-		// 	student.getReviews().add(new Review("Ana Boccanfuso", 5, "Love him."));
-		// 	StudentList.getInstance().addStudent(student);
-		
-	}
 }
