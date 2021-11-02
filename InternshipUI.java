@@ -158,7 +158,7 @@ public class InternshipUI {
     private void displayStudentInternships(Student student, ArrayList<InternshipPost> posts) {
 
         for (int i = 0; i < posts.size(); i++) {
-            System.out.println((i + 1) + ". " + posts.get(i).toString());
+            System.out.println("\n" + (i + 1) + ". " + posts.get(i).toString());
         }
 
         System.out.println("\nWhat would you like to do?");
@@ -514,15 +514,15 @@ public class InternshipUI {
         String pass = null;
         Employer employer;
         while (true) {
-            System.out.println("~~ Employer Sign In ~~\n");
-            System.out.println("Enter Username: ");
+            System.out.println("\n~~ Employer Sign In ~~");
+            System.out.print("Enter Username: ");
             userName = scanner.nextLine();
 
-            System.out.println("Enter Password: ");
+            System.out.print("Enter Password: ");
             pass = scanner.nextLine();
 
             employer = internApp.employerLogin(userName, pass);
-            if (employer == null) {
+            if (employer != null) {
                 break;
             }
         }
