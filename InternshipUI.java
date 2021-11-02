@@ -25,6 +25,7 @@ public class InternshipUI {
 
     InternshipUI() {
         scanner = new Scanner(System.in);
+        displayStartMenu();
         int userOpt = getUserOpt(startMenuOptions.length);
         executeStartOpt(userOpt);
     }
@@ -35,7 +36,6 @@ public class InternshipUI {
             displayStartMenu();
             int userOpt = getUserOpt(startMenuOptions.length);
             run = executeStartOpt(userOpt);
-
         }
 
         System.out.println("Shutting Down");
@@ -82,12 +82,12 @@ public class InternshipUI {
     }
 
     private void displayStudentHome(Student student) {
-        System.out.println("~~ " + student.getName() + " ~~\n");
+        System.out.println("\n~~ " + student.getName() + " ~~");
 
         System.out.println("Email: " + student.getEmail());
         System.out.println("Phone: " + student.getPhone());
         System.out.println("Rating: " + student.getRating() + "/5 stars");
-        // System.out.println("Skill(s): " + skills.size());
+        System.out.println("Skill(s): " + student.getResume().getSkills().size());
         System.out.println("Educations(s): " + student.getResume().getEducations().size());
 
         System.out.println("ExtraCurricular(s): " + student.getResume().getExtracurriculars().size());
@@ -184,7 +184,7 @@ public class InternshipUI {
         Student student;
         Employer employer;
         Admin admin;
-        switch (opt) {
+        switch (opt - 1) {
         case (0):// Sign in as Admin
             userType = "A";
             admin = adminSignIn();
@@ -290,10 +290,11 @@ public class InternshipUI {
             break;
 
         case (6):// See/Edit Skills
+            System.out.println("\nSkills: ");
             enuSkill = res.getSkills().keys();
             i = 1;
             while (enuSkill.hasMoreElements()) {
-                System.out.println(i + ". " + enuSkill.nextElement());
+                System.out.println("    " + i + ". " + enuSkill.nextElement());
                 i++;
             }
             editSkill(student);
@@ -493,11 +494,11 @@ public class InternshipUI {
         String pass = null;
         Student student;
         while (true) {
-            System.out.println("~~ Student Sign In ~~\n");
-            System.out.println("Enter Username: ");
+            System.out.println("\n~~ Student Sign In ~~");
+            System.out.print("Enter Username: ");
             userName = scanner.nextLine();
 
-            System.out.println("Enter Password: ");
+            System.out.print("Enter Password: ");
             pass = scanner.nextLine();
 
             student = internApp.studentLogin(userName, pass);
@@ -712,6 +713,7 @@ public class InternshipUI {
             if (yesNo()) {
                 System.out.println("How many would you like to add?");
                 int works = scanner.nextInt();
+                scanner.nextLine();
                 for (int j = 0; j < works; j++) {
                     System.out.println("Enter description " + (j + 1) + ":");
                     description.add(scanner.nextLine());
@@ -1037,7 +1039,7 @@ public class InternshipUI {
     }
 
     private void editSkill(Student student) {
-
+        System.out.println("\nOptions: ");
         System.out.println("    1. Remove a Skill");
         System.out.println("    2. Add a Skill");
         System.out.println("    0. Go Home");
