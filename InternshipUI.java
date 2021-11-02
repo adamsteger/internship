@@ -8,7 +8,7 @@ public class InternshipUI {
     private InternshipApplication internApp = new InternshipApplication();
     private static final String WELCOME_MESSAGE = "Welcome to our UrTern";
     private String[] startMenuOptions = { "Sign in as Admin", "Sign in as Student", "Sign in as Employer",
-            "Create Student account", "Create Employer account" };
+            "Create Student account", "Create Employer account", "Exit Program" };
     private String[] studentHomeOptions = { "Sign out", "See/Edit Educations", "See/Edit Extra Curriculars",
             "See/Edit Work Experiences", "See/Edit Honors", "See/Edit Courses", "See/Edit Skills", "See Resume",
             "Browse Internship Posts" };
@@ -16,11 +16,12 @@ public class InternshipUI {
             "Leave Review on a Student" };
     private String[] studentInternshipOptions = { "Go Home", "Sort by Pay", "Filter by Loction",
             "Filter By position Title", "Filter By Company Name", "Filter By skill", "Apply to a listing" };
-    private String[] SeeEditInternshipsOptions = { "Go Back to Home", "Add Post", "Edit Post" };
+    private String[] employerInternshipOptions = { "Go Home", "View applicants", "Add Post", "Remove Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner;
     private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL",
             "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
+    private String userType;
 
     InternshipUI() {
         scanner = new Scanner(System.in);
@@ -29,9 +30,16 @@ public class InternshipUI {
     }
 
     private void run() {
+        boolean run = true;
+        while (run) {
+            displayStartMenu();
+            int userOpt = getUserOpt(startMenuOptions.length);
+            run = executeStartOpt(userOpt);
 
-        displayStartMenu();
+        }
 
+        System.out.println("Shutting Down");
+        System.exit(1);
     }
 
     private int getUserOpt(int numOfOpts) {
@@ -91,9 +99,6 @@ public class InternshipUI {
             System.out.println("    " + (i) + ". " + studentHomeOptions[i]);
         }
         System.out.println("    " + ("0") + ". " + studentHomeOptions[0]);
-
-        int userOpt = getUserOpt(studentHomeOptions.length);
-        executeStudentHomeOpt(student, userOpt);
     }
 
     private void displayEmployerHome(Employer employer) {
@@ -119,11 +124,35 @@ public class InternshipUI {
 
     private void displayEmployerInternships(Employer employer) {
         System.out.println("~~ See/Edit My internship Post(s) ~~\n");
-        ArrayList<InternshipPost> posts = employer.getPosts();
+        ArrayList<InternshipPost> posts = internApp.getInternships(employer);
         for (InternshipPost post : posts) {
-            System.out.println(post + "\n");
+            int num = posts.indexOf(post) + 1;
+            System.out.println(num + ". " + post + "\n");
         }
 
+    }
+
+    private boolean displayAplicants(InternshipPost post) {
+        boolean run = true;
+        System.out.println("~~ See/Edit My internship Post(s) ~~\n");
+        ArrayList<Student> applicants = internApp.getApplicants(post);
+        for (Student applicant : applicants) {
+            int num = applicants.indexOf(applicant) + 1;
+            System.out.println(num + ". " + applicant);
+        }
+        System.out.println("\n 1. View an applicants Resume\n 0. Go back");
+        int userOpt = getUserOpt(2);
+        switch (userOpt) {
+        case (0):
+            return false;
+        case (1):
+            System.out.println("Which applicant: ");
+            int ind = scanner.nextInt() - 1;
+            scanner.nextLine();
+            System.out.println(applicants.get(ind).getResume().toString());// to txt file?
+            break;
+        }
+        return true;
     }
 
     private void displayStudentInternships(Student student, ArrayList<InternshipPost> posts) {
@@ -138,9 +167,6 @@ public class InternshipUI {
         }
         System.out.println("    " + ("0") + ". " + studentInternshipOptions[0]);
 
-        int userOpt = getUserOpt(studentInternshipOptions.length);
-        executeStudentInternshipOpt(student, userOpt, posts);
-
     }
 
     private void displayAdminHome(Admin admin) {
@@ -151,34 +177,67 @@ public class InternshipUI {
             System.out.println("    " + (i) + ". " + adminHomeOptions[i]);
         }
         System.out.println("    " + ("0") + ". " + studentHomeOptions[0]);
-
-        int userOpt = getUserOpt(adminHomeOptions.length);
-        executeAdminHomeOpt(admin, userOpt);
-
     }
 
-    private void executeStartOpt(int opt) {
+    private boolean executeStartOpt(int opt) {
+        boolean run = true;
+        Student student;
+        Employer employer;
+        Admin admin;
         switch (opt) {
         case (0):// Sign in as Admin
-            displayAdminHome(adminSignIn());
+            userType = "A";
+            admin = adminSignIn();
+            while (run) {
+                displayAdminHome(admin);
+                int userOpt = getUserOpt(adminHomeOptions.length);
+                run = executeAdminHomeOpt(admin, userOpt);
+            }
+
             break;
+
         case (1):// Sign in as Student
-            displayStudentHome(studentSignIn());
+            userType = "S";
+            student = studentSignIn();
+            while (run) {
+                displayStudentHome(student);
+                int userOpt = getUserOpt(studentHomeOptions.length);
+                run = executeStudentHomeOpt(student, userOpt);
+            }
+
             break;
         case (2):// Sign in as Employer
+            userType = "E";
             displayEmployerHome(employerSignIn());
+
             break;
         case (3):// Create Student account
-            displayStudentHome(createStudent());
+            userType = "S";
+            student = createStudent();
+            while (run) {
+                displayStudentHome(student);
+                int userOpt = getUserOpt(studentHomeOptions.length);
+                executeStudentHomeOpt(student, userOpt);
+
+                break;
+            }
+
             break;
         case (4):// Create Employer account
             displayEmployerHome(createEmployer());
+            userType = "E";
+
             break;
+
+        case (5):// exit
+            return false;
         }
+
+        return true;
 
     }
 
-    private void executeStudentHomeOpt(Student student, int opt) {
+    private boolean executeStudentHomeOpt(Student student, int opt) {
         Resume res = student.getResume();
         Enumeration<String> enuStr;
         Enumeration<Skill> enuSkill;
@@ -186,8 +245,7 @@ public class InternshipUI {
         switch (opt) {
         case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
-            run();
-            break;
+            return false;
 
         case (1):// See/Edit Educations
             for (i = 0; i < res.getEducations().size(); i++) {
@@ -248,21 +306,23 @@ public class InternshipUI {
 
         case (8):// Browse Internship Posts
             ArrayList<InternshipPost> posts = internApp.getInternships();
-            displayStudentInternships(student, posts);
+            boolean run = true;
+            while (run) {
+                displayStudentInternships(student, posts);
+                int userOpt = getUserOpt(studentInternshipOptions.length);
+                run = executeStudentInternshipOpt(student, userOpt, posts);
+            }
             break;
-
         }
-
-        displayStudentHome(student);
+        return true;
 
     }
 
-    private void executeStudentInternshipOpt(Student student, int opt, ArrayList<InternshipPost> posts) {
-
+    private boolean executeStudentInternshipOpt(Student student, int opt, ArrayList<InternshipPost> posts) {
+        int userOpt;
         switch (opt) {
         case (0):// Go Home
-            displayStudentHome(student);
-            break;
+            return false;
 
         case (1):// Sort by Pay
             System.out.println("Enter desired Wage: ");
@@ -270,30 +330,36 @@ public class InternshipUI {
             scanner.nextLine();
             posts = internApp.filterByPay(pay);
             displayStudentInternships(student, posts);
-            break;
+            userOpt = getUserOpt(studentInternshipOptions.length);
+            return executeStudentInternshipOpt(student, userOpt, posts);
 
         case (2):// Filter by Loction INClude Remote
             System.out.println("Enter Location (enter \"remote\" for remote jobs): ");
             if (scanner.nextLine().equalsIgnoreCase("remote")) {
                 posts = internApp.filterByRemote(true);
                 displayStudentInternships(student, posts);
+                userOpt = getUserOpt(studentInternshipOptions.length);
+                return executeStudentInternshipOpt(student, userOpt, posts);
             } else {
                 posts = internApp.filterByLocation(scanner.nextLine());
                 displayStudentInternships(student, posts);
+                userOpt = getUserOpt(studentInternshipOptions.length);
+                return executeStudentInternshipOpt(student, userOpt, posts);
             }
-            break;
 
         case (3):// Filter By position Title
             System.out.println("Enter Position title: ");
             posts = internApp.filterByPosTitle(scanner.nextLine());
             displayStudentInternships(student, posts);
-            break;
+            userOpt = getUserOpt(studentInternshipOptions.length);
+            return executeStudentInternshipOpt(student, userOpt, posts);
 
         case (4):// filter By Company Name
             System.out.println("Enter Company Name: ");
             posts = internApp.filterByEmployerTitle(scanner.nextLine());
             displayStudentInternships(student, posts);
-            break;
+            userOpt = getUserOpt(studentInternshipOptions.length);
+            return executeStudentInternshipOpt(student, userOpt, posts);
 
         case (5):// Filter By skill
             System.out.println("Enter one of the following to filter for ");
@@ -304,9 +370,10 @@ public class InternshipUI {
             Skill skill = Skill.valueOf(scanner.nextLine());
             posts = internApp.filterByLanguage(skill);
             displayStudentInternships(student, posts);
-            break;
+            userOpt = getUserOpt(studentInternshipOptions.length);
+            return executeStudentInternshipOpt(student, userOpt, posts);
 
-        case (6):// view listing
+        case (6):// apply to listing
             System.out.println("Which listing would you like to apply to?");
             int temp = scanner.nextInt() - 1;
             scanner.nextLine();
@@ -315,40 +382,80 @@ public class InternshipUI {
             posts.get(temp).toString();// for testing purposes
             break;
         }
+
+        return true;
+
     }
 
-    private void executeEmployerHomeOpt(Employer employer, int opt) {
+    private boolean executeEmployerHomeOpt(Employer employer, int opt) {
+        int userOpt;
+        boolean run = true;
+        while (run) {
+            switch (opt) {
+            case (0):// Sign Out
+                System.out.println("Logging out..\nGood Bye");
+                return false;
+            case (1):// See/Edit internship posts
+                displayEmployerInternships(employer);
+                userOpt = getUserOpt(employerInternshipOptions.length);
+                run = executeEmployerInternshipOpt(employer, userOpt);
+                break;
 
-        switch (opt) {
-        case (0):// Sign Out
-            System.out.println("Logging out..\nGood Bye");
-            displayStartMenu();
-            break;
-        case (1):// See/Edit internship posts
-            System.out.println("Internship Posts: ");
-            ArrayList<InternshipPost> posts = internApp.getInternships(employer);
-            for (InternshipPost post : posts) {
-                System.out.println(post);
+            case (2):// See Reviews
+                ArrayList<Review> reviews = employer.getReviews();
+                for (Review review : reviews) {
+                    System.out.println(review.toString());
+                }
+                break;
+
+            case (3):// Leave Review on a Student
+                System.out.println("Enter the username of the Student: ");
+                String user = scanner.nextLine();
+                // TODO write review
+
+                break;
             }
+        }
+        return true;
+    }
 
+    private boolean executeEmployerInternshipOpt(Employer employer, int opt) {
+        int userOpt;
+        boolean run = true;
+        switch (opt) {
+        case (0):// Go Home
+            return false;
+
+        case (1):// View Aplicants
+            System.out.println("Which Post: ");
+            int post = scanner.nextInt();
+            scanner.nextLine();
+            while (run) {
+                run = displayAplicants(internApp.getInternships(employer).get(post + 1));
+            }
             break;
-        case (2):// See Reviews
 
+        case (2):// Add Post
+            addIntershipPost(employer);
             break;
-
-        case (3):// Leave Review on a Student
+        case (3):// Remove Post
+            System.out.println("Which Post: ");
+            post = scanner.nextInt();
+            scanner.nextLine();
+            internApp.removeInternship(internApp.getInternships(employer).get(post + 1));
             break;
         }
 
+        return true;
+
     }
 
-    private void executeAdminHomeOpt(Admin admin, int opt) {
+    private boolean executeAdminHomeOpt(Admin admin, int opt) {
 
         switch (opt) {
         case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
-            displayStartMenu();
-            break;
+            return false;
         case (1):// Delete Post
 
             break;
@@ -356,9 +463,9 @@ public class InternshipUI {
         case (2):// Delete Review
 
             break;
-
         }
 
+        return true;
     }
 
     private Admin adminSignIn() {
@@ -549,8 +656,8 @@ public class InternshipUI {
             userName = scanner.nextLine();
 
             if (userName.length() >= 6 && userName.length() <= 15) {
-                if (!validUser(userName)) {
-                    break;// can this just be a return statement?
+                if (internApp.validNewUsername(userName)) {
+                    break;
                 } else {
                     System.out.println("This username already exists");
                 }
@@ -559,13 +666,6 @@ public class InternshipUI {
             }
         }
         return userName;
-    }
-
-    private boolean validUser(String userName) {
-        if (StudentList.getInstance().haveStudent(userName) || EmployerList.getInstance().haveEmployer(userName)) {
-            return true;
-        }
-        return false;
     }
 
     private String createPassword() {
@@ -612,11 +712,9 @@ public class InternshipUI {
             if (yesNo()) {
                 System.out.println("How many would you like to add?");
                 int works = scanner.nextInt();
-                scanner.nextLine();
                 for (int j = 0; j < works; j++) {
                     System.out.println("Enter description " + (j + 1) + ":");
-                    String desc = scanner.nextLine();
-                    description.add(desc);
+                    description.add(scanner.nextLine());
                 }
             }
 
@@ -968,7 +1066,6 @@ public class InternshipUI {
 
     public static void main(String[] args) {
         InternshipUI iUI = new InternshipUI();
-
-        iUI.displayStartMenu();
+        iUI.run();
     }
 }
