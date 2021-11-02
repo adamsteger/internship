@@ -186,8 +186,7 @@ public class InternshipUI {
         switch (opt) {
         case (0):// Sign Out
             System.out.println("Logging out..\nGood Bye");
-            displayStartMenu();
-            // restart run method instead?
+            run();
             break;
 
         case (1):// See/Edit Educations
