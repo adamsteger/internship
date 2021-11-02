@@ -18,22 +18,26 @@ public class InternshipUI {
             "Filter By position Title", "Filter By Company Name", "Filter By skill", "Apply to a listing" };
     private String[] employerInternshipOptions = { "Go Home", "View applicants", "Add Post", "Remove Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
-    private Scanner scanner;
+    private Scanner scanner = new Scanner(System.in);
     private String[] skills = { "JAVA", "C", "PYTHON", "CPP", "VBNET", "CPOUND", "PHP", "JAVASCRIPT", "SQL",
             "OBJECTIVEC", "RUBY", "MATLAB", "SWIFT", "GO", "PERL", "R", "HTML" };
     private String userType;
 
-    InternshipUI() {
-        scanner = new Scanner(System.in);
-        int userOpt = getUserOpt(startMenuOptions.length);
-        executeStartOpt(userOpt);
+    public static void main(String[] args) {
+        InternshipUI iUI = new InternshipUI();
+
+        iUI.run();
+
     }
 
-    private void run() {
+    InternshipUI() {
+    }
+
+    public void run() {
         boolean run = true;
         while (run) {
             displayStartMenu();
-            int userOpt = getUserOpt(startMenuOptions.length);
+            int userOpt = getUserOpt(startMenuOptions.length) - 1;
             run = executeStartOpt(userOpt);
         }
 
@@ -43,7 +47,7 @@ public class InternshipUI {
 
     private int getUserOpt(int numOfOpts) {
         while (true) {
-            System.out.print("\nWhat would you like to do?: ");
+            System.out.println("\nWhat would you like to do?: ");
 
             String input = scanner.nextLine();
             int command = Integer.parseInt(input);
@@ -179,6 +183,8 @@ public class InternshipUI {
     }
 
     private boolean executeStartOpt(int opt) {
+        System.out.println("hello");
+
         boolean run = true;
         Student student;
         Employer employer;
@@ -1063,8 +1069,4 @@ public class InternshipUI {
 
     }
 
-    public static void main(String[] args) {
-        InternshipUI iUI = new InternshipUI();
-        iUI.run();
-    }
 }

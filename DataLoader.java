@@ -9,13 +9,16 @@ import org.json.simple.parser.JSONParser;
 
 /**
  * Reads in the JSON Files and converts them into objects
+ * 
  * @author Byte Me
  */
 public class DataLoader extends DataConstants {
 
 	/**
 	 * Reads the student JSON file and populates the list of students
-	 * @return Returns an arraylist of type student of all the students in the system
+	 * 
+	 * @return Returns an arraylist of type student of all the students in the
+	 *         system
 	 */
 	public static ArrayList<Student> getStudents() {
 		ArrayList<Student> students = new ArrayList<Student>();
@@ -61,7 +64,7 @@ public class DataLoader extends DataConstants {
 					favPosts.add(post);
 				}
 
-				UUID resumeID = UUID.fromString((String)personJSON.get(STUDENT_RESUME_ID));
+				UUID resumeID = UUID.fromString((String) personJSON.get(STUDENT_RESUME_ID));
 				Resume resume = ResumeList.getInstance().getResumeByID(resumeID);
 
 				students.add(new Student(id, firstName, lastName, userName, password, gradYear, email, address, phone,
@@ -79,7 +82,9 @@ public class DataLoader extends DataConstants {
 
 	/**
 	 * Reads in the employer JSON file and populates the list of employers
-	 * @return Returns an arraylist of type employer of all the employers in the system
+	 * 
+	 * @return Returns an arraylist of type employer of all the employers in the
+	 *         system
 	 */
 	public static ArrayList<Employer> getEmployers() {
 		ArrayList<Employer> employers = new ArrayList<Employer>();
@@ -124,8 +129,11 @@ public class DataLoader extends DataConstants {
 	}
 
 	/**
-	 * Reads in the internship post JSON file and populates the list of internship posts
-	 * @return Returns an arraylist of type internship posts of all the posts in the system
+	 * Reads in the internship post JSON file and populates the list of internship
+	 * posts
+	 * 
+	 * @return Returns an arraylist of type internship posts of all the posts in the
+	 *         system
 	 */
 	public static ArrayList<InternshipPost> getInternshipPosts() {
 		ArrayList<InternshipPost> posts = new ArrayList<InternshipPost>();
@@ -173,6 +181,7 @@ public class DataLoader extends DataConstants {
 
 	/**
 	 * Reads in the resume JSON file and populates the list of resumes
+	 * 
 	 * @return Returns an arraylist of type resume of all the resumes in the system
 	 */
 	public static ArrayList<Resume> getResumes() {
@@ -180,110 +189,112 @@ public class DataLoader extends DataConstants {
 
 		try {
 			FileReader reader = new FileReader(RESUME_FILE_NAME);
-			JSONParser parser = new JSONParser();	
-			JSONArray resumesJSON = (JSONArray)new JSONParser().parse(reader);
-			
-			for(int i = 0; i < resumesJSON.size(); i++) {
-				JSONObject resumeJSON = (JSONObject)resumesJSON.get(i);
-				UUID id = UUID.fromString((String)resumeJSON.get(RESUME_ID));
+			JSONParser parser = new JSONParser();
+			JSONArray resumesJSON = (JSONArray) new JSONParser().parse(reader);
 
-				JSONArray educationsJSON = (JSONArray)resumeJSON.get(RESUME_EDUCATIONS);
+			for (int i = 0; i < resumesJSON.size(); i++) {
+				JSONObject resumeJSON = (JSONObject) resumesJSON.get(i);
+				UUID id = UUID.fromString((String) resumeJSON.get(RESUME_ID));
+
+				JSONArray educationsJSON = (JSONArray) resumeJSON.get(RESUME_EDUCATIONS);
 				ArrayList<Education> educations = new ArrayList<Education>();
 				for (int j = 0; j < educationsJSON.size(); j++) {
-					JSONObject educationJSON = (JSONObject)educationsJSON.get(j);
-					String schoolTitle = (String)educationJSON.get(EDUCATION_SCHOOL);
-					String location = (String)educationJSON.get(EDUCATION_LOCATION);
-					String major = (String)educationJSON.get(EDUCATION_MAJOR);
-					int gradYear = ((Long)educationJSON.get(EDUCATION_GRAD_YEAR)).intValue();
-					Boolean resume = (Boolean)educationJSON.get(RESUME);
+					JSONObject educationJSON = (JSONObject) educationsJSON.get(j);
+					String schoolTitle = (String) educationJSON.get(EDUCATION_SCHOOL);
+					String location = (String) educationJSON.get(EDUCATION_LOCATION);
+					String major = (String) educationJSON.get(EDUCATION_MAJOR);
+					int gradYear = ((Long) educationJSON.get(EDUCATION_GRAD_YEAR)).intValue();
+					Boolean resume = (Boolean) educationJSON.get(RESUME);
 
-				 	educations.add(new Education(schoolTitle, location, major, gradYear, resume));
+					educations.add(new Education(schoolTitle, location, major, gradYear, resume));
 				}
 
-				JSONArray skillsJSON = (JSONArray)resumeJSON.get(SKILLS);
-				Hashtable<Skill,Boolean> skills = new Hashtable<Skill,Boolean>();
+				JSONArray skillsJSON = (JSONArray) resumeJSON.get(SKILLS);
+				Hashtable<Skill, Boolean> skills = new Hashtable<Skill, Boolean>();
 				for (int j = 0; j < skillsJSON.size(); j++) {
-					JSONObject skillJSON = (JSONObject)skillsJSON.get(j);
-					String skillString = (String)skillJSON.get(SKILLS_SKILL);
-					Boolean resume = (Boolean)skillJSON.get(RESUME);
+					JSONObject skillJSON = (JSONObject) skillsJSON.get(j);
+					String skillString = (String) skillJSON.get(SKILLS_SKILL);
+					Boolean resume = (Boolean) skillJSON.get(RESUME);
 					Skill skill = Skill.valueOf(skillString);
 
-				 	skills.put(skill, resume);
+					skills.put(skill, resume);
 				}
 
-				JSONArray coursesJSON = (JSONArray)resumeJSON.get(RESUME_COURSES);
-				Hashtable<String,Boolean> courses = new Hashtable<String,Boolean>();
+				JSONArray coursesJSON = (JSONArray) resumeJSON.get(RESUME_COURSES);
+				Hashtable<String, Boolean> courses = new Hashtable<String, Boolean>();
 				for (int j = 0; j < coursesJSON.size(); j++) {
-					JSONObject courseJSON = (JSONObject)coursesJSON.get(j);
-					String course = (String)courseJSON.get(COURSES_COURSE);
-					Boolean resume = (Boolean)courseJSON.get(RESUME);
+					JSONObject courseJSON = (JSONObject) coursesJSON.get(j);
+					String course = (String) courseJSON.get(COURSES_COURSE);
+					Boolean resume = (Boolean) courseJSON.get(RESUME);
 
-				 	courses.put(course, resume);
+					courses.put(course, resume);
 				}
 
-				JSONArray worksJSON = (JSONArray)resumeJSON.get(RESUME_WORK);
+				JSONArray worksJSON = (JSONArray) resumeJSON.get(RESUME_WORK);
 				ArrayList<WorkExperience> works = new ArrayList<WorkExperience>();
 				for (int j = 0; j < worksJSON.size(); j++) {
-					JSONObject workJSON = (JSONObject)worksJSON.get(j);
-					String posTitle = (String)workJSON.get(WORK_POSITION_TITLE);
-					String employer = (String)workJSON.get(WORK_EMPLOYER);
-					String location = (String)workJSON.get(WORK_LOCATION);
-					String startDate = (String)workJSON.get(WORK_START_DATE);
-					String endDate = (String)workJSON.get(WORK_END_DATE);
+					JSONObject workJSON = (JSONObject) worksJSON.get(j);
+					String posTitle = (String) workJSON.get(WORK_POSITION_TITLE);
+					String employer = (String) workJSON.get(WORK_EMPLOYER);
+					String location = (String) workJSON.get(WORK_LOCATION);
+					String startDate = (String) workJSON.get(WORK_START_DATE);
+					String endDate = (String) workJSON.get(WORK_END_DATE);
 
-					JSONArray descriptionsJSON = (JSONArray)workJSON.get(WORK_DESCRIPTION);
+					JSONArray descriptionsJSON = (JSONArray) workJSON.get(WORK_DESCRIPTION);
 					ArrayList<String> description = new ArrayList<String>();
 					for (int k = 0; k < descriptionsJSON.size(); k++) {
-						JSONObject descriptionJSON = (JSONObject)descriptionsJSON.get(k);
-						String string = (String)descriptionJSON.get(DESCRIPTION_STRING);
+						JSONObject descriptionJSON = (JSONObject) descriptionsJSON.get(k);
+						String string = (String) descriptionJSON.get(DESCRIPTION_STRING);
 						description.add(string);
 					}
 
-					Boolean resume = (Boolean)workJSON.get(RESUME);
-					works.add(new WorkExperience(posTitle, employer, location, startDate, endDate, resume, description));
+					Boolean resume = (Boolean) workJSON.get(RESUME);
+					works.add(
+							new WorkExperience(posTitle, employer, location, startDate, endDate, resume, description));
 				}
 
-				JSONArray extrasJSON = (JSONArray)resumeJSON.get(RESUME_EXTRACURRICULARS);
+				JSONArray extrasJSON = (JSONArray) resumeJSON.get(RESUME_EXTRACURRICULARS);
 				ArrayList<Extracurricular> extracurriculars = new ArrayList<Extracurricular>();
 				for (int j = 0; j < extrasJSON.size(); j++) {
-					JSONObject extraJSON = (JSONObject)extrasJSON.get(j);
-					String title = (String)extraJSON.get(EXTRA_TITLE);
-					String position = (String)extraJSON.get(EXTRA_POSITION);
-					String startDate = (String)extraJSON.get(EXTRA_START_DATE);
-					String endDate = (String)extraJSON.get(EXTRA_END_DATE);
-					Boolean resume = (Boolean)extraJSON.get(RESUME);
+					JSONObject extraJSON = (JSONObject) extrasJSON.get(j);
+					String title = (String) extraJSON.get(EXTRA_TITLE);
+					String position = (String) extraJSON.get(EXTRA_POSITION);
+					String startDate = (String) extraJSON.get(EXTRA_START_DATE);
+					String endDate = (String) extraJSON.get(EXTRA_END_DATE);
+					Boolean resume = (Boolean) extraJSON.get(RESUME);
 
-				 	extracurriculars.add(new Extracurricular(title, position, startDate, endDate, resume));
+					extracurriculars.add(new Extracurricular(title, position, startDate, endDate, resume));
 				}
 
-				JSONArray honorsJSON = (JSONArray)resumeJSON.get(RESUME_HONORS);
+				JSONArray honorsJSON = (JSONArray) resumeJSON.get(RESUME_HONORS);
 				ArrayList<Honor> honors = new ArrayList<Honor>();
 				for (int j = 0; j < honorsJSON.size(); j++) {
-					JSONObject honorJSON = (JSONObject)honorsJSON.get(j);
-					String title = (String)honorJSON.get(HONORS_TITLE);
-					String organ = (String)honorJSON.get(HONORS_ORGAN);
-					String description = (String)honorJSON.get(HONORS_DESCRIPTION);
-					int year = ((Long)honorJSON.get(HONORS_YEAR)).intValue();
-					Boolean resume = (Boolean)honorJSON.get(RESUME);
+					JSONObject honorJSON = (JSONObject) honorsJSON.get(j);
+					String title = (String) honorJSON.get(HONORS_TITLE);
+					String organ = (String) honorJSON.get(HONORS_ORGAN);
+					String description = (String) honorJSON.get(HONORS_DESCRIPTION);
+					int year = ((Long) honorJSON.get(HONORS_YEAR)).intValue();
+					Boolean resume = (Boolean) honorJSON.get(RESUME);
 
-				 	honors.add(new Honor(title, organ, description, year, resume));
+					honors.add(new Honor(title, organ, description, year, resume));
 				}
-				
+
 				resumes.add(new Resume(id, educations, skills, courses, works, extracurriculars, honors));
 			}
-			
+
 			return resumes;
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
-		
+
 	}
 
 	/**
-	 * Reads in the admin JSON file and populates the list of admins 
+	 * Reads in the admin JSON file and populates the list of admins
+	 * 
 	 * @return Returns an arraylist of type admin of all the admins in the system
 	 */
 	public static ArrayList<Admin> getAdmins() {
@@ -299,7 +310,6 @@ public class DataLoader extends DataConstants {
 				UUID id = UUID.fromString((String) adminJSON.get(USER_ID));
 				String username = (String) adminJSON.get(USER_USER_NAME);
 				String password = (String) adminJSON.get(USER_PASSWORD);
-				
 
 				admins.add(new Admin(id, username, password));
 			}
@@ -314,33 +324,34 @@ public class DataLoader extends DataConstants {
 	}
 
 	/**
-	 * Reads in the application JSON file and populates the list of applicants for each post and list of posts for each employer
+	 * Reads in the application JSON file and populates the list of applicants for
+	 * each post and list of posts for each employer
 	 */
 	public static void getApplicants() {
 		try {
 			FileReader reader = new FileReader(APPLICATIONS_FILE_NAME);
-			JSONParser parser = new JSONParser();	
-			JSONArray applicationsJSON = (JSONArray)new JSONParser().parse(reader);
-			
-			for(int i = 0; i < applicationsJSON.size(); i++) {
-				JSONObject applicationJSON = (JSONObject)applicationsJSON.get(i);
+			JSONParser parser = new JSONParser();
+			JSONArray applicationsJSON = (JSONArray) new JSONParser().parse(reader);
 
-				JSONArray applicantsJSON = (JSONArray)applicationJSON.get(APPLICATIONS_APPLICANTS);
+			for (int i = 0; i < applicationsJSON.size(); i++) {
+				JSONObject applicationJSON = (JSONObject) applicationsJSON.get(i);
+
+				JSONArray applicantsJSON = (JSONArray) applicationJSON.get(APPLICATIONS_APPLICANTS);
 				ArrayList<Student> applicants = new ArrayList<Student>();
 				for (int j = 0; j < applicantsJSON.size(); j++) {
-					JSONObject applicantJSON = (JSONObject)applicantsJSON.get(j);
-					UUID studentID = UUID.fromString((String)applicantJSON.get(APPLICATIONS_STUDENT_ID));
+					JSONObject applicantJSON = (JSONObject) applicantsJSON.get(j);
+					UUID studentID = UUID.fromString((String) applicantJSON.get(APPLICATIONS_STUDENT_ID));
 					Student student = StudentList.getInstance().getStudentByID(studentID);
 
 					applicants.add(student);
 				}
 
-				UUID postID = UUID.fromString((String)applicationJSON.get(APPLICATIONS_POST_ID));
-				UUID employerID = UUID.fromString((String)applicationJSON.get(APPLICATIONS_EMPLOYER_ID));
+				UUID postID = UUID.fromString((String) applicationJSON.get(APPLICATIONS_POST_ID));
+				UUID employerID = UUID.fromString((String) applicationJSON.get(APPLICATIONS_EMPLOYER_ID));
 
 				Employer employer = EmployerList.getInstance().getEmployerByID(employerID);
 				InternshipPost post = InternshipList.getInstance().getPostByID(postID);
-				
+
 				post.setApplicants(applicants);
 				employer.getPosts().add(post);
 			}
@@ -350,7 +361,7 @@ public class DataLoader extends DataConstants {
 		}
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		ArrayList<Employer> employers = EmployerList.getInstance().getEmployers();
 		ArrayList<InternshipPost> posts = InternshipList.getInstance().getInternships();
 		ArrayList<Student> students = StudentList.getInstance().getStudents();
@@ -358,7 +369,7 @@ public class DataLoader extends DataConstants {
 		InternshipList.getInstance().save();
 		ArrayList<Admin> admins = DataLoader.getAdmins();
 
-		for(Student student : students) {
+		for (Student student : students) {
 			System.out.println(student);
 		}
 
@@ -366,10 +377,10 @@ public class DataLoader extends DataConstants {
 			System.out.println(employer);
 		}
 
-		for(InternshipPost post : posts) {
-		System.out.println(post);
+		for (InternshipPost post : posts) {
+			System.out.println(post);
 		}
-		
+
 		for (Admin admin : admins) {
 			System.out.println(admin);
 		}
