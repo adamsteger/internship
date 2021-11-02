@@ -71,7 +71,7 @@ public class Honor {
      */
     public String toString() {
         if (resume)
-            return this.title + "\n" + this.year + "\n" + this.organization + "\n" + this.description + "\n";
+            return "\t" + this.title + ", " + this.year + "\n\t" + this.organization + "\n";
         return "";
     }
 }

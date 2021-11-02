@@ -406,4 +406,11 @@ public class InternshipApplication {
         employer.getReviews().add(new Review(writer, rating, comment));
         DataWriter.saveEmployers();
     }
+
+    /**
+     * Prints the student's resume to a text file
+     */
+    public void printResumeToFile() {
+        student.printResumeToFile();
+    }
 }

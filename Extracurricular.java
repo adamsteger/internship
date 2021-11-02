@@ -72,7 +72,7 @@ public class Extracurricular {
      */
     public String toString() {
         if (resume)
-            return title + "\n" + startDate + "-" + endDate + "\n" + position + "\n";
+            return "\t" + title + ", " + position + "\n\t" + startDate + " - " + endDate + "\n";
         return "";
     }
 }
