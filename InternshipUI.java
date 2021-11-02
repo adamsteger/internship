@@ -51,7 +51,6 @@ public class InternshipUI {
 
             String input = scanner.nextLine();
             int command = Integer.parseInt(input);
-            System.out.println(command);
             if (command >= 0 && command <= numOfOpts - 1) {
                 return command;
             } else {
@@ -184,8 +183,6 @@ public class InternshipUI {
     }
 
     private boolean executeStartOpt(int opt) {
-        System.out.println("hello");
-
         boolean run = true;
         Student student;
         Employer employer;
