@@ -71,7 +71,7 @@ public class Education {
      */
     public String toString() {
         if(resume)
-            return this.schoolTitle + "\n" + this.location + "\n" + this.major + "\n" + this.gradYear;
+            return "\t" + this.schoolTitle + ", " + this.location + "\n\t" + this.major + "\n\tExpected Graduation: " + this.gradYear + "\n";
         return "";
     }
 }

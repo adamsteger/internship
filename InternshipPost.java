@@ -208,15 +208,25 @@ public class InternshipPost {
      * Returns the string with values of InternshipPost
      */
     public String toString() {
+        String ret = "Employer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
+                        "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 
+                        isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay + "\nSkills Required: ";
+        for (Skill skill : skillReq) {
+            ret += skill + "    ";
+        }
+        ret += "\nApplicants: ";
+        for (Student student : applicants) {
+            ret += "\n\tName: " + student.getName() + "\tGraduation Year: " + student.getGradYear();
+        }
+        return ret;
+    }
+
+    public String toStringNoApplicants() {
         String ret = "\nEmployer: " + employerTitle + "\nPosition Title: " + posTitle + "\nDescription: " + description +
                         "\nLocation: " + location + "\nStart Date: " + startDate + "\nEnd Date: " + endDate + "\nRemote? " + 
                         isRemote + "\nOpen? " + isOpen + "\nPay: " + lowPay + "-" + highPay + "\nSkills Required: ";
         for (Skill skill : skillReq) {
             ret += skill + "\t";
-        }
-        ret += "\nApplicants: ";
-        for (Student student : applicants) {
-            ret += "\n\tName: " + student.getName() + "\tGraduation Year: " + student.getGradYear();
         }
         return ret;
     }

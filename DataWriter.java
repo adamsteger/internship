@@ -304,7 +304,6 @@ public class DataWriter extends DataConstants {
 			HashMap<String, Object> skillDetails = new HashMap<String, Object>();
 			List keys = new ArrayList(resume.getSkills().keySet());
 			Object skillObj = keys.get(i);
-			// Collection<Boolean> elements = resume.getSkills().values();
 			Boolean resumeBoolean = resume.getSkills().get(skillObj);
 			skillDetails.put(SKILLS_SKILL, skillObj.toString());
 			skillDetails.put(RESUME, resumeBoolean);
@@ -381,7 +380,7 @@ public class DataWriter extends DataConstants {
 			Honor honor = resume.getHonors().get(i);
 			honorDetails.put(HONORS_TITLE, honor.getTitle());
 			honorDetails.put(HONORS_ORGAN, honor.getOrganization());
-			honorDetails.put(HONORS_DESCRIPTION, honor.getdescription());
+			honorDetails.put(HONORS_DESCRIPTION, honor.getDescription());
 			honorDetails.put(HONORS_YEAR, honor.getYear());
 			honorDetails.put(RESUME, honor.getResume());
 			JSONObject honorDetailsJSON = new JSONObject(honorDetails);
@@ -433,6 +432,9 @@ public class DataWriter extends DataConstants {
 		InternshipList.getInstance().save();
 		DataWriter.saveApplications();
 
+		Student chris = StudentList.getInstance().getStudentByUser("chrispbacon");
+		chris.printResumeToFile();
+
 		// Employer employer = new Employer("Microsoft", "microandsoft", "oiapweru90", "microsoft@outlook.com", "Redmond, Washington", "Be better than Apple");
 		// employer.getReviews().add(new Review("Adam Steger", 4, "I mean its alright I guess"));
 		// EmployerList.getInstance().addEmployer(employer);
@@ -442,12 +444,13 @@ public class DataWriter extends DataConstants {
 		// AdminList.getInstance().addAdmin(admin);
 		
 
-		// ArrayList<Skill> skillReq = new ArrayList<Skill>();
-		// skillReq.add(Skill.CPP);
-		// skillReq.add(Skill.C);
-		// InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
-		// InternshipList.getInstance().addInternship(post);
-		// InternshipList.getInstance().save();
+		ArrayList<Skill> skillReq = new ArrayList<Skill>();
+		skillReq.add(Skill.CPP);
+		skillReq.add(Skill.C);
+		skillReq.add(Skill.JAVASCRIPT);
+		InternshipPost post = new InternshipPost("Microsoft", "Software Intern", "You will do intern things", "Redmond, Washington", skillReq, "May 2021", "August 2021", true, true, 1000, 1500);
+		InternshipList.getInstance().addInternship(post);
+		InternshipList.getInstance().save();
 
 		// ResumeList.getInstance().save();
 		// 	Student student = new Student("Adam", "Steger", "asteger", "12345678", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Irmo, SC 29063", "(803)730-3278", 4.0, true);

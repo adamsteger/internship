@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.UUID;
 
 public class Resume {
@@ -89,7 +90,10 @@ public class Resume {
     }
 
     public void addSkill(Skill skill, boolean bool) {
-        skills.put(skill, bool);
+        List keys = new ArrayList(skills.keySet());
+        if (keys.contains(skill)) {
+            skills.put(skill, bool);
+        }
     }
 
     public void removeSkill(Skill skill) {
