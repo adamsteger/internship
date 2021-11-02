@@ -158,7 +158,7 @@ public class InternshipUI {
     private void displayStudentInternships(Student student, ArrayList<InternshipPost> posts) {
 
         for (int i = 0; i < posts.size(); i++) {
-            System.out.println("\n" + (i + 1) + ". " + posts.get(i).toString());
+            System.out.println("\n" + (i + 1) + ". " + posts.get(i).toStringNoApplicants());
         }
 
         System.out.println("\nWhat would you like to do?");
@@ -370,7 +370,7 @@ public class InternshipUI {
             for (String skill : skills) {
                 System.out.println(skill);
             }
-            System.out.println("\nSkill: ");
+            System.out.print("\nSkill: ");
             Skill skill = Skill.valueOf(scanner.nextLine());
             posts = internApp.filterBySkill(skill);
             displayStudentInternships(student, posts);
@@ -378,11 +378,11 @@ public class InternshipUI {
             return executeStudentInternshipOpt(student, userOpt, posts);
 
         case (6):// apply to listing
-            System.out.println("Which listing would you like to apply to?");
+            System.out.print("Which listing would you like to apply to? ");
             int temp = scanner.nextInt() - 1;
             scanner.nextLine();
-            // Apply to posts.get(temp);
-            // posts.get(temp).addApplicant(student);
+            InternshipPost post = posts.get(temp);
+            student.apply(post);
             posts.get(temp).toString();// for testing purposes
             break;
         }

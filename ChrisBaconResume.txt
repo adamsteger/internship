@@ -4,29 +4,38 @@
 	Email: imchrispbacon@gmail.com
 
 EDUCATIONS
-	University of South Carolina, Columbia, SC
-	Computer Engineering
-	Expected Graduation: 2024
+	UofSC, Columbia, SC
+	Computer Information Systems
+	Expected Graduation: 2023
 
 HONORS
 	Magna Cum Laude, 2022
 	University of South Carolina
 
 WORK EXPERIENCE
-	Dominion Energy, Columbia, SC
-	Computer Programming Intern
-	Jan 2020 - Feb 2021
-		- Learned programming things
-		- Learned programming things
+	JP Morgan, New York, NY
+	Software Development Intern
+	May 2019 - Aug 2019
+		- Created a Python program to predict clients needs.
+		- Managed incoming customers and future predictions
+	Bank of America, Chicago, IL
+	Test Engineer Intern
+	May 2020 - Aug 2020
+		- Created JUnit tests cases to test new features of the back end of the banks website
+		- Executed test cases and reported issues to engineering
 
 COURSES
 	- Computing in the Modern World
 	- Algorithm Design
 
 SKILLS
+	- JAVASCRIPT
+	- PYTHON
+	- HTML
 	- C
-	- CPP
+	- CSS
 	- JAVA
+	- CPP
 
 EXTRACURRICULARS
 	Dance Marathon, Treasurer
