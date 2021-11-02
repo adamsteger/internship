@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
 /**
- * Represents an Employer type of User
+ * A class for an employer user
  * @author Byte Me
  */
 public class Employer extends User {
@@ -16,8 +16,8 @@ public class Employer extends User {
 
     /**
      * Default constructor for Employer
-     * @param username
-     * @param password
+     * @param username A string of username of the employer
+     * @param password A string of the password of the employer
      */
     public Employer(String username, String password) {
         super(username, password);
@@ -31,16 +31,16 @@ public class Employer extends User {
         id = super.getUUID();
     }
     /**
-     * Constructor for employer with already defined UUID
-     * @param id
-     * @param title
-     * @param username
-     * @param password
-     * @param email
-     * @param rating
-     * @param location
-     * @param mission
-     * @param reviews
+     * Constructor for employer with already defined UUID for DataLoader
+     * @param id The unique UUID of the employer
+     * @param title A string of the title of the employer
+     * @param username A string of the username of the employer
+     * @param password A string of the password of the employer
+     * @param email A string of the email of the employer
+     * @param rating A double of the rating of the employer (Averge of all ratings in reviews)
+     * @param location A string of the location of the employer
+     * @param mission A string of the mission statement of the employer
+     * @param reviews An arraylist of reviews on the employer by students
      */
     public Employer(UUID id, String title, String username, String password, String email, double rating, String location, String mission, ArrayList<Review> reviews) {
         super(username, password);
@@ -56,13 +56,13 @@ public class Employer extends User {
         this.reviews = reviews;
     }
     /**
-     * Constructor for employer with new UUID
-     * @param title
-     * @param username
-     * @param password
-     * @param email
-     * @param location
-     * @param mission
+     * Constructor for employer for the UI
+     * @param title A string of the title of the employer
+     * @param username A string of the username of the employer
+     * @param password A string of the password of the employer
+     * @param email A string of the email of the employer
+     * @param location A string of the location of the employer
+     * @param mission A string of the mission statement of the employer
      */
     public Employer(String title, String username, String password, String email, String location, String mission) {
         super(username, password);
@@ -77,55 +77,64 @@ public class Employer extends User {
         id = UUID.randomUUID();
     }
     /**
-     * @return email of Employer
+     * Accesses the email 
+     * @return Returns a string of the email of Employer
      */
     public String getEmail() {
         return email;
     }
     /**
-     * @return double of Employer's rating
+     * Accesses the rating
+     * @return Returns a double of Employer's rating
      */
     public double getRating() {
         return rating;
     }
     /**
+     * Accesses the location
      * @return String of Employer's location
      */
     public String getLocation() {
         return location;
     }
     /**
+     * Accesses the mission
      * @return String of Employer mission statement
      */
     public String getMission() {
         return mission;
     }
     /**
-     * @return ArrayList<InternshipPost> of Employer
+     * Accesses the internship posts of the employer
+     * @return Returns the ArrayList<InternshipPost> of Employer
      */
     public ArrayList<InternshipPost> getPosts() {
         return posts;
     }
     /**
-     * @return ArrayList<Review> of Reviews made about Employer
+     * Accesses the reviews
+     * @return Returns the ArrayList<Review> of Reviews made about Employer
      */
     public ArrayList<Review> getReviews() {
         return reviews;
     }
     /**
-     * @return UUID of Employer
+     * Accesses the UUID of the employer
+     * @return Returns the UUID of Employer
      */
     public UUID getUUID() {
         return id;
     }
     /**
-     * @return String of title of the Employer
+     * Accesses the title of the employer
+     * @return Returns a String of title of the Employer
      */
     public String getTitle() {
         return title;
     }
     /**
-     * Returns a String that includes the Employer's parameters
+     * Converts the employer to a string
+     * @return Returns a string representation of the employer
      */
     public String toString() {
         String ret = "\nTitle: " + title + "\nUsername: " + username + "\nPassword: " + password + "\nEmail: " + email + "\nRating: " +
@@ -141,14 +150,14 @@ public class Employer extends User {
     }
     /**
      * adds a post to the Employer's InternshipPosts
-     * @param post
+     * @param post The internship post that is being added
      */
     public void addPost(InternshipPost post) {
         posts.add(post);
     }
     /**
-     * deletes a post to the Employer's InternshipPosts
-     * @param post
+     * deletes a post from the employer's post
+     * @param post The internship post that is being removed
      */
     public void deletePost(InternshipPost post) {
         posts.remove(post);

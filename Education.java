@@ -66,7 +66,7 @@ public class Education {
     }
 
     /**
-     * Converts the education to a string
+     * Converts the education to a string if it should be included on the resume
      * @return Returns a string representation of the education
      */
     public String toString() {

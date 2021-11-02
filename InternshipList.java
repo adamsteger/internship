@@ -1,31 +1,34 @@
 import java.util.ArrayList;
 import java.util.UUID;
 /**
- *  Represents a List of InternshipPosts
+ *  A singleton for the list of internship posts
  *  @author Byte Me 
  */
 public class InternshipList {
     private static InternshipList internshipList;
     private ArrayList<InternshipPost> internships;
+
     /**
-     * Gets InternshipPosts from the DataLoader and sets the ArrayList to it 
+     * Creates an instance of internship list by loading the JSON file
      */
     private InternshipList() {
         internships = DataLoader.getInternshipPosts();
     }
+
     /**
-     * Returns instance of class
-     * @return InternshipList
+     * Retrieves an instance of internship list and ensures only 1 exists at a time
+     * @return Returns an instance of internship list
      */
     public static InternshipList getInstance() {
         if(internshipList == null)
             internshipList = new InternshipList();
         return internshipList;
     }
+
     /**
      * Searches the ArrayList of InternshipPosts for a specific post based on keywords
-     * @param employerTitle
-     * @param posTitle
+     * @param employerTitle A string of the employer title that is being searched for
+     * @param posTitle A string of the position title that is being searched for
      * @return boolean if successful
      */
     public boolean haveInternshipPost(String employerTitle, String posTitle) {
@@ -36,16 +39,19 @@ public class InternshipList {
         }
         return false;
     }
+
     /**
-     * @return class ArrayList of InternshipPosts
+     * Accesses the arraylist of internship posts
+     * @return Returns the ArrayList of InternshipPosts
      */
     public ArrayList<InternshipPost> getInternships() {
         return internships;
     }
+
     /**
      * Searches ArrayList for a post by UUID
-     * @param UUID of post
-     * @returns InternshipPost of specified UUID
+     * @param id The UUID that is being searched for
+     * @returns Returns the InternshipPost of specified UUID
      */
     public InternshipPost getPostByID(UUID id) {
         for(InternshipPost post : internships) {
@@ -55,10 +61,11 @@ public class InternshipList {
         }
         return null;
     }
+
     /**
      * Adds a passed internship to the ArrayList
-     * @param InternshipPost
-     * @return boolean if successful
+     * @param InternshipPost The internship post that is being added
+     * @return Returns a boolean that is true if the post is successfully added
      */
     public boolean addInternship(InternshipPost post) { 
         if(haveInternshipPost(post.getEmployerTitle(), post.getPosTitle())) 
@@ -67,20 +74,21 @@ public class InternshipList {
         internships.add(post);
         return true;
     }
+    
     /**
      * creates and adds a new internship to List
-     * @param employerTitle
-     * @param posTitle
-     * @param description
-     * @param location
-     * @param skillReq
-     * @param startDate
-     * @param endDate
-     * @param isRemote
-     * @param isOpen
-     * @param lowPay
-     * @param highPay
-     * @return boolean if successful
+     * @param employerTitle A string of the employer title that made the post
+     * @param posTitle A string of the position title of the post
+     * @param description A string of a description of the position
+     * @param location A string of the location where the position is
+     * @param startDate A string of when the position begins
+     * @param endDate A string of when the position ends
+     * @param isRemote A boolean that is true if the position is virtual
+     * @param isOpen A boolean that is true if the employer is still taking applications
+     * @param lowPay An integer of the lowest a student could be paid for the position
+     * @param highPay An integer of the highest a student could be paid for the position
+     * @param skills An arraylist of type skill of all the skills required for the position
+     * @return Returns a boolean that is true if the post is successfully added
      */
     public boolean addInternship(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
         if(haveInternshipPost(employerTitle, posTitle)) 
@@ -92,8 +100,8 @@ public class InternshipList {
 
     /**
      * Removes an internship from the ArrayList
-     * @param InternshipPost
-     * @return a boolean if successful
+     * @param InternshipPost The internship post that is being removed
+     * @return Returns a boolean that is true if the post is successfully removed
      */
     public boolean removeInternship(InternshipPost internship) {
         for(InternshipPost post : internships) {
@@ -104,6 +112,7 @@ public class InternshipList {
         }
         return false;
     }
+
     /**
      * Saves internship posts with DataWriter
      */

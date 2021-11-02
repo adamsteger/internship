@@ -368,7 +368,7 @@ public class InternshipUI {
             }
             System.out.println("\nSkill: ");
             Skill skill = Skill.valueOf(scanner.nextLine());
-            posts = internApp.filterByLanguage(skill);
+            posts = internApp.filterBySkill(skill);
             displayStudentInternships(student, posts);
             userOpt = getUserOpt(studentInternshipOptions.length);
             return executeStudentInternshipOpt(student, userOpt, posts);
