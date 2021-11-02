@@ -1,0 +1,33 @@
+			Chris Bacon
+	Address: 123 BLT Lane Columbia, SC 29201
+	Phone: (0123)456-789
+	Email: imchrispbacon@gmail.com
+
+EDUCATIONS
+	University of South Carolina, Columbia, SC
+	Computer Engineering
+	Expected Graduation: 2024
+
+HONORS
+	Magna Cum Laude, 2022
+	University of South Carolina
+
+WORK EXPERIENCE
+	Dominion Energy, Columbia, SC
+	Computer Programming Intern
+	Jan 2020 - Feb 2021
+		- Learned programming things
+		- Learned programming things
+
+COURSES
+	- Computing in the Modern World
+	- Algorithm Design
+
+SKILLS
+	- C
+	- CPP
+	- JAVA
+
+EXTRACURRICULARS
+	Dance Marathon, Treasurer
+	Jan 2021 - Jan 2022

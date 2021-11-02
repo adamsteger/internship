@@ -49,11 +49,13 @@ public class WorkExperience {
 
     public String toString() {
         String ret = "";
-        if (resume)
-            ret += employerTitle + "\n" + posTitle + "\n" + startDate + "-" + endDate + "\n";
-        for (String string : description) {
-            ret += "\n\t" + string;
+        if (resume) {
+            ret += "\t" + employerTitle + ", " + location + "\n\t" + posTitle + "\n\t" + startDate + " - " + endDate + "\n";
+            for (String string : description) {
+                ret += "\t\t- " + string + "\n";
+            }
         }
+        
         return ret;
     }
 }

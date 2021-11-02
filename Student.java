@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.io.*;
 
@@ -228,17 +232,73 @@ public class Student extends User {
         return ret;
     }
 
-    // public void printResumeToFile() {
-    //     try {
-    //         FileWriter writer = new FileWriter("resumetest.txt");
-    //         String contactInfo = "\t\t\t" + this.getName() + "\n";
-    //         contactInfo += "\tAddress: " + this.getAddress() + "\n";
-    //         contactInfo += "\tPhone: " + this.getPhone() + "\n";
-    //         contactInfo += "\tEmail: " + this.getEmail() + "\n";
-    //         writer.write()
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
+    public String resumeToString() {
+        String resume = "";
+        String contactInfo = "\t\t\t" + this.getName() + "\n";
+        contactInfo += "\tAddress: " + this.getAddress() + "\n";
+        contactInfo += "\tPhone: " + this.getPhone() + "\n";
+        contactInfo += "\tEmail: " + this.getEmail() + "\n";
+        resume += contactInfo;
+
+        String educations = "\nEDUCATIONS\n";
+        for (Education edu : this.getResume().getEducations()) {
+            educations += edu;
+        }
+        resume += educations;
+
+        String honors = "\nHONORS\n";
+        for (Honor honor : this.getResume().getHonors()) {
+            honors += honor;
+        }
+        resume += honors;
+
+        String experience = "\nWORK EXPERIENCE\n";
+        for (WorkExperience work : this.getResume().getWork()) {
+            experience += work;
+        }
+        resume += experience;
+
+        String courses = "\nCOURSES\n";
+        Set<String> courseKeys = new HashSet<String>();
+        Boolean value = true;
+        for(Map.Entry<String,Boolean> entry : this.getResume().getCourses().entrySet()) {
+            if(value.equals(entry.getValue()))
+                courseKeys.add(entry.getKey());
+        }
+        for(String course : courseKeys) {
+            courses += "\t- " + course + "\n";
+        }
+        resume += courses;    
+
+        String skills = "\nSKILLS\n";
+        Set<Skill> skillKeys = new HashSet<Skill>();
+        for(Map.Entry<Skill,Boolean> entry : this.getResume().getSkills().entrySet()) {
+            if(value.equals(entry.getValue()))
+                skillKeys.add(entry.getKey());
+        }
+        for(Skill skill : skillKeys) {
+            skills += "\t- " + skill + "\n";
+        }    
+        resume += skills;
+
+        String extras = "\nEXTRACURRICULARS\n";
+        for (Extracurricular extra : this.getResume().getExtracurriculars()) {
+            extras += extra;
+        }
+        resume += extras;
+
+        return resume;
+    }
+
+    public void printResumeToFile() {
+        try {
+            FileWriter writer = new FileWriter(this.getFirstName() + this.getLastName() + "Resume.txt");
+            writer.write(this.resumeToString());
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

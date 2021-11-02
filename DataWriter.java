@@ -432,6 +432,9 @@ public class DataWriter extends DataConstants {
 		InternshipList.getInstance().save();
 		DataWriter.saveApplications();
 
+		Student chris = StudentList.getInstance().getStudentByUser("chrispbacon");
+		chris.printResumeToFile();
+
 		// Employer employer = new Employer("Microsoft", "microandsoft", "oiapweru90", "microsoft@outlook.com", "Redmond, Washington", "Be better than Apple");
 		// employer.getReviews().add(new Review("Adam Steger", 4, "I mean its alright I guess"));
 		// EmployerList.getInstance().addEmployer(employer);
