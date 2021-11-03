@@ -315,8 +315,8 @@ public class InternshipUI {
                 run = executeStudentInternshipOpt(student, userOpt, posts);
             }
             break;
-        
-        case (9)://Print resume to file 
+
+        case (9):// Print resume to file
             student.printResumeToFile();
             break;
 
