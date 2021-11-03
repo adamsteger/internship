@@ -117,9 +117,6 @@ public class InternshipUI {
         }
         System.out.println("    " + ("0") + ". " + studentHomeOptions[0]);
 
-        int userOpt = getUserOpt(employerHomeOptions.length);
-        executeEmployerHomeOpt(employer, userOpt);
-
     }
 
     private void displayEmployerInternships(Employer employer) {
@@ -223,7 +220,12 @@ public class InternshipUI {
 
             break;
         case (5):// Create Employer account
-            displayEmployerHome(createEmployer());
+            employer = createEmployer();
+            while (run) {
+                displayEmployerHome(employer);
+                int userOpt = getUserOpt(employerHomeOptions.length);
+                executeEmployerHomeOpt(employer, userOpt);
+            }
 
             break;
         }
