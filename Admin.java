@@ -6,9 +6,9 @@ import java.util.UUID;
  */
 public class Admin extends User {
     private static UUID id;
-    
+
     /**
-    *  Creates a new Admin 
+    *  Creates a new Admin without UUID for UI
     *  @param username A string of the username of the admin
     *  @param password A string of the password for the admin
     */
@@ -18,7 +18,7 @@ public class Admin extends User {
     }
 
     /**
-    *  Creates a new Admin from existing UUID
+    *  Creates a new Admin from existing UUID for DataLoader
     *  @param username A string of the username of the admin
     *  @param password A string of the password of the admin
     *  @param id The UUID of the admin
