@@ -1,3 +1,7 @@
+/**
+ * A class that holds string constants for DataLoader and DataWriter
+ * @author Byte Me
+ */
 public abstract class DataConstants {
     protected static final String USER_ID = "id";
     protected static final String USER_USER_NAME = "username";

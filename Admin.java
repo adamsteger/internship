@@ -6,6 +6,7 @@ import java.util.UUID;
  */
 public class Admin extends User {
     private static UUID id;
+    
     /**
     *  Creates a new Admin 
     *  @param username A string of the username of the admin
@@ -15,6 +16,7 @@ public class Admin extends User {
         super(username, password);
         id = super.getUUID();
     }
+
     /**
     *  Creates a new Admin from existing UUID
     *  @param username A string of the username of the admin
@@ -25,12 +27,14 @@ public class Admin extends User {
         super(username, password);
         this.id = id;
     }
+
     /**
      *  @return UUID of Admin
      */
     public UUID getID() {
         return id;
     }
+
     /**
      * Deletes a post as Admin 
      * @param post The post that is being deleted
@@ -44,6 +48,7 @@ public class Admin extends User {
         }
         internshipList.save();
     }
+
     /**
      * Adds a post to the system as an Admin
      * @param employerTitle A string of the title of the employer that has the internship
@@ -63,6 +68,7 @@ public class Admin extends User {
        internshipList.addInternship(employerTitle, posTitle, description, location, skillReq, startDate, endDate, isRemote, isOpen, lowPay, highPay);
        internshipList.save();
     }
+
     /**
      * Deletes a review created by an Employer
      * @param student The student that has the review
@@ -72,6 +78,7 @@ public class Admin extends User {
         student.getReviews().remove(review);
         DataWriter.saveStudents();
     }
+
     /**
      * Deletes a review created by a Student
      * @param employer The employer that has the review
@@ -80,6 +87,7 @@ public class Admin extends User {
     public void deleteEmployerReview(Employer employer, Review review) {
         employer.getReviews().remove(review);
     }
+
     /**
      * Converts the admin to a String representation
      * @return Returns a string representation of an admin
