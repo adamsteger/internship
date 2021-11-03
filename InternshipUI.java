@@ -205,9 +205,14 @@ public class InternshipUI {
 
             break;
         case (3):// Sign in as Employer
-            displayEmployerHome(employerSignIn());
-
+            employer = employerSignIn();
+            while(run) {
+                displayEmployerHome(employer);
+                int userOpt = getUserOpt(employerHomeOptions.length);
+                run = executeEmployerHomeOpt(employer, userOpt);
+            }
             break;
+
         case (4):// Create Student account
             student = createStudent();
             while (run) {
@@ -226,7 +231,6 @@ public class InternshipUI {
                 int userOpt = getUserOpt(employerHomeOptions.length);
                 executeEmployerHomeOpt(employer, userOpt);
             }
-
             break;
         }
 
@@ -769,7 +773,7 @@ public class InternshipUI {
             int gradYear;
             boolean resume;
 
-            System.out.println("\n~~ADD WORK EXPERIENCE~~");
+            System.out.println("\n~~ADD EDUCATION~~");
 
             System.out.print("Institution : ");
             title = scanner.nextLine();

@@ -36,5 +36,22 @@
     "gradYear": 2021,
     "email": "imchrispbacon@gmail.com",
     "username": "chrispbacon"
+  },
+  {
+    "lastName": "Boccanfuso",
+    "address": "600 Canalside Street, Unit 2009, Columbia, SC",
+    "rating": -1.0,
+    "showGPA": true,
+    "firstName": "Ana",
+    "password": "password",
+    "resumeID": "5727c1fe-578d-4127-b226-7f612a290f16",
+    "reviews": [],
+    "favoritePosts": [],
+    "phone": "8036031487",
+    "gpa": 4.0,
+    "id": "1cc2fee6-c882-4794-ac8e-378940e31e89",
+    "gradYear": 2024,
+    "email": "boccanfa@email.sc.edu",
+    "username": "anaboccanfuso"
   }
 ]
