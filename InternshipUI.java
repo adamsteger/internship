@@ -205,7 +205,12 @@ public class InternshipUI {
 
             break;
         case (3):// Sign in as Employer
-            displayEmployerHome(employerSignIn());
+            employer = employerSignIn();
+            while (run) {
+                displayEmployerHome(employer);
+                int userOpt = getUserOpt(employerHomeOptions.length);
+                executeEmployerHomeOpt(employer, userOpt);
+            }
 
             break;
         case (4):// Create Student account
@@ -311,8 +316,8 @@ public class InternshipUI {
                 run = executeStudentInternshipOpt(student, userOpt, posts);
             }
             break;
-        
-        case (9)://Print resume to file 
+
+        case (9):// Print resume to file
             student.printResumeToFile();
             break;
 
