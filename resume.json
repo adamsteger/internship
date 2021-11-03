@@ -53,54 +53,15 @@
   },
   {
     "skills": [
-      { "resume": true, "skill": "CPP" },
-      { "resume": true, "skill": "C" },
-      { "resume": true, "skill": "HTML" },
-      { "resume": true, "skill": "CSS" },
-      { "resume": true, "skill": "PYTHON" },
-      { "resume": true, "skill": "JAVA" },
-      { "resume": true, "skill": "JAVASCRIPT" }
+
     ],
     "courses": [
       { "resume": true, "course": "Computing in the Modern World" },
       { "resume": true, "course": "Algorithm Design" }
     ],
     "work": [
-      {
-        "resume": true,
-        "posTitle": "Software Development Intern",
-        "endDate": "Aug 2019",
-        "employer": "JP Morgan",
-        "description": [
-          { "String": "Created a Python program to predict clients needs." },
-          { "String": "Managed incoming customers and future predictions" }
-        ],
-        "location": "New York, NY",
-        "startDate": "May 2019"
-      },
-      {
-        "resume": true,
-        "posTitle": "Test Engineer Intern",
-        "endDate": "Aug 2020",
-        "employer": "Bank of America",
-        "description": [
-          {
-            "String": "Created JUnit tests cases to test new features of the back end of the banks website"
-          },
-          { "String": "Executed test cases and reported issues to engineering" }
-        ],
-        "location": "Chicago, IL",
-        "startDate": "May 2020"
-      }
     ],
     "educations": [
-      {
-        "resume": true,
-        "location": "Columbia, SC",
-        "gradYear": 2023,
-        "major": "Computer Information Systems",
-        "schoolTitle": "UofSC"
-      }
     ],
     "id": "9e57129b-864e-4407-8266-2115f15a784a",
     "honors": [
