@@ -48,6 +48,11 @@ public class ResumeList {
         return null;
     }
 
+    public void addResume(Resume resume) {
+        resumes.add(resume);
+        this.save();
+    }
+
     /**
      * Saves the resume list to the JSON file
      */

@@ -12,8 +12,8 @@ public class InternshipUI {
             "Browse Internship Posts", "Print Resume to a File", "Leave a Review" };
     private String[] employerHomeOptions = { "Sign out", "See/Edit internship posts", "See Reviews",
             "Leave Review on a Student" };
-    private String[] studentInternshipOptions = { "Go Home", "Sort by Pay", "Filter by Loction",
-            "Filter By position Title", "Filter By Company Name", "Filter By skill", "Apply to a listing" };
+    private String[] studentInternshipOptions = { "Go Home", "Sort by Pay", "Filter By Location",
+            "Filter By Position Title", "Filter By Company Name", "Filter By Skill", "Apply to a Listing" };
     private String[] employerInternshipOptions = { "Go Home", "View applicants", "Add Post", "Remove Post" };
     private String[] adminHomeOptions = { "Sign out", "Delete Post", "Delete Review" };
     private Scanner scanner = new Scanner(System.in);
@@ -116,9 +116,6 @@ public class InternshipUI {
             System.out.println("    " + (i) + ". " + employerHomeOptions[i]);
         }
         System.out.println("    " + ("0") + ". " + studentHomeOptions[0]);
-
-        int userOpt = getUserOpt(employerHomeOptions.length);
-        executeEmployerHomeOpt(employer, userOpt);
 
     }
 
@@ -223,7 +220,12 @@ public class InternshipUI {
 
             break;
         case (5):// Create Employer account
-            displayEmployerHome(createEmployer());
+            employer = createEmployer();
+            while (run) {
+                displayEmployerHome(employer);
+                int userOpt = getUserOpt(employerHomeOptions.length);
+                executeEmployerHomeOpt(employer, userOpt);
+            }
 
             break;
         }

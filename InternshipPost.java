@@ -1,4 +1,3 @@
-import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 import java.util.UUID;
 /**
@@ -170,6 +169,16 @@ public class InternshipPost {
      */
     public void setApplicants(ArrayList<Student> applicants) {
         this.applicants = applicants;
+    }
+
+    /**
+     * Adds a new student to the applicants if they have not already applied
+     * @param applicant The student that is applying to the post
+     */
+    public void addApplicant(Student applicant) {
+        if (!applicants.contains(applicant)) {
+            applicants.add(applicant);
+        }
     }
 
     /**
