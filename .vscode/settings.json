@@ -1,7 +1,8 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "json-simple-1.1.1.jar"
+        "json-simple-1.1.1.jar",
+        "junit-platform-console-standalone-1.8.1.jar"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
