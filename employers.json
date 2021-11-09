@@ -13,13 +13,13 @@
     "username": "ImIBM"
   },
   {
-    "password": "37ddgf$2rh7!",
-    "mission": "Don't be evil",
+    "password": "password",
+    "mission": "To organize the world's information and make it universally accessible and useful",
     "reviews": [
       {
         "rating": 5,
         "comment": "Set me up with the essential skills needed to work in a large company!",
-        "writer": "Ana Boccanfuso"
+        "writer": "Tyler Barrett"
       }
     ],
     "rating": 4.5,
@@ -27,7 +27,7 @@
     "id": "73c8f955-e5e0-4bec-9ff2-ff7107a5549d",
     "title": "Google",
     "email": "google@gmail.com",
-    "username": "GoogleyGoog"
+    "username": "Google"
   },
   {
     "password": "password",
