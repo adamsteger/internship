@@ -8,7 +8,7 @@ public class DataLoaderTest {
     private ArrayList<Admin> adminList = AdminList.getInstance().getAdmins();
     private StudentList studentList = StudentList.getInstance();
 
-    @BeforeClass
+    @Before
     public void setup() {
         System.out.println("working");
         studentList.getStudents().clear();
@@ -19,7 +19,7 @@ public class DataLoaderTest {
         // DataWriter.saveStudents();
     }
 
-    @AfterClass
+    @After
     public void tearDown() {
         StudentList.getInstance().getStudents().clear();
         DataWriter.saveStudents();
