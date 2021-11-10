@@ -1,28 +1,25 @@
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.*;
+import org.junit.*;
 import java.util.ArrayList;
-
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 
 public class DataLoaderTest {
     private ArrayList<Employer> employerList = EmployerList.getInstance().getEmployers();
     private ArrayList<InternshipPost> internshipList = InternshipList.getInstance().getInternships();
     private ArrayList<Admin> adminList = AdminList.getInstance().getAdmins();
-    private ArrayList<Student> studentList = StudentList.getInstance().getStudents();
+    private StudentList studentList = StudentList.getInstance();
 
-    @BeforeEach
+    @BeforeClass
     public void setup() {
-        studentList.clear();
+        System.out.println("working");
+        studentList.getStudents().clear();
         Student adam = new Student("Adam", "Steger", "asteger", "mypassword", 2024, "asteger@email.sc.edu", "1238 Axtell Dr Cayce, SC 29033", "(803)730-3278", 4.0, true);
         Student chris = new Student("Chris", "Bacon", "chrispbacon", "hispassword", 2022, "baconbits@gmail.com", "123 BLT St, Irmo, SC 29063", "(803)123-4567", 3.5, false);
-        studentList.add(adam);
-        studentList.add(chris);
-        DataWriter.saveStudents();
+        studentList.addStudent(adam);
+        studentList.addStudent(chris);
+        // DataWriter.saveStudents();
     }
 
-    @AfterEach
+    @AfterClass
     public void tearDown() {
         StudentList.getInstance().getStudents().clear();
         DataWriter.saveStudents();
@@ -30,14 +27,25 @@ public class DataLoaderTest {
 
     @Test
     public void testGetStudentsSize() {
-        studentList = DataLoader.getStudents();
-        assertEquals(2, studentList.size());
+        // studentList = DataLoader.getStudents();
+        assertEquals(2, studentList.getStudents().size());
     }
 
     @Test
     public void testGetStudentsSizeZero() {
         StudentList.getInstance().getStudents().clear();
         DataWriter.saveStudents();
-        assertEquals(0,studentList.size());
+        assertEquals(0,studentList.getStudents().size());
+    }
+
+    @Test
+    public void testGetStudentsEmptyStudent() {
+        StudentList.getInstance().getStudents().clear();
+        Student empty = new Student("","","","",0,"","","",0.0,false);
+        studentList.addStudent(empty);
+        assertEquals(1,studentList.getStudents().size());
     }
 }
+
+//empty student, null student, normal students, 1 student 
+
