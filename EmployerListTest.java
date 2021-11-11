@@ -11,41 +11,41 @@ public class EmployerListTest {
         employerList.clear();
         employerList.add(new Employer("anaboca", "1234567"));
         employerList.add(new Employer("asteger", "codykolover"));
-        DataWriter.saveAdmins();
+        DataWriter.saveEmployers();
     }
 
     @After
     public void tearDown() {
-        AdminList.getInstance().getAdmins().clear();
-        DataWriter.saveAdmins();
+        EmployerList.getInstance().getEmployers().clear();
+        DataWriter.saveEmployers();
     }
 
     @Test
-    public void testHaveUserValidFirstItem() {
+    public void testHaveEmployerValidFirstItem() {
         boolean hasAna = employers.haveEmployer("anaboca");
         assertTrue(hasAna);
     }
 
     @Test
-    public void testHaveUserValidLastItem() {
+    public void testHaveEmployerValidLastItem() {
         boolean hasAdam = employers.haveEmployer("asteger");
         assertTrue(hasAdam);
     }
 
     @Test
-	public void testHaveUserInValid() {
+	public void testHaveEmployerInValid() {
 		boolean hasJoe = employers.haveEmployer("jsmith");
 		assertFalse(hasJoe);
 	}
 	
 	@Test
-	public void testHaveUserEmpty() {
+	public void testHaveEmployerEmpty() {
 		boolean hasEmpty = employers.haveEmployer("");
 		assertFalse(hasEmpty);
 	}
 	
 	@Test
-	public void testHaveUserNull() {
+	public void testHaveEmployerNull() {
 		boolean hasNull = employers.haveEmployer(null);
 		assertFalse(hasNull);
 	}

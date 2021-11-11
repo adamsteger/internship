@@ -21,31 +21,31 @@ public class AdminListTest {
     }
 
     @Test
-    public void testHaveUserValidFirstItem() {
+    public void testHaveAdminValidFirstItem() {
         boolean hasAna = admins.haveAdmin("anaboca");
         assertTrue(hasAna);
     }
 
     @Test
-    public void testHaveUserValidLastItem() {
+    public void testHaveAdminValidLastItem() {
         boolean hasAdam = admins.haveAdmin("asteger");
         assertTrue(hasAdam);
     }
 
     @Test
-	public void testHaveUserInValid() {
+	public void testHaveAdminInValid() {
 		boolean hasJoe = admins.haveAdmin("jsmith");
 		assertFalse(hasJoe);
 	}
 	
 	@Test
-	public void testHaveUserEmpty() {
+	public void testHaveAdminEmpty() {
 		boolean hasEmpty = admins.haveAdmin("");
 		assertFalse(hasEmpty);
 	}
 	
 	@Test
-	public void testHaveUserNull() {
+	public void testHaveAdminNull() {
 		boolean hasNull = admins.haveAdmin(null);
 		assertFalse(hasNull);
 	}
