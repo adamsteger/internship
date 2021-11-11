@@ -27,12 +27,18 @@ public class AdminTest {
         skills.add(Skill.SQL);
         skills.add(Skill.CPP);
         testAdmin.addPost("Meta", "NFT salesman or something", "Make magic money for pixels", "Anywhere", skills, "April 2022", "December 2022", true, true, 25000, 40000);
-        assertEquals("Meta", internshipList.haveInternshipPost("Meta", "NFT salesman or something"));
+        assertEquals(true, internshipList.haveInternshipPost("Meta", "NFT salesman or something"));
     }
     
     @Test
     public void testDeletePost() {
-
+        ArrayList<Skill> skills = new ArrayList<Skill>();
+        skills.add(Skill.SQL);
+        skills.add(Skill.CPP);
+        testAdmin.addPost("Meta", "NFT salesman or something", "Make magic money for pixels", "Anywhere", skills, "April 2022", "December 2022", true, true, 25000, 40000);
+        InternshipPost current = internshipList.getInternships().get(0);
+        testAdmin.deletePost(current);
+        assertEquals(false, internshipList.haveInternshipPost("Meta", "NFT salesman or something"));
     }
 
     @Test
