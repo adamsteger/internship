@@ -96,7 +96,7 @@ public class EmployerList {
      * @return Returns true if the employer is successfully added and false if not
      */
     public boolean addEmployer(Employer employer) {
-        if(haveEmployer(employer.getUsername()))
+        if(employer == null || haveEmployer(employer.getUsername()))
             return false;
         
         employers.add(employer);

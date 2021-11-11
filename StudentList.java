@@ -82,7 +82,7 @@ public class StudentList {
      * @return Returns true if the student is successfully added and false if not
      */
     public boolean addStudent(Student student) { 
-        if(haveStudent(student.getUserName())) 
+        if(student == null || haveStudent(student.getUserName())) 
             return false;
         
         students.add(student);
