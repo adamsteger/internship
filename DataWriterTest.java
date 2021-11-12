@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import org.junit.*;
 
-class DataWriterTest {
+public class DataWriterTest {
 
    
 	private ArrayList<Student> studentList = StudentList.getInstance().getStudents();
@@ -53,20 +53,20 @@ class DataWriterTest {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
     @Test
-	void testWritingZeroStudents() {
+	public void testWritingZeroStudents() {
 		studentList = DataLoader.getStudents();
 		assertEquals(0, studentList.size());
 	}
 
     @Test
-	void testWritingOneStudent() {
+	public void testWritingOneStudent() {
 		studentList.add(new Student("Vaughn", "Eugenio", "Veugenio", "password", 2023, "email@email.com", "123 house street", "123-456-7890", 4.0, true));
 		DataWriter.saveStudents();
 		assertEquals("Veugenio", DataLoader.getStudents().get(0).getUserName());
 	}
 
     @Test
-	void testWritingFiveStudents() {
+	public void testWritingFiveStudents() {
         studentList.add(new Student("Vaughn", "Eugenio", "Veugenio", "password", 2023, "email@email.com", "123 house street", "123-456-7890", 4.0, true));
         studentList.add(new Student("Vaughn", "Eugenio", "Veugenio1", "password", 2023, "email@email.com", "123 house street", "123-456-7890", 4.0, true));
         studentList.add(new Student("Vaughn", "Eugenio", "Veugenio2", "password", 2023, "email@email.com", "123 house street", "123-456-7890", 4.0, true));
@@ -77,21 +77,21 @@ class DataWriterTest {
     }
 
     @Test
-	void testWritingEmptyStudent() {
+	public void testWritingEmptyStudent() {
 		studentList.add(new Student("", "", "", "", 0, "", "", "", 0, false));
 		DataWriter.saveStudents();
 		assertEquals("", DataLoader.getStudents().get(0).getUserName());
 	}
 
     @Test
-	void testWritingNullStudent() {
+	public void testWritingNullStudent() {
 		studentList.add(new Student("", "", null, "", 0, "", "", "", 0, false));
 		DataWriter.saveStudents();
 		assertEquals(null, DataLoader.getStudents().get(0).getUserName());
 	}
 
     @Test
-	void testWritingReviewOnStudent() {
+	public void testWritingReviewOnStudent() {
 		studentList.add(new Student("Vaughn", "Eugenio", "Veugenio", "password", 2023, "email@email.com", "123 house street", "123-456-7890", 4.0, true));
 		DataWriter.saveStudents();
         DataLoader.getStudents().get(0).getReviews().add(new Review("Google", 5, "Great worker"));
@@ -101,20 +101,20 @@ class DataWriterTest {
 ///////////////////////////////////////////////////////////////////////////////////////
 
     @Test
-	void testWritingZeroEmployers() {
+	public void testWritingZeroEmployers() {
 		employerList = DataLoader.getEmployers();
 		assertEquals(0, employerList.size());
 	}
 
     @Test
-	void testWritingOneEmployer() {
+	public void testWritingOneEmployer() {
 		employerList.add(new Employer("G00Gl3", "secure"));
 		DataWriter.saveEmployers();
 		assertEquals("G00Gl3", DataLoader.getEmployers().get(0).getUsername());
 	}
 
     @Test
-	void testWritingFiveEmployers() {
+	public void testWritingFiveEmployers() {
         employerList.add(new Employer("G00Gl3", "secure"));
         employerList.add(new Employer("G00Gl31", "secure"));
         employerList.add(new Employer("G00Gl32", "secure"));
@@ -126,21 +126,21 @@ class DataWriterTest {
     }
 
     @Test
-	void testWritingEmptyEmployer() {
+	public void testWritingEmptyEmployer() {
 		employerList.add(new Employer("", ""));
 		DataWriter.saveEmployers();
 		assertEquals("", DataLoader.getEmployers().get(0).getUsername());
 	}
 
     @Test
-	void testWritingNullEmployer() {
+	public void testWritingNullEmployer() {
 		employerList.add(new Employer(null, null));
 		DataWriter.saveEmployers();
 		assertEquals(null, DataLoader.getEmployers().get(0).getUsername());
 	}
 
     @Test
-	void testWritingReviewOnEmployer() {
+	public void testWritingReviewOnEmployer() {
 		employerList.add(new Employer("G00Gl3", "secure"));
 		DataWriter.saveEmployers();
         DataLoader.getEmployers().get(0).getReviews().add(new Review("Vaughn Eugenio", 5, "I loved working here!!!"));
