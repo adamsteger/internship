@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class AdminListTest {
     private AdminList admins = AdminList.getInstance();
@@ -9,8 +10,10 @@ public class AdminListTest {
     @Before
     public void setup() {
         adminList.clear();
-        adminList.add(new Admin("anaboca", "1234567"));
-        adminList.add(new Admin("asteger", "codykolover"));
+        Admin ana = new Admin("anaboca", "12345678");
+        Admin adam = new Admin("asteger", "codykolover");
+        adminList.add(ana);
+        adminList.add(adam);
         DataWriter.saveAdmins();
     }
 
@@ -50,13 +53,87 @@ public class AdminListTest {
 		assertFalse(hasNull);
 	}
 
+    @Test
+    public void testGetAdminByUserFirst(Admin ana) {
+        Admin test = admins.getAdminByUser("anaboca");
+        assertEquals(test, ana);
+    }
+
+    @Test
+    public void testGetAdminByUserLast(Admin adam) {
+        Admin test = admins.getAdminByUser("asteger");
+        assertEquals(test, adam);
+    }
+
+    @Test
+    public void testGetAdminByUserInValid() {
+        Admin test = admins.getAdminByUser("joesmith");
+        assertEquals(null, test);
+    }
+
+    @Test
+	public void testGetAdminByUserEmpty() {
+		Admin test = admins.getAdminByUser("");
+		assertEquals(null, test);
+	}
+	
+	@Test
+	public void testGetAdminByUserNull() {
+		Admin test = admins.getAdminByUser(null);
+		assertEquals(null, test);
+	}
+
+    @Test
+    public void testGetAdminByIDFirst(Admin ana) {
+        Admin test = admins.getAdminByID(ana.getUUID());
+        assertEquals(test, ana);
+    }
+
+    @Test
+    public void testGetAdminByIDLast(Admin adam) {
+        Admin test = admins.getAdminByID(adam.getUUID());
+        assertEquals(test, adam);
+    }
+
     // @Test
-    // public void testGetAdminByUUID() {
-        
+    // public void testGetAdminByIDInValid() {
+    //     Admin test = admins.getAdminByID();
+    //     assertEquals(null, test);
     // }
 
-    // TODO test get admin by user
-    // TODO test get admin by ID
-    // TODO test addAdmin
+    // @Test
+	// public void testGetAdminByIDEmpty() {
+	// 	Admin test = admins.getAdminByID();
+	// 	assertEquals(null, test);
+	// }
+	
+	@Test
+	public void testGetAdminByIDNull() {
+		Admin test = admins.getAdminByID(null);
+		assertEquals(null, test);
+	}
 
+    @Test
+    public void testAddAdminValid() {
+        boolean test = admins.addAdmin(new Admin("Administrator", "password"));
+        assertTrue(test);
+    }
+
+    @Test
+    public void testAddAdminInValid() {
+        boolean test = admins.addAdmin(new Admin("anaboca", "12345678"));
+        assertFalse(test);
+    }
+
+    @Test
+    public void testAddAdminEmpty() {
+        boolean test = admins.addAdmin(new Admin("", ""));
+        assertFalse(test);
+    }
+
+    @Test
+    public void testAddAdminNull() {
+        boolean test = admins.addAdmin(null);
+        assertFalse(test);
+    }
 }
