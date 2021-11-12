@@ -48,7 +48,7 @@ public class ResumeListTest {
         honor2.add(new Honor("Palmetto Fellows Scholarship", "UofSC", "Awarded for high SAT", 2019, true));
         resumeList.add(new Resume(edu1, skill1, course1, work1, extra1, honor1));
         resumeList.add(new Resume(edu2, skill2, course2, work2, extra2, honor2));
-        DataWriter.saveEmployers();
+        DataWriter.saveResumes();
     }
 
     @After
