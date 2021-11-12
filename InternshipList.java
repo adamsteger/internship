@@ -68,7 +68,7 @@ public class InternshipList {
      * @return Returns a boolean that is true if the post is successfully added
      */
     public boolean addInternship(InternshipPost post) { 
-        if(haveInternshipPost(post.getEmployerTitle(), post.getPosTitle())) 
+        if(post == null || haveInternshipPost(post.getEmployerTitle(), post.getPosTitle())) 
             return false;
         
         internships.add(post);
