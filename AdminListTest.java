@@ -54,15 +54,15 @@ public class AdminListTest {
 	}
 
     @Test
-    public void testGetAdminByUserFirst(Admin ana) {
-        Admin test = admins.getAdminByUser("anaboca");
-        assertEquals(test, ana);
+    public void testGetAdminByUserFirst() {
+        String test = admins.getAdminByUser("anaboca").getUsername();
+        assertEquals("anaboca", test);
     }
 
     @Test
-    public void testGetAdminByUserLast(Admin adam) {
-        Admin test = admins.getAdminByUser("asteger");
-        assertEquals(test, adam);
+    public void testGetAdminByUserLast() {
+        String test = admins.getAdminByUser("asteger").getUsername();
+        assertEquals("asteger", test);
     }
 
     @Test
@@ -84,28 +84,18 @@ public class AdminListTest {
 	}
 
     @Test
-    public void testGetAdminByIDFirst(Admin ana) {
-        Admin test = admins.getAdminByID(ana.getUUID());
-        assertEquals(test, ana);
+    public void testGetAdminByIDFirst() {
+        UUID id = admins.getAdminByUser("anaboca").getUUID();
+        String test = admins.getAdminByID(id).getUsername();
+        assertEquals("anaboca", test);
     }
 
     @Test
-    public void testGetAdminByIDLast(Admin adam) {
-        Admin test = admins.getAdminByID(adam.getUUID());
-        assertEquals(test, adam);
+    public void testGetAdminByIDLast() {
+        UUID id = admins.getAdminByUser("asteger").getUUID();
+        String test = admins.getAdminByID(id).getUsername();
+        assertEquals("asteger", test);
     }
-
-    // @Test
-    // public void testGetAdminByIDInValid() {
-    //     Admin test = admins.getAdminByID();
-    //     assertEquals(null, test);
-    // }
-
-    // @Test
-	// public void testGetAdminByIDEmpty() {
-	// 	Admin test = admins.getAdminByID();
-	// 	assertEquals(null, test);
-	// }
 	
 	@Test
 	public void testGetAdminByIDNull() {

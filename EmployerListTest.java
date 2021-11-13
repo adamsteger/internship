@@ -9,7 +9,7 @@ public class EmployerListTest {
     @Before
     public void setup() {
         employerList.clear();
-        employerList.add(new Employer("anaboca", "1234567"));
+        employerList.add(new Employer("ana", "anaboca", "1234567", "ana@gmail.com", "Columbia, SC", "Do good"));
         employerList.add(new Employer("asteger", "codykolover"));
         DataWriter.saveEmployers();
     }
@@ -50,11 +50,13 @@ public class EmployerListTest {
 		assertFalse(hasNull);
 	}
 
-    // @Test
-    // public void testGetAdminByUUID() {
-        
-    // }
+    @Test
+    public void testGetEmployerByTitleValid(Employer ana) {
+        Employer test = employers.getEmployerByTitle("ana");
+        assertEquals(ana, test);
+    }
 
+    // can we have parameters in the test methods?? 
     // TODO test get admin by title
     // TODO test get admin by user
     // TODO test get admin by id
