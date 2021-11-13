@@ -288,8 +288,8 @@ public class InternshipApplication {
         if (internshipList.haveInternshipPost(employerTitle, posTitle)) {
             return false;
         }
-        internshipList.addInternship(employerTitle, posTitle, description, location, skillReq, startDate, endDate,
-                isRemote, isOpen, lowPay, highPay);
+        internshipList.addInternship(new InternshipPost(employerTitle, posTitle, description, location, skillReq, startDate, endDate,
+                isRemote, isOpen, lowPay, highPay));
         internshipList.save();
         return true;
     }

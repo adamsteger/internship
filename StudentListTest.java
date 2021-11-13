@@ -50,13 +50,58 @@ public class StudentListTest {
 		assertFalse(hasNull);
 	}
 
-    // @Test
-    // public void testGetAdminByUUID() {
-        
-    // }
+    @Test
+    public void testGetStudentByUserFirst() {
+        String test = students.getStudentByUser("anaboca").username;
+        assertEquals("anaboca", test);
+    }
 
-    // TODO test get admin by title
-    // TODO test get admin by user
-    // TODO test get admin by id
-    // TODO test add employer
+    @Test
+    public void testGetStudentByUserLast() {
+        String test = students.getStudentByUser("asteger").username;
+        assertEquals("asteger", test);
+    }
+
+    @Test
+    public void testGetStudentByUserInvalid() {
+        String test = students.getStudentByUser("joesmith").username;
+        assertEquals(null, test);
+    }
+
+    @Test
+    public void testGetStudentByUserEmpty() {
+        String test = students.getStudentByUser("").username;
+        assertEquals(null, test);
+    }
+
+    @Test
+    public void testGetStudentByUserNull() {
+        String test = students.getStudentByUser(null).username;
+        assertEquals(null, test);
+    }
+
+    @Test
+    public void testAddStudentValid() {
+        boolean hasValid = students.addStudent(new Student("Vaughn", "Eugenio", "veugenio", "password", 2023, "vaughn@gmail.com", "somewhere", "8031234567", 4.0, true));
+        assertTrue(hasValid);
+    }
+
+    @Test
+    public void testAddStudentDuplicateUser() {
+        boolean hasInvalid = students.addStudent(new Student("Ana", "Boccanfuso", "anaboca", "password", 2024, "email", "somewhere", "8036031487", 4.0, true));
+        assertFalse(hasInvalid);
+    }
+
+    @Test
+    public void testAddStudentEmpty() {
+        boolean hasEmpty = students.addStudent(new Student("", "", "", "", 0, "", "", "", 0.0, true));
+        assertFalse(hasEmpty);
+    }
+
+    @Test
+    public void testAddStudentNull() {
+        boolean hasNull = students.addStudent(null);
+        assertFalse(hasNull);
+    }
+
 }

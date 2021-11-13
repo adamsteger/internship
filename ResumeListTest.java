@@ -57,15 +57,37 @@ public class ResumeListTest {
         DataWriter.saveResumes();
     }
 
-    
+    @Test
+    public void testAddResumeValid() {
+        ArrayList<Education> edu = new ArrayList<Education>();
+        edu.add(new Education("UofSC", "Columbia, SC", "Computer Information Systems", 2023, true));
+        Hashtable<Skill, Boolean> skills = new Hashtable<Skill, Boolean>();
+        skills.put(Skill.CPP, true);
+        skills.put(Skill.JAVA, true);
+        Hashtable<String, Boolean> course = new Hashtable<String, Boolean>();
+        course.put("Introduction to Computer Architecture", true);
+        course.put("Introduction to Software Engineering", true);
+        ArrayList<WorkExperience> work = new ArrayList<WorkExperience>();
+        ArrayList<String> desc1 = new ArrayList<String>();
+        desc1.add("worked");
+        desc1.add("coded");
+        work.add(new WorkExperience("Software Intern", "Google", "Mountain View, CA", "May 2020", "August 2020", true, desc1));
+        ArrayList<Extracurricular> extra1 = new ArrayList<Extracurricular>();
+        extra1.add(new Extracurricular("Dance Marathon", "Participant", "August 2020", "Present", true));
+        ArrayList<Honor> honor1 = new ArrayList<Honor>();
+        resumes.addResume(new Resume(edu, skills, course, work, extra1, honor1));
+        assertEquals(3, resumeList.size());
+    }
 
-    // @Test
-    // public void testGetAdminByUUID() {
-        
-    // }
+    @Test
+    public void testAddResumeEmpty() {
+        resumes.addResume(new Resume());
+        assertEquals(3, resumeList.size());
+    }
 
-    // TODO test get admin by title
-    // TODO test get admin by user
-    // TODO test get admin by id
-    // TODO test add employer
+    @Test
+    public void testAddResumeNull() {
+        resumes.addResume(null);
+        assertEquals(2, resumeList.size());
+    }
 }
