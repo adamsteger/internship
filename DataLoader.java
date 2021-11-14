@@ -190,7 +190,7 @@ public class DataLoader extends DataConstants {
 		try {
 			FileReader reader = new FileReader(RESUME_FILE_NAME);
 			JSONParser parser = new JSONParser();
-			JSONArray resumesJSON = (JSONArray) new JSONParser().parse(reader);
+			JSONArray resumesJSON = (JSONArray) parser.parse(reader);
 
 			for (int i = 0; i < resumesJSON.size(); i++) {
 				JSONObject resumeJSON = (JSONObject) resumesJSON.get(i);
