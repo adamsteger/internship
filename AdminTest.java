@@ -43,11 +43,19 @@ public class AdminTest {
 
     @Test
     public void testDeleteStudentReview() {
-
+        Student testStudent = new Student("adam", "sanfacon", "adamsanf", "12345", 2023, "sanfacoa@email.sc.edu", "2331 preston st", "123456789", 3.5, true);     
+        Review testReview = new Review("IBM", 1, "trash intern");
+        testStudent.getReviews().add(testReview);
+        testAdmin.deleteStudentReview(testStudent, testReview);
+        assertEquals(false, testStudent.getReviews().get(0));
     }
 
     @Test
     public void testDeleteEmployerReview() {
-
+        Employer testEmployer = new Employer("IBM", "IBM", "12345678", "IBM@IBM.com", "California", "THINK");
+        Review testReview = new Review("adamsanf", 1, "trash company");
+        testEmployer.getReviews().add(testReview);
+        testAdmin.deleteEmployerReview(testEmployer, testReview);
+        assertEquals(false, testEmployer.getReviews().get(0));
     }
 }
