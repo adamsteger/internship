@@ -53,14 +53,54 @@ public class InternshipListTest {
 		assertFalse(hasNull);
 	}
 
-    // @Test
-    // public void testGetAdminByUUID() {
-        
-    // }
+    @Test
+    public void testAddInternshipValid() {
+        ArrayList<Skill> skills = new ArrayList<Skill>();
+        skills.add(Skill.C);
+        skills.add(Skill.PYTHON);
+        boolean addValid = internships.addInternship(new InternshipPost("Google", "Computer Application Developer", "Developing", "Mountain View, CA", skills, "May 2022", "August 2022", true, true, 2500, 3000));
+        assertTrue(addValid);
+    }
 
-    // TODO test get admin by title
-    // TODO test get admin by user
-    // TODO test get admin by id
-    // TODO test add employer
+    public void testAddInternshipInvalid() {
+        ArrayList<Skill> skills = new ArrayList<Skill>();
+        skills.add(Skill.C);
+        skills.add(Skill.PYTHON);
+        boolean addInvalid = internships.addInternship(new InternshipPost("Google", "Software Development Intern", "coding things", "Mountain View, CA", skills, "May 2022", "August 2022", false, true, 1000, 2500));
+        assertFalse(addInvalid);
+    }
+
+    public void testAddInternshipEmpty() {
+        boolean addEmpty = internships.addInternship(new InternshipPost("", "", "", "", null, "", "", true, true, 0, 0));
+        assertFalse(addEmpty);
+    }
+   
+    public void testAddInternshipNull() {
+        boolean addNull = internships.addInternship(null);
+        assertFalse(addNull);
+    }
+
+    public void testRemoveInternshipValid() {
+        InternshipPost test = internships.getInternships().get(0);
+        boolean removeValid = internships.removeInternship(test);
+        assertTrue(removeValid);
+    }
+
+    public void testRemoveInternshipInValid() {
+        InternshipPost test = new InternshipPost("IBM", "CEO", "work", "somewhere", null, "now", "never", true, true, 0, 0);
+        boolean removeInvalid = internships.removeInternship(test);
+        assertFalse(removeInvalid);
+    }
+
+    public void testRemoveInternshipEmpty() {
+        InternshipPost test = new InternshipPost("", "", "", "", null, "", "", true, true, 0, 0);
+        boolean removeEmpty = internships.removeInternship(test);
+        assertFalse(removeEmpty);
+    }
+
+    public void testRemoveInternshipNull() {
+        boolean removeInvalid = internships.removeInternship(null);
+        assertFalse(removeInvalid);
+    }
 }
 

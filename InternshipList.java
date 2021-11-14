@@ -76,29 +76,6 @@ public class InternshipList {
     }
     
     /**
-     * creates and adds a new internship to List
-     * @param employerTitle A string of the employer title that made the post
-     * @param posTitle A string of the position title of the post
-     * @param description A string of a description of the position
-     * @param location A string of the location where the position is
-     * @param startDate A string of when the position begins
-     * @param endDate A string of when the position ends
-     * @param isRemote A boolean that is true if the position is virtual
-     * @param isOpen A boolean that is true if the employer is still taking applications
-     * @param lowPay An integer of the lowest a student could be paid for the position
-     * @param highPay An integer of the highest a student could be paid for the position
-     * @param skills An arraylist of type skill of all the skills required for the position
-     * @return Returns a boolean that is true if the post is successfully added
-     */
-    public boolean addInternship(String employerTitle, String posTitle, String description, String location, ArrayList<Skill> skillReq, String startDate, String endDate, boolean isRemote, boolean isOpen, int lowPay, int highPay) {
-        if(haveInternshipPost(employerTitle, posTitle)) 
-            return false;
-        
-        internships.add(new InternshipPost(employerTitle, posTitle, description, location, skillReq, startDate, endDate, isRemote, isOpen, lowPay, highPay));
-        return true;
-    }
-
-    /**
      * Removes an internship from the ArrayList
      * @param InternshipPost The internship post that is being removed
      * @return Returns a boolean that is true if the post is successfully removed
@@ -107,10 +84,11 @@ public class InternshipList {
         for(InternshipPost post : internships) {
             if(internship.equals(post)) {
                 internships.remove(post);
+                DataWriter.saveInternshipPosts();
                 return true;
             }
         }
-        return false;
+        return false;   
     }
 
     /**
