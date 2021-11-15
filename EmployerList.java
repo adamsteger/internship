@@ -54,6 +54,8 @@ public class EmployerList {
      * @return Returns the employer that has the given title
      */
     public Employer getEmployerByTitle(String title) {
+        if (title == "" || title == null)
+            return null;
         for(Employer employer : employers) {
             if(employer.getTitle().contains(title)) {
                 return employer;
@@ -68,6 +70,8 @@ public class EmployerList {
      * @return Returns the employer with the given username
      */
     public Employer getEmployerByUser(String username) {
+        if (username == null || username == "")
+            return null;
         for(Employer employer : employers) {
             if(employer.getUsername().contains(username)) {
                 return employer;

@@ -175,10 +175,14 @@ public class InternshipPost {
      * Adds a new student to the applicants if they have not already applied
      * @param applicant The student that is applying to the post
      */
-    public void addApplicant(Student applicant) {
+    public boolean addApplicant(Student applicant) {
+        if (applicant == null || applicant.getFirstName() == "")
+            return false;
         if (!applicants.contains(applicant)) {
             applicants.add(applicant);
+            return true;
         }
+        return false;
     }
 
     /**

@@ -2,10 +2,9 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.spi.AbstractResourceBundleProvider;
 
 public class ResumeTest {
-    public Resume resume;
+    public Resume resume = new Resume(new ArrayList<Education>(), new Hashtable<Skill,Boolean>(), new Hashtable<String,Boolean>(), new ArrayList<WorkExperience>(), new ArrayList<Extracurricular>(), new ArrayList<Honor>());
     public ArrayList<Education> edu;    // tests adding/deleting of all arraylists 
     public Hashtable<Skill, Boolean> skills;    // tests adding/deleting of all hashtables
 

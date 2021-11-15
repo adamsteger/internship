@@ -136,7 +136,9 @@ public class Resume {
      * @param edu The new education being added
      */
     public void addEducation(Education edu) {
-        educations.add(edu);
+        if (edu.getSchoolTitle() != "") {
+            educations.add(edu);
+        }
     }
 
     /**

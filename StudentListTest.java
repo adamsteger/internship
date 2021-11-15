@@ -64,19 +64,19 @@ public class StudentListTest {
 
     @Test
     public void testGetStudentByUserInvalid() {
-        String test = students.getStudentByUser("joesmith").username;
+        Student test = students.getStudentByUser("joesmith");
         assertEquals(null, test);
     }
 
     @Test
     public void testGetStudentByUserEmpty() {
-        String test = students.getStudentByUser("").username;
+        Student test = students.getStudentByUser("");
         assertEquals(null, test);
     }
 
     @Test
     public void testGetStudentByUserNull() {
-        String test = students.getStudentByUser(null).username;
+        Student test = students.getStudentByUser(null);
         assertEquals(null, test);
     }
 

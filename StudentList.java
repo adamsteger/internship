@@ -54,6 +54,8 @@ public class StudentList {
      * @return Returns the student with the given username
      */
     public Student getStudentByUser(String username) {
+        if (username == null || username == "")
+            return null;
         for(Student student : students) {
             if(student.getUserName().equals(username)) {
                 return student;

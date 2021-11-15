@@ -59,20 +59,20 @@ public class EmployerListTest {
 
     @Test
     public void testGetEmployerByTitleInvalid() {
-        String test = employers.getEmployerByTitle("adam").getTitle();
-        assertEquals(null, test);
+        Employer test = employers.getEmployerByTitle("adam");
+        assertNull(test);
     }
     
     @Test
 	public void testGetEmployerByTitleEmpty() {
-		String test = employers.getEmployerByTitle("").getTitle();
-		assertEquals(null, test);
+		Employer test = employers.getEmployerByTitle("");
+		assertNull(test);
 	}
 	
 	@Test
 	public void testGetEmployerByTitleNull() {
-		String test = employers.getEmployerByTitle(null).getTitle();
-		assertEquals(null, test);
+		Employer test = employers.getEmployerByTitle(null);
+		assertNull(test);
 	}
 
     @Test
@@ -89,19 +89,19 @@ public class EmployerListTest {
 
     @Test
     public void testGetEmployerByUserInValid() {
-        String test = employers.getEmployerByUser("joesmith").getUsername();
-        assertEquals(null, test);
+        Employer test = employers.getEmployerByUser("joesmith");
+        assertNull(test);
     }
 
     @Test
 	public void testGetEmployerByUserEmpty() {
-		String test = employers.getEmployerByUser("").getUsername();
+		Employer test = employers.getEmployerByUser("");
 		assertEquals(null, test);
 	}
 	
 	@Test
 	public void testGetEmployerByUserNull() {
-		String test = employers.getEmployerByUser(null).getUsername();
+		Employer test = employers.getEmployerByUser(null);
 		assertEquals(null, test);
 	}
 
