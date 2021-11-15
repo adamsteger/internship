@@ -101,6 +101,10 @@ public class DataLoaderTest {
     @After
     public void tearDown() {
         StudentList.getInstance().getStudents().clear();
+        EmployerList.getInstance().getEmployers().clear();
+        AdminList.getInstance().getAdmins().clear();
+        ResumeList.getInstance().getResumes().clear();
+        InternshipList.getInstance().getInternships().clear();
         DataWriter.saveStudents();
     }
 
