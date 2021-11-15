@@ -48,9 +48,12 @@ public class ResumeList {
         return null;
     }
 
-    public void addResume(Resume resume) {
+    public boolean addResume(Resume resume) {
+        if (resume == null)
+            return false;
         resumes.add(resume);
         this.save();
+        return true;
     }
 
     /**

@@ -1,10 +1,8 @@
 import org.junit.*;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class StudentTest {
     private InternshipList internshipList = InternshipList.getInstance();

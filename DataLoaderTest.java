@@ -278,7 +278,40 @@ public class DataLoaderTest {
 
     @Test
     public void testGetResumesSize() {
-        // assertEquals()
+        assertEquals(2, resumeList.getResumes().size());
+    }
+
+    @Test
+    public void testGetResumesSizeZero() {
+        resumeList.getResumes().clear();
+        DataWriter.saveResumes();
+        assertEquals(0,resumeList.getResumes().size());
+    }
+
+    @Test
+    public void testGetResumesEmptyResume() {
+        ResumeList.getInstance().getResumes().clear();
+        Resume empty = new Resume(new ArrayList<Education>(), new Hashtable<Skill,Boolean>(), new Hashtable<String,Boolean>(), new ArrayList<WorkExperience>(), new ArrayList<Extracurricular>(), new ArrayList<Honor>());
+        resumeList.addResume(empty);
+        assertEquals(1,resumeList.getResumes().size());
+    }
+
+    @Test
+    public void testGetResumesNullResume() {
+        ResumeList.getInstance().getResumes().clear();
+        Resume nullResume = null;
+        resumeList.addResume(nullResume);
+        assertEquals(0, resumeList.getResumes().size());
+    }
+
+    @Test
+    public void testGetResumesEducations() {
+        assertEquals("UofSC", resumeList.getResumes().get(0).getEducations().get(0).getSchoolTitle());
+    }
+
+    @Test
+    public void testGetResumesSkills() {
+        assertTrue(resumeList.getResumes().get(0).getSkills().get(Skill.C));
     }
 }
 
