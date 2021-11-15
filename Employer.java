@@ -161,19 +161,4 @@ public class Employer extends User {
         return ret;
     }
 
-    /**
-     * adds a post to the Employer's InternshipPosts
-     * @param post The internship post that is being added
-     */
-    public void addPost(InternshipPost post) {
-        posts.add(post);
-    }
-    
-    /**
-     * deletes a post from the employer's post
-     * @param post The internship post that is being removed
-     */
-    public void deletePost(InternshipPost post) {
-        posts.remove(post);
-    }
 }

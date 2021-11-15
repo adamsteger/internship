@@ -210,9 +210,9 @@ public class Student extends User {
      * adds a favorite post to student's favorite posts
      * @param post
      */
-    public void addFavoritePost(InternshipPost post) {
-        favoritePosts.add(post);
-    }
+    // public void addFavoritePost(InternshipPost post) {
+    //     favoritePosts.add(post);
+    // }
 
     public void apply(InternshipPost post) {
         post.getApplicants().add(this);
