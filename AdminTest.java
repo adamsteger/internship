@@ -1,3 +1,7 @@
+/**
+ * @author Ana Boccanfuso
+ * @author Adam Sanfacon
+ */
 import org.junit.*;
 
 import static org.junit.Assert.*;
