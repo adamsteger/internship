@@ -167,7 +167,7 @@ public class DataWriterTest {
 		DataWriter.saveEmployers();
 		ArrayList<Skill> skills = new ArrayList<Skill>();
 		InternshipPost post = new InternshipPost("employerTitle", "posTitle", "description", "location", skills, "startDate", "endDate", true, true, 0, 0);
-		employerList.get(0).addPost(post);
+		// employerList.get(0).addPost(post);
 		DataWriter.saveInternshipPosts();
 
 		//assertEquals("employerTitle", DataLoader.getInternshipPosts().get(0).getEmployerTitle());
@@ -225,7 +225,7 @@ public class DataWriterTest {
 		adminList.add(new Admin("username", "password"));
 		DataWriter.saveAdmins();
 		ArrayList<Skill> skills = new ArrayList<Skill>();
-        adminList.get(0).addPost("employerTitle", "posTitle", "description", "location", skills, "startDate", "endDate", true, true, 0, 0);
+        adminList.get(0).addPost(new InternshipPost("employerTitle", "posTitle", "description", "location", skills, "startDate", "endDate", true, true, 0, 0));
 		DataWriter.saveInternshipPosts();
 
 		assertEquals("employerTitle" , DataLoader.getInternshipPosts().get(0).getEmployerTitle());

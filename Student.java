@@ -206,6 +206,10 @@ public class Student extends User {
     public String getName() {
         return firstName + " " + lastName;
     }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
+    }
     /**
      * adds a favorite post to student's favorite posts
      * @param post

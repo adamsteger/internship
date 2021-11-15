@@ -1,7 +1,6 @@
 import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,7 @@ public class AdminTest {
         DataWriter.saveEmployers();
         DataWriter.saveStudents();
         DataWriter.saveInternshipPosts();
-        }
+    }
 
     @After 
     public void tearDown() {
@@ -43,7 +42,7 @@ public class AdminTest {
         ArrayList<Skill> skills = new ArrayList<Skill>();
         skills.add(Skill.SQL);
         skills.add(Skill.CPP);
-        testAdmin.addPost("Meta", "NFT salesman or something", "Make magic money for pixels", "Anywhere", skills, "April 2022", "December 2022", true, true, 25000, 40000);
+        testAdmin.addPost(new InternshipPost("Meta", "NFT salesman or something", "Make magic money for pixels", "Anywhere", skills, "April 2022", "December 2022", true, true, 25000, 40000));
         assertTrue(internshipList.haveInternshipPost("Meta", "NFT salesman or something"));
     }
 
@@ -52,20 +51,19 @@ public class AdminTest {
         ArrayList<Skill> skills = new ArrayList<Skill>();
         skills.add(Skill.C);
         skills.add(Skill.HTML);
-        testAdmin.addPost("Google", "Software Engineer Intern", "work", "cali", skills, "2021", "2022", true, true, 1000, 3000);
+        testAdmin.addPost(new InternshipPost("Google", "Software Engineer Intern", "work", "cali", skills, "2021", "2022", true, true, 1000, 3000));
         assertEquals(1, internshipList.getInternships().size());
     }
 
     @Test
     public void testAddPostEmpty() {
-        testAdmin.addPost("", "", "", "", null, "", "", true, true, 0, 0);
-        assertEquals(1, internshipList.getInternships().size());
+        assertFalse(testAdmin.addPost(new InternshipPost("","","","", new ArrayList<Skill>(), "","",false,false,0,0)));
     }
     
     @Test
     public void testAddPostNull() {
-        testAdmin.addPost(null, null, null, null, null, null, null, true, true, 0, 0);
-        assertEquals(1, internshipList.getInternships().size());
+        testAdmin.addPost(null);
+        assertFalse(testAdmin.addPost(null));
     }
 
     @Test

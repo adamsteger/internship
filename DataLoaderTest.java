@@ -88,6 +88,8 @@ public class DataLoaderTest {
         ArrayList<Honor> honor2 = new ArrayList<Honor>();
         honor1.add(new Honor("President's List", "UofSC", "All A's", 2020, true));
         honor2.add(new Honor("Palmetto Fellows Scholarship", "UofSC", "Awarded for high SAT", 2019, true));
+        Resume resume1 = new Resume(edu1, skill1, course1, work1, extra1, honor1);
+        adam.setResume(resume1);
         resumeList.getResumes().add(new Resume(edu1, skill1, course1, work1, extra1, honor1));
         resumeList.getResumes().add(new Resume(edu2, skill2, course2, work2, extra2, honor2));
         DataWriter.saveEmployers();
@@ -166,10 +168,10 @@ public class DataLoaderTest {
         assertEquals("bsmith", studentList.getStudents().get(3).getUsername());
     }
 
-    // @Test
-    // public void testGetStudentsResume() {
-    //     assertEquals(expected, actual);
-    // }
+    @Test
+    public void testGetStudentsResume() {
+        assertEquals("UofSC", studentList.getStudents().get(0).getResume().getEducations().get(0).getSchoolTitle());
+    }
 
     @Test
     public void testGetEmployersSize() {
