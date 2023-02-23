@@ -7,3 +7,11 @@ To run the project.  First, clone the repository by running the following comman
 git clone https://github.com/adamsteger/internship.git
 
 Then run the main method in InternshipUI.java.
+
+To sign in as a student:
+    username: mamajoe123
+    password: 12345678
+
+To sign in as an employer: 
+    username: ImIBM
+    password: abcdefg
